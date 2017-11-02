@@ -1,5 +1,6 @@
 DITA - ( Dreams, Ideas, Thoughts, Actions )
 
+Postgres DBName: dita
 
 Directory Structure
 

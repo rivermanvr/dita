@@ -1,7 +1,7 @@
 {
-  "name": "graceshopper",
+  "name": "dita",
   "version": "1.0.0",
-  "description": "graceshopper",
+  "description": "dita",
   "main": "server.js",
   "scripts": {
     "postinstall": "npm run webpack",
@@ -16,7 +16,7 @@
     "url": "git+https://github.com/DiAJVince/graceshopper.git"
   },
   "keywords": [],
-  "author": "Di_AJ_Vince",
+  "author": "Kaz_Murray_Vince_Wasif",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DiAJVince/graceshopper/issues"

@@ -1,4 +1,4 @@
-DITA - ( Dreams, Ideas, Thoughts, Actions )
+DITA - ( Dreams, Ideas, Thoughts, Analytics )
 
 Postgres DBName: dita
 

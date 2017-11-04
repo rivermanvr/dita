@@ -4,12 +4,12 @@
   "description": "dita",
   "main": "server.js",
   "scripts": {
-    "postinstall": "npm run webpack",
+    "postinstall": "webpack & node-sass public/css/scss -o public/css",
     "start": "node server.js",
     "test": "mocha **/*.test.js *.test.js",
-    "webpack": "./node_modules/webpack/bin/webpack.js",
     "build:css": "node-sass -w -r public/css/scss -o public/css",
-    "start:dev": "npm run webpack -- -w & nodemon --ignore src/ --ignore dist/ server.js"
+    "seed": "node db/seed.js",
+    "start:dev": "webpack -w & nodemon --ignore src/ --ignore dist/ server.js"
   },
   "repository": {
     "type": "git",

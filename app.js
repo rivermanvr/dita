@@ -16,7 +16,7 @@ app.use(morgan('dev'));
 
 app.use('/api', routes);
 
-app.get('/', (req, res, next)=> res.sendFile(path.join(__dirname, 'public/index.html')));
+app.get('/*', (req, res, next)=> res.sendFile(path.join(__dirname, 'public/index.html')));
 
 // ......error middleware not wired to anything.
 // ......error status sent back to index.html

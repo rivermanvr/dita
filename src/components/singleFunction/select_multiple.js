@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
 
 export default class TestBed extends Component {
   constructor() {
     super();
-    this.state = { id: 0, name: '', errorAdd: '' };
+    this.state = { select: [], options: [] };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.options = this.options.bind(this);
   }
 
   componentDidMount(){
@@ -34,22 +36,31 @@ export default class TestBed extends Component {
   }
 
   handleInput(event) {
-    const name = event.target.name;
     const value = event.target.value;
-    switch (name) {
-      case 'name':
-        this.setState({ name: value });
-        break;
-      case 'phone':
-        this.setState({ phone: value });
-        break;
-    }
+    this.setState({ select: [] });
+  }
+
+  options() {
+    return [
+      {  value: 'one', label: 'One'},
+      {  value: 'two', label: 'Two'},
+      {  value: 'three', label: 'Three'},
+      {  value: 'four', label: 'Four'}
+    ]
   }
 
   render() {
     return (
       <div>
-        our testBed component
+        <h4>TestBed component</h4>
+        <div className="well">
+          <Select
+            name="select"
+            value='One'
+            options={ this.state.options }
+            onChange={ this.handleInput }
+          />
+        </div>
       </div>
     )
   }

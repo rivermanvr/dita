@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import TestBed from './TestBed';
+import TestBed from './singleFunction/TestBed';
 import Navbar from '../containers/NavBar';
 import Tests from '../containers/Tests';
 import Test from '../containers/Test';

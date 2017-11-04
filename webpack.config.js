@@ -18,5 +18,9 @@ module.exports = {
         }
       }
     ]
+  },
+  node: {
+    dns: 'empty',
+    net: 'empty'
   }
 };

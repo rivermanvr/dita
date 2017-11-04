@@ -1,44 +1,23 @@
 import axios from 'axios';
+import jwt from 'jsonwebtoken'
 
 // ***** ACTION TYPES *****
-
-export const GOT_NEW_DATA = 'GOT_NEW_DATA';
-export const GOT_SINGLE_TEST = 'GOT_SINGLE_TEST';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 
 // ***** ACTION CREATORS *****
+export const setCurrentUser = user => ({ type: SET_CURRENT_USER, user })
 
-export function removeTest(id) {
-  return axios.delete(`/api/tests/${ id }`)
-  .then(() => fetchData())
-}
+export const signIn = authInfo => dispatch =>
+  axios.post('/api/auth', authInfo)
+    .then(res => {
+      const ditaKey = res.data.ditaKey
+      localStorage['ditaKey'] = ditaKey
 
-export function addTest(test) {
-  return axios.post('/api/tests', test)
-  .then(() => fetchData())
-}
+      const user = jwt.decode(ditaKey).user
+      dispatch(setCurrentUser(user))
+    })
 
-export function fetchData() {
-  return Promise.all([
-    axios.get('/api/tests')
-  ])
-  .then(results => {
-    const tests = results[0].data;
-    return { type: GOT_NEW_DATA, payload: { tests } };
-  })
-}
-
-export function gotSingleTest(id) {
-  return axios.get(`/api/tests/${ id }`)
-  .then(res => res.data)
-  .then(selectedTest => {
-    return { type: GOT_SINGLE_TEST, payload: selectedTest };
-  })
-}
-
-export function updateTest(test) {
-  return axios.put(`/api/tests/${ test.id }`, test)
-  .then(res => res.data)
-  .then(_test => {
-    return gotSingleTest(_test.id)
-  })
+export const signOut = () => dispatch => {
+  delete localStorage.ditaKey
+  dispatch(setCurrentUser())
 }

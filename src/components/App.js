@@ -12,10 +12,8 @@ export default function AppContainer() {
       <h3>Welcome to Dita</h3>
       <Route render={ (router) => <Navbar router={ router } /> } />
       <Switch>
-      <Route
-        path="/tests/:id" render={ (router) => <Test router={ router } /> }
-      />
-      <Route path="/testBed" component={ TestBed } />
+      <Route exact path="/tests/:id" render={ (router) => <Test router={ router } /> } />
+      <Route exact path="/testBed" component={ TestBed } />
       <Route path="/" component={ Tests } />
     </Switch>
     </div>

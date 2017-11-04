@@ -10,15 +10,6 @@ export default class TestBed extends Component {
   }
 
   componentDidMount(){
-    const id = this.props.router.match.params.id;
-    this.props.gotSingleTest(id)
-    .then(() => {
-      this.setState({
-        id: this.props.selectedTest.id,
-        name: this.props.selectedTest.name,
-        errorAdd: ''
-      })
-    })
   }
 
   componentWillReceiveProps(nextProps) {

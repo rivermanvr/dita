@@ -9,8 +9,8 @@ const publicUserData = (user) => ({
 
 // login
 router.post('/', (req, res, next) => {
-  const { email, password } = req.body
-  User.matchUser(email, password)
+  const { query, password } = req.body
+  User.matchUser(query, password)
     .then(user => {
       if (!user) return res.sendStatus(403)
 
@@ -24,10 +24,8 @@ router.post('/', (req, res, next) => {
 const { verifyToken } = require('./authMiddleware')
 router.get('/', verifyToken, (req, res, next) => {
   User.findById(req.user.id)
-    .then(user => {
-      // pretend this is a Post.findByUserId call instead
-      res.sendStatus(200)
-    })
+    .then(user => res.send(`Logged in as ${user.username}`))
+    .catch(next)
 })
 
 module.exports = router;

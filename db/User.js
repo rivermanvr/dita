@@ -1,9 +1,18 @@
 const db = require( './db' ); 
+const { or } = db.Op
 const bcrypt = require('bcrypt-as-promised')
 const env = require('../env')
 
 const defineAttr = { 
   email: { 
+    type: db.Sequelize.STRING, 
+    allowNull: false, 
+    validate: { 
+      notEmpty: true 
+    },
+    unique: true
+  },
+  username: { 
     type: db.Sequelize.STRING, 
     allowNull: false, 
     validate: { 
@@ -45,14 +54,20 @@ const defineOptions = {
  
 const User = db.define('user', defineAttr, defineOptions); 
 
-User.matchUser = function(email, password) {
-  return this.findOne({ where: { email } })
-    .then(user => {
-      return checkHash(password, user.password)
-        .then(res => {
-          if (res) return user
-        })
-    })
+User.matchUser = function(query, password) {
+  return this.findOne({
+    where: {
+      [or]: [
+        { email: [query] },
+        { username: [query] } ]
+    }
+  })
+  .then(user => {
+    return checkHash(password, user.password)
+      .then(res => {
+        if (res) return user
+      })
+  })
 }
 
 module.exports = User; 

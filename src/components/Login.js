@@ -1,55 +1,59 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { signIn, signOut } from '../reducers'
+import { signIn } from '../reducers'
+import { signOut, getData } from '../reducers'
 
 class Login extends Component {
-  constructor() {
-    super()
-    this.state = { email: '', password: '' }
-    this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
-    this.testSignOut = this.testSignOut.bind(this)
+  state = {
+    query: '',
+    password: ''
   }
 
-  onChange(ev) {
-    const { name, value } = ev.target
-    this.setState({ [name]: value })
+  onChange = name => ev => {
+    this.setState({ [name]: ev.target.value })
   }
 
-  onSubmit(ev) {
+  onSubmit = ev => {
     ev.preventDefault()
     this.props.signIn(this.state)
   }
 
-  testSignOut(ev) {
+  testSignOut = ev => {
     ev.preventDefault()
     this.props.signOut()
   }
 
+  testGetData = ev => {
+    ev.preventDefault()
+    this.props.getData()
+  }
+
   render() {
-    const { email, password } = this.state
-    const { onChange, onSubmit, testSignOut } = this
+    const { query, password } = this.state
+    const { onChange, onSubmit } = this
+    const { testSignOut, testGetData } = this
 
     return (
       <form onSubmit={ onSubmit }>
         <div className="form-group">
-          <label htmlFor='email'>Email</label>
-          <input name='email' type='email' value={ email } onChange={ onChange } className='form-control'/>
+          <label htmlFor='query'>Username or Email</label>
+          <input value={ query } onChange={ onChange('query') } className='form-control'/>
         </div>
 
         <div className="form-group">
           <label htmlFor='password'>Password</label>
-          <input name='password' type='password' value={ password } onChange={ onChange } className='form-control'/>
+          <input type='password' value={ password } onChange={ onChange('password') } className='form-control'/>
         </div>
 
         { this.props.loggedIn ?
           <button className='btn btn-primary' onClick={ testSignOut }>Logout</button> :
           <button className='btn btn-primary'>Login</button> }
+        <button className='btn btn-primary' onClick={ testGetData }>Get data</button>
       </form>
     )
   }
 }
 
 const mapState = ({ currentUser }) => ({ loggedIn: currentUser.isAuthenticated })
-const mapDispatch = { signIn, signOut }
+const mapDispatch = { signIn, signOut, getData }
 export default connect(mapState, mapDispatch)(Login)

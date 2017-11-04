@@ -28,7 +28,7 @@ class Login extends Component {
     this.props.getData()
   }
 
-  render() {
+  render = () => {
     const { query, password } = this.state
     const { onChange, onSubmit } = this
     const { testSignOut, testGetData } = this

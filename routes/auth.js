@@ -17,6 +17,12 @@ router.post('/', (req, res, next) => {
       const tokenData = { user: publicUserData(user) }
       res.send({ ditaKey: generateToken(tokenData) })
     })
+    .catch(err => {
+      if (err.message == 'invalid') {
+        return res.status(403).send('invalid username/email/password')
+      }
+      return
+    })
     .catch(next)
 })
 

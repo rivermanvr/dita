@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import SelectMulti from './select_multiple';
-import SelectSingle from './select_single';
+import Select from './select_box';
 
 export default class TestBed extends Component {
   constructor() {
@@ -22,7 +21,7 @@ export default class TestBed extends Component {
 
 
   handleSelect(obj) {
-    console.log('in TestBed, selectBoxes: ', obj);
+    console.log('in TestBed, selectBox: ', obj);
     this.setState({ selection: obj })
   }
 
@@ -34,19 +33,11 @@ export default class TestBed extends Component {
         <h4>TestBed - available components:</h4>
 
         <div className="colWidth60 well">
-          <h5>Using 'react-select' module, this is a multi-select select box:</h5>
+          <h5>Using 'react-select' module, this is a multi &/or single select select box:</h5>
           <ul>
-            <li>div wrap & render: select_multiple.js component</li>
+            <li>div wrap & render: select_box.js component</li>
           </ul>
-          <SelectMulti options={ this.state.options } selection={ this.handleSelect } />
-        </div>
-
-        <div className="colWidth60 well">
-          <h5>Using 'react-select' module, this is a single-select select box:</h5>
-          <ul>
-            <li>div wrap & render: select_single.js component</li>
-          </ul>
-          <SelectSingle options={ this.state.options } selection={ this.handleSelect } />
+          <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } />
         </div>
       </div>
     )

@@ -21,6 +21,7 @@ class Navbar extends Component {
     const tabs = [
       { title: 'Tests', path: '/tests' },
       { title: 'Login', path: '/login' }
+      { title: 'TestBed', path: '/testBed' },
     ];
     return (
       <ul className="nav nav-tabs mainnav" style={ { marginBottom: '10px' } }>

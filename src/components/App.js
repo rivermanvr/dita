@@ -16,9 +16,12 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container-fluid">
+        <h3>Welcome to Dita</h3>
         <Routes />
       </div>
     )
   }
 }
+// needs to be moved to Routes import TestBed from './singleFunction/TestBed';
+  // <Route exact path="/testBed" component={ TestBed } />

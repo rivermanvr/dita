@@ -1,4 +1,5 @@
-DITA - ( Dreams, Ideas, Thoughts, Analytics )
+### DITA - ( Dreams, Ideas, Thoughts, Analytics )
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/rivermanvr/dita.svg?columns=all)](https://waffle.io/rivermanvr/dita)
 
 Postgres DBName: dita
 

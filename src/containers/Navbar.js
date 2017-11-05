@@ -21,7 +21,8 @@ class Navbar extends Component {
     const path = this.props.router.location.pathname;
     const cLen = this.props.tests.tests.length
     const tabs = [
-      { title: 'Tests', path: '/tests', count: cLen }
+      { title: 'Tests', path: '/tests', count: cLen },
+      { title: 'TestBed', path: '/testBed' },
     ];
     return (
       <ul className="nav nav-tabs mainnav" style={ { marginBottom: '10px' } }>

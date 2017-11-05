@@ -15,12 +15,16 @@ class Login extends Component {
 
   onSubmit = ev => {
     ev.preventDefault()
+    // replace history.push with path to redirect
     this.props.signIn(this.state)
+      .then(() => this.props.history.push('/'))
   }
 
   testSignOut = ev => {
     ev.preventDefault()
+    // replace history.push with path to redirect
     this.props.signOut()
+      .then(() => this.props.history.push('/'))
   }
 
   testGetData = ev => {

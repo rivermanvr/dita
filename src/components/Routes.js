@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import Navbar from '../containers/Navbar'
 import TestBed from './singleFunction/TestBed'
 import Login from './Login'
+import IdeaForm from './IdeaForm'
 
 export default function () {
   return (
@@ -15,7 +16,8 @@ export default function () {
       <Switch>
         <Route exact path="/login" component={ Login } />
         <Route exact path="/testBed" component={ TestBed } />
-        <Route path="/" component={ Login } />
+        <Route exact path="/" component={ Login } />
+        <Route exact path="/ideas" component={ IdeaForm } />
       </Switch>
     </div>
   )

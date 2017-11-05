@@ -12,6 +12,24 @@ const Post = db.define('post', {
         validate: {
             len: [0,500]
         }
+    },
+    latitude: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        defaultValue: null,
+        validate: { min: -90, max: 90 }
+    },
+    longitude: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        defaultValue: null,
+        validate: { min: -180, max: 180 }
+    },
+    zip: {
+        type: Sequelize.STRING,
+        validate: {
+            len: 5
+        }
     }
 })
 

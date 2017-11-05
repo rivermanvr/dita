@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Select from './select_multiple';
+
 export default class TestBed extends Component {
   constructor() {
     super();
@@ -8,11 +10,15 @@ export default class TestBed extends Component {
   }
 
   render() {
+    
     return (
       <div>
         <h4>TestBed - available components:</h4>
-        <div className="colWidth60">
-          select component here
+        <div className="colWidth60 well">
+        <label>
+          Using 'react-select', this is a multi-select select box:
+        </label>
+          <Select />
         </div>
       </div>
     )

@@ -4,10 +4,9 @@ import Select from 'react-select';
 export default class TestBed extends Component {
   constructor() {
     super();
-    this.state = { select: [], options: [] };
+    this.state = { select: [] };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleInput = this.handleInput.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
     this.options = this.options.bind(this);
   }
 
@@ -24,41 +23,34 @@ export default class TestBed extends Component {
     })
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    if (this.state.name) {
-      const testChg = this.state;
-      testChg.photo = this.props.selectedTest.photo;
-      this.props.updateTest(testChg);
-    } else {
-      this.setState({ errorAdd: 'Name cannot be blank', name: this.state.test.name });
-    }
-  }
-
-  handleInput(event) {
+  onInputChange(event) {
     const value = event.target.value;
-    this.setState({ select: [] });
+    const label = event.target.label
+    console.log(value)
+    // this.setState({ select: [{ label: value }] });
   }
 
   options() {
     return [
-      {  value: 'one', label: 'One'},
-      {  value: 'two', label: 'Two'},
-      {  value: 'three', label: 'Three'},
-      {  value: 'four', label: 'Four'}
+      { value: 0 },
+      {  value: 1, label: 'One'},
+      {  value: 2, label: 'Two'},
+      {  value: 3, label: 'Three'},
+      {  value: 4, label: 'Four'}
     ]
   }
 
   render() {
+    const options = this.options();
     return (
       <div>
-        <h4>TestBed component</h4>
-        <div className="well">
+        <div>
           <Select
-            name="select"
-            value='One'
-            options={ this.state.options }
-            onChange={ this.handleInput }
+            name="form-field-select"
+            className="Select"
+            value={ 0 }
+            options={ options }
+            onChange={ this.onInputChange }
           />
         </div>
       </div>

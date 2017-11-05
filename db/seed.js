@@ -1,6 +1,6 @@
 const db = require('./db')
 const { User } = require('./index').models
-
+//
 const seed = () =>
   Promise.all([
     User.create({ email: 'kaz@dita.net', 'username': 'kaz', 'password': 'dita' }),

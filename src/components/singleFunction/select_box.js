@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Select from 'react-select';
+import Select, { Creatable } from 'react-select';
 
 export default class SelectMulti extends Component {
   constructor() {
@@ -34,8 +34,9 @@ export default class SelectMulti extends Component {
     return (
       <div>
         <div>
-          <Select
+          <Creatable
             multi={ multi }
+            allowCreate={ true }
             name="form-field-select"
             className="Select"
             placeholder="make selection"

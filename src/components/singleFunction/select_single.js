@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 
-export default class SelectMulti extends Component {
+export default class SelectSingle extends Component {
   constructor() {
     super();
-    this.state = { selection: [] };
+    this.state = { selection: '' };
 
     this.onInputChange = this.onInputChange.bind(this);
   }
 
-  onInputChange(obj) {
-    console.log(obj)
-    this.setState({ selection: obj });
-    this.props.selection(obj)
+  onInputChange(value) {
+    console.log(value)
+    this.setState({ selection: value });
+    this.props.selection(value)
   }
 
   render() {
@@ -24,7 +24,7 @@ export default class SelectMulti extends Component {
       options = [{ value: -string/number-, label: -display string- }]
 
       OnChange will also return current selected result back to the calling component.
-      The return value is an array of objects
+      The return value is a number or a string value
       return prop = this.props.selection
     */
     const options = this.props.options;
@@ -32,10 +32,9 @@ export default class SelectMulti extends Component {
       <div>
         <div>
           <Select
-            multi={ true }
             name="form-field-select"
             className="Select"
-            placeholder="make selection(s)"
+            placeholder="make selection"
             value={ this.state.selection }
             options={ options }
             onChange={ this.onInputChange }

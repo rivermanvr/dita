@@ -24,7 +24,7 @@ class Login extends Component {
     ev.preventDefault()
     // replace history.push with path to redirect
     this.props.signOut()
-      .then(() => this.props.history.push('/'))
+    this.props.history.push('/')
   }
 
   testGetData = ev => {

@@ -63,6 +63,7 @@ User.matchUser = function(query, password) {
     }
   })
   .then(user => {
+    if (!user) throw new Error('invalid')
     return checkHash(password, user.password)
       .then(res => {
         if (res) return user

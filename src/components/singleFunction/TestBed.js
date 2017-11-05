@@ -36,6 +36,9 @@ export default class TestBed extends Component {
           <h5>Using 'react-select' module, this is a multi &/or single select select box:</h5>
           <ul>
             <li>div wrap & render: select_box.js component</li>
+            <li>Look at the TestBed.js component to see what is passed into this component</li>
+            <li><hr /></li>
+            <li><h5>The component is a multi &/or Single select Box:</h5></li>
           </ul>
           <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } />
         </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import Navbar from '../containers/Navbar'
+import TestBed from './singleFunction/TestBed'
 import Login from './Login'
 
 export default function () {
@@ -12,7 +13,9 @@ export default function () {
 
       {/* render only on specific paths */}
       <Switch>
-        <Route exact path='/login' component={ Login } />
+        <Route exact path="/login" component={ Login } />
+        <Route exact path="/testBed" component={ TestBed } />
+        <Route path="/" component={ Login } />
       </Switch>
     </div>
   )

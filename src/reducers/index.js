@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import TestsReducer from './reducer_tests';
+import currentUser from './currentUser';
 
 const rootReducer = combineReducers({
-  tests: TestsReducer,
+  currentUser
 });
 
 export default rootReducer;
+
+export * from '../actions'

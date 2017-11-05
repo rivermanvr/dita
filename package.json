@@ -4,12 +4,12 @@
   "description": "dita",
   "main": "server.js",
   "scripts": {
-    "postinstall": "npm run webpack",
+    "postinstall": "webpack & node-sass public/css/scss -o public/css",
     "start": "node server.js",
     "test": "mocha **/*.test.js *.test.js",
-    "webpack": "./node_modules/webpack/bin/webpack.js",
     "build:css": "node-sass -w -r public/css/scss -o public/css",
-    "start:dev": "npm run webpack -- -w & nodemon --ignore src/ --ignore dist/ server.js"
+    "seed": "node db/seed.js",
+    "start:dev": "webpack -w & nodemon --ignore src/ --ignore dist/ server.js"
   },
   "repository": {
     "type": "git",
@@ -29,15 +29,19 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "bcrypt": "^1.0.3",
+    "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.18.2",
     "bootstrap": "^3.3.7",
     "chalk": "^2.1.0",
     "express": "^4.16.1",
     "http": "0.0.0",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
     "morgan": "^1.9.0",
     "node-sass": "^4.5.3",
     "path": "^0.12.7",
-    "pg": "^7.3.0",
+    "pg": "^7.4.0",
     "pg-native": "^2.2.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -48,7 +52,8 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.5.3",
-    "sequelize": "^4.13.5",
+    "redux-thunk": "^2.2.0",
+    "sequelize": "^4.22.4",
     "webpack": "^3.6.0"
   },
   "devDependencies": {

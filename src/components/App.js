@@ -1,21 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import store from '../store'
+import { setCurrentUser } from '../actions'
+import jwt from 'jsonwebtoken'
 
-import TestBed from './singleFunction/TestBed';
-import Navbar from '../containers/NavBar';
-import Tests from '../containers/Tests';
-import Test from '../containers/Test';
+import Routes from './Routes'
 
-export default function AppContainer() {
-  return (
-    <div className="container-fluid">
-      <h3>Welcome to Dita</h3>
-      <Route render={ (router) => <Navbar router={ router } /> } />
-      <Switch>
-      <Route exact path="/tests/:id" render={ (router) => <Test router={ router } /> } />
-      <Route exact path="/testBed" component={ TestBed } />
-      <Route path="/" component={ Tests } />
-    </Switch>
-    </div>
-  )
+export default class App extends Component {
+  componentDidMount() {
+    if (localStorage.ditaKey) {
+      store.dispatch(
+        setCurrentUser(jwt.decode(localStorage.ditaKey).user))
+    }
+  }
+
+  render() {
+    return (
+      <div className="container-fluid">
+        <h3>Welcome to Dita</h3>
+        <Routes />
+      </div>
+    )
+  }
 }
+// needs to be moved to Routes import TestBed from './singleFunction/TestBed';
+  // <Route exact path="/testBed" component={ TestBed } />

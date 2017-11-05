@@ -3,7 +3,6 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser')
 const morgan = require( 'morgan' );
-const routes = require( './routes/api' );
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
@@ -14,9 +13,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-app.use('/api', routes);
+app.use('/api', require('./routes'));
 
-app.get('/', (req, res, next)=> res.sendFile(path.join(__dirname, 'public/index.html')));
+app.get('/*', (req, res, next)=> res.sendFile(path.join(__dirname, 'public/index.html')));
 
 // ......error middleware not wired to anything.
 // ......error status sent back to index.html
@@ -28,7 +27,8 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  res.status(err.status || 500);
+  console.log(err)
+  res.status(err.status || 500).send(err.message);
 });
 
 module.exports = app;

@@ -23,5 +23,3 @@ export default class App extends Component {
     )
   }
 }
-// needs to be moved to Routes import TestBed from './singleFunction/TestBed';
-  // <Route exact path="/testBed" component={ TestBed } />

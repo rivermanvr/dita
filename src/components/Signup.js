@@ -33,7 +33,7 @@ class Signup extends Component {
       onSubmit } = this
 
     return (
-      <form>
+      <div>
         <Textbox 
           label='Username'
           value={ username }
@@ -54,7 +54,7 @@ class Signup extends Component {
         <Button
           onClick={ onSubmit }
           label='Sign Up!' />
-      </form>
+      </div>
     )
   }
 }

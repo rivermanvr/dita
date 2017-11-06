@@ -2,11 +2,6 @@ const router = require( 'express' ).Router();
 const { User } = require('../db').models
 const { generateToken } = require('./authMiddleware')
 
-const publicUserData = (user) => ({
-  id: user.id,
-  email: user.email
-})
-
 // login
 router.post('/', (req, res, next) => {
   const { query, password } = req.body
@@ -14,14 +9,12 @@ router.post('/', (req, res, next) => {
     .then(user => {
       if (!user) return res.sendStatus(403)
 
-      const tokenData = { user: publicUserData(user) }
-      res.send({ ditaKey: generateToken(tokenData) })
+      res.send({ ditaKey: generateToken(user) })
     })
     .catch(err => {
       if (err.message == 'invalid') {
         return res.status(403).send('invalid username/email/password')
       }
-      return
     })
     .catch(next)
 })

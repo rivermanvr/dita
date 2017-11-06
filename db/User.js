@@ -71,4 +71,8 @@ User.matchUser = function(query, password) {
   })
 }
 
+User.createUser = function(data) {
+  return this.create(data)
+}
+
 module.exports = User; 

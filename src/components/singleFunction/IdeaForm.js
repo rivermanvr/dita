@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import store from '../../store';
 import { postIdea } from '../../actions/ideas';
+import Select from './select_box';
 
 class IdeaForm extends Component {
   constructor(){
@@ -11,6 +13,7 @@ class IdeaForm extends Component {
       category: ''
     }
     this.handlechange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -20,15 +23,21 @@ class IdeaForm extends Component {
     this.setState({ category: val })
   }
 
-
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.handleAdd(this.state);
+  }
 
   render(){
+    const { title, idea, category } = this.state;
+    const { ideas, categories } = this.props;
+
     return (
       <div className="container">
         <h1>Post Idea</h1>
         (UNDER CONSTRUCTION)
 
-        <form>
+        <form onSubmit={ this.handleSubmit }>
           <div className="form-group">
             <input name="title" type="text" ref="title" onChange={ this.handleChange }
             className="form-control" placeholder="Please enter title" />
@@ -51,12 +60,26 @@ class IdeaForm extends Component {
           </div>
 
         </form>
-
         
       </div>
     )      
   }  
 }
 
-export default IdeaForm;
+const mapStateToProps = ({ ideas, categories }) => {
+  return {
+    ideas,
+    categories
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleAdd: (idea) => {
+      dispatch(postIdea(idea));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(IdeaForm);
 

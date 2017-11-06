@@ -1,6 +1,13 @@
 const jwt = require('jsonwebtoken')
 const env = require('../env')
 
+const publicUserData = (user) => ({
+  user: {
+    id: user.id,
+    email: user.email
+  }
+})
+
 // jwt verification middleware
 module.exports.verifyToken = (req, res, next) => {
   const token = req.headers['authorization']
@@ -18,5 +25,5 @@ module.exports.verifyToken = (req, res, next) => {
 }
 
 module.exports.generateToken = (data) => {
-  return jwt.sign(data, env.JWTKEY)
+  return jwt.sign(publicUserData(data), env.JWTKEY)
 }

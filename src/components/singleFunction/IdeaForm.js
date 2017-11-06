@@ -5,15 +5,18 @@ import { postIdea } from '../../actions/ideas';
 import Select from './select_box';
 
 class IdeaForm extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props);
     this.state = {
       title: '',
       idea: '',
-      category: ''
+      category: '',
+      selection: [],
+      options: [{ label: 'work' }, { label: 'food' }]
     }
     this.handlechange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   handleChange(event) {
@@ -28,6 +31,11 @@ class IdeaForm extends Component {
     this.props.handleAdd(this.state);
   }
 
+  handleSelect(obj){
+    this.setState({ selection: obj })
+  }
+
+
   render(){
     const { title, idea, category } = this.state;
     const { ideas, categories } = this.props;
@@ -35,7 +43,7 @@ class IdeaForm extends Component {
     return (
       <div className="container">
         <h1>Post Idea</h1>
-        (UNDER CONSTRUCTION)
+        (UNDER CONSTRUCTION!!!!)
 
         <form onSubmit={ this.handleSubmit }>
           <div className="form-group">
@@ -49,11 +57,7 @@ class IdeaForm extends Component {
             className="form-control" placeholder="Please enter idea" />
           </div>
 
-          <select name="category" className="form-control" onChange={ this.handleChange }>
-            <option>Select idea category</option>
-
-
-          </select>
+          <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } />
 
           <div className="form-group">
             <button type="submit" className="btn btn-primary">Post Idea</button>

@@ -1,12 +1,27 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
-export default class SelectMulti extends Component {
+export default class GeoInput extends Component {
   constructor() {
     super();
-    this.state = { term: '' };
+    this.state = { term: '', keyAPI: '', outFormat: 'json', offset: 3, language: 'en' };
 
     this.onInputChange = this.onInputChange.bind(this);
   }
+
+  componentDidMount() {
+    if (!this.state.keyAPI) {
+      // retrieving our Google API key from a secure place.
+      const key = process.env.GoogleAPI || require('../../../env').GoogleAPI;
+      this.setState({ keyAPI: key });
+    }
+  }
+
+  getLocation() {
+
+  }
+
+  // https://maps.googleapis.com/maps/api/place/autocomplete/output?parameters
 
   onInputChange(event) {
     console.log(event.target.value)
@@ -17,17 +32,11 @@ export default class SelectMulti extends Component {
   render() {
     /*
     Important Notes:
-
-      This.props.multi = true or false;
-
-      this.props.options = items within the select.
-      They are an array of objects as follows:
-      options = [{ value: -string/number-, label: -display string- }]
-
       OnChange will also return current selected result back to the calling component.
-      The return value is an array of objects
+      The return value is .....TBD...........
       return prop = this.props.selection
     */
+    console.log('this.state: ', this.state);
     return (
       <div>
         <div>

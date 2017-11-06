@@ -23,8 +23,7 @@ class IdeaForm extends Component {
 
   handleChange(event) {
     const key = event.target.name, val = event.target.value;
-    key === "title" ? this.setState({ title: val }) :
-    key === "idea" ? this.setState({ idea: val }) : ""
+    this.setState({ [key]: val })
   }
 
   handleSubmit(event) {

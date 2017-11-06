@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import Navbar from '../containers/Navbar'
 import TestBed from './singleFunction/TestBed'
 import Login from './Login'
-import IdeaForm from './IdeaForm'
+import IdeaForm from './singleFunction/IdeaForm'
 
 export default function () {
   return (

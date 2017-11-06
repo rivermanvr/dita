@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { signUp } from '../reducers'
 
 import Textbox from './reusables/Textbox'
 import Button from './reusables/Button'
 
-export default class Signup extends Component {
+class Signup extends Component {
   state = {
     username: '',
     email: '',
     password: '',
-    confirmpass: '',
   }
 
   handleChange = name => ev => {
@@ -16,7 +17,8 @@ export default class Signup extends Component {
   }
 
   onSubmit = () => {
-    console.log('doing things')
+    this.props.signUp(this.state)
+      .then(() => this.props.history.push('/'))
   }
 
   render = () => {
@@ -56,3 +58,6 @@ export default class Signup extends Component {
     )
   }
 }
+
+const mapDispatch = { signUp }
+export default connect(null, mapDispatch)(Signup)

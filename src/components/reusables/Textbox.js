@@ -33,8 +33,7 @@ export default class Textbox extends Component {
       label,
       disabled,
       type,
-      value,
-      isRequired } = this.props
+      value } = this.props
 
     const {
       placeHolder,
@@ -54,7 +53,6 @@ export default class Textbox extends Component {
           disabled={ disabled }
           value={ !focused && !value ? placeHolder : value }
           type={ !focused && !value ? 'text' : type }
-          required={ isRequired }
           onChange={ onChange }
           onFocus={ onFocus }
           onBlur={ onBlur }

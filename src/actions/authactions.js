@@ -7,8 +7,12 @@ export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 // ***** ACTION CREATORS *****
 export const setCurrentUser = user => ({ type: SET_CURRENT_USER, user })
 
-export const loadUserData = token => dispatch => {
+export const loadUserData = data => dispatch => {
   // axios global
+  console.log(jwt.decode(data.ditaKey))
+  const token = data.ditaKey
+  localStorage['ditaKey'] = token 
+
   if (token) axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
   else delete axios.defaults.headers.common['Authorization']
 
@@ -17,18 +21,17 @@ export const loadUserData = token => dispatch => {
 
 export const signIn = authInfo => dispatch =>
   axios.post('/api/auth', authInfo)
-    .then(res => {
-      const ditaKey = res.data.ditaKey
-      localStorage['ditaKey'] = ditaKey
-
-      dispatch(loadUserData(ditaKey))
-    })
+    .then(res => dispatch(loadUserData(res.data)))
 
 export const signOut = () => dispatch => {
   delete axios.defaults.headers.common['Authorization']
   delete localStorage.ditaKey
   dispatch(setCurrentUser())
 }
+
+export const signUp = data => dispatch =>
+  axios.post('/api/users', data)
+    .then(res => dispatch(loadUserData(res.data)))
 
 export const getData = () => dispatch =>
   axios.get('/api/auth')

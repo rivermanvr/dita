@@ -19,9 +19,7 @@ export default class TestBed extends Component {
 
     this.handleSelect = this.handleSelect.bind(this);
     this.handleInput = this.handleInput.bind(this);
-
   }
-
 
   handleSelect(obj) {
     console.log('in TestBed, selectBox: ', obj);
@@ -33,13 +31,10 @@ export default class TestBed extends Component {
     this.setState({ term })
   }
 
-
   render() {
-    
     return (
       <div>
         <h4>TestBed - available components:</h4>
-
         <div className="well">
           <h5>Using 'react-select' module, this is a multi &/or single select select box:</h5>
           <ul>

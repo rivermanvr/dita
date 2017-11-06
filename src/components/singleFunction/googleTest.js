@@ -3,12 +3,18 @@ import React, { Component } from 'react';
 export default class GeoInput extends Component {
   constructor() {
     super();
-    this.state = { term: '' };
+    this.state = { term: '', keyAPI: '' };
 
     this.onInputChange = this.onInputChange.bind(this);
   }
 
-  // https://maps.googleapis.com/maps/api/place/autocomplete/output?parameters
+  componentDidMount() {
+    if (!this.state.keyAPI) {
+      // retrieving our Google API key from a secure place.
+      const key = process.env.GoogleAPI || require('../../../env').GoogleAPI;
+      this.setState({ keyAPI: key });
+    }
+  }
 
   onInputChange(event) {
     console.log(event.target.value)
@@ -23,7 +29,7 @@ export default class GeoInput extends Component {
       The return value is .....TBD...........
       return prop = this.props.selection
     */
-    console.log('geoAutoInput - this.state: ', this.state);
+    console.log('googleTest - this.state: ', this.state);
     return (
       <div>
         <div>

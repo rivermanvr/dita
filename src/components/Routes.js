@@ -10,7 +10,7 @@ export default function () {
   return (
     <div>
       {/* render on all paths */}
-      <Route render={ (router) => <Navbar router={ router } /> } />
+      <Route component={ Navbar } />
 
       {/* render only on specific paths */}
       <Switch>

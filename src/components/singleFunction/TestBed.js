@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Select from './select_box';
+import GeoInput from './geoAutoInput';
 
 export default class TestBed extends Component {
   constructor() {
@@ -12,10 +13,12 @@ export default class TestBed extends Component {
         {  value: 2, label: 'Two'},
         {  value: 3, label: 'Three'},
         {  value: 4, label: 'Four'}
-      ]
+      ],
+      term: ''
     };
 
-    this.handleSelect = this.handleSelect.bind(this)
+    this.handleSelect = this.handleSelect.bind(this);
+    this.handleInput = this.handleInput.bind(this);
 
   }
 
@@ -25,6 +28,11 @@ export default class TestBed extends Component {
     this.setState({ selection: obj })
   }
 
+  handleInput(term) {
+    console.log('in TestBed, GeoInput: ', term);
+    this.setState({ term })
+  }
+
 
   render() {
     
@@ -32,7 +40,7 @@ export default class TestBed extends Component {
       <div>
         <h4>TestBed - available components:</h4>
 
-        <div className="colWidth60 well">
+        <div className="well">
           <h5>Using 'react-select' module, this is a multi &/or single select select box:</h5>
           <ul>
             <li>div wrap & render: select_box.js component</li>
@@ -42,6 +50,17 @@ export default class TestBed extends Component {
             <li><h5>The component is a multi &/or Single select Box:</h5></li>
           </ul>
           <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } create={ true } />
+        </div>
+        <div className="well">
+          <h5>Component: geographic/location Auto Input box:</h5>
+          <ul>
+            <li>div wrap & render: geoAutoInput.js component</li>
+            <li>Look at the TestBed.js component to see what is passed into this component</li>
+            <li>Look at geoAutoInput.js to see important comments</li>
+            <li><hr /></li>
+            <li><h5>The component is a geographic/location Auto Input box:</h5></li>
+          </ul>
+          <GeoInput selection={ this.handleInput } />
         </div>
       </div>
     )

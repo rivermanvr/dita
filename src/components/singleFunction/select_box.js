@@ -39,7 +39,7 @@ export default class SelectMulti extends Component {
         multi={ multi }
         allowCreate={ true }
         name="form-field-select"
-        className="Select"
+        className="Select colWidth100"
         placeholder="make selection"
         value={ this.state.selection }
         options={ options }

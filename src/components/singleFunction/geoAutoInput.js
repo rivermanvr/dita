@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import Select, { Creatable } from 'react-select';
 
 export default class SelectMulti extends Component {
   constructor() {
     super();
-    this.state = { selection: '' };
+    this.state = { term: '' };
 
     this.onInputChange = this.onInputChange.bind(this);
   }
 
-  onInputChange(obj) {
-    console.log(obj)
-    this.setState({ selection: obj });
-    this.props.selection(obj)
+  onInputChange(event) {
+    console.log(event.target.value)
+    this.setState({ term: event.target.value });
+    this.props.selection(event.target.value)
   }
 
   render() {
@@ -29,19 +28,14 @@ export default class SelectMulti extends Component {
       The return value is an array of objects
       return prop = this.props.selection
     */
-    const options = this.props.options;
-    const multi = this.props.multi;
     return (
       <div>
         <div>
-          <Creatable
-            multi={ multi }
-            allowCreate={ true }
-            name="form-field-select"
-            className="Select"
-            placeholder="make selection"
-            value={ this.state.selection }
-            options={ options }
+          <input
+            name="form-field-input"
+            className="colWidth100"
+            placeholder="enter a location..."
+            value={ this.state.term }
             onChange={ this.onInputChange }
           />
         </div>

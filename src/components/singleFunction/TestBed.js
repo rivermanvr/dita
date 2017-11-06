@@ -37,10 +37,11 @@ export default class TestBed extends Component {
           <ul>
             <li>div wrap & render: select_box.js component</li>
             <li>Look at the TestBed.js component to see what is passed into this component</li>
+            <li>Look at select_box.js to see important comments</li>
             <li><hr /></li>
             <li><h5>The component is a multi &/or Single select Box:</h5></li>
           </ul>
-          <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } />
+          <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } create={ true } />
         </div>
       </div>
     )

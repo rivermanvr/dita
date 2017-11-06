@@ -20,7 +20,6 @@ export default class SelectMulti extends Component {
     Important Notes:
 
       This.props.multi = true or false;
-      This.props.create = true or false
 
       this.props.options = items within the select.
       They are an array of objects as follows:
@@ -30,34 +29,21 @@ export default class SelectMulti extends Component {
       The return value is an array of objects
       return prop = this.props.selection
     */
-
     const options = this.props.options;
     const multi = this.props.multi;
-    const create = this.props.create;
-    const renderSelect = create ? (
-      <Creatable
-        multi={ multi }
-        allowCreate={ true }
-        name="form-field-select"
-        className="Select"
-        placeholder="make selection"
-        value={ this.state.selection }
-        options={ options }
-        onChange={ this.onInputChange }
-      />) : (<Select
-        multi={ multi }
-        name="form-field-select"
-        className="Select"
-        placeholder="make selection"
-        value={ this.state.selection }
-        options={ options }
-        onChange={ this.onInputChange }
-      />
-    )
     return (
       <div>
         <div>
-          { renderSelect }
+          <Creatable
+            multi={ multi }
+            allowCreate={ true }
+            name="form-field-select"
+            className="Select"
+            placeholder="make selection"
+            value={ this.state.selection }
+            options={ options }
+            onChange={ this.onInputChange }
+          />
         </div>
       </div>
     )

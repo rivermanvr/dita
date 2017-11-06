@@ -12,9 +12,11 @@ class IdeaForm extends Component {
       idea: '',
       category: '',
       selection: [],
-      options: [{ label: 'work' }, { label: 'food' }]
+      options: [{ value: 'work', label: 'work' }, { value: 'food', label: 'food' }],
+      alert: '',
+      alertStyle: ''
     }
-    this.handlechange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
   }
@@ -22,13 +24,25 @@ class IdeaForm extends Component {
   handleChange(event) {
     const key = event.target.name, val = event.target.value;
     key === "title" ? this.setState({ title: val }) :
-    key === "idea" ? this.setState({ idea: val }) :
-    this.setState({ category: val })
+    key === "idea" ? this.setState({ idea: val }) : ""
   }
 
   handleSubmit(event) {
     event.preventDefault();
     this.props.handleAdd(this.state);
+
+    !this.state.title ? this.setState({
+      alert: "Please enter title",
+      alertStyle: "alert alert-danger"
+    }) : 
+    !this.state.idea ? this.setState({
+      alert: "Please enter idea",
+      alertStyle: "alert alert-danger"
+    }) :
+    this.setState({
+      alert: "New post has been added!",
+      alertStyle: "alert alert-success"
+    })
   }
 
   handleSelect(obj){
@@ -37,8 +51,9 @@ class IdeaForm extends Component {
 
 
   render(){
-    const { title, idea, category } = this.state;
+    const { title, idea, category, alert, alertStyle } = this.state;
     const { ideas, categories } = this.props;
+    const btnStyle = { marginTop: "10px" }
 
     return (
       <div className="container">
@@ -60,10 +75,12 @@ class IdeaForm extends Component {
           <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } />
 
           <div className="form-group">
-            <button type="submit" className="btn btn-primary">Post Idea</button>
+            <button type="submit" className="btn btn-primary" style={ btnStyle }>Post Idea</button>
           </div>
 
         </form>
+
+        { alert ? <div className={ alertStyle }>{ alert }</div> : "" }
         
       </div>
     )      

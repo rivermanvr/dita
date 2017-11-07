@@ -13,12 +13,13 @@ router.post('/', (req, res, next) => {
     .catch(next);
 })
 
-router.get('/', (req, res, next) => {
+router.get('/allposts', (req, res, next) => {
   Post.findAll()
     .then(data => {
       res.send(data)
     })
     .catch(next);
 })
+
 
 module.exports = router

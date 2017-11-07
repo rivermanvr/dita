@@ -2,8 +2,7 @@ import { GET_POSTS } from '../actions';
 
 // Initial state
 const initialState = {
-  posts: [],
-  newPost: {}
+  posts: []
 }
 
 // Reducer

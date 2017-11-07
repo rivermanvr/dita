@@ -1,9 +1,10 @@
 const db = require('./db')
-const User = require( './User' )
-const Post = require('./Post')
-const Reply = require('./Reply')
-const Category = require('./Category')
-const StoryLine = require('./StoryLine')
+const {User} = require( '../db').models
+const {Post} = require( '../db').models
+const {Reply} = require( '../db').models
+const {Category} = require( '../db').models
+const {StoryLine} = require( '../db').models
+const sync = require('../db').sync
 //
 const users = [{ name:'kaz', email: 'kaz@dita.net', 'username': 'kaz', 'password': 'dita' },{ name:'wasif', email: 'wasif@dita.net', 'username': 'wasif','password': 'dita' },{ name:'vince', email: 'vince@dita.net', 'username': 'vince','password': 'dita' },{ name:'murray', email: 'murray@dita.net', 'username': 'murray','password': 'dita' }]
 
@@ -112,7 +113,12 @@ const createPosts = (users, cats) => {
 
 
 const seed = () => {
-  createCategories()
+  return db.sync({force:true})
+  .then(()=> {return createCategories()})
 }
+
+seed()
+.then(()=>console.log('seed done'))
+
 
 module.exports = seed

@@ -14,8 +14,6 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 app.use('/api', require('./routes'));
-const U = require('./db/User')
-const Post = require('./db/Post')
 
 
 app.get('/*', (req, res, next)=> res.sendFile(path.join(__dirname, 'public/index.html')));

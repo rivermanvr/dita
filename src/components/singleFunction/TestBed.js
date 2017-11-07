@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Select from './select_box';
-import GeoInput from './geoAutoInput';
 
 export default class TestBed extends Component {
   constructor() {
@@ -13,22 +12,15 @@ export default class TestBed extends Component {
         {  value: 2, label: 'Two'},
         {  value: 3, label: 'Three'},
         {  value: 4, label: 'Four'}
-      ],
-      term: ''
+      ]
     };
 
     this.handleSelect = this.handleSelect.bind(this);
-    this.handleInput = this.handleInput.bind(this);
   }
 
   handleSelect(obj) {
     console.log('in TestBed, selectBox: ', obj);
     this.setState({ selection: obj })
-  }
-
-  handleInput(term) {
-    console.log('in TestBed, GeoInput: ', term);
-    this.setState({ term })
   }
 
   render() {

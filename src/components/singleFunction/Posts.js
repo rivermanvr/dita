@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import * as d3 from 'd3'
 
 const PostCard = ({ content }) => {
   const {
@@ -12,6 +13,7 @@ const PostCard = ({ content }) => {
     <div className="list-group-item">
       <h4 className="list-group-item-heading">{ title }</h4>
       <p className="list-group-item-text">{ body }</p>
+      <small>{ d3.timeFormat('%m/%d/%y')(new Date(createdAt)) }</small>
     </div>
   )
 }

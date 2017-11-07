@@ -4,6 +4,7 @@ const env = require('../env')
 const publicUserData = (user) => ({
   user: {
     id: user.id,
+    username: user.username,
     email: user.email
   }
 })

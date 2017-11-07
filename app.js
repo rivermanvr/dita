@@ -17,13 +17,7 @@ app.use('/api', require('./routes'));
 const U = require('./db/User')
 const Post = require('./db/Post')
 
-app.get('/', (req,res,next) => {
-    return U.findById(1, {include:[Post]})
-    .then((result)=>{
-      console.log(result.posts)
-      next()
-    })
-})
+
 app.get('/*', (req, res, next)=> res.sendFile(path.join(__dirname, 'public/index.html')));
 
 // ......error middleware not wired to anything.

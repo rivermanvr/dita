@@ -76,7 +76,9 @@ const defineOptions = {
       return hashInstancePass(instance)
     },
     beforeUpdate(instance, options) {
-      return hashInstancePass(instance)
+      return instance.changed('password') ?
+        hashInstancePass(instance) :
+        instance
     }
   }
 }; 
@@ -98,6 +100,19 @@ User.matchUser = function(query, password) {
         if (res) return user
       })
   })
+}
+
+User.createUser = function(data) {
+  return this.create(data)
+}
+
+User.updateUser = function(id, data) {
+  return this.findById(id)
+    .then(user => {
+      if (!user) throw new Error('user not found')
+      Object.assign(user, data)
+      return user.save()
+    })
 }
 
 module.exports = User; 

@@ -12,7 +12,7 @@ const Tab = ({ tab, path }) => {
 
 class Navbar extends Component {
   render() {
-    const path = this.props.router.location.pathname;
+    const path = this.props.location.pathname;
     /* -------------------------------------------
       If you want to add a menu tab do the following:
       Add a tab within the array below (see the format below):
@@ -20,7 +20,11 @@ class Navbar extends Component {
     ------------------------------------------- */
     const tabs = [
       { title: 'Login - Wasif', path: '/login' },
-      { title: 'TestBed - Vince', path: '/testBed' }
+      { title: 'Sign Up - WZ', path: '/signup' },
+      { title: 'Post Idea', path: '/ideas' },
+      { title: 'My Posts - WZ', path: '/myposts' }
+      { title: 'View/Update Profile - WZ', path: '/profile' },
+      { title: 'TestBed - Vince', path: '/testBed' }    
     ];
     return (
       <ul className="nav nav-tabs mainnav" style={ { marginBottom: '10px' } }>
@@ -32,9 +36,9 @@ class Navbar extends Component {
   }
 }
 
-function mapStateToProps (state, { router }) {
+function mapStateToProps (state, { locoation }) {
   const { tests } = state;
-  return { tests, router };
+  return { tests, location };
 }
 
 export default connect(mapStateToProps)(Navbar);

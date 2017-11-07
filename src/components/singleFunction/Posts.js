@@ -22,7 +22,7 @@ const Posts = ({ userPosts, pathname }) => {
 
   return (
     <div>
-      { pathname == '/myfeed' ? <h4>My posts</h4> : <h4>Posts</h4> }
+      { pathname == '/myposts' ? <h4>My posts</h4> : <h4>Posts</h4> }
 
       { posts.map(post => <PostCard key={ post.id } content={ post } />) }
     </div>
@@ -30,8 +30,10 @@ const Posts = ({ userPosts, pathname }) => {
 }
 
 const mapState = ({ userPosts }, ownProps) => (
-  { userPosts,
-    pathname: ownProps.location.pathname }
+  { 
+    userPosts,
+    pathname: ownProps.location.pathname
+  }
 )
 
 export default connect(mapState)(Posts)

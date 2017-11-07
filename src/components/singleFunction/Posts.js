@@ -18,9 +18,9 @@ const PostCard = ({ content }) => {
       <h5>Replies:</h5>
       {
         replies.map(reply => (
-          <div>
+          <div key={reply.id}>
           <p style={{fontWeight:'bold', display:'inline-block'}}>{reply.user.name}:</p>
-          <small key={reply.id} className='list-group-item-text'> {reply.body}</small>
+          <small className='list-group-item-text'> {reply.body}</small>
           </div>
         ))
       }

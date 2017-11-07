@@ -22,7 +22,7 @@ class Navbar extends Component {
       { title: 'Login - Wasif', path: '/login' },
       { title: 'Sign Up - WZ', path: '/signup' },
       { title: 'Post Idea', path: '/ideas' },
-      { title: 'My Posts - WZ', path: '/myposts' }
+      { title: 'My Posts - WZ', path: '/myposts' },
       { title: 'View/Update Profile - WZ', path: '/profile' },
       { title: 'TestBed - Vince', path: '/testBed' }    
     ];

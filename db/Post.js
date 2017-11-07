@@ -50,9 +50,6 @@ Post.findPostsWithReplies = function(userId) {
             },
             {
                 model: StoryLine
-            },
-            {
-                model: User
             }
         ]
     })

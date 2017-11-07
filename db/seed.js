@@ -1,12 +1,15 @@
 const db = require('./db')
-const {User} = require( '../db').models
-const {Post} = require( '../db').models
-const {Reply} = require( '../db').models
-const {Category} = require( '../db').models
-const {StoryLine} = require( '../db').models
 const sync = require('../db').sync
-//
-const users = [{ name:'kaz', email: 'kaz@dita.net', 'username': 'kaz', 'password': 'dita' },{ name:'wasif', email: 'wasif@dita.net', 'username': 'wasif','password': 'dita' },{ name:'vince', email: 'vince@dita.net', 'username': 'vince','password': 'dita' },{ name:'murray', email: 'murray@dita.net', 'username': 'murray','password': 'dita' }]
+const {
+  User, Post, Reply,
+  Category, StoryLine } = require('../db').models
+
+const users = [
+  { name:'kaz', email: 'kaz@dita.net', 'username': 'kaz', 'password': 'dita' },
+  { name:'wasif', email: 'wasif@dita.net', 'username': 'wasif','password': 'dita' },
+  { name:'vince', email: 'vince@dita.net', 'username': 'vince','password': 'dita' },
+  { name:'murray', email: 'murray@dita.net', 'username': 'murray','password': 'dita' }
+]
 
 const posts = [
   { title:'Today was great!', body:'just a random summary of my great day mayng', zip:'10028'},
@@ -51,61 +54,63 @@ const replies = [
 
 const createUsers = (cats) => {
   return Promise.all(users.map(user => User.create(user)))
-  .then(users => createPosts(users,cats))
+    .then(users => createPosts(users,cats))
 }
 
 const createCategories = (posts) => {
   return Promise.all(categories.map(c => Category.create(c)))
-  .then((cats)=> createUsers(cats))
+    .then(cats => createUsers(cats))
 }
 
 const createReplies = (users) => {
   return Promise.all(replies.map(reply => {
     reply.userId = users[~~(Math.random() * 4)].id
-    Reply.create(reply)
-    .then(reply => {
-      Post.findAll()
-      .then (posts =>{
-        reply.update({
-          postId :  posts[~~(Math.random() * 7)].id
+    return Reply.create(reply)
+      .then(reply => {
+        return Post.findAll()
+          .then (posts =>{
+            return reply.update({
+              postId :  posts[~~(Math.random() * 7)].id
+            })
+          })
         })
-      })
-    })
   }))
 }
 
 const createStories = (users, posts, cats) => {
   return Promise.all(stories.map((story,i) =>{
     story.userId = users[i].id
-    StoryLine.create(story)
-    .then(story => {
-      const randomCats = [cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)]]
-      const uniqueCats = randomCats.filter((cat,index)=> {return randomCats.indexOf(cat) == index})
-      story.addCategories(uniqueCats)
-      Post.findAll()
-      .then(posts => {
-        posts.forEach((post)=>{
-          if(post.userId === story.userId){
-            post.update({
-              storylineId: story.id
-            }) 
-          }
-        })
+    return StoryLine.create(story)
+      .then(story => {
+        const randomCats = [cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)]]
+        const uniqueCats = randomCats.filter((cat,index)=> {return randomCats.indexOf(cat) == index})
+        return story.addCategories(uniqueCats)
+          .then(() => Post.findAll())
+          .then(posts => {
+            return Promise.all(
+              posts
+                .filter(post => post.userId === story.userId)
+                .map(post => {
+                  return post.update({
+                    storylineId: story.id
+                  })
+                })
+            )
+          })
       })
-    })
   })) 
-  .then(()=> createReplies(users))
+  .then(() => createReplies(users))
 }
 
 const createPosts = (users, cats) => {
   return Promise.all(posts.map(post => {
     post.userId = users[~~(Math.random() * 4)].id
-    Post.create(post)
-    .then((post)=> {
-      const randomCats = [cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)]]
-      const uniqueCats = randomCats.filter((cat,index)=> {return randomCats.indexOf(cat) == index})
-      post.addCategories(uniqueCats)
-    })
+    return Post.create(post)
+      .then(post => {
+        const randomCats = [cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)]]
+        const uniqueCats = randomCats.filter((cat,index)=> {return randomCats.indexOf(cat) == index})
+        return post.addCategories(uniqueCats)
+      })
   }))
   .then(posts => createStories(users,posts,cats))
 }
@@ -114,11 +119,11 @@ const createPosts = (users, cats) => {
 
 const seed = () => {
   return db.sync({force:true})
-  .then(()=> {return createCategories()})
+  .then(createCategories)
 }
 
 seed()
-.then(()=>console.log('seed done'))
-
-
-module.exports = seed
+.then(()=> {
+  console.log('seed done')
+  db.close()
+})

@@ -22,7 +22,8 @@ class Navbar extends Component {
       { title: 'Login - Wasif', path: '/login' },
       { title: 'TestBed - Vince', path: '/testBed' },
       { title: 'Sign Up - WZ', path: '/signup' },
-      { title: 'Post Idea', path: '/ideas' }      
+      { title: 'Post Idea', path: '/ideas' },
+      { title: 'My Posts - WZ', path: '/myposts' }
     ];
     return (
       <ul className="nav nav-tabs mainnav" style={ { marginBottom: '10px' } }>

@@ -1,7 +1,7 @@
 const db = require('./db')
 const Sequelize = require('sequelize')
 
-const Catgeory = db.define({
+const Category = db.define('category',{
     name: {
         type: Sequelize.STRING
     }

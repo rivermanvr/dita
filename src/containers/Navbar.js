@@ -20,10 +20,11 @@ class Navbar extends Component {
     ------------------------------------------- */
     const tabs = [
       { title: 'Login - Wasif', path: '/login' },
-      { title: 'TestBed - Vince', path: '/testBed' },
       { title: 'Sign Up - WZ', path: '/signup' },
       { title: 'Post Idea', path: '/ideas' },
       { title: 'My Posts - WZ', path: '/myposts' }
+      { title: 'View/Update Profile - WZ', path: '/profile' },
+      { title: 'TestBed - Vince', path: '/testBed' }    
     ];
     return (
       <ul className="nav nav-tabs mainnav" style={ { marginBottom: '10px' } }>

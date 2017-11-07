@@ -36,6 +36,10 @@ export const signUp = data => dispatch =>
   axios.post('/api/users', data)
     .then(res => dispatch(loadUserData(res.data)))
 
+export const updateUser = data => dispatch =>
+  axios.put('/api/users', data)
+    .then(res => dispatch(loadUserData(res.data)))
+
 export const getData = () => dispatch =>
   axios.get('/api/auth')
     .then(res => console.log(res.data))

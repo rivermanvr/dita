@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import store from '../store'
 import { loadUserData } from '../actions'
+import jwt from 'jsonwebtoken'
+
 
 import Routes from './Routes'
 

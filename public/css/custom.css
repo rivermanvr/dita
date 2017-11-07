@@ -1,24 +1,28 @@
 .mainnav {
   margin: 20px 0px; }
 
-.nomarginTopBot {
+.noMarginLR {
+  margin-left: 0px;
+  margin-right: 0px; }
+
+.noMarginTopBot {
   margin-top: 0px;
   margin-bottom: 0px; }
 
-.nomarginTop {
+.noMarginTop {
   margin-top: 0px; }
 
-.nomarginBot {
+.noMarginBot {
   margin-bottom: 0px; }
 
-.nopad {
+.noPad {
   padding-top: 0px;
   padding-bottom: 0px; }
 
-.margintop {
+.marginTop {
   margin-top: 20px; }
 
-.margintopsm {
+.marginTopSM {
   margin-top: 10px; }
 
 .marginbelow {
@@ -98,6 +102,9 @@
 .colWidth95 {
   width: 95%; }
 
+.colWidth40 {
+  width: 40%; }
+
 .colWidth25 {
   width: 25%; }
 
@@ -114,9 +121,17 @@
   width: 50%;
   height: 20%; }
 
-.colWidthHgt4010 {
+.colWidthHgt40100p {
   width: 40%;
-  height: 10%; }
+  height: 100px; }
+
+.colWidthHgt4040 {
+  width: 40%;
+  height: 40%; }
+
+.colWidthHgt4040p {
+  width: 40%;
+  height: 40px; }
 
 .colWidthHgt4010p {
   width: 40%;

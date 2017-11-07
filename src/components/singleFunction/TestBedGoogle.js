@@ -20,7 +20,7 @@ export default class TestBed extends Component {
     return (
       <div>
         <h4>TestBedGoogle - geoLocationInput testing:</h4>
-        <div className="well colWidthHgt4010">
+        <div className="colWidth40">
           <GeoLoc selection={ this.handleInput } />
         </div>
       </div>

@@ -3,10 +3,12 @@ import React, { Component } from 'react';
 export default class GeoInput extends Component {
   constructor() {
     super();
-    this.state = { term: '', keyAPI: '' };
+    this.state = { keyAPI: '' };
 
-    this.onInputChange = this.onInputChange.bind(this);
   }
+
+  //Illustration of pulling secure data from process.env variable or env.json file
+  // Keep for reference  - Vince Rios
 
   componentDidMount() {
     if (!this.state.keyAPI) {
@@ -16,12 +18,6 @@ export default class GeoInput extends Component {
     }
   }
 
-  onInputChange(event) {
-    console.log(event.target.value)
-    this.setState({ term: event.target.value });
-    this.props.selection(event.target.value)
-  }
-
   render() {
     /*
     Important Notes:
@@ -29,18 +25,10 @@ export default class GeoInput extends Component {
       The return value is .....TBD...........
       return prop = this.props.selection
     */
-    console.log('googleTest - this.state: ', this.state);
+    console.log('retrieve from env.json - this.state: ', this.state);
     return (
       <div>
-        <div>
-          <input
-            name="form-field-input"
-            className="colWidth100"
-            placeholder="enter a location..."
-            value={ this.state.term }
-            onChange={ this.onInputChange }
-          />
-        </div>
+        nothing here.....
       </div>
     )
   }

@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 
-import MapWithASearchBox from './googleTest';
+import MapWithASearchBox from '../singleFunction/geoLocator';
 
 export default class TestBed extends Component {
   constructor() {
     super();
-    this.state = { term: '' };
+    this.state = { places: [] };
 
     this.handleInput = this.handleInput.bind(this);
   }
 
-  handleInput(term) {
-    console.log('in TestBedGoogle, Google maps: ', term);
-    this.setState({ term })
+  handleInput(place) {
+    console.log('in TestBedGoogle, GeoLocate: ', place);
   }
 
   render() {

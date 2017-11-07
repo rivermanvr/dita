@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Select from './select_box';
+import Select from '../singleFunction/select_box';
 
 export default class TestBed extends Component {
   constructor() {

@@ -74,8 +74,8 @@ const createReplies = (users) => {
 }
 
 const createStories = (users, posts, cats) => {
-  return Promise.all(stories.map(story =>{
-    story.userId = users[~~(Math.random() * 4)].id
+  return Promise.all(stories.map((story,i) =>{
+    story.userId = users[i].id
     StoryLine.create(story)
     .then(story => {
       const randomCats = [cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)]]

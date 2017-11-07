@@ -9,7 +9,6 @@ export const setCurrentUser = user => ({ type: SET_CURRENT_USER, user })
 
 export const loadUserData = data => dispatch => {
   // axios global
-  console.log(jwt.decode(data.ditaKey))
   const token = data.ditaKey
   localStorage['ditaKey'] = token 
 
@@ -31,6 +30,10 @@ export const signOut = () => dispatch => {
 
 export const signUp = data => dispatch =>
   axios.post('/api/users', data)
+    .then(res => dispatch(loadUserData(res.data)))
+
+export const updateUser = data => dispatch =>
+  axios.put('/api/users', data)
     .then(res => dispatch(loadUserData(res.data)))
 
 export const getData = () => dispatch =>

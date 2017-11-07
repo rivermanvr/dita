@@ -9,13 +9,18 @@ export default class Button extends Component {
   }
 
   render = () => {
-    const { label } = this.props
+    const {
+      label,
+      disabled,
+      className } = this.props
     const { onClick } = this
 
     return (
       <span>
         <button
-          onClick={ onClick }>{ label }</button>
+          disabled={ disabled }
+          onClick={ onClick }
+          className={ className }>{ label }</button>
       </span>
     )
   }

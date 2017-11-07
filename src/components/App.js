@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import store from '../store'
-import { setCurrentUser } from '../actions'
-import jwt from 'jsonwebtoken'
+import { loadUserData } from '../actions'
 
 import Routes from './Routes'
 
@@ -10,7 +9,7 @@ export default class App extends Component {
   componentDidMount() {
     if (localStorage.ditaKey) {
       store.dispatch(
-        setCurrentUser(jwt.decode(localStorage.ditaKey).user))
+        loadUserData({ ditaKey: localStorage.ditaKey }))
     }
   }
 

@@ -20,8 +20,9 @@ class Navbar extends Component {
     ------------------------------------------- */
     const tabs = [
       { title: 'Login - Wasif', path: '/login' },
-      { title: 'TestBed - Vince', path: '/testBed' },
       { title: 'Sign Up - WZ', path: '/signup' },
+      { title: 'View/Update Profile - WZ', path: '/profile' },
+      { title: 'TestBed - Vince', path: '/testBed' },
       { title: 'Post Idea', path: '/ideas' }      
     ];
     return (

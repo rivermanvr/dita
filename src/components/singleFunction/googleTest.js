@@ -1,47 +1,54 @@
-import React, { Component } from 'react';
+import React from "react"
+import { compose, withProps } from "recompose"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
-export default class GeoInput extends Component {
-  constructor() {
-    super();
-    this.state = { term: '', keyAPI: '' };
+const MyMapComponent = compose(
+  withProps({
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDhiHztg2kqRMpFKgTIYxvV9b7IdJIJ7d0&v=3.exp&libraries=geometry,drawing,places",
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `150px` }} />,
+    mapElement: <div style={{ height: `100%` }} />,
+    mapTypeId: 'satellite'
+  }),
+  withScriptjs,
+  withGoogleMap
+)((props) =>
+  <GoogleMap
+    defaultZoom={0}
+    defaultCenter={{ lat: 40.8777896, lng: -74.1875282 }}
+  >
+    {props.isMarkerShown && <Marker position={{ lat: 40.8777896, lng: -74.1875282 }} onClick={props.onMarkerClick} />}
+  </GoogleMap>
+)
 
-    this.onInputChange = this.onInputChange.bind(this);
+class MyFancyComponent extends React.PureComponent {
+  state = {
+    isMarkerShown: false,
   }
 
   componentDidMount() {
-    if (!this.state.keyAPI) {
-      // retrieving our Google API key from a secure place.
-      const key = process.env.GoogleAPI || require('../../../env').GoogleAPI;
-      this.setState({ keyAPI: key });
-    }
+    this.delayedShowMarker()
   }
 
-  onInputChange(event) {
-    console.log(event.target.value)
-    this.setState({ term: event.target.value });
-    this.props.selection(event.target.value)
+  delayedShowMarker = () => {
+    setTimeout(() => {
+      this.setState({ isMarkerShown: false })
+    }, 3000)
+  }
+
+  handleMarkerClick = () => {
+    this.setState({ isMarkerShown: false })
+    this.delayedShowMarker()
   }
 
   render() {
-    /*
-    Important Notes:
-      OnChange will also return current selected result back to the calling component.
-      The return value is .....TBD...........
-      return prop = this.props.selection
-    */
-    console.log('googleTest - this.state: ', this.state);
     return (
-      <div>
-        <div>
-          <input
-            name="form-field-input"
-            className="colWidth100"
-            placeholder="enter a location..."
-            value={ this.state.term }
-            onChange={ this.onInputChange }
-          />
-        </div>
-      </div>
+      <MyMapComponent
+        isMarkerShown={this.state.isMarkerShown}
+        onMarkerClick={this.handleMarkerClick}
+      />
     )
   }
 }
+
+export default MyFancyComponent;

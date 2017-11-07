@@ -22,7 +22,7 @@ class Navbar extends Component {
       { title: 'Login - Wasif', path: '/login' },
       { title: 'Sign Up - WZ', path: '/signup' },
       { title: 'TestBed - Vince', path: '/testBed' },
-      { title: 'Google - Vince', path: '/google' }
+      { title: 'GeoLocateInput - Vince', path: '/google' }
     ];
     return (
       <ul className="nav nav-tabs mainnav" style={ { marginBottom: '10px' } }>

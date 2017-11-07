@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import GoogleTest from './googleTest';
+import GeoInput from './googleTest';
 
 export default class TestBed extends Component {
   constructor() {
@@ -20,8 +20,8 @@ export default class TestBed extends Component {
     return (
       <div>
         <h4>TestBedGoogle - google maps testing:</h4>
-        <div className="well">
-          <GoogleTest selection={ this.handleInput } />
+        <div className="well colWidthHgt4010">
+          <GeoInput selection={ this.handleInput } />
         </div>
       </div>
     )

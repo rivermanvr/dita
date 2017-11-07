@@ -46,17 +46,6 @@ export default class TestBed extends Component {
           </ul>
           <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } create={ true } />
         </div>
-        <div className="well">
-          <h5>Component: geographic/location Auto Input box:</h5>
-          <ul>
-            <li>div wrap & render: geoAutoInput.js component</li>
-            <li>Look at the TestBed.js component to see what is passed into this component</li>
-            <li>Look at geoAutoInput.js to see important comments</li>
-            <li><hr /></li>
-            <li><h5>The component is a geographic/location Auto Input box:</h5></li>
-          </ul>
-          <GeoInput selection={ this.handleInput } />
-        </div>
       </div>
     )
   }

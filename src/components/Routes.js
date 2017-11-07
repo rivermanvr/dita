@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import Navbar from '../containers/Navbar'
 import TestBed from './singleFunction/TestBed'
+import TestBedGoogle from './singleFunction/TestBedGoogle'
 import Login from './singleFunction/Login'
 import SignupProfile from './singleFunction/SignupProfile'
 import IdeaForm from './singleFunction/IdeaForm'
@@ -20,9 +21,10 @@ export default function () {
         <Route exact path="/signup" component={ SignupProfile } />
         <Route exact path="/profile" component={ SignupProfile } />
         <Route exact path="/testBed" component={ TestBed } />
-        <Route exact path="/" component={ Login } />
+        <Route exact path="/google" component={ TestBedGoogle } />
         <Route exact path="/ideas" component={ IdeaForm } />
         <Route exact path="/myposts" component={ Posts } />
+        <Route exact path="/" component={ Login } />
       </Switch>
     </div>
   )

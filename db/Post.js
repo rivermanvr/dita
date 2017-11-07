@@ -33,4 +33,9 @@ const Post = db.define('post', {
     }
 })
 
+Post.findPosts = function(userId) {
+  // modify this later for filter by archives etc.
+  return this.findAll({ where: { userId } })
+}
+
 module.exports = Post;

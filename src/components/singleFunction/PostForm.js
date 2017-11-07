@@ -25,13 +25,11 @@ class PostForm extends Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value)
     const key = event.target.name, val = event.target.value;
     this.setState({ [key]: val })
   }
 
   handleSubmit(event) {
-    console.log('button clicked')
     event.preventDefault();
     this.props.handleAdd(this.state);
 
@@ -61,38 +59,24 @@ class PostForm extends Component {
     return (
       <div>
         <form onSubmit={ this.handleSubmit }>
-          <div className="form-group">        
-            <Textbox 
-              value={ title }
-              name='title'
-              placeHolder='Please enter title'
-              className='form-control'
-              onChange={ this.handleChange } />
+          <div className="form-group">
+            <input name="title" type="text" ref="title" onChange={ this.handleChange }
+            className="form-control" placeholder="Please enter title" />
           </div>
 
-          <div className="form-group">    
-            <Textbox 
-              value={ body }
-              name='body'
-              placeHolder='Please enter content'
-              className='form-control'
-              onChange={ this.handleChange } />
+          <div className="form-group">
+            <textarea name="idea" type="text" ref="idea"
+            onChange={ this.handleChange }
+            className="form-control" placeholder="Please enter idea" />
           </div>
 
-          <div className="form-group">    
-            <Select 
-              options={ this.state.options } 
-              selection={ this.handleSelect } 
-              multi={ true } />   
-          </div>     
-          
-          <div className="form-group">    
-            <Button 
-              label='Add Post' 
-              className='btn btn-primary' 
-              style={ btnStyle } />
-          </div>          
-        </form> 
+          <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } />
+
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary" style={ btnStyle }>Post Idea</button>
+          </div>
+
+        </form>
 
         { alert ? <div className={ alertStyle }>{ alert }</div> : "" }
       </div>

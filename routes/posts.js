@@ -17,4 +17,18 @@ router.get('/myposts', verifyToken, (req, res, next) => {
   res.send(posts.filter(p => p.userId == req.user.id))
 })
 
+router.post('/', (req, res, next) => {
+  Post.create(req.body)
+    .then(() => res.sendStatus(204))
+    .catch(next);
+})
+
+router.get('/', (req, res, next) => {
+  Post.findAll()
+    .then(data => {
+      res.send(data)
+    })
+    .catch(next);
+})
+
 module.exports = router

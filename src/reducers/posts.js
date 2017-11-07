@@ -1,16 +1,16 @@
-import { GET_IDEAS } from '../actions';
+import { GET_POSTS } from '../actions';
 
 // Initial state
 const initialState = {
-  ideas: [],
-  newIdea: {}
+  posts: [],
+  newPost: {}
 }
 
 // Reducer
 export default (state=initialState, action) => {
   switch(action.type){
-    case GET_IDEAS: 
-      return { ...state, ideas: action.idea }
+    case GET_POSTS: 
+      return { ...state, posts: action.posts }
 
     default:
       return state;

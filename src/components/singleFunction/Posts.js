@@ -6,13 +6,24 @@ const PostCard = ({ content }) => {
   const {
     createdAt,
     title,
-    body
+    body,
+    storyline,
+    replies
   } = content
 
   return (
     <div className="list-group-item">
-      <h4 className="list-group-item-heading">{ title }</h4>
+      <h4 className="list-group-item-heading">{ title } <small>from story <span style={{fontSize:'16px', textTransform:'capitalize'}}>{ storyline.title}</span></small></h4>
       <p className="list-group-item-text">{ body }</p>
+      <h5>Replies:</h5>
+      {
+        replies.map(reply => (
+          <div>
+          <p style={{fontWeight:'bold', display:'inline-block'}}>{reply.user.name}:</p>
+          <small key={reply.id} className='list-group-item-text'> {reply.body}</small>
+          </div>
+        ))
+      }
       <small>{ d3.timeFormat('%m/%d/%y')(new Date(createdAt)) }</small>
     </div>
   )

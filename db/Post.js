@@ -1,6 +1,8 @@
 const db = require('./db')
 const Sequelize = require('sequelize')
-
+const Reply = require('./Reply')
+const User = require('./User')
+const StoryLine = require('./StoryLine')
 const Post = db.define('post', {
     title: {
         type: Sequelize.STRING,
@@ -36,6 +38,24 @@ const Post = db.define('post', {
 Post.findPosts = function(userId) {
   // modify this later for filter by archives etc.
   return this.findAll({ where: { userId } })
+}
+
+Post.findPostsWithReplies = function(userId) {
+    return this.findAll({ 
+        where: {userId}, 
+        include:[
+            {
+                model: Reply,
+                include: [User]
+            },
+            {
+                model: StoryLine
+            },
+            {
+                model: User
+            }
+        ]
+    })
 }
 
 module.exports = Post;

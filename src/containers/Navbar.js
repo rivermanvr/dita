@@ -23,8 +23,9 @@ class Navbar extends Component {
       { title: 'Sign Up - WZ', path: '/signup' },
       { title: 'TestBed - Vince', path: '/testBed' },
       { title: 'GeoLocateInput - Vince', path: '/google' },
-      { title: 'Post Idea', path: '/ideas' },
+      { title: 'Add Post', path: '/posts' },
       { title: 'My Posts - WZ', path: '/myposts' },
+      { title: 'All Posts', path: '/allposts' },
       { title: 'View/Update Profile - WZ', path: '/profile' }
     ];
     return (

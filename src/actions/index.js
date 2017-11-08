@@ -1,3 +1,3 @@
 export * from './authactions';
 export * from './userpostsactions'
-export * from './ideas';
+export * from './posts';

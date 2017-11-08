@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import store from '../../store';
-import { postIdea } from '../../actions/ideas';
+import { addPost } from '../../actions/posts';
 import Select from './select_box';
+import Button from '../reusables/Button';
+import Textbox from '../reusables/Textbox';
 
-class IdeaForm extends Component {
+
+class PostForm extends Component {
   constructor(props){
     super(props);
     this.state = {
       title: '',
-      idea: '',
-      category: '',
+      body: '',
+      storylines: '',
       selection: [],
       options: [{ value: 'work', label: 'work' }, { value: 'food', label: 'food' }],
       alert: '',
@@ -34,8 +37,8 @@ class IdeaForm extends Component {
       alert: "Please enter title",
       alertStyle: "alert alert-danger"
     }) : 
-    !this.state.idea ? this.setState({
-      alert: "Please enter idea",
+    !this.state.body ? this.setState({
+      alert: "Please enter content",
       alertStyle: "alert alert-danger"
     }) :
     this.setState({
@@ -48,17 +51,13 @@ class IdeaForm extends Component {
     this.setState({ selection: obj })
   }
 
-
   render(){
-    const { title, idea, category, alert, alertStyle } = this.state;
-    const { ideas, categories } = this.props;
+    const { title, body, storylines, alert, alertStyle } = this.state;
+    const { posts } = this.props;
     const btnStyle = { marginTop: "10px" }
 
     return (
-      <div className="container">
-        <h1>Post Idea</h1>
-        (UNDER CONSTRUCTION!!!!)
-
+      <div>
         <form onSubmit={ this.handleSubmit }>
           <div className="form-group">
             <input name="title" type="text" ref="title" onChange={ this.handleChange }
@@ -66,9 +65,9 @@ class IdeaForm extends Component {
           </div>
 
           <div className="form-group">
-            <textarea name="idea" type="text" ref="idea"
+            <textarea name="body" type="text" ref="body"
             onChange={ this.handleChange }
-            className="form-control" placeholder="Please enter idea" />
+            className="form-control" placeholder="Please enter content" />
           </div>
 
           <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } />
@@ -80,26 +79,24 @@ class IdeaForm extends Component {
         </form>
 
         { alert ? <div className={ alertStyle }>{ alert }</div> : "" }
-        
       </div>
     )      
   }  
 }
 
-const mapStateToProps = ({ ideas, categories }) => {
+const mapStateToProps = ({ posts }) => {
   return {
-    ideas,
-    categories
+    posts
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleAdd: (idea) => {
-      dispatch(postIdea(idea));
+    handleAdd: (post) => {
+      dispatch(addPost(post));
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(IdeaForm);
+export default connect(mapStateToProps, mapDispatchToProps)(PostForm);
 

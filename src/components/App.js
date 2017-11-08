@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import store from '../store'
-import { loadUserData } from '../actions'
+import { loadUserData, fetchPosts } from '../actions'
 import jwt from 'jsonwebtoken'
 
 
@@ -9,6 +9,8 @@ import Routes from './Routes'
 export default class App extends Component {
 
   componentDidMount() {
+    store.dispatch(fetchPosts())
+    
     if (localStorage.ditaKey) {
       store.dispatch(
         loadUserData({ ditaKey: localStorage.ditaKey }))

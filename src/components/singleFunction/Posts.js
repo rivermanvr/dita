@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as d3 from 'd3'
 
-const PostCard = ({ content }) => {
+export const PostCard = ({ content }) => {
   const {
     createdAt,
     title,

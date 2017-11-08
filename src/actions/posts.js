@@ -12,7 +12,7 @@ export const getPosts = (posts) => {
 // Thunks
 export const fetchPosts = () => {
   return (dispatch) => {
-    return axios.get('/api/posts/allposts')
+    return axios.get('/api/posts')
       .then(res => res.data)
       .then(posts => {
         dispatch(getPosts(posts));

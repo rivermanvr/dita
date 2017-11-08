@@ -65,9 +65,9 @@ class PostForm extends Component {
           </div>
 
           <div className="form-group">
-            <textarea name="idea" type="text" ref="idea"
+            <textarea name="body" type="text" ref="body"
             onChange={ this.handleChange }
-            className="form-control" placeholder="Please enter idea" />
+            className="form-control" placeholder="Please enter content" />
           </div>
 
           <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } />

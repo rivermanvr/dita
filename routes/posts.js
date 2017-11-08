@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User, Post } = require('../db').models
+const { User, Post, StoryLine, Reply } = require('../db').models
 const { verifyToken } = require('./authMiddleware')
 
 // router.get('/myposts', verifyToken, (req, res, next) => {
@@ -10,7 +10,6 @@ const { verifyToken } = require('./authMiddleware')
 router.get('/myposts', verifyToken, (req, res, next) => {
   Post.findPostsWithReplies(req.user.id)
     .then(posts => {
-      console.log(posts)
       res.send(posts)
     })
 })
@@ -21,8 +20,8 @@ router.post('/', (req, res, next) => {
     .catch(next);
 })
 
-router.get('/allposts', (req, res, next) => {
-  Post.findAll()
+router.get('/', (req, res, next) => {
+  Post.findAll({ include: [{ model: StoryLine }, { model: Reply, include: [ User ]}] })
     .then(data => {
       res.send(data)
     })
@@ -31,3 +30,5 @@ router.get('/allposts', (req, res, next) => {
 
 
 module.exports = router
+
+

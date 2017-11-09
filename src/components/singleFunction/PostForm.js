@@ -20,6 +20,7 @@ class PostForm extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     // this.handleSelect = this.handleSelect.bind(this);
   }
 
@@ -46,6 +47,11 @@ class PostForm extends Component {
     })
   }
 
+  handleClick(){
+    this.refs.title.value = "";
+    this.refs.body.value = "";
+  }
+
   // handleSelect(obj){
   //   this.setState({ selection: obj })
   // }
@@ -59,7 +65,6 @@ class PostForm extends Component {
     });
        
     return (
-
       <div>
         <form onSubmit={ this.handleSubmit }>
           <div className="form-group">
@@ -72,12 +77,12 @@ class PostForm extends Component {
             onChange={ this.handleChange }
             className="form-control" placeholder="Please enter content" />
           </div>  
-          {
-          // replace this <select> with something like
-          // <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } create={ true } />      
-          <select name="storylineId" className="form-contarol" onChange={ this.handleChange }>
+
+          <select name="storylineId" className="form-control" onChange={ this.handleChange }>
             <option>Select Storyline</option>
             {
+              // replace this <select> with vince's <Select> like
+              // <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } create={ true } />  
               myStorylines.map(mystoryline => {
                 return (
                   <option key={ mystoryline.id } value={ mystoryline.id }>{ mystoryline.title }</option>
@@ -85,13 +90,14 @@ class PostForm extends Component {
               })
             }
           </select>
-          }
 
           <div className="form-group">
-            <button type="submit" className="btn btn-primary" style={ btnStyle }>Post Idea</button>
-          </div>
-          
+            <button type="submit" disabled={ !currentUser.user.id } onClick={ this.handleClick } 
+              className="btn btn-primary" style={ btnStyle }>Create Post
+            </button>
+          </div>          
         </form>
+        
         { alert ? <div className={ alertStyle }>{ alert }</div> : "" }
 
       </div>

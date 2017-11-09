@@ -15,7 +15,6 @@ router.get('/myposts', verifyToken, (req, res, next) => {
 })
 
 router.post('/myposts', (req, res, next) => {
-  console.log('posting req.body', req.body)
   Post.create(req.body)
     .then(() => res.sendStatus(204))
     .catch(next);

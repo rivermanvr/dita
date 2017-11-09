@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import store from '../../store';
 import { addPost } from '../../actions/posts';
 import Select from './select_box';
-// import Button from '../reusables/Button';
-// import Textbox from '../reusables/Textbox';
 
 
 class PostForm extends Component {
@@ -22,7 +20,7 @@ class PostForm extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
+    // this.handleSelect = this.handleSelect.bind(this);
   }
 
   handleChange(event) {
@@ -48,15 +46,17 @@ class PostForm extends Component {
     })
   }
 
-  handleSelect(obj){
-    console.log('selected obj', obj)
-    this.setState({ selection: obj })
-  }
+  // handleSelect(obj){
+  //   this.setState({ selection: obj })
+  // }
 
   render(){
     const { title, body, alert, alertStyle } = this.state;
-    const { posts, storylines, currentUser } = this.props;
+    const { posts, currentUser } = this.props;
     const btnStyle = { marginTop: "10px" };
+    const myPosts = posts.posts.filter(post => {
+      return post.userId === currentUser.user.id
+    })
        
     return (
 
@@ -72,17 +72,15 @@ class PostForm extends Component {
             onChange={ this.handleChange }
             className="form-control" placeholder="Please enter content" />
           </div>  
-
-          
           {
+          // replace this <select> with something like
+          // <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } create={ true } />      
           <select name="storylineId" className="form-contarol" onChange={ this.handleChange }>
             <option>Select Storyline</option>
             {
-              storylines.storylines.map(storyline => {
+              myPosts.map(mypost => {
                 return (
-                  // replace this <select> with something like
-                  // <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } create={ true } />      
-                  <option id={ storyline.id } value={ storyline.id }>{ storyline.title }</option>
+                  <option key={ mypost.id } value={ mypost.storyline.id }>{ mypost.storyline.title }</option>
                 )         
               })
             }
@@ -101,10 +99,9 @@ class PostForm extends Component {
   }  
 }
 
-const mapStateToProps = ({ posts, storylines, currentUser }) => {
+const mapStateToProps = ({ posts, currentUser }) => {
   return {
     posts,
-    storylines,
     currentUser
   }
 }

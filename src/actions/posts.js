@@ -22,7 +22,7 @@ export const fetchPosts = () => {
 
 export const addPost = (newPost) => {
   return (dispatch) => {
-    axios.post('/api/posts', newPost)
+    axios.post('/api/posts/myposts', newPost)
       .then(() => {
         dispatch(fetchPosts())
       })

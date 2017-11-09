@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import store from '../../store';
 import { addPost } from '../../actions/posts';
 import Select from './select_box';
-import Button from '../reusables/Button';
-import Textbox from '../reusables/Textbox';
+// import Button from '../reusables/Button';
+// import Textbox from '../reusables/Textbox';
 
 
 class PostForm extends Component {
@@ -13,9 +13,10 @@ class PostForm extends Component {
     this.state = {
       title: '',
       body: '',
-      storylines: '',
-      selection: [],
-      options: [{ value: 'work', label: 'work' }, { value: 'food', label: 'food' }],
+      storylineId: null,
+      userId: props.currentUser.user.id,
+      // selection: [],
+      // options: [],
       alert: '',
       alertStyle: ''
     }
@@ -26,7 +27,7 @@ class PostForm extends Component {
 
   handleChange(event) {
     const key = event.target.name, val = event.target.value;
-    this.setState({ [key]: val })
+    this.setState({ [key]: val });
   }
 
   handleSubmit(event) {
@@ -48,15 +49,17 @@ class PostForm extends Component {
   }
 
   handleSelect(obj){
+    console.log('selected obj', obj)
     this.setState({ selection: obj })
   }
 
   render(){
-    const { title, body, storylines, alert, alertStyle } = this.state;
-    const { posts } = this.props;
-    const btnStyle = { marginTop: "10px" }
-
+    const { title, body, alert, alertStyle } = this.state;
+    const { posts, storylines, currentUser } = this.props;
+    const btnStyle = { marginTop: "10px" };
+       
     return (
+
       <div>
         <form onSubmit={ this.handleSubmit }>
           <div className="form-group">
@@ -68,25 +71,41 @@ class PostForm extends Component {
             <textarea name="body" type="text" ref="body"
             onChange={ this.handleChange }
             className="form-control" placeholder="Please enter content" />
-          </div>
+          </div>  
 
-          <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } />
+          
+          {
+          <select name="storylineId" className="form-contarol" onChange={ this.handleChange }>
+            <option>Select Storyline</option>
+            {
+              storylines.storylines.map(storyline => {
+                return (
+                  // replace this <select> with something like
+                  // <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } create={ true } />      
+                  <option id={ storyline.id } value={ storyline.id }>{ storyline.title }</option>
+                )         
+              })
+            }
+          </select>
+          }
 
           <div className="form-group">
             <button type="submit" className="btn btn-primary" style={ btnStyle }>Post Idea</button>
           </div>
-
+          
         </form>
-
         { alert ? <div className={ alertStyle }>{ alert }</div> : "" }
+
       </div>
     )      
   }  
 }
 
-const mapStateToProps = ({ posts }) => {
+const mapStateToProps = ({ posts, storylines, currentUser }) => {
   return {
-    posts
+    posts,
+    storylines,
+    currentUser
   }
 }
 

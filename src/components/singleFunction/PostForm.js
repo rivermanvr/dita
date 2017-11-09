@@ -52,11 +52,11 @@ class PostForm extends Component {
 
   render(){
     const { title, body, alert, alertStyle } = this.state;
-    const { posts, currentUser } = this.props;
+    const { posts, storylines, currentUser } = this.props;
     const btnStyle = { marginTop: "10px" };
-    const myPosts = posts.posts.filter(post => {
-      return post.userId === currentUser.user.id
-    })
+    const myStorylines = storylines.storylines.filter(storyline => {
+      return storyline.userId === currentUser.user.id
+    });
        
     return (
 
@@ -78,9 +78,9 @@ class PostForm extends Component {
           <select name="storylineId" className="form-contarol" onChange={ this.handleChange }>
             <option>Select Storyline</option>
             {
-              myPosts.map(mypost => {
+              myStorylines.map(mystoryline => {
                 return (
-                  <option key={ mypost.id } value={ mypost.storyline.id }>{ mypost.storyline.title }</option>
+                  <option key={ mystoryline.id } value={ mystoryline.id }>{ mystoryline.title }</option>
                 )         
               })
             }
@@ -99,9 +99,10 @@ class PostForm extends Component {
   }  
 }
 
-const mapStateToProps = ({ posts, currentUser }) => {
+const mapStateToProps = ({ posts, storylines, currentUser }) => {
   return {
     posts,
+    storylines,
     currentUser
   }
 }

@@ -10,9 +10,5 @@ const StoryLine = db.define('storyline', {
     }
 })
 
-StoryLine.findMyStorylines = function(userId) {
-  return this.findAll({ where: { userId } })
-}
-
 module.exports = StoryLine
 

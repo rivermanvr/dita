@@ -13,7 +13,11 @@ export const PostCard = ({ content }) => {
 
   return (
     <div className="list-group-item">
-      <h4 className="list-group-item-heading">{ title } <small>from story <span style={{fontSize:'16px', textTransform:'capitalize'}}>{ storyline.title}</span></small></h4>
+      <h4 className="list-group-item-heading">
+        { title }
+        <small>from story <span style={{fontSize:'16px', textTransform:'capitalize'}}>{ storyline && storyline.title }</span></small>
+      </h4>
+      
       <p className="list-group-item-text">{ body }</p>
       <h5>Replies:</h5>
       {

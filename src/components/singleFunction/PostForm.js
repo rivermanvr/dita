@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import store from '../../store';
-import { addPost } from '../../actions/posts';
+import { addUserPost } from '../../actions/userpostsactions';
 import Select from './select_box';
 
 
@@ -116,7 +116,7 @@ const mapStateToProps = ({ posts, storylines, currentUser }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleAdd: (post) => {
-      dispatch(addPost(post));
+      dispatch(addUserPost(post));
     }
   }
 }

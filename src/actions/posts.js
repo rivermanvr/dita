@@ -1,31 +1,20 @@
 import axios from 'axios';
 
-
-// Action types
+// Action
 export const GET_POSTS = 'GET_POSTS';
 
-// Action creators
+// Action Creator
 export const getPosts = (posts) => {
   return { type: GET_POSTS, posts }
 }
 
 // Thunks
-export const fetchPosts = () => {
-  return (dispatch) => {
-    return axios.get('/api/posts')
-      .then(res => res.data)
-      .then(posts => {
-        dispatch(getPosts(posts));
-      });
-  }
-}
+export const fetchPosts = () => dispatch => 
+  axios.get('/api/posts')
+    .then(res => {
+      dispatch(getPosts(res.data));
+    })
+    .catch(console.log)
 
-export const addPost = (newPost) => {
-  return (dispatch) => {
-    axios.post('/api/posts/myposts', newPost)
-      .then(() => {
-        dispatch(fetchPosts())
-      })
-      .catch(console.log);
-  }
-}
+
+

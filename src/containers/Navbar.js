@@ -38,7 +38,7 @@ class Navbar extends Component {
   }
 }
 
-function mapStateToProps (state, { locoation }) {
+function mapStateToProps (state, { location }) {
   const { tests } = state;
   return { tests, location };
 }

@@ -31,10 +31,11 @@ const PlacesSearchBox = compose(
   }),
   withScriptjs
 )((props) => {
-  if (props.places.length) {
-    props.selection(props.places[0]);
-    return <div />
-  }
+  //Commented this line so that you still have the SearchBar after selecting an address.
+  // if (props.places.length) {
+  //   props.selection(props.places[0]);
+  //   return <div />
+  // }
   return (
   <div data-standalone-searchbox="">
     <StandaloneSearchBox
@@ -58,10 +59,16 @@ const PlacesSearchBox = compose(
         }}
       />
     </StandaloneSearchBox>
+    <ol>
+      {props.places.map(({ place_id, formatted_address, geometry: { location } }) =>
+        <li key={place_id}>
+          {formatted_address}		
+          {" at "}
+          ({location.lat()}, {location.lng()})
+        </li>
+      )}
+    </ol>
   </div>
   )});
-
-
-
 
 export default PlacesSearchBox;

@@ -26,7 +26,8 @@ class Navbar extends Component {
       { title: 'Add Post', path: '/posts' },
       { title: 'My Posts - WZ', path: '/myposts' },
       { title: 'All Posts', path: '/allposts' },
-      { title: 'View/Update Profile - WZ', path: '/profile' }
+      { title: 'View/Update Profile - WZ', path: '/profile' },
+      { title: 'Create Story - WZ', path: '/createstory' }
     ];
     return (
       <ul className="nav nav-tabs mainnav" style={ { marginBottom: '10px' } }>

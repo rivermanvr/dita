@@ -1,7 +1,7 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken'
 
-import { fetchUserPosts, setUserPosts } from './userpostsactions'
+import { fetchUserPosts, setUserPosts } from './userposts'
 
 // ***** ACTION TYPES *****
 export const SET_CURRENT_USER = 'SET_CURRENT_USER'

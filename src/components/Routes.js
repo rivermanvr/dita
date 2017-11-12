@@ -9,6 +9,7 @@ import SignupProfile from './singleFunction/SignupProfile'
 import PostForm from './singleFunction/PostForm'
 import Posts from './singleFunction/Posts'
 import AllPosts from './singleFunction/AllPosts'
+import CreateStory from './singleFunction/CreateStory'
 
 export default function () {
   return (
@@ -27,6 +28,7 @@ export default function () {
         <Route exact path="/posts" component={ PostForm } />
         <Route exact path="/myposts" component={ Posts } />  
         <Route exact path="/allposts" component={ AllPosts } />  
+        <Route exact path="/createstory" component={ CreateStory } />  
       </Switch>
     </div>
   )

@@ -32,10 +32,11 @@ const PlacesSearchBox = compose(
   withScriptjs
 )((props) => {
   //Commented this line so that you still have the SearchBar after selecting an address.
-  // if (props.places.length) {
-  //   props.selection(props.places[0]);
+  //Also remember to remove the ordered list below:  lines 63 to 70
+  if (props.places.length) {
+    props.selection(props.places[0]);
   //   return <div />
-  // }
+  }
   return (
   <div data-standalone-searchbox="">
     <StandaloneSearchBox

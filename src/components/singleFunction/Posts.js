@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as d3 from 'd3'
+import { Link } from 'react-router-dom'
 
 export const PostCard = ({ content }) => {
   const {
@@ -8,13 +9,17 @@ export const PostCard = ({ content }) => {
     title,
     body,
     storyline,
-    replies
+    replies,
+    id
   } = content
+
 
   return (
     <div className="list-group-item">
       <h4 className="list-group-item-heading">
-        { title }
+        <Link to={ `/posts/${ id }`} >
+          { title }
+        </Link>
         <small>from story <span style={{fontSize:'16px', textTransform:'capitalize'}}>{ storyline && storyline.title }</span></small>
       </h4>
       

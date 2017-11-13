@@ -19,14 +19,16 @@ class Navbar extends Component {
       Then add a corresponding Route in the Route.js Component
     ------------------------------------------- */
     const tabs = [
-      { title: 'Login - Wasif', path: '/login' },
+      { title: 'Login - WZ', path: '/login' },
       { title: 'Sign Up - WZ', path: '/signup' },
-      { title: 'TestBed - Vince', path: '/testBed' },
-      { title: 'GeoLocateInput - Vince', path: '/google' },
-      { title: 'Add Post', path: '/posts' },
       { title: 'My Posts - WZ', path: '/myposts' },
-      { title: 'All Posts', path: '/allposts' },
-      { title: 'View/Update Profile - WZ', path: '/profile' }
+      { title: 'View/Update Profile - WZ', path: '/profile' },
+      { title: 'TestBed - Vince', path: '/testBed' },
+      { title: 'GeoLocateInput(new) - Vince', path: '/google' },
+      { title: 'View_StoriesPosts - Vince', path: '/testStories' },
+      { title: 'Add Post', path: '/posts' },
+      { title: 'All Posts', path: '/allposts' }
+
     ];
     return (
       <ul className="nav nav-tabs mainnav" style={ { marginBottom: '10px' } }>

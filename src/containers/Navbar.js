@@ -27,8 +27,10 @@ class Navbar extends Component {
       { title: 'GeoLocateInput(new) - Vince', path: '/google' },
       { title: 'View_StoriesPosts - Vince', path: '/testStories' },
       { title: 'Add Post', path: '/posts' },
-      { title: 'All Posts', path: '/allposts' }
-
+      { title: 'My Posts - WZ', path: '/myposts' },
+      { title: 'All Posts', path: '/allposts' },
+      { title: 'View/Update Profile - WZ', path: '/profile' },
+      { title: 'Create Story - WZ', path: '/createstory' }
     ];
     return (
       <ul className="nav nav-tabs mainnav" style={ { marginBottom: '10px' } }>

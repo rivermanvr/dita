@@ -7,7 +7,7 @@ const {
 const users = [
   { name:'kaz', email: 'kaz@dita.net', 'username': 'kaz', 'password': 'dita' },
   { name:'wasif', email: 'wasif@dita.net', 'username': 'wasif','password': 'dita' },
-  { name:'vince', email: 'vince@dita.net', 'username': 'vince','password': 'dita' },
+  { name:'vince', email: 'vince@riversconsulting.com', 'username': 'vince','password': 'dita' },
   { name:'murray', email: 'murray@dita.net', 'username': 'murray','password': 'dita' }
 ]
 

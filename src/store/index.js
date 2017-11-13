@@ -8,7 +8,7 @@ import reducers from '../reducers';
 
 
 const store = createStore(
-  reducers, composeWithDevTools(applyMiddleware(thunkMiddleware, createLogger()
+  reducers, composeWithDevTools(applyMiddleware(ReduxPromise, thunkMiddleware, createLogger()
   ))
 );
 

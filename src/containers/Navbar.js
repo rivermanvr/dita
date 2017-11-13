@@ -19,10 +19,13 @@ class Navbar extends Component {
       Then add a corresponding Route in the Route.js Component
     ------------------------------------------- */
     const tabs = [
-      { title: 'Login - Wasif', path: '/login' },
+      { title: 'Login - WZ', path: '/login' },
       { title: 'Sign Up - WZ', path: '/signup' },
+      { title: 'My Posts - WZ', path: '/myposts' },
+      { title: 'View/Update Profile - WZ', path: '/profile' },
       { title: 'TestBed - Vince', path: '/testBed' },
-      { title: 'GeoLocateInput - Vince', path: '/google' },
+      { title: 'GeoLocateInput(new) - Vince', path: '/google' },
+      { title: 'View_StoriesPosts - Vince', path: '/testStories' },
       { title: 'Add Post', path: '/posts' },
       { title: 'My Posts - WZ', path: '/myposts' },
       { title: 'All Posts', path: '/allposts' },
@@ -39,7 +42,7 @@ class Navbar extends Component {
   }
 }
 
-function mapStateToProps (state, { locoation }) {
+function mapStateToProps (state, { location }) {
   const { tests } = state;
   return { tests, location };
 }

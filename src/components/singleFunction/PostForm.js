@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import store from '../../store';
-import { addUserPost } from '../../actions/userpostsactions';
+import { addUserPost } from '../../actions/userposts';
 import Select from './select_box';
 
 

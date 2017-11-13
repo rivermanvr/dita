@@ -20,12 +20,12 @@ export const fetchStorylines = () => {
   }
 }
 
-export const addStoryline = (newStoryline) => {
-  return (dispatch) => {
-    axios.post('/api/storylines', newStoryline)
-      .then(() => {
-        dispatch(fetchStorylines())
-      })
-      .catch(console.log);
-  }
-}
+// export const addStoryline = (newStoryline) => {
+//   return (dispatch) => {
+//     axios.post('/api/storylines', newStoryline)
+//       .then(() => {
+//         dispatch(fetchStorylines())
+//       })
+//       .catch(console.log);
+//   }
+// }

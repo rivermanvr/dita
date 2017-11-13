@@ -13,15 +13,12 @@ class PostForm extends Component {
       body: '',
       storylineId: null,
       userId: props.currentUser.user.id,
-      // selection: [],
-      // options: [],
       alert: '',
       alertStyle: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    // this.handleSelect = this.handleSelect.bind(this);
   }
 
   handleChange(event) {
@@ -52,10 +49,6 @@ class PostForm extends Component {
     this.refs.body.value = "";
   }
 
-  // handleSelect(obj){
-  //   this.setState({ selection: obj })
-  // }
-
   render(){
     const { title, body, alert, alertStyle } = this.state;
     const { posts, storylines, currentUser } = this.props;
@@ -81,8 +74,6 @@ class PostForm extends Component {
           <select name="storylineId" className="form-control" onChange={ this.handleChange }>
             <option>Select Storyline</option>
             {
-              // replace this <select> with vince's <Select> like
-              // <Select options={ this.state.options } selection={ this.handleSelect } multi={ true } create={ true } />  
               myStorylines.map(mystoryline => {
                 return (
                   <option key={ mystoryline.id } value={ mystoryline.id }>{ mystoryline.title }</option>

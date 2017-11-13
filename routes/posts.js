@@ -22,10 +22,14 @@ router.post('/myposts', (req, res, next) => {
 
 router.get('/', (req, res, next) => {
   Post.findAll({ include: [{ model: StoryLine }, { model: Reply, include: [ User ]}] })
-    .then(posts => {
-      res.send(posts)
-    })
+    .then(posts => res.send(posts))
     .catch(next);
+})
+
+router.get('/:id', (req, res, next) => {
+  Post.findById(+req.params.id)
+    .then(post => res.send(post))
+    .catch(next)
 })
 
 

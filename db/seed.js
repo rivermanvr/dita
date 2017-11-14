@@ -12,13 +12,13 @@ const users = [
 ]
 
 const posts = [
-  { title:'Today was great!', body:'just a random summary of my great day mayng', zip:'10028'},
-  { title:'Today was solid!', body:'just a random summary of my solid day mayng', zip:'10027'},
-  { title:'Today was amazing!', body:'just a random summary of my amazing day mayng', zip:'10026'},
-  { title:'Tonight was dope!', body:'just a random summary of my dope night mayng', zip:'10025'},
-  { title:'Tonight was bonkers!', body:'just a random summary of my bonkers night mayng', zip:'10024'},
-  { title:'Today was wild!', body:'just a random summary of my wild day mayng', zip:'10023'},
-  { title:'This morning was insane!', body:'just a random summary of my insane morning mayng', zip:'10022'}
+  { title:'Today was great!', body:'just a random summary of my great day mayng', zip:'10028', latitude: 40.776441, longitude: -73.953509 },
+  { title:'Today was solid!', body:'just a random summary of my solid day mayng', zip:'10027', latitude: 40.811407, longitude: -73.953060 },
+  { title:'Today was amazing!', body:'just a random summary of my amazing day mayng', zip:'10026', latitude: 40.802381, longitude: -73.952681 },
+  { title:'Tonight was dope!', body:'just a random summary of my dope night mayng', zip:'10025', latitude: 40.798601, longitude: -73.966622 },
+  { title:'Tonight was bonkers!', body:'just a random summary of my bonkers night mayng', zip:'10024', latitude: 40.798452, longitude: -73.974428 },
+  { title:'Today was wild!', body:'just a random summary of my wild day mayng', zip:'10023', latitude: 40.775921, longitude: -73.982607 },
+  { title:'This morning was insane!', body:'just a random summary of my insane morning mayng', zip:'10022', latitude: 40.758628, longitude: -73.967948 }
 ]
 
 const categories = [

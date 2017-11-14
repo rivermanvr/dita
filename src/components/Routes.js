@@ -11,6 +11,7 @@ import SignupProfile from './singleFunction/SignupProfile'
 import PostForm from './singleFunction/PostForm'
 import Posts from './singleFunction/Posts'
 import AllPosts from './singleFunction/AllPosts'
+import AllPostsMap from './singleFunction/AllPostsMap'
 import AllPostsByLoc from './singleFunction/AllPostsByLoc'
 import TestDistance from './testerRoutines/TestDistance'
 import PostDetail from './singleFunction/PostDetail'
@@ -35,6 +36,7 @@ export default function () {
         <Route exact path="/posts" component={ PostForm } />
         <Route exact path="/myposts" component={ Posts } />  
         <Route exact path="/allposts" component={ AllPosts } />  
+        <Route exact path="/allpostsmap" component={ AllPostsMap } />
         <Route exact path="/allpostsbyloc" component={ AllPostsByLoc } />  
         <Route exact path="/distancetest" component={ TestDistance } />  
         <Route path="/posts/:id" component={ PostDetail } />

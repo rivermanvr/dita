@@ -6,7 +6,7 @@ const AllPosts = ({ posts }) => {
   return (
     <div>
       <h4>All posts</h4>
-      { posts.posts.map(post => <PostCard key={ post.id } content={ post } />) }           
+      { posts.map(post => <PostCard key={ post.id } content={ post } />) }           
     </div>
   )  
 }

@@ -53,7 +53,7 @@ class PostForm extends Component {
     const { title, body, alert, alertStyle } = this.state;
     const { posts, storylines, currentUser } = this.props;
     const btnStyle = { marginTop: "10px" };
-    const myStorylines = storylines.storylines.filter(storyline => {
+    const myStorylines = storylines.filter(storyline => {
       return storyline.userId === currentUser.user.id
     });
        

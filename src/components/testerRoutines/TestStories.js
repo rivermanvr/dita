@@ -11,7 +11,9 @@ class TestStories extends Component {
     console.log('in render in TestStories: ', this.props)
     return (
       <div>
-        I am in TestStories
+        <p>This component is just a placeholder for the NavBar.</p>
+        <p>Once my component works, I will replace this one with the working component</p>
+        <p>make sure that you are logged in.</p>
       </div>
     )
   }

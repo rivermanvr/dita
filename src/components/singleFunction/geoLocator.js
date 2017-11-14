@@ -22,10 +22,13 @@ const PlacesSearchBox = compose(
         onPlacesChanged: () => {
           const places = refs.searchBox.getPlaces();
 
-          this.props.onChange && this.props.onChange(places)
           this.setState({
             places,
           });
+
+          if (places.length) {
+            this.props.selection && this.props.selection(places[0]);
+          }
         },
       })
     },
@@ -34,10 +37,7 @@ const PlacesSearchBox = compose(
 )((props) => {
   //Commented this line so that you still have the SearchBar after selecting an address.
   //Also remember to remove the ordered list below:  lines 63 to 70
-  if (props.places.length) {
-    props.selection(props.places[0]);
-  //   return <div />
-  }
+  
   return (
   <div data-standalone-searchbox="">
     <StandaloneSearchBox

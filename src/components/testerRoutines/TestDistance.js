@@ -24,28 +24,29 @@ export function calcDistance (lat1, lon1, lat2, lon2, unit) {
 export default class TestBed extends Component {
   state = { place: [], radius: 10, lat: 0, lng: 0, testLat: 0, testLng: 0, distance: 0 }
 
-  handleInput = place => {
-    // console.log('in TestBedGoogle, GeoLocate: ', place);
-  }
+  // handleInput = place => {
+  //   console.log('in TestBedGoogle, GeoLocate: ', place);
+  //   this.setState({ place })
+  // }
 
   handleChange = name => ev => {
     this.setState({ [name]: ev.target.value })
   }
 
   handleSourceChange = place => {
-    if (place.length) {
+    if (place) {
       this.setState({
-        lat: place[0].geometry.location.lat(),
-        lng: place[0].geometry.location.lng()
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng()
       })
     }
   }
 
   handleTestPlaceChange = place => {
-    if (place.length) {
+    if (place) {
       this.setState({
-        testLat: place[0].geometry.location.lat(),
-        testLng: place[0].geometry.location.lng()
+        testLat: place.geometry.location.lat(),
+        testLng: place.geometry.location.lng()
       })
     }
   }
@@ -61,7 +62,7 @@ export default class TestBed extends Component {
     const { radius, lat, lng, distance } = this.state
     const { handleChange, handleSourceChange, handleTestPlaceChange, handleCalc } = this
 
-    // console.log(this.state);
+    console.log(this.state);
 
     return (
       <div>
@@ -70,10 +71,10 @@ export default class TestBed extends Component {
           from geoloc component</p>
 
         <h4>Source:</h4>
-        <MapWithASearchBox selection={ this.handleInput } onChange={ handleSourceChange } />
+        <MapWithASearchBox selection={ handleSourceChange } />
 
         <h4>Test:</h4>
-        <MapWithASearchBox selection={ this.handleInput } onChange={ handleTestPlaceChange } />
+        <MapWithASearchBox selection={ handleTestPlaceChange } />
 
         <Textbox
           label='radius'

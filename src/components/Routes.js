@@ -4,7 +4,8 @@ import { Route, Switch } from 'react-router-dom'
 import Navbar from '../containers/Navbar'
 import TestBed from './testerRoutines/TestBed'
 import TestBedGoogle from './testerRoutines/TestBedGoogle'
-import TestStories from './testerRoutines/TestStories'
+import StoriesView from '../containers/storiesView'
+import PostsView from '../containers/postsView'
 import Login from './singleFunction/Login'
 import SignupProfile from './singleFunction/SignupProfile'
 import PostForm from './singleFunction/PostForm'
@@ -27,7 +28,8 @@ export default function () {
         <Route exact path="/profile" component={ SignupProfile } />
         <Route exact path="/testBed" component={ TestBed } />
         <Route exact path="/google" component={ TestBedGoogle } />
-        <Route exact path="/testStories" component={ TestStories } />
+        <Route exact path="/storiesView" component={ StoriesView } />
+        <Route exact path="/postsView" component={ PostsView } />
         <Route exact path="/posts" component={ PostForm } />
         <Route exact path="/myposts" component={ Posts } />  
         <Route exact path="/allposts" component={ AllPosts } />  

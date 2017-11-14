@@ -25,7 +25,7 @@ class Navbar extends Component {
       { title: 'View/Update Profile - WZ', path: '/profile' },
       { title: 'TestBed - Vince', path: '/testBed' },
       { title: 'GeoLocateInput(new) - Vince', path: '/google' },
-      { title: 'View_StoriesPosts - Vince', path: '/testStories' },
+      { title: 'View_StoriesPosts - Vince', path: '/storiesView' },
       { title: 'Add Post', path: '/posts' },
       { title: 'All Posts', path: '/allposts' },
       { title: 'Create Story - WZ', path: '/createstory' }

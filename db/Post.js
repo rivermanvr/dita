@@ -16,13 +16,13 @@ const Post = db.define('post', {
         }
     },
     latitude: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
         allowNull: true,
         defaultValue: null,
         validate: { min: -90, max: 90 }
     },
     longitude: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
         allowNull: true,
         defaultValue: null,
         validate: { min: -180, max: 180 }

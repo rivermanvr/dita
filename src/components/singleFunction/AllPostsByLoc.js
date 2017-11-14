@@ -4,22 +4,22 @@ import { PostCard } from './Posts';
 import MapWithASearchBox from './geoLocator';
 import { setLocationFromGeoLoc, setRadius } from '../../actions'
 
-// export class SearchFromLoc extends Component {
-//   // wrapper for MapWithASearchBox with radius
-//   state = { radius: 10 }
+export class SearchFromLoc extends Component {
+  // wrapper for MapWithASearchBox with radius
+  state = { radius: 10 }
 
-//   selection = place => {
-//     // this.props.handleSelection
-//   }
+  selection = place => {
+    // this.props.handleSelection
+  }
 
-//   render = () => {
-//     return(
-//       <div>
-//         <MapWithASearchBox selection={ this.selection }/>
-//       </div>
-//     )
-//   }
-// }
+  render = () => {
+    return(
+      <div>
+        <MapWithASearchBox selection={ this.selection }/>
+      </div>
+    )
+  }
+}
 
 const AllPosts = ({ posts, setLocationFromGeoLoc }) => {
   return (
@@ -30,7 +30,7 @@ const AllPosts = ({ posts, setLocationFromGeoLoc }) => {
         <SearchFromLoc onSelect={ setLocationFromGeoLoc } />
       <hr/>
 
-      { posts.posts.map(post => <PostCard key={ post.id } content={ post } />) }           
+      { posts.map(post => <PostCard key={ post.id } content={ post } />) }           
     </div>
   )  
 }

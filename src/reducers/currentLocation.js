@@ -1,4 +1,4 @@
-import { SET_CURRENT_LOCATION } from '../actions'
+import { SET_CURRENT_LOCATION, SET_RADIUS } from '../actions'
 
 const initialState = {
   // NYC

@@ -28,6 +28,7 @@ class Navbar extends Component {
       { title: 'View_StoriesPosts - Vince', path: '/testStories' },
       { title: 'Add Post', path: '/posts' },
       { title: 'All Posts', path: '/allposts' },
+      { title: 'Distance Test - WZ', path: '/distancetest' },
       { title: 'Create Story - WZ', path: '/createstory' }
     ];
     return (

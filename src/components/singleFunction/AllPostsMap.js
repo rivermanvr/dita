@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import GeoLoc from '/assets/design/geoMapDisplay';
+// import GeoLoc from '/assets/design/geoMapDisplay';
 
 
 const AllPostsMap = (props) => {

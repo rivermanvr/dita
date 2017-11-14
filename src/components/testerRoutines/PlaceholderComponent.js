@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class TestStories extends Component {
+class PlaceholderComponent extends Component {
   constructor() {
     super();
     this.state = {};
@@ -11,7 +11,9 @@ class TestStories extends Component {
     console.log('in render in TestStories: ', this.props)
     return (
       <div>
-        I am in TestStories
+        <p>This component is just a placeholder for the NavBar.</p>
+        <p>Once my component works, I will replace this one with the working component</p>
+        <p>make sure that you are logged in.</p>
       </div>
     )
   }
@@ -22,4 +24,4 @@ function mapStateToProps (state, { location }) {
   return { state, location };
 }
 
-export default connect(mapStateToProps)(TestStories);
+export default connect(mapStateToProps)(PlaceholderComponent);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class TestStories extends Component {
+class PlaceholderComponent extends Component {
   constructor() {
     super();
     this.state = {};
@@ -24,4 +24,4 @@ function mapStateToProps (state, { location }) {
   return { state, location };
 }
 
-export default connect(mapStateToProps)(TestStories);
+export default connect(mapStateToProps)(PlaceholderComponent);

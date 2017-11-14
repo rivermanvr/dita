@@ -22,6 +22,7 @@ const PlacesSearchBox = compose(
         onPlacesChanged: () => {
           const places = refs.searchBox.getPlaces();
 
+          this.props.onChange && this.props.onChange(places)
           this.setState({
             places,
           });
@@ -60,7 +61,7 @@ const PlacesSearchBox = compose(
         }}
       />
     </StandaloneSearchBox>
-    <ol>
+    {/* <ol>
       {props.places.map(({ place_id, formatted_address, geometry: { location } }) =>
         <li key={place_id}>
           {formatted_address}		
@@ -68,7 +69,7 @@ const PlacesSearchBox = compose(
           ({location.lat()}, {location.lng()})
         </li>
       )}
-    </ol>
+    </ol> */}
   </div>
   )});
 

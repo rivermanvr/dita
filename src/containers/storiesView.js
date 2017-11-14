@@ -59,7 +59,18 @@ class storiesView extends Component {
             <button className="btn btn-default" disabled>Graphics Version</button>
           </div>
         </div>
-        <div className="row">
+        <div className="row col-sm-12 center marginB marginTSM">
+          <div className="col-sm-2 center"><h5>{ state.userStorylines.length } Storyline(s)</h5></div>
+          <div className="col-sm-1">traverse bar here</div>
+        </div>
+
+<div className="row col-sm-12 panel panel-default">
+  <div>
+  hello
+  </div>
+</div>
+
+        <div className="row col-sm-12">
           <h4><p>View = { toggle }</p></h4>
           <p>state: </p>
           <p>user storylines: { SL }</p>

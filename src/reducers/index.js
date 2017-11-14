@@ -4,11 +4,11 @@ import posts from './posts';
 import userPosts from './userPosts';
 import storylines from './storylines';
 import userStorylines from './userStorylines';
-import currentLocation from './currentLocation';
+import currentView from './currentView';
 
 const rootReducer = combineReducers({
   currentUser,
-  currentLocation,
+  currentView,
   posts,
   userPosts,
   storylines,

@@ -8,6 +8,16 @@ router.get('/mystorylines', verifyToken, (req, res, next) => {
     .catch(next)
 })
 
+router.get('/mystorylines', verifyToken, (req, res, next) => {
+  StoryLine.findAll({ where: {
+            userId: req.user.id,
+            order: ['updatedAt', 'DESC']
+        }
+    })
+    .then(storylines => res.send(storylines))
+    .catch(next)
+})
+
 router.post('/', verifyToken, (req, res, next) => {
   const { title, description, selection } = req.body
   StoryLine.create({ title, description, userId: req.user.id })

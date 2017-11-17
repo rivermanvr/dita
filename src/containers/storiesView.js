@@ -16,7 +16,7 @@ class storiesView extends Component {
       this.setState({ userStorylines: allState.userStorylines,
         userPosts: allState.userPosts,
         currentUser: allState.currentUser.user,
-        allPosts: allState.posts.posts,
+        allPosts: allState.posts,
         toggle
        })
     }
@@ -30,7 +30,7 @@ class storiesView extends Component {
       this.setState({ userStorylines: allState.userStorylines,
         userPosts: allState.userPosts,
         currentUser: allState.currentUser.user,
-        allPosts: allState.posts.posts,
+        allPosts: allState.posts,
         toggle
        })
     }

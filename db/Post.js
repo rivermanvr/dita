@@ -42,8 +42,9 @@ Post.findPosts = function(userId) {
 
 Post.findPostsWithReplies = function(userId) {
     return this.findAll({ 
-        where: {userId}, 
-        include:[
+        where: {userId},
+        order: [['updatedAt', 'DESC']],
+        include: [
             {
                 model: Reply,
                 include: [User]

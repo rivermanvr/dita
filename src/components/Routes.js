@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import Navbar from '../containers/Navbar'
 import TestBed from './testerRoutines/TestBed'
 import TestBedGoogle from './testerRoutines/TestBedGoogle'
+import TestMover from './testerRoutines/TestMover'
 import StoriesView from '../containers/storiesView'
 import PostsView from '../containers/postsView'
 import Login from './singleFunction/Login'
@@ -31,6 +32,7 @@ export default function () {
         <Route exact path="/profile" component={ SignupProfile } />
         <Route exact path="/testBed" component={ TestBed } />
         <Route exact path="/google" component={ TestBedGoogle } />
+        <Route exact path="/testmover" component={ TestMover } />
         <Route exact path="/storiesView" component={ StoriesView } />
         <Route exact path="/postsView" component={ PostsView } />
         <Route exact path="/posts" component={ PostForm } />

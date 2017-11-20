@@ -11,8 +11,8 @@ class AllPostsMap extends Component {
   render(){
     const { posts, currentView } = this.props;    
     const zoomLevel = 2;
-    const position = [currentView.lat, currentView.lng];
-    const darkTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cja04we4b96b22sphpuhp5xil/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
+    const position = [currentView.lat, currentView.lng];    
+    const darkTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cja8rnhqp0ukm2rpjrq1uxx65/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
     const tileAttr = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
 
     const stars = posts.map(post => {
@@ -23,7 +23,7 @@ class AllPostsMap extends Component {
     })
 
     const fillColor = 'yellow', fillOpacity = 1, strokeColor = '#000', strokeWeight = 1;
-    let radius = 5 
+    let radius = 5 // we should change this based on our genius algorithm!! 
     const spanStyle = { fontSize: '1.5em' }
 
     return (

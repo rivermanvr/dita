@@ -110,7 +110,7 @@ class storiesView extends Component {
           </div>
 
         <div className="container">
-          <div className="row marginBSM noMarginLR">
+          <div className="row noMarginLR">
             <div className="col-xs-12 noMarginLR noPadLR">
               <Mover title={ 'Storylines' } name={ 'SL' } selection={ this.handleSelection } />
         </div></div></div>
@@ -140,14 +140,26 @@ class storiesView extends Component {
         </div></div>
 
         <div className="container">
-          <div className="row marginBSM noMarginLR">
+          <div className="row noMarginLR">
             <div className="col-xs-12 noMarginLR noPadLR">
               <Mover title={ 'Posts' } name={ 'SLP' } selection={ this.handleSelection } />
         </div></div></div>
 
         <div className="row col-sm-12 panel panel-default">
           <div>
-          Posts & replies
+          Posts
+          </div>
+        </div>
+
+        <div className="container">
+          <div className="row noMarginLR">
+            <div className="col-xs-12 noMarginLR noPadLR">
+              <Mover title={ 'Replies' } name={ 'SLR' } selection={ this.handleSelection } />
+        </div></div></div>
+
+        <div className="row col-sm-12 panel panel-default">
+          <div>
+          Replies
           </div>
         </div>
 

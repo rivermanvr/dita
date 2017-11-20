@@ -53,14 +53,14 @@ export default class SelectMulti extends Component {
 
             <div className="col-xs-1 col-xs-offset-4 textWidth60 center noPadLR">
               <button onClick={ this.first }>
-                <span className="glyphicon glyphicon-chevron-left" aria-hidden="true" />
-                <span className="glyphicon glyphicon-chevron-left" aria-hidden="true" />
+                <span className="glyphicon glyphicon-chevron-left textGrey" aria-hidden="true" />
+                <span className="glyphicon glyphicon-chevron-left textGrey" aria-hidden="true" />
               </button>
             </div>
 
             <div className="col-xs-1 textWidth60 center noPadLR">
               <button onClick={ this.previous }>
-                <span className="glyphicon glyphicon-chevron-left" aria-hidden="true" />
+                <span className="glyphicon glyphicon-chevron-left textGrey" aria-hidden="true" />
               </button>
             </div>
 
@@ -70,14 +70,14 @@ export default class SelectMulti extends Component {
 
             <div className="col-xs-1 textWidth60 center noPadLR">
               <button onClick={ this.next }>
-                <span className="glyphicon glyphicon-chevron-right" aria-hidden="true" />
+                <span className="glyphicon glyphicon-chevron-right textGrey" aria-hidden="true" />
               </button>
             </div>
 
             <div className="col-xs-1 textWidth60 center noPadLR">
               <button onClick={ this.last }>
-                <span className="glyphicon glyphicon-chevron-right" aria-hidden="true" />
-                <span className="glyphicon glyphicon-chevron-right" aria-hidden="true" />
+                <span className="glyphicon glyphicon-chevron-right textGrey" aria-hidden="true" />
+                <span className="glyphicon glyphicon-chevron-right textGrey" aria-hidden="true" />
               </button>
             </div>
 

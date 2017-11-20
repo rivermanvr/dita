@@ -10,7 +10,7 @@ const PostDetail = (props) => {
     <div>
       <h4>Post Detail</h4>
       {
-        posts.posts.filter(post => {
+        posts.filter(post => {
           return post.id === postId
         }).map(post => <PostCard key={ post.id } content={ post } />)
       }      

@@ -5,37 +5,42 @@ const {
   Category, StoryLine } = require('../db').models
 
 const users = [
-  { name:'kaz', email: 'kaz@dita.net', 'username': 'kaz', 'password': 'dita' },
-  { name:'wasif', email: 'wasif@dita.net', 'username': 'wasif','password': 'dita' },
-  { name:'vince', email: 'vince@riversconsulting.com', 'username': 'vince','password': 'dita' },
-  { name:'murray', email: 'murray@dita.net', 'username': 'murray','password': 'dita' }
+  { id: 1, name: 'kaz', email: 'kaz@dita.net', username: 'kaz', password: 'dita', latitude: 40.783060, longitude: -73.971249 },
+  { id: 2, name: 'wasif', email: 'wasif@dita.net', username: 'wasif', password: 'dita', latitude: 40.735102, longitude: -73.687908 },
+  { id: 4, name: 'vince', email: 'vince@riversconsulting.com', username: 'vince', password: 'dita', latitude: 40.881172, longitude: -74.212063 },
+  { id: 3, name: 'murray', email: 'murray@dita.net', 'username': 'murray', password: 'dita', latitude: 40.678178, longitude: -73.944158 }
 ]
 
 const posts = [
-  { title:'Today was great!', body:'just a random summary of my great day mayng', zip:'10028', latitude: 40.776441, longitude: -73.953509 },
-  { title:'Today was solid!', body:'just a random summary of my solid day mayng', zip:'10027', latitude: 40.811407, longitude: -73.953060 },
-  { title:'Today was amazing!', body:'just a random summary of my amazing day mayng', zip:'10026', latitude: 40.802381, longitude: -73.952681 },
-  { title:'Tonight was dope!', body:'just a random summary of my dope night mayng', zip:'10025', latitude: 40.798601, longitude: -73.966622 },
-  { title:'Tonight was bonkers!', body:'just a random summary of my bonkers night mayng', zip:'10024', latitude: 40.798452, longitude: -73.974428 },
-  { title:'Today was wild!', body:'just a random summary of my wild day mayng', zip:'10023', latitude: 40.775921, longitude: -73.982607 },
-  { title:'This morning was insane!', body:'just a random summary of my insane morning mayng', zip:'10022', latitude: 40.758628, longitude: -73.967948 }
+  { title: 'Thoughts Monday 11-20', body: 'Need to spend a 1/2 hour on -crack-the-code-interview each day', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4, storylineId: null },
+  { title: 'ToDo Tuesday 11-21', body: 'Develop a 1 page resume, keep 3 pager', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4, storylineId: null },
+  { title: 'Today was amazing!', body: 'just a random summary of my amazing day mayng', zip: '10026', latitude: 40.802381, longitude: -73.952681, userId: null, storylineId: null },
+  { title: 'Tonight was dope!', body: 'just a random summary of my dope night mayng', zip: '10025', latitude: 40.798601, longitude: -73.966622, userId: null, storylineId: null },
+  { title: 'Tonight was bonkers!', body: 'just a random summary of my bonkers night mayng', zip: '10024', latitude: 40.798452, longitude: -73.974428, userId: null, storylineId: null },
+  { title: 'Today was wild!', body: 'just a random summary of my wild day mayng', zip: '10023', latitude: 40.775921, longitude: -73.982607, userId: null, storylineId: null },
+  { title: 'ToDo Tuesday 11-21', body: 'Develop a 1 page resume, keep 3 pager', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4, storylineId: null },
+  { title: 'Today was amazing!', body: 'just a random summary of my amazing day mayng', zip: '10026', latitude: 40.802381, longitude: -73.952681, userId: null, storylineId: null },
+  { title: 'Tonight was dope!', body: 'just a random summary of my dope night mayng', zip: '10025', latitude: 40.798601, longitude: -73.966622, userId: null, storylineId: null },
+  { title: 'Tonight was bonkers!', body: 'just a random summary of my bonkers night mayng', zip: '10024', latitude: 40.798452, longitude: -73.974428, userId: null, storylineId: null },
+  { title: 'Today was wild!', body: 'just a random summary of my wild day mayng', zip: '10023', latitude: 40.775921, longitude: -73.982607, userId: null, storylineId: null },
+  { title: 'This morning was insane!', body: 'just a random summary of my insane morning mayng', zip:'10022', latitude: 40.758628, longitude: -73.967948, userId: null, storylineId: null }
 ]
 
 const categories = [
-  {name: 'Fun'},
-  {name: 'Work'},
-  {name: 'WTF'},
-  {name: 'Inspirational'},
-  {name: 'Happy'},
-  {name: 'Sad'},
-  {name: 'Funny'},
+  { name: 'Fun' },
+  { name: 'Work' },
+  { name: 'Inspirational' },
+  { name: 'Happy' },
+  { name: 'Sad' },
+  { name: 'Technology' },
+  { name: 'School' },
+  { name: 'Funny' }
 ]
 
 const stories = [
-  {title:'Youll never believe this'},
-  {title:'Found the one..'},
-  {title:'I just corrupted our database on my first day -_-'},
-  {title:'My goals: A day by day update'}
+  { title: 'Sunday with the family', description: 'At Pam & Neal"s home' },
+  { title: 'Interview at IBM', description: 'sent my resume for fun & got an interview' },
+  { title: 'Working on the final project', description: 'Fullstack Academy final project' }
 ]
 
 const replies = [

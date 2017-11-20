@@ -48,17 +48,17 @@ export default class SelectMulti extends Component {
 
     return (
 
-      <div className="row marginBSM noMarginLR">
-        <div className="col-xs-12 noMarginLR noPadLR">
+      <div className="row">
+        <div className="col-xs-12">
 
-            <div className="col-xs-1 col-xs-offset-3 center noPadLR">
+            <div className="col-xs-1 col-xs-offset-4 textWidth60 center noPadLR">
               <button onClick={ this.first }>
                 <span className="glyphicon glyphicon-chevron-left" aria-hidden="true" />
                 <span className="glyphicon glyphicon-chevron-left" aria-hidden="true" />
               </button>
             </div>
 
-            <div className="col-xs-1 center noPadLR">
+            <div className="col-xs-1 textWidth60 center noPadLR">
               <button onClick={ this.previous }>
                 <span className="glyphicon glyphicon-chevron-left" aria-hidden="true" />
               </button>
@@ -68,13 +68,13 @@ export default class SelectMulti extends Component {
               <h5>{ title }</h5>
             </div>
 
-            <div className="col-xs-1 center noPadLR">
+            <div className="col-xs-1 textWidth60 center noPadLR">
               <button onClick={ this.next }>
                 <span className="glyphicon glyphicon-chevron-right" aria-hidden="true" />
               </button>
             </div>
 
-            <div className="col-xs-1 center noPadLR">
+            <div className="col-xs-1 textWidth60 center noPadLR">
               <button onClick={ this.last }>
                 <span className="glyphicon glyphicon-chevron-right" aria-hidden="true" />
                 <span className="glyphicon glyphicon-chevron-right" aria-hidden="true" />

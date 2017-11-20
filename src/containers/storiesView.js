@@ -45,11 +45,11 @@ class storiesView extends Component {
     if (name === 'SL') dataName = 'userStorylines';
     else if (name === 'SLP') dataName = 'userPosts';
     else if (name === 'UP') dataName = 'vin';
-
-
+    const lenStateData = this.state[dataName].length; 
+    console.log('len', dataName, lenStateData)
 
     //start at index zero or follow the click event
-    let value = 0
+    let value = 0;
     if (arr[1] === 'first') value = 0;
     else if (arr[1] === 'previous' && this.state[name] > 0) value = this.state[name] - 1;
     else if (arr[1] === 'next' ) value = 0; //============
@@ -61,64 +61,94 @@ class storiesView extends Component {
   render() {
     const state = this.state;
     if (!state.userStorylines.length || !state.userPosts.length ) return <div />;
-    console.log('>>>>>>>>', this.state);
-    // storyline title & description info
-    let storyline1 = '', storyline2 = '';
-    if (state.userStorylines[state.SL].title) storyline1 = state.userStorylines[state.SL].title;
-    else storyline1 = state.userStorylines[state.SL].description;
-    if (state.userStorylines[state.SL].title && state.userStorylines[state.SL].description) storyline2 = state.userStorylines[state.SL].description;
-    // storyline posts filter
-    const SLPosts = state.userPosts.filter(post => {
-      return post.storylineId === state.userStorylines[state.SL].id && post.userId === state.currentUser.id;
-    })
-    console.log('>>>>>>>userPosts>>>>>', SLPosts);
+    console.log('>>>state>>>>>', this.state);
+    // current storyline:
+    const currentSL = state.userStorylines[state.SL];
+    // formating dates
+    let dateUpdated = currentSL.updatedAt.slice(0, 10) + ' time: ';
+    dateUpdated += currentSL.updatedAt.slice(11, 16);
+    let dateCreated = currentSL.createdAt.slice(0, 10) + ' time: ';
+    dateCreated += currentSL.createdAt.slice(11, 16);
+    // description may be null.
+    const descriptionSL = (currentSL.description) ? currentSL.description : '-- none --'
+
+    // else storyline1 = state.userStorylines[state.SL].description;
+    // if (state.userStorylines[state.SL].title && state.userStorylines[state.SL].description) storyline2 = state.userStorylines[state.SL].description;
+    // // storyline posts filter
+    // const SLPosts = state.userPosts.filter(post => {
+    //   return post.storylineId === state.userStorylines[state.SL].id && post.userId === state.currentUser.id;
+    // })
+    // console.log('>>>>>>>userPosts>>>>>', SLPosts);
     //-----------------------
+
+
     const toggle = this.state.toggle
     const SL = JSON.stringify(state.userStorylines);
     const UP = JSON.stringify(state.userPosts);
     const CU = JSON.stringify(state.currentUser);
     const AP = JSON.stringify(state.allPosts);
     return (
-      <div className="container marginT marginB noPadLR">
-        <div className="row marginB noPadLR noMarginLR">
-          <div className="col-xs-12 noPadLR noMarginLR">
+      <div className="container marginT marginB noPadLR noMarginLR">
 
-            <div className="col-xs-3 center noPadLR">
-              <button className="btn btn-default" disabled>New Story</button>
+          <div className="row marginB noPadLR noMarginLR">
+            <div className="col-xs-12 noPadLR noMarginLR">
+
+              <div className="col-xs-3 center noPadLR">
+                <button className="btn btn-default" disabled>New Story</button>
+              </div>
+
+              <div className="col-xs-6 btn-group center noPadLR" role="group" aria-label="poststory">
+                <Link to="/postsView"><button type="button" className="btn btn-default col-xs-6 center">Posts</button></Link>
+                <Link to="/storiesView"><button type="button" className="btn btn-primary col-xs-6 center">Stories</button></Link>
+              </div>
+
+              <div className="col-xs-3 center noPadLR">
+                <button className="btn btn-default" disabled>Graphics Version</button>
+              </div>
+
             </div>
-
-            <div className="col-xs-6 btn-group center noPadLR" role="group" aria-label="poststory">
-              <Link to="/postsView"><button type="button" className="btn btn-default col-xs-6 center">Posts</button></Link>
-              <Link to="/storiesView"><button type="button" className="btn btn-primary col-xs-6 center">Stories</button></Link>
-            </div>
-
-            <div className="col-xs-3 center noPadLR">
-              <button className="btn btn-default" disabled>Graphics Version</button>
-            </div>
-
           </div>
-        </div>
 
-        <div className="row marginBSM noMarginLR">
-          <div className="col-xs-12 noMarginLR noPadLR">
-            <Mover title={ 'Storylines' } name={ 'SL' } selection={ this.handleSelection } />
-          </div>
-        </div>
+        <div className="container">
+          <div className="row marginBSM noMarginLR">
+            <div className="col-xs-12 noMarginLR noPadLR">
+              <Mover title={ 'Storylines' } name={ 'SL' } selection={ this.handleSelection } />
+        </div></div></div>
 
-        <div className="row col-xs-12 panel panel-default">
-          <div className="col-xs-2 noPadLR"><h5>Storyline: </h5></div>
-          <div className="col-xs-9 noPadLR">{ storyline1 }</div>
-          <div className="col-xs-9 noPadLR">{ storyline2 }</div>
-        </div>
+        <div className="container">
+          <div className="row col-xs-12 panel panel-default center">
+
+            <div className="col-xs-12 noPadLR">
+              <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>
+              <div className="col-xs-1 moveDown07 noPadLR">{ currentSL.id }</div>
+              <div className="col-xs-2 noPadLR"><h5>Updated: </h5></div>
+              <div className="col-xs-3 moveDown07">{ dateUpdated }</div>
+              <div className="col-xs-2 noPadLR"><h5>Created: </h5></div>
+              <div className="col-xs-3 moveDown07">{ dateCreated }</div>
+            </div>
+
+            <div className="col-xs-12 noPadLR">
+              <div className="col-xs-1 noPadLR pull-left"><h5>Title: </h5></div>
+              <div className="col-xs-9 moveDown07">{ currentSL.title }</div>
+            </div>
+
+            <div className="col-xs-12 noPadLR">
+              <div className="col-xs-1 noPadLR pull-left"><h5>Description: </h5></div>
+              <div className="col-xs-9 moveDown07">{ descriptionSL }</div>
+            </div>
+
+        </div></div>
+
+        <div className="container">
+          <div className="row marginBSM noMarginLR">
+            <div className="col-xs-12 noMarginLR noPadLR">
+              <Mover title={ 'Posts' } name={ 'SLP' } selection={ this.handleSelection } />
+        </div></div></div>
 
         <div className="row col-sm-12 panel panel-default">
           <div>
           Posts & replies
           </div>
-        </div>
-
-        <div className="row marginBSM noMarginLR">
-          <Mover title={ 'Posts' } name={ 'SLP' } selection={ this.handleSelection } />
         </div>
 
         <div className="row col-sm-12">

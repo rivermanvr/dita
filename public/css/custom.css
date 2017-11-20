@@ -81,8 +81,12 @@
     margin-top: 10px; }
   .moveDown {
     margin-top: 35px; }
-  .moveDownSM {
+  .moveDown05 {
     margin-top: 5px; }
+  .moveDown07 {
+    margin-top: 07px; }
+  .moveDown10 {
+    margin-top: 10px; }
   .moveLeft {
     margin-right: 7px; }
   .moveRight {
@@ -155,6 +159,9 @@
   .textWhite {
     color: white;
     font-weight: normal; } }
+
+.textWidth60 {
+  width: 60px; }
 
 .textWidth120 {
   width: 120px; }

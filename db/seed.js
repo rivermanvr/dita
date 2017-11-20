@@ -12,18 +12,24 @@ const users = [
 ]
 
 const posts = [
-  { title: 'Thoughts Monday 11-20', body: 'Need to spend a 1/2 hour on -crack-the-code-interview each day', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4, storylineId: null },
-  { title: 'ToDo Tuesday 11-21', body: 'Develop a 1 page resume, keep 3 pager', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4, storylineId: null },
-  { title: 'Today was amazing!', body: 'just a random summary of my amazing day mayng', zip: '10026', latitude: 40.802381, longitude: -73.952681, userId: null, storylineId: null },
-  { title: 'Tonight was dope!', body: 'just a random summary of my dope night mayng', zip: '10025', latitude: 40.798601, longitude: -73.966622, userId: null, storylineId: null },
-  { title: 'Tonight was bonkers!', body: 'just a random summary of my bonkers night mayng', zip: '10024', latitude: 40.798452, longitude: -73.974428, userId: null, storylineId: null },
-  { title: 'Today was wild!', body: 'just a random summary of my wild day mayng', zip: '10023', latitude: 40.775921, longitude: -73.982607, userId: null, storylineId: null },
-  { title: 'ToDo Tuesday 11-21', body: 'Develop a 1 page resume, keep 3 pager', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4, storylineId: null },
-  { title: 'Today was amazing!', body: 'just a random summary of my amazing day mayng', zip: '10026', latitude: 40.802381, longitude: -73.952681, userId: null, storylineId: null },
-  { title: 'Tonight was dope!', body: 'just a random summary of my dope night mayng', zip: '10025', latitude: 40.798601, longitude: -73.966622, userId: null, storylineId: null },
-  { title: 'Tonight was bonkers!', body: 'just a random summary of my bonkers night mayng', zip: '10024', latitude: 40.798452, longitude: -73.974428, userId: null, storylineId: null },
-  { title: 'Today was wild!', body: 'just a random summary of my wild day mayng', zip: '10023', latitude: 40.775921, longitude: -73.982607, userId: null, storylineId: null },
-  { title: 'This morning was insane!', body: 'just a random summary of my insane morning mayng', zip:'10022', latitude: 40.758628, longitude: -73.967948, userId: null, storylineId: null }
+  { id: 1, title: 'Thoughts Monday 11-20', body: 'Need to spend a 1/2 hour on -crack-the-code-interview each day', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4 },
+  { id: 2, title: 'ToDo Tuesday 11-21', body: 'Develop a 1 page resume, keep 3 pager', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4 },
+  { id: 3, title: 'ToDo Friday 11-17', body: 'Going to brunch at the Culinary Institute on Sat', zip: '10026', latitude: 41.745849, longitude: -73.932718, userId: 4 },
+  { id: 4, title: 'RivCon ToDo', body: 'Need to do paperwork for Corp Insurance Coverages', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4 },
+  { id: 5, title: 'Garth Brooks', body: 'tickets to Garth concert on friday 12-1 at NJPAC', zip: '07102', latitude: 40.735657, longitude: -74.172367, userId: 4 },
+  { id: 6, title: 'Fullstack finished', body: 'December 7, 2017 is our last day of class! - graduating', zip: '10005', latitude: 40.704595, longitude: -74.008906, userId: 4 },
+  { id: 7, title: 'ToDo Tuesday 11-21', body: 'Develop a 1 page resume, keep 3 pager', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4 },
+  { id: 8, title: 'Invited to take a test!', body: 'IBM sent a link for a test, I have 5 days to complete it', zip: '07424', latitude: 40.881172, longitude: -74.212063, storylineId: 2 },
+  { id: 9, title: 'Test Response', body: 'my first test - need to practice for this kind of test', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4, storylineId: 2 },
+  { id: 10, title: 'Rejection', body: 'not surprised - was rejected, but now I know what to expect on these tests', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4, storylineId: 2 },
+  { id: 11, title: 'reusable components', body: 'This project has me focused on creating single function - reusable components', zip: '10005', latitude: 40.704595, longitude: -74.008906, userId: 4, storylineId: 3 },
+  { id: 12, title: 'Working on my final items', body: 'need to get these final items finished before Tuesday night', zip: '10005', latitude: 40.704595, longitude: -74.008906, userId: 4, storylineId: 3 },
+  { id: 13, title: '1 or two nights to finish up', body: 'We need to clean up our code quickly, only a few days left', zip: '10005', latitude: 40.704595, longitude: -74.008906, userId: 4, storylineId: 3 },
+  { id: 14, title: 'presenting results', body: 'We have to present our final results on Tuesday the 5th of Dec.', zip: '10005', latitude: 40.704595, longitude: -74.008906, userId: 4, storylineId: 3 },
+  { id: 15, title: 'Working on the ceiling', body: 'Neal had a leak in the roof, showing him how to spackle the ceiling', zip: '07076', latitude: 40.640040, longitude: -74.369018, userId: 4, storylineId: 1 },
+  { id: 16, title: 'molding', body: 'working on the basement floor molding now', zip: '07076', latitude: 40.640040, longitude: -74.369018, userId: 4, storylineId: 1 },
+  { id: 17, title: 'doing puzzles', body: 'doing puzzles with the grand-kids.  Ryan is REALLY GOOD at it.', zip: '07076', latitude: 40.640040, longitude: -74.369018, userId: 4, storylineId: 1 },
+  { id: 18, title: 'pizza time', body: 'time for pizza and garlic bread for dinner, it was a nice day', zip: '07076', latitude: 40.640040, longitude: -74.369018, userId: 4, storylineId: 1 }
 ]
 
 const categories = [
@@ -38,97 +44,70 @@ const categories = [
 ]
 
 const stories = [
-  { title: 'Sunday with the family', description: 'At Pam & Neal"s home' },
-  { title: 'Interview at IBM', description: 'sent my resume for fun & got an interview' },
-  { title: 'Working on the final project', description: 'Fullstack Academy final project' }
+  { id: 1, title: 'Sunday with the family', description: 'At Pam & Neal"s home', userId: 4 },
+  { id: 2, title: 'Interview at IBM', description: 'sent my resume for fun & got an interview', userId: 4 },
+  { id: 3, title: 'Working on the final project', description: 'Fullstack Academy final project', userId: 4 },
 ]
 
 const replies = [
-  {body: 'Damn son I had no idea! Thats crazy. I wanna hear more'},
-  {body: 'Wow! Im so sorry to hear that :('},
-  {body: 'I cant believe that! You wild for this'},
-  {body: 'Cool!!'},
-  {body: 'Good shit. Make sure you follow up tomorrow!'},
-  {body: 'If I were you i probably wouldnt have done that.'},
-  {body: 'lololol u wot m8'},
-  {body: 'good luck tomorrow! hope it goes well for you. keep us posted!'},
-  {body: 'ok dis interesting. subscribed!'},
-  {body: 'this is def not a happy story lel. retag plz'},
-  {body: 'wow this story is peak internet. im logging off for the night'}
+  { body: 'Wow, good luck!', userId: 1, postId: 8 },
+  { body: 'Break a leg!', userId: 2, postId: 8 },
+  { body: 'Let me know what happens', userId: 3, postId: 8 },
+  { body: 'How do you think you did?', userId: 3, postId: 9 },
+  { body: 'OMG - No Wayyyyy!', userId: 3, postId: 10 },
+  { body: 'Did you get crack the coding interview?', userId: 1, postId: 9 },
+  { body: 'I am glad we put the components on the NAV bar', userId: 2, postId: 11 },
+  { body: 'I am going to to too, but I may not be able to.', userId: 3, postId: 12 },
+  { body: 'I have been distracted, but I am focused now!!', userId: 1, postId: 12 },
+  { body: 'As soon as I get home, I am on it too.', userId: 2, postId: 12 },
+  { body: 'We need to practice before Tuesday', userId: 1, postId: 14 },
+  { body: 'They have you working for your dinner!!!', userId: 1, postId: 15 },
+  { body: 'I love puzzles!!', userId: 1, postId: 17 },
+  { body: 'I am glad you had time to be with them, looked like it was a work visit.', userId: 2, postId: 17 },
+  { body: 'How many grandchildren do you have?', userId: 3, postId: 17 },
+  { body: 'How old are your kids?', userId: 1, postId: 17 },
+  { body: 'It is always good to eat pizza!!', userId: 3, postId: 18 },
+  { body: 'I think they should have made a filet minion', userId: 2, postId: 18 },
+  { body: 'Did you take home the leftovers?', userId: 1, postId: 18 }
 ]
 
-const createUsers = (cats) => {
+const createCategories = () => {
+  return Promise.all(categories.map(category => Category.create(category)))
+   .then(createUsers)
+}
+
+const createUsers = () => {
   return Promise.all(users.map(user => User.create(user)))
-    .then(users => createPosts(users,cats))
+    .then(createStories)
 }
 
-const createCategories = (posts) => {
-  return Promise.all(categories.map(c => Category.create(c)))
-    .then(cats => createUsers(cats))
-}
-
-const createReplies = (users) => {
+const createReplies = () => {
   return Promise.all(replies.map(reply => {
-    reply.userId = users[~~(Math.random() * 4)].id
     return Reply.create(reply)
-      .then(reply => {
-        return Post.findAll()
-          .then (posts =>{
-            return reply.update({
-              postId :  posts[~~(Math.random() * 7)].id
-            })
-          })
-        })
   }))
 }
 
-const createStories = (users, posts, cats) => {
-  return Promise.all(stories.map((story,i) =>{
-    story.userId = users[i].id
-    return StoryLine.create(story)
-      .then(story => {
-        const randomCats = [cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)]]
-        const uniqueCats = randomCats.filter((cat,index)=> {return randomCats.indexOf(cat) == index})
-        return story.addCategories(uniqueCats)
-          .then(() => Post.findAll())
-          .then(posts => {
-            return Promise.all(
-              posts
-                .filter(post => post.userId === story.userId)
-                .map(post => {
-                  return post.update({
-                    storylineId: story.id
-                  })
-                })
-            )
-          })
-      })
-  })) 
-  .then(() => createReplies(users))
-}
-
-const createPosts = (users, cats) => {
+const createPosts = () => {
   return Promise.all(posts.map(post => {
-    post.userId = users[~~(Math.random() * 4)].id
     return Post.create(post)
-      .then(post => {
-        const randomCats = [cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)],cats[~~(Math.random() * 7)]]
-        const uniqueCats = randomCats.filter((cat,index)=> {return randomCats.indexOf(cat) == index})
-        return post.addCategories(uniqueCats)
-      })
   }))
-  .then(posts => createStories(users,posts,cats))
+   .then(() => createReplies(users))
 }
 
-
+const createStories = () => {
+  return Promise.all(stories.map(story => {
+    return StoryLine.create(story)
+  }))
+    .then(createPosts)
+}
 
 const seed = () => {
-  return db.sync({force:true})
+  return db.sync({ force: true })
   .then(createCategories)
 }
 
 seed()
-.then(()=> {
+.then(() => {
   console.log('seed done')
   db.close()
 })

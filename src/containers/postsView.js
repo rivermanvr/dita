@@ -9,7 +9,6 @@ class storiesView extends Component {
   }
 
   componentDidMount () {
-    console.log('DidM - props: ', this.props)
     const allState = this.props.state;
     if (allState.userStorylines.length && allState.userPosts.length ) {
       const toggle = (this.props.location.pathname === '/postsView') ? 'posts' : 'stories';
@@ -23,7 +22,6 @@ class storiesView extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('WillM - props: ', nextProps)
     const allState = nextProps.state;
     if (allState.userStorylines.length && allState.userPosts.length ) {
       const toggle = (nextProps.location.pathname === '/postsView') ? 'posts' : 'stories';
@@ -37,7 +35,7 @@ class storiesView extends Component {
   }
 
   render() {
-    const state = this.state;
+    console.log('>>>>>>', this.state);
     const toggle = this.state.toggle
     return (
       <div className="container marginT marginB">

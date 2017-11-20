@@ -29,7 +29,7 @@ export default class SelectMulti extends Component {
   }
 
   handleAction(str) {
-    this.props.selection([this.props.title, str])
+    this.props.selection([this.props.name, str])
   }
   
   render() {

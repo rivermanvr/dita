@@ -10,8 +10,8 @@ export default class TestMover extends Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
 
-  handleSelect(str) {
-    console.log('in TestMover: ', str);
+  handleSelect(arr) {
+    console.log('in TestMover: ', arr[0], arr[1]);
   }
 
   render() {
@@ -22,9 +22,12 @@ export default class TestMover extends Component {
           <h5>Homegrown carousel mover component</h5>
           <ul>
             <li>This is a carousel bar: first    previous    next    last</li>
+            <li>name = 'SL', title = 'Storylines' data = userStorylines</li>
+            <li>name = 'SLP', title = 'Posts' data = userPosts filtered</li>
+            <li>name = 'UP', title = 'Posts' data = allPosts filtered</li>
             <li>return prop = this.props.selection</li>
           </ul>
-          <MoverControl title={ this.state.moverTitle } selection={ this.handleSelect } />
+          <MoverControl title={ this.state.moverTitle } name={ 'SL' } selection={ this.handleSelect } />
         </div>
       </div>
     )

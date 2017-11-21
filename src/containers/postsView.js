@@ -9,7 +9,6 @@ class storiesView extends Component {
   }
 
   componentDidMount () {
-    console.log('DidM - props: ', this.props)
     const allState = this.props.state;
     if (allState.userStorylines.length && allState.userPosts.length ) {
       const toggle = (this.props.location.pathname === '/postsView') ? 'posts' : 'stories';
@@ -23,7 +22,6 @@ class storiesView extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('WillM - props: ', nextProps)
     const allState = nextProps.state;
     if (allState.userStorylines.length && allState.userPosts.length ) {
       const toggle = (nextProps.location.pathname === '/postsView') ? 'posts' : 'stories';
@@ -37,14 +35,8 @@ class storiesView extends Component {
   }
 
   render() {
-
-    console.log(this.state);
-    const state = this.state;
+    console.log('>>>>>>', this.state);
     const toggle = this.state.toggle
-    const SL = JSON.stringify(state.userStorylines);
-    const UP = JSON.stringify(state.userPosts);
-    const CU = JSON.stringify(state.currentUser);
-    const AP = JSON.stringify(state.allPosts);
     return (
       <div className="container marginT marginB">
         <div className="row marginB">
@@ -61,11 +53,6 @@ class storiesView extends Component {
         </div>
         <div className="row">
           <h4><p>View = { toggle }</p></h4>
-          <p>state: </p>
-          <p>user storylines: { SL }</p>
-          <p>user posts: { UP }</p>
-          <p>current user: { CU }</p>
-          <p>all posts: { AP }</p>
         </div>
       </div>
     )

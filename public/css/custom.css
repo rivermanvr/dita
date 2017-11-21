@@ -81,8 +81,12 @@
     margin-top: 10px; }
   .moveDown {
     margin-top: 35px; }
-  .moveDownSM {
+  .moveDown05 {
     margin-top: 5px; }
+  .moveDown07 {
+    margin-top: 07px; }
+  .moveDown10 {
+    margin-top: 10px; }
   .moveLeft {
     margin-right: 7px; }
   .moveRight {
@@ -106,6 +110,9 @@
     margin-top: 2px; }
   .noMarginB {
     margin-bottom: 0px; }
+  .noMarginLR {
+    margin-left: 0px;
+    margin-right: 0px; }
   .noMarginT {
     margin-top: 0px; }
   .noMarginTB {
@@ -117,6 +124,14 @@
   .noPadTB {
     padding-top: 0px;
     padding-bottom: 0px; }
+  .padLR10 {
+    padding-left: 10px;
+    padding-right: 10px; }
+  .padLR20 {
+    padding-left: 20px;
+    padding-right: 20px; }
+  .padR20 {
+    padding-right: 20px; }
   .padTBSM {
     padding-top: 5px;
     padding-bottom: 5px; }
@@ -138,12 +153,21 @@
   .textBlue {
     color: Blue;
     font-weight: normal; }
+  .textGrey {
+    color: rgba(0, 0, 0, 0.42);
+    font-weight: normal; }
   .textRed {
     color: #DF0D0D;
     font-weight: normal; }
   .textWhite {
     color: white;
     font-weight: normal; } }
+
+.textWidth60 {
+  width: 60px; }
+
+.textWidth120 {
+  width: 120px; }
 
 @media (max-width: 767px) {
   /* smartphones, iPhone, portrait 480x320 phones */

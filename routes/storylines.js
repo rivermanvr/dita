@@ -3,7 +3,11 @@ const { verifyToken } = require('./authMiddleware')
 const { StoryLine, Post } = require('../db').models
 
 router.get('/mystorylines', verifyToken, (req, res, next) => {
-  StoryLine.findAll({ where: { userId: req.user.id } })
+  StoryLine.findAll({ where: {
+            userId: req.user.id,
+        },
+        order: [['updatedAt', 'DESC']]
+    })
     .then(storylines => res.send(storylines))
     .catch(next)
 })
@@ -27,5 +31,3 @@ router.get('/', (req, res, next) => {
 })
 
 module.exports = router
-
-

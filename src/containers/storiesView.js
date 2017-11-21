@@ -16,13 +16,19 @@ class storiesView extends Component {
     this.formatDates = this.formatDates.bind(this);
   }
 
-  formatDates(dateIn) {
+  formatDates (dateIn) {
     return dateIn.slice(0, 10) + ' time: ' + dateIn.slice(11, 16);
   }
 
-  initializeState (allProps) {
-    const allState = allProps.state;
-    const toggle = (allProps.location.pathname === '/postsView') ? 'posts' : 'stories';
+  initializeState (allProps, origin, name, value) {
+    console.log('>>>>>props>>>>>>>>>>', allProps)
+    const allState = (origin) ? allProps : allProps.state;
+    let toggle;
+    if (origin) {
+      toggle = allState.toggle;
+    } else {
+      toggle = (allProps.location.pathname === '/postsView') ? 'posts' : 'stories';
+    }
     let postsSLP = [], postsUP = [];
     // if toggle is 'posts', then populate postsUP in state.
     if (toggle === 'posts') {
@@ -31,18 +37,32 @@ class storiesView extends Component {
       })
     // if toggle is 'stories', then populate postsSLP.
     } else {
+      if (origin) {
+        postsSLP = allState.userPosts.filter(post => {
+          return post.storylineId === allState.userStorylines[value].id;
+        })
+      } else {
         postsSLP = allState.userPosts.filter(post => {
           return post.storylineId === allState.userStorylines[this.state.SL].id;
         })
+      }
     }
     //------------------------------------------------------
-    this.setState({ userStorylines: allState.userStorylines,
-      userPosts: allState.userPosts,
-      currentUser: allState.currentUser.user,
-      postsSLP,
-      postsUP,
-      toggle
-     })
+    if (origin) {
+      this.setState({ userStorylines: allState.userStorylines,
+        postsSLP,
+        postsUP,
+        [name]: value
+       })
+    } else {
+      this.setState({ userStorylines: allState.userStorylines,
+        userPosts: allState.userPosts,
+        currentUser: allState.currentUser.user,
+        postsSLP,
+        postsUP,
+        toggle
+       })
+    }
   }
 
   componentDidMount () {
@@ -64,23 +84,31 @@ class storiesView extends Component {
     const state = this.state;
     const name = arr[0];
     /*  using moverControl returns:
-    if (name === 'SL') => 'userStorylines';
-    if (name === 'SLP') dataName = 'userPosts';
-    if (name === 'SLR') dataName = 'userReplies';
-    if (name === 'UP') dataName = 'userAllPosts';
+    (name === 'SL') => 'userStorylines';
+    (name === 'SLP') => 'userPosts';
+    (name === 'SLR') => 'userReplies';
+    (name === 'UP') => 'userAllPosts';
     */
-   const lenSL = state.userStorylines.length;
-   let lenSLP = 0, lenSLR = 0, lenUP = 0;
-  
-
     //start at index zero or follow the click event
     let value = 0;
-    if (arr[1] === 'first') value = 0;
-    else if (arr[1] === 'previous' && this.state[name] > 0) value = this.state[name] - 1;
-    else if (arr[1] === 'next' ) value = 0; //==============================
-    else if (arr[1] === 'last') value = 0;  //==============================
+    if (arr[1] === 'first') {
+      value = 0;
+    } else if (arr[1] === 'previous' && state[name] > 0) {
+      value = state[name] - 1 ;
+    } else if (arr[1] === 'next' ) {
+      if (name === 'SL' ) {
+        if (state.userStorylines.length > state[name] + 1) {
+          value = state[name] + 1;
+        }
+      }
+    } else if (arr[1] === 'last') {
+      if (name === 'SL' ) {
+          value = state.userStorylines.length - 1;
+      }
+    }
     console.log('from mover component: ', name, value)
-    this.setState({ name: value })
+    // this.setState({ [name]: value })
+    this.initializeState(this.state, 1, name, value);
   }
 
   render() {
@@ -197,7 +225,7 @@ class storiesView extends Component {
               <div className="col-xs-1 moveDown07 noPadLR">{ replies.id }</div>
               <div className="col-xs-2 noPadLR"><h5>Updated: </h5></div>
               <div className="col-xs-3 moveDown07">{ replies.updatedAt }</div>
-              <div className="col-xs-2 noPadLR"><h5>user Name: </h5></div>
+              <div className="col-xs-2 noPadLR"><h5>User Name: </h5></div>
               <div className="col-xs-3 moveDown07">{ replies.user.name }</div>
             </div>
 
@@ -208,9 +236,6 @@ class storiesView extends Component {
 
         </div></div>
 
-        <div className="row col-sm-12">
-          <h4><p>View = { toggle }</p></h4>
-        </div>
       </div>
     )
   }

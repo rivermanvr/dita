@@ -8,7 +8,7 @@ class storiesView extends Component {
   constructor() {
     super();
     this.state = { userStorylines: [], userPosts: [], currentUser: {},
-      postsSLP: [], repliesSLR: [], postsUP: [],
+      postsSLP: [], postsUP: [],
       toggle: 'stories', SL: 0, SLP: 0, SLR: 0, UP: 0 };
 
     this.handleSelection = this.handleSelection.bind(this);
@@ -16,6 +16,7 @@ class storiesView extends Component {
   }
 
   initializeState (allProps) {
+    console.log('in initialize')
     const allState = allProps.state;
     const toggle = (allProps.location.pathname === '/postsView') ? 'posts' : 'stories';
     let postsSLP = [], postsUP = [];
@@ -27,7 +28,7 @@ class storiesView extends Component {
     // if toggle is 'stories', then populate postsSLP.
     } else {
         postsSLP = allState.userPosts.filter(post => {
-          return !!post.storylineId;
+          return post.storylineId === allState.userStorylines[this.state.SL].id;
         })
     }
     //------------------------------------------------------
@@ -41,7 +42,7 @@ class storiesView extends Component {
   }
 
   componentDidMount () {
-    console.log('>>>>>>>>>>in DID>>>>>>>')
+    console.log('>>>>>>>>>>in DID>>>>>>>', this.props)
     const allProps = this.props;
     if (allProps.state.userStorylines.length && allProps.state.userPosts.length ) {
       this.initializeState(allProps);
@@ -49,7 +50,7 @@ class storiesView extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('>>>>>>>>>>in Will>>>>>>>')
+    console.log('>>>>>>>>>>in Will>>>>>>>', nextProps)
     const allProps = nextProps;
     if (allProps.state.userStorylines.length && allProps.state.userPosts.length ) {
       this.initializeState(allProps);
@@ -155,7 +156,13 @@ class storiesView extends Component {
 
         <div className="row col-sm-12 panel panel-default">
           <div>
-          Posts
+            { this.state.postsSLP[this.state.SLP].id } --
+            { this.state.postsSLP[this.state.SLP].zip } --
+            { this.state.postsSLP[this.state.SLP].latitude } --
+            { this.state.postsSLP[this.state.SLP].longitude } --
+            { this.state.postsSLP[this.state.SLP].updatedAt } --
+            { this.state.postsSLP[this.state.SLP].title } --
+            { this.state.postsSLP[this.state.SLP].body }
           </div>
         </div>
 
@@ -167,7 +174,10 @@ class storiesView extends Component {
 
         <div className="row col-sm-12 panel panel-default">
           <div>
-          Replies
+            { this.state.postsSLP[this.state.SLP].replies[this.state.SLR].id } --
+            { this.state.postsSLP[this.state.SLP].replies[this.state.SLR].user.name } --
+            { this.state.postsSLP[this.state.SLP].replies[this.state.SLR].updatedAt } --
+            { this.state.postsSLP[this.state.SLP].replies[this.state.SLR].body }
           </div>
         </div>
 

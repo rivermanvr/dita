@@ -31,7 +31,8 @@ class Navbar extends Component {
       { title: 'Map', path: '/allpostsmap' },
       { title: 'All Posts By Loc - WZ', path: '/allpostsbyloc' },
       { title: 'Distance Test - WZ', path: '/distancetest' },
-      { title: 'Create Story - WZ', path: '/createstory' }
+      { title: 'Create Story - WZ', path: '/createstory' },
+      { title: 'Profile test - WZ', path: '/profiletest' }
     ];
     return (
       <ul className="nav nav-tabs mainnav" style={ { marginBottom: '10px' } }>

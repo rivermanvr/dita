@@ -6,42 +6,41 @@ const env = require('../env')
 
 const defineAttr = {
   name: {
-      type: Sequelize.STRING,
-      allowNull:false,
-      validate: {
-          notEmpty: true
-      }
+    type: Sequelize.STRING,
+    allowNull:false,
+    validate: {
+      notEmpty: true
+    }
   },
   email: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-          isEmail: true
-      }
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true,
+    validate: {
+      isEmail: true
+    }
   },
   username: {
-      type: Sequelize.STRING,
-      unique:true,
-      allowNull:false,
-      validate: {
-          len: [2,14],
-          notEmpty: true,
-          is: /^[a-z0-9]+$/i  //will create more advanced regex to disallow special characters
-          
-      }
+    type: Sequelize.STRING,
+    unique:true,
+    allowNull:false,
+    validate: {
+      len: [2,14],
+      notEmpty: true,
+      is: /^[a-z0-9]+$/i  //will create more advanced regex to disallow special characters
+    }
   },
   latitude: {
-      type: Sequelize.INTEGER,
-      allowNull: true,
-      defaultValue: null,
-      validate: { min: -90, max: 90 }
+    type: Sequelize.INTEGER,
+    allowNull: true,
+    defaultValue: null,
+    validate: { min: -90, max: 90 }
   },
   longitude: {
-      type: Sequelize.INTEGER,
-      allowNull: true,
-      defaultValue: null,
-      validate: { min: -180, max: 180 }
+    type: Sequelize.INTEGER,
+    allowNull: true,
+    defaultValue: null,
+    validate: { min: -180, max: 180 }
   },
   password: { 
     type: db.Sequelize.STRING, 
@@ -110,8 +109,7 @@ User.updateUser = function(id, data) {
   return this.findById(id)
     .then(user => {
       if (!user) throw new Error('user not found')
-      Object.assign(user, data)
-      return user.save()
+      return user.update(data)
     })
 }
 

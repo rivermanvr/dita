@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import store from '../../store';
 import { addUserPost } from '../../actions/userposts';
 import Select from './select_box';
+import PlacesSearchBox from './geoLocator';
 
 
 class PostForm extends Component {
@@ -13,6 +14,7 @@ class PostForm extends Component {
       body: '',
       storylineId: null,
       userId: props.currentUser.user.id,
+      address: '',
       alert: '',
       alertStyle: ''
     }
@@ -82,12 +84,16 @@ class PostForm extends Component {
             }
           </select>
 
+          <PlacesSearchBox name="address" onChange={ this.handleChange } />
+
           <div className="form-group">
             <button type="submit" disabled={ !currentUser.user.id } onClick={ this.handleClick } 
               className="btn btn-primary" style={ btnStyle }>Create Post
             </button>
           </div>          
         </form>
+
+
         
         { alert ? <div className={ alertStyle }>{ alert }</div> : "" }
 

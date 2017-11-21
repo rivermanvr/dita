@@ -12,4 +12,5 @@ const store = createStore(
   ))
 );
 
+export * from '../actions'
 export default store;

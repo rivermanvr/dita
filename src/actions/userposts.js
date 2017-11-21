@@ -22,7 +22,3 @@ export const addUserPost = (newPost) => dispatch =>
     .then(res => dispatch(fetchUserPosts(res.data)))
     .then(res => dispatch(fetchPosts(res.data)))
     .catch(console.log);
-
-
-
-

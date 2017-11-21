@@ -4,6 +4,7 @@ import posts from './posts';
 import userPosts from './userPosts';
 import storylines from './storylines';
 import userStorylines from './userStorylines';
+import userLocations from './userLocations';
 import currentView from './currentView';
 
 const rootReducer = combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   posts,
   userPosts,
   storylines,
-  userStorylines
+  userStorylines,
+  userLocations
 });
 
 export default rootReducer;

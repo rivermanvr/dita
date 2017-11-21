@@ -4,6 +4,7 @@ const Post = require('./Post')
 const Reply = require('./Reply')
 const Category = require('./Category')
 const StoryLine = require('./StoryLine')
+const Location = require('./Location')
 // associations
 
 User.hasMany(StoryLine)
@@ -18,6 +19,8 @@ Post.belongsTo(StoryLine)
 Post.hasMany(Reply)
 Category.belongsToMany(StoryLine, {through: 'storyCategory'})
 StoryLine.belongsToMany(Category, {through: 'storyCategory'})
+User.hasMany(Location)
+Location.belongsTo(User)
 
 
 
@@ -28,4 +31,4 @@ const sync = () => db.sync()
 })
 
 
-module.exports = { sync, models: { User, Post, Reply, Category, StoryLine } };
+module.exports = { sync, models: { User, Post, Reply, Category, StoryLine, Location } };

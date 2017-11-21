@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { isEmpty } from 'lodash'
 
-import { signUp } from '../../reducers'
+import MapWithASearchBox from '../singleFunction/geoLocator';
+import { signUp, addUserLocation } from '../../reducers'
 import { Button } from '../reusables'
 import UserValues from './UserValues'
 
@@ -12,6 +14,12 @@ class Signup extends Component {
       username: '',
       email: '',
       password: '',
+    },
+    location: {
+      address: '',
+      latitude: '',
+      longitude: '',
+      isHome: true
     }
   }
 
@@ -19,8 +27,25 @@ class Signup extends Component {
     this.setState({ user: newValues })
   }
 
+  handlePlaceChange = place => {
+    if (place) {
+      this.setState({
+        location: {
+          address: place.formatted_address,
+          latitude: place.geometry.location.lat(),
+          longitude: place.geometry.location.lng(),
+          isHome: true
+        }
+      })
+    }
+  }
+
   onSignup = () => {
     this.props.signUp(this.state.user)
+      .then(() => {
+        if (isEmpty(this.state.location.address)) return
+        return this.props.addUserLocation(this.state.location)
+      })
       .then(() => this.props.history.push('/'))
   }
 
@@ -34,6 +59,12 @@ class Signup extends Component {
           <UserValues
             user={ user }
             onChange={ handleChange } />
+
+          <div>
+            <h5>Set your home location</h5>
+            <h6>Can be changed anytime</h6>
+            <MapWithASearchBox selection={ this.handlePlaceChange } />
+          </div>
         </div>
 
         <Button
@@ -45,5 +76,5 @@ class Signup extends Component {
   }
 }
 
-const mapDispatch = { signUp }
+const mapDispatch = { signUp, addUserLocation }
 export default connect(null, mapDispatch)(Signup)

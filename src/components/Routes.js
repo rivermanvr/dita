@@ -18,7 +18,7 @@ import AllPostsByLoc from './singleFunction/AllPostsByLoc'
 import TestDistance from './testerRoutines/TestDistance'
 import PostDetail from './singleFunction/PostDetail'
 import CreateStory from './singleFunction/CreateStory'
-import TestProfile from './testerRoutines/Profile'
+import MyLocations from './singleFunction/MyLocations'
 
 export default function () {
   return (
@@ -45,7 +45,7 @@ export default function () {
         <Route exact path="/distancetest" component={ TestDistance } />  
         <Route path="/posts/:id" component={ PostDetail } />
         <Route exact path="/createstory" component={ CreateStory } />  
-        <Route exact path="/profiletest" component={ TestProfile } />  
+        <Route exact path="/mylocations" component={ MyLocations } />  
       </Switch>
     </div>
   )

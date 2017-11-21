@@ -13,10 +13,14 @@ class storiesView extends Component {
 
     this.handleSelection = this.handleSelection.bind(this);
     this.initializeState = this.initializeState.bind(this);
+    this.formatDates = this.formatDates.bind(this);
+  }
+
+  formatDates(dateIn) {
+    return dateIn.slice(0, 10) + ' time: ' + dateIn.slice(11, 16);
   }
 
   initializeState (allProps) {
-    console.log('in initialize')
     const allState = allProps.state;
     const toggle = (allProps.location.pathname === '/postsView') ? 'posts' : 'stories';
     let postsSLP = [], postsUP = [];
@@ -42,7 +46,6 @@ class storiesView extends Component {
   }
 
   componentDidMount () {
-    console.log('>>>>>>>>>>in DID>>>>>>>', this.props)
     const allProps = this.props;
     if (allProps.state.userStorylines.length && allProps.state.userPosts.length ) {
       this.initializeState(allProps);
@@ -50,7 +53,6 @@ class storiesView extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('>>>>>>>>>>in Will>>>>>>>', nextProps)
     const allProps = nextProps;
     if (allProps.state.userStorylines.length && allProps.state.userPosts.length ) {
       this.initializeState(allProps);
@@ -87,15 +89,18 @@ class storiesView extends Component {
     console.log('>>>state in render>>>>>', this.state);
     // current storyline:
     const currentSL = state.userStorylines[state.SL];
+    // Selecting the proper post record that associates to a storyline:
+    const post = state.postsSLP[this.state.SLP];
+    // Selecting the proper reply record that associates to a storyline/post:
+    const replies = post.replies[this.state.SLR];
     // formating dates
-    let dateUpdated = currentSL.updatedAt.slice(0, 10) + ' time: ';
-    dateUpdated += currentSL.updatedAt.slice(11, 16);
-    let dateCreated = currentSL.createdAt.slice(0, 10) + ' time: ';
-    dateCreated += currentSL.createdAt.slice(11, 16);
+    const dateUpdatedSL = this.formatDates(currentSL.updatedAt);
+    const dateCreatedSL = this.formatDates(currentSL.createdAt);
+    const dateUpdatedSLP = (post.updatedAt) ? this.formatDates(post.updatedAt) : '-- none --';
     // description may be null.
     const descriptionSL = (currentSL.description) ? currentSL.description : '-- none --'
     //-----------------------
-    const toggle = this.state.toggle
+    const toggle = this.state.toggle;
     return (
       <div className="container marginT marginB noPadLR noMarginLR">
 
@@ -131,9 +136,9 @@ class storiesView extends Component {
               <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>
               <div className="col-xs-1 moveDown07 noPadLR">{ currentSL.id }</div>
               <div className="col-xs-2 noPadLR"><h5>Updated: </h5></div>
-              <div className="col-xs-3 moveDown07">{ dateUpdated }</div>
+              <div className="col-xs-3 moveDown07">{ dateUpdatedSL }</div>
               <div className="col-xs-2 noPadLR"><h5>Created: </h5></div>
-              <div className="col-xs-3 moveDown07">{ dateCreated }</div>
+              <div className="col-xs-3 moveDown07">{ dateCreatedSL }</div>
             </div>
 
             <div className="col-xs-12 noPadLR">
@@ -154,17 +159,29 @@ class storiesView extends Component {
               <Mover title={ 'Posts' } name={ 'SLP' } selection={ this.handleSelection } />
         </div></div></div>
 
-        <div className="row col-sm-12 panel panel-default">
-          <div>
-            { this.state.postsSLP[this.state.SLP].id } --
-            { this.state.postsSLP[this.state.SLP].zip } --
-            { this.state.postsSLP[this.state.SLP].latitude } --
-            { this.state.postsSLP[this.state.SLP].longitude } --
-            { this.state.postsSLP[this.state.SLP].updatedAt } --
-            { this.state.postsSLP[this.state.SLP].title } --
-            { this.state.postsSLP[this.state.SLP].body }
-          </div>
-        </div>
+        <div className="container">
+          <div className="row col-xs-12 panel panel-default center">
+
+            <div className="col-xs-12 noPadLR">
+              <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>
+              <div className="col-xs-1 moveDown07 noPadLR">{ post.id }</div>
+              <div className="col-xs-2 noPadLR"><h5>Updated: </h5></div>
+              <div className="col-xs-3 moveDown07">{ dateUpdatedSLP }</div>
+              <div className="col-xs-2 noPadLR"><h5>Zip - (Lat / Long): </h5></div>
+              <div className="col-xs-3 moveDown07">{ post.zip } - ({ post.latitude } / { post.longitude })</div>
+            </div>
+
+            <div className="col-xs-12 noPadLR">
+              <div className="col-xs-1 noPadLR pull-left"><h5>Title: </h5></div>
+              <div className="col-xs-9 moveDown07">{ post.title }</div>
+            </div>
+
+            <div className="col-xs-12 noPadLR">
+              <div className="col-xs-1 noPadLR pull-left"><h5>Post Body: </h5></div>
+              <div className="col-xs-9 moveDown07">{ post.body }</div>
+            </div>
+
+        </div></div>
 
         <div className="container">
           <div className="row noMarginLR">
@@ -172,14 +189,24 @@ class storiesView extends Component {
               <Mover title={ 'Replies' } name={ 'SLR' } selection={ this.handleSelection } />
         </div></div></div>
 
-        <div className="row col-sm-12 panel panel-default">
-          <div>
-            { this.state.postsSLP[this.state.SLP].replies[this.state.SLR].id } --
-            { this.state.postsSLP[this.state.SLP].replies[this.state.SLR].user.name } --
-            { this.state.postsSLP[this.state.SLP].replies[this.state.SLR].updatedAt } --
-            { this.state.postsSLP[this.state.SLP].replies[this.state.SLR].body }
-          </div>
-        </div>
+        <div className="container">
+          <div className="row col-xs-12 panel panel-default center">
+
+            <div className="col-xs-12 noPadLR">
+              <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>
+              <div className="col-xs-1 moveDown07 noPadLR">{ replies.id }</div>
+              <div className="col-xs-2 noPadLR"><h5>Updated: </h5></div>
+              <div className="col-xs-3 moveDown07">{ replies.updatedAt }</div>
+              <div className="col-xs-2 noPadLR"><h5>user Name: </h5></div>
+              <div className="col-xs-3 moveDown07">{ replies.user.name }</div>
+            </div>
+
+            <div className="col-xs-12 noPadLR">
+              <div className="col-xs-1 noPadLR pull-left"><h5>Reply Body: </h5></div>
+              <div className="col-xs-9 moveDown07">{ replies.body }</div>
+            </div>
+
+        </div></div>
 
         <div className="row col-sm-12">
           <h4><p>View = { toggle }</p></h4>

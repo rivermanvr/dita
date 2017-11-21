@@ -17,3 +17,7 @@ export const addUserLocation = newLocation => dispatch =>
 export const removeUserLocation = location => dispatch => 
   axios.delete(`/api/locations/${location.id}`)
     .then(() => dispatch(fetchUserLocations()))
+
+export const setAsHome = location => dispatch => 
+  axios.put(`/api/locations/home/${location.id}`)
+    .then(() => dispatch(fetchUserLocations()))

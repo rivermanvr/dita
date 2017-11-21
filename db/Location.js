@@ -9,15 +9,18 @@ const Location = db.define('location', {
   },
   latitude: {
     type: Sequelize.FLOAT,
-    allowNull: true,
-    defaultValue: null,
+    allowNull: false,
     validate: { min: -90, max: 90 }
   },
   longitude: {
     type: Sequelize.FLOAT,
-    allowNull: true,
-    defaultValue: null,
+    allowNull: false,
     validate: { min: -180, max: 180 }
+  },
+  isHome: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
   }
 })
 
@@ -30,6 +33,17 @@ Location.addLocation = function(userId, data) {
 Location.removeLocation = function(userId, id) {
   return this.findOne({ where: { id, userId } })
     .then(location => location.destroy())
+}
+
+Location.setHome = function(userId, id) {
+  return this.findOne({ where: { userId, isHome: true } })
+    .then(home => {
+      if (home) return home.update({ isHome: false })
+    })
+    .then(() => {
+      return this.findOne({ where: { id, userId } })
+        .then(location => location.update({ isHome: true }))
+    })
 }
 
 module.exports = Location

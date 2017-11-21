@@ -4,12 +4,12 @@ const { StoryLine, Post } = require('../db').models
 
 router.get('/mystorylines', verifyToken, (req, res, next) => {
   StoryLine.findAll({ where: {
-            userId: req.user.id,
-        },
-        order: [['updatedAt', 'DESC']]
-    })
-    .then(storylines => res.send(storylines))
-    .catch(next)
+    userId: req.user.id,
+  },
+    order: [['updatedAt', 'DESC']]
+  })
+  .then(storylines => res.send(storylines))
+  .catch(next)
 })
 
 router.post('/', verifyToken, (req, res, next) => {

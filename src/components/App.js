@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import store from '../store'
-import { loadUserData, fetchPosts, fetchUserPosts, fetchStorylines, fetchUserStorylines } from '../actions'
+import { loadUserData, fetchPosts, fetchStorylines } from '../actions'
 import jwt from 'jsonwebtoken'
 
 
@@ -14,8 +14,6 @@ export default class App extends Component {
     
     if (localStorage.ditaKey) {
       store.dispatch(loadUserData({ ditaKey: localStorage.ditaKey }))
-      store.dispatch(fetchUserPosts())
-      store.dispatch(fetchUserStorylines())
     }
   }
 

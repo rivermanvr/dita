@@ -7,53 +7,75 @@ import Mover from '../components/singleFunction/moverControl';
 class storiesView extends Component {
   constructor() {
     super();
-    this.state = { userStorylines: [], userPosts: [], currentUser: {}, allPosts: [], toggle: 'stories', indexStories: 0, SL: 0, SLP: 0, AP: 0 };
+    this.state = { userStorylines: [], userPosts: [], currentUser: {},
+      postsSLP: [], repliesSLR: [], postsUP: [],
+      toggle: 'stories', SL: 0, SLP: 0, SLR: 0, UP: 0 };
 
     this.handleSelection = this.handleSelection.bind(this);
+    this.initializeState = this.initializeState.bind(this);
+  }
+
+  initializeState (allProps) {
+    const allState = allProps.state;
+    const toggle = (allProps.location.pathname === '/postsView') ? 'posts' : 'stories';
+    let postsSLP = [], postsUP = [];
+    // if toggle is 'posts', then populate postsUP in state.
+    if (toggle === 'posts') {
+      postsUP = allState.userPosts.filter(post => {
+        return !post.storylineId;
+      })
+    // if toggle is 'stories', then populate postsSLP.
+    } else {
+        postsSLP = allState.userPosts.filter(post => {
+          return !!post.storylineId;
+        })
+    }
+    //------------------------------------------------------
+    this.setState({ userStorylines: allState.userStorylines,
+      userPosts: allState.userPosts,
+      currentUser: allState.currentUser.user,
+      postsSLP,
+      postsUP,
+      toggle
+     })
   }
 
   componentDidMount () {
-    const allState = this.props.state;
-    if (allState.userStorylines.length && allState.userPosts.length ) {
-      const toggle = (this.props.location.pathname === '/postsView') ? 'posts' : 'stories';
-      this.setState({ userStorylines: allState.userStorylines,
-        userPosts: allState.userPosts,
-        currentUser: allState.currentUser.user,
-        allPosts: allState.posts,
-        toggle, SL: 0, SLP: 0, AP: 0
-       })
+    console.log('>>>>>>>>>>in DID>>>>>>>')
+    const allProps = this.props;
+    if (allProps.state.userStorylines.length && allProps.state.userPosts.length ) {
+      this.initializeState(allProps);
     }
   }
 
   componentWillReceiveProps (nextProps) {
-    const allState = nextProps.state;
-    if (allState.userStorylines.length && allState.userPosts.length ) {
-      const toggle = (nextProps.location.pathname === '/postsView') ? 'posts' : 'stories';
-      this.setState({ userStorylines: allState.userStorylines,
-        userPosts: allState.userPosts,
-        currentUser: allState.currentUser.user,
-        allPosts: allState.posts,
-        toggle, SL: 0, SLP: 0, AP: 0
-       })
+    console.log('>>>>>>>>>>in Will>>>>>>>')
+    const allProps = nextProps;
+    if (allProps.state.userStorylines.length && allProps.state.userPosts.length ) {
+      this.initializeState(allProps);
     }
   }
 
   handleSelection(arr) {
     //determine the array you are rendering
+    const state = this.state;
     const name = arr[0];
-    let dataName = '';
-    if (name === 'SL') dataName = 'userStorylines';
-    else if (name === 'SLP') dataName = 'userPosts';
-    else if (name === 'UP') dataName = 'vin';
-    const lenStateData = this.state[dataName].length; 
-    console.log('len', dataName, lenStateData)
+    /*  using moverControl returns:
+    if (name === 'SL') => 'userStorylines';
+    if (name === 'SLP') dataName = 'userPosts';
+    if (name === 'SLR') dataName = 'userReplies';
+    if (name === 'UP') dataName = 'userAllPosts';
+    */
+   const lenSL = state.userStorylines.length;
+   let lenSLP = 0, lenSLR = 0, lenUP = 0;
+  
 
     //start at index zero or follow the click event
     let value = 0;
     if (arr[1] === 'first') value = 0;
     else if (arr[1] === 'previous' && this.state[name] > 0) value = this.state[name] - 1;
-    else if (arr[1] === 'next' ) value = 0; //============
-    else if (arr[1] === 'last') value = 0;  //============
+    else if (arr[1] === 'next' ) value = 0; //==============================
+    else if (arr[1] === 'last') value = 0;  //==============================
     console.log('from mover component: ', name, value)
     this.setState({ name: value })
   }
@@ -61,7 +83,7 @@ class storiesView extends Component {
   render() {
     const state = this.state;
     if (!state.userStorylines.length || !state.userPosts.length ) return <div />;
-    console.log('>>>state>>>>>', this.state);
+    console.log('>>>state in render>>>>>', this.state);
     // current storyline:
     const currentSL = state.userStorylines[state.SL];
     // formating dates
@@ -71,22 +93,8 @@ class storiesView extends Component {
     dateCreated += currentSL.createdAt.slice(11, 16);
     // description may be null.
     const descriptionSL = (currentSL.description) ? currentSL.description : '-- none --'
-
-    // else storyline1 = state.userStorylines[state.SL].description;
-    // if (state.userStorylines[state.SL].title && state.userStorylines[state.SL].description) storyline2 = state.userStorylines[state.SL].description;
-    // // storyline posts filter
-    // const SLPosts = state.userPosts.filter(post => {
-    //   return post.storylineId === state.userStorylines[state.SL].id && post.userId === state.currentUser.id;
-    // })
-    // console.log('>>>>>>>userPosts>>>>>', SLPosts);
     //-----------------------
-
-
     const toggle = this.state.toggle
-    const SL = JSON.stringify(state.userStorylines);
-    const UP = JSON.stringify(state.userPosts);
-    const CU = JSON.stringify(state.currentUser);
-    const AP = JSON.stringify(state.allPosts);
     return (
       <div className="container marginT marginB noPadLR noMarginLR">
 
@@ -165,11 +173,6 @@ class storiesView extends Component {
 
         <div className="row col-sm-12">
           <h4><p>View = { toggle }</p></h4>
-          <p>state: </p>
-          <p>user storylines: { SL }</p>
-          <p>user posts: { UP }</p>
-          <p>current user: { CU }</p>
-          <p>all posts: { AP }</p>
         </div>
       </div>
     )

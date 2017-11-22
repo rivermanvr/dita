@@ -12,7 +12,7 @@ class AllPostsMap extends Component {
     const zoomLevel = 2;
     const position = [currentView.lat, currentView.lng]; 
     const darkTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cja8rnhqp0ukm2rpjrq1uxx65/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
-    const tileAttr = '&copy; <a href="http://www.openstreetmap.org/copyright">Mapbox</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
+    const tileAttr = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
 
     const stars = posts.map(post => {
       let latLng; 

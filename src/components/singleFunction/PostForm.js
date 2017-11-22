@@ -9,14 +9,15 @@ import PlacesSearchBox from './geoLocator';
 class PostForm extends Component {
   constructor(props){
     super(props);
-    this.state = {
+    this.state = {      
       title: '',
       body: '',
       storylineId: null,
       userId: props.currentUser.user.id,
-      address: '',
       alert: '',
-      alertStyle: ''
+      alertStyle: '', 
+      latitude: 0,
+      longitude: 0
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,6 +28,17 @@ class PostForm extends Component {
     const key = event.target.name, val = event.target.value;
     this.setState({ [key]: val });
   }
+
+  handlePlaceChange(place) {
+    console.log('place', place)
+    if(place){
+      this.setState({
+        latitude: place.geometry.location.lat(),
+        longitude: place.geometry.location.lng()
+      })
+    }
+  }
+
 
   handleSubmit(event) {
     event.preventDefault();
@@ -84,7 +96,7 @@ class PostForm extends Component {
             }
           </select>
 
-          <PlacesSearchBox name="address" onChange={ this.handleChange } />
+          <PlacesSearchBox onChange={ this.handlePlaceChange } />
 
           <div className="form-group">
             <button type="submit" disabled={ !currentUser.user.id } onClick={ this.handleClick } 
@@ -93,8 +105,6 @@ class PostForm extends Component {
           </div>          
         </form>
 
-
-        
         { alert ? <div className={ alertStyle }>{ alert }</div> : "" }
 
       </div>
@@ -102,11 +112,12 @@ class PostForm extends Component {
   }  
 }
 
-const mapStateToProps = ({ posts, storylines, currentUser }) => {
+const mapStateToProps = ({ posts, storylines, currentUser, userLocations }) => {
   return {
     posts,
     storylines,
-    currentUser
+    currentUser, 
+    userLocations
   }
 }
 

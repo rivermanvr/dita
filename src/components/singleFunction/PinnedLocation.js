@@ -21,9 +21,6 @@ const PinnedLocation = (props) => {
   )
 }
 
-const mapState = ({ userLocations }) => ({
-  home: userLocations.find(location => location.isHome)
-})
 const mapDispatch = dispatch => ({
   unpinLocation(location) {
     dispatch(removeUserLocation(location))
@@ -33,4 +30,4 @@ const mapDispatch = dispatch => ({
   }
 })
 
-export default connect(mapState, mapDispatch)(PinnedLocation)
+export default connect(null, mapDispatch)(PinnedLocation)

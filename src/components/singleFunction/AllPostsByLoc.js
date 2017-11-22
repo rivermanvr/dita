@@ -16,7 +16,7 @@ const SetLocationButton = props =>
 
 const SetPinnedLocation = injectComponent(SetLocationButton)(PinnedLocation)
 
-const AllPosts = ({ posts, setLocationFromGeoLoc, setLocationFromPin, userLocations }) => {
+const AllPosts = ({ posts, setLocationFromGeoLoc, setLocationFromPin, pinnedLocations }) => {
   return (
     <div>
       <h4>All posts</h4>
@@ -25,7 +25,7 @@ const AllPosts = ({ posts, setLocationFromGeoLoc, setLocationFromPin, userLocati
         <SearchFromLoc handleSelection={ setLocationFromGeoLoc } />
       <hr/>
 
-      { userLocations.map(location => (
+      { pinnedLocations.map(location => (
         <SetPinnedLocation
           key={ location.id }
           location={ location }
@@ -42,7 +42,7 @@ const mapStateToProps = ({ posts, currentView, userLocations }) => {
   const { lat, lng } = currentView
 
   return {
-    userLocations,
+    pinnedLocations: userLocations.pinnedLocations,
     posts: posts.filter(post => calcDistance(lat, lng, post.latitude, post.longitude) < currentView.radius)
   }
 }

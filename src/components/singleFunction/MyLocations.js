@@ -20,7 +20,7 @@ const MyLocations = (props) => {
 
       <SearchAddLoc />
 
-      { props.userLocations.map(location => (
+      { props.pinnedLocations.map(location => (
         <PinnedLocation key={ location.id } location={ location } />
       ))}
     </div>
@@ -28,8 +28,8 @@ const MyLocations = (props) => {
 }
 
 const mapState = ({ userLocations }) => ({
-  userLocations,
-  home: userLocations.find(location => location.isHome)
+  pinnedLocations: userLocations.pinnedLocations,
+  home: userLocations.home
 })
 
 export default connect(mapState)(MyLocations)

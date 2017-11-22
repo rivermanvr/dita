@@ -5,10 +5,10 @@ const {
   Category, StoryLine } = require('../db').models
 
 const users = [
-  { id: 1, name: 'kaz', email: 'kaz@dita.net', username: 'kaz', password: 'dita', latitude: 40.783060, longitude: -73.971249 },
-  { id: 2, name: 'wasif', email: 'wasif@dita.net', username: 'wasif', password: 'dita', latitude: 40.735102, longitude: -73.687908 },
-  { id: 4, name: 'vince', email: 'vince@riversconsulting.com', username: 'vince', password: 'dita', latitude: 40.881172, longitude: -74.212063 },
-  { id: 3, name: 'murray', email: 'murray@dita.net', 'username': 'murray', password: 'dita', latitude: 40.678178, longitude: -73.944158 }
+  { id: 1, name: 'kaz', email: 'kaz@dita.net', username: 'kaz', password: 'dita' },
+  { id: 2, name: 'wasif', email: 'wasif@dita.net', username: 'wasif', password: 'dita' },
+  { id: 4, name: 'vince', email: 'vince@riversconsulting.com', username: 'vince', password: 'dita' },
+  { id: 3, name: 'murray', email: 'murray@dita.net', 'username': 'murray', password: 'dita' }
 ]
 
 const posts = [

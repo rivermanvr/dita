@@ -16,6 +16,13 @@ export const setLocationFromGeoLoc = (place, radius) => dispatch => {
   if (radius) dispatch(setRadius(radius * 1))
 }
 
+export const setLocationFromPin = pinnedLoc => dispatch => {
+  dispatch(setCurrentLocation({
+    lat: pinnedLoc.latitude,
+    lng: pinnedLoc.longitude
+  }))
+}
+
 export function calcDistance (lat1, lon1, lat2, lon2, unit) {
   // source: http://www.geodatasource.com/developers/javascript
 

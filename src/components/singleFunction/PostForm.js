@@ -5,6 +5,10 @@ import { addUserPost } from '../../actions/userposts';
 import Select from './select_box';
 import PlacesSearchBox from './geoLocator';
 
+//  on our add post form, we should have 3 options for the user: 
+// 1. use home location (specified on signup, stored in the locations table)
+// 2. use current location (use html5 geolocation)
+// 3. enter new location 
 
 class PostForm extends Component {
   constructor(props){
@@ -22,6 +26,7 @@ class PostForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handlePlaceChange = this.handlePlaceChange.bind(this);
   }
 
   handleChange(event) {

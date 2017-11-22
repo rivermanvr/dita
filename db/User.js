@@ -22,7 +22,7 @@ const defineAttr = {
   },
   username: {
     type: Sequelize.STRING,
-    unique:true,
+    // unique:true,
     allowNull:false,
     validate: {
       len: [2,14],

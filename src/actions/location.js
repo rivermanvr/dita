@@ -9,6 +9,7 @@ export const setRadius = radius => ({ type: SET_RADIUS, radius })
 export const setLocationFromGeoLoc = (place, radius) => dispatch => {
   if (!_.isEmpty(place)) {
     dispatch(setCurrentLocation({
+      address: place.formatted_address,
       lat: place.geometry.location.lat(),
       lng: place.geometry.location.lng()
     }))
@@ -17,10 +18,11 @@ export const setLocationFromGeoLoc = (place, radius) => dispatch => {
 }
 
 export const setLocationFromPin = pinnedLoc => dispatch => {
-  dispatch(setCurrentLocation({
-    lat: pinnedLoc.latitude,
-    lng: pinnedLoc.longitude
-  }))
+  if (!_.isEmpty(pinnedLoc)) {
+    const { address, lat, lng } = pinnedLoc
+    dispatch(setCurrentLocation({ address, lat, lng }))
+  }
+  else dispatch(setCurrentLocation())
 }
 
 export function calcDistance (lat1, lon1, lat2, lon2, unit) {

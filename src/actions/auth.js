@@ -1,10 +1,7 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken'
 
-import {
-  fetchUserPosts, setUserPosts,
-  fetchUserStorylines, setUserStorylines,
-  fetchUserLocations, setUserLocations } from './index'
+import { loadUser, resetApp } from './index'
 
 // ***** ACTION TYPES *****
 export const SET_CURRENT_USER = 'SET_CURRENT_USER'
@@ -21,11 +18,7 @@ export const loadUserData = data => dispatch => {
   else delete axios.defaults.headers.common['Authorization']
 
   dispatch(setCurrentUser(jwt.decode(token).user))
-
-  // package
-  dispatch(fetchUserPosts())
-  dispatch(fetchUserStorylines())
-  dispatch(fetchUserLocations())
+  dispatch(loadUser())
 }
 
 export const signIn = authInfo => dispatch =>
@@ -36,11 +29,8 @@ export const signOut = () => dispatch => {
   delete axios.defaults.headers.common['Authorization']
   delete localStorage.ditaKey
 
-  // packages this
   dispatch(setCurrentUser())
-  dispatch(setUserPosts())
-  dispatch(setUserStorylines())
-  dispatch(setUserLocations())
+  dispatch(resetApp())
 }
 
 export const signUp = data => dispatch =>

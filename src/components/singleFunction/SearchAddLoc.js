@@ -10,8 +10,8 @@ class SearchAddLoc extends Component {
   // wrapper for MapWithASearchBox with pinned location
   initialState = {
     address: '',
-    latitude: '',
-    longitude: ''
+    lat: '',
+    lng: ''
   }
 
   state = this.initialState
@@ -20,8 +20,8 @@ class SearchAddLoc extends Component {
     if (place) {
       this.setState({
         address: place.formatted_address,
-        latitude: place.geometry.location.lat(),
-        longitude: place.geometry.location.lng()
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng()
       })
     }
     this.props.selection && this.props.selection(place)

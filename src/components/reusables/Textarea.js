@@ -13,8 +13,7 @@ export default class Textbox extends Component {
   }
 
   componentDidMount = () => {
-    Object.assign(this.state, this.props)
-    this.setState(this.state)
+    this.setState({ ...this.state, ...this.props })
   }
 
   onChange = ev => {
@@ -36,6 +35,7 @@ export default class Textbox extends Component {
       type,
       style,
       className,
+      required,
       value } = this.props
 
     const {
@@ -52,6 +52,7 @@ export default class Textbox extends Component {
       <span style={ styles.span }>
         { label ? <label>{ label }</label> : null }
         <textarea
+          required={ required }
           autoFocus={ focused }
           disabled={ disabled }
           value={ !focused && !value ? placeHolder : value }

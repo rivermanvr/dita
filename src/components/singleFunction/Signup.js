@@ -9,16 +9,8 @@ import UserValues from './UserValues'
 
 class Signup extends Component {
   state = {
-    user: {
-      name: '',
-      username: '',
-      email: '',
-      password: '',
-    },
+    user: {},
     location: {
-      address: '',
-      latitude: '',
-      longitude: '',
       isHome: true
     }
   }
@@ -31,10 +23,10 @@ class Signup extends Component {
     if (place) {
       this.setState({
         location: {
+          ...this.state.location,
           address: place.formatted_address,
-          latitude: place.geometry.location.lat(),
-          longitude: place.geometry.location.lng(),
-          isHome: true
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng(),
         }
       })
     }
@@ -49,14 +41,19 @@ class Signup extends Component {
       .then(() => this.props.history.push('/'))
   }
 
+  handleRequired = inputs => {
+
+  }
+
   render = () => {
     const { user } = this.state
-    const { handleChange, onSignup } = this
+    const { handleChange, onSignup, handleRequired } = this
 
     return (
       <div>
         <div className='form-group'>
           <UserValues
+            handleRequired={ handleRequired }
             user={ user }
             onChange={ handleChange } />
 

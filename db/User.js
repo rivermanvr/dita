@@ -6,11 +6,7 @@ const env = require('../env')
 
 const defineAttr = {
   name: {
-    type: Sequelize.STRING,
-    allowNull:false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.STRING
   },
   email: {
     type: Sequelize.STRING,
@@ -22,8 +18,8 @@ const defineAttr = {
   },
   username: {
     type: Sequelize.STRING,
-    unique:true,
-    allowNull:false,
+    unique: true,
+    allowNull: false,
     validate: {
       len: [2,14],
       notEmpty: true,

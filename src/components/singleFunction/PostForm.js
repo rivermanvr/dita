@@ -42,6 +42,12 @@ class PostForm extends Component {
         longitude: place.geometry.location.lng()
       })
     }
+    // else {
+    //   this.setState({
+    //     latitude: props.locations.home.latitude,
+    //     longitude: props.locations.home.longitude
+    //   })
+    // }
   }
 
 
@@ -70,7 +76,7 @@ class PostForm extends Component {
 
   render(){
     const { title, body, alert, alertStyle } = this.state;
-    const { posts, storylines, currentUser } = this.props;
+    const { posts, storylines, currentUser, userLocations } = this.props;
     const btnStyle = { marginTop: "10px" };
     const myStorylines = storylines.filter(storyline => {
       return storyline.userId === currentUser.user.id
@@ -97,6 +103,15 @@ class PostForm extends Component {
                 return (
                   <option key={ mystoryline.id } value={ mystoryline.id }>{ mystoryline.title }</option>
                 )         
+              })
+            }
+          </select>
+
+          <select name="userLocations" className="form-control" onChange={ this.handleChange } >
+            <option>Select Location</option>
+            {
+              userLocations.home.map(location => {
+                console.log(location)
               })
             }
           </select>

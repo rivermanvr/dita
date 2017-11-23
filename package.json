@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/DiAJVince/graceshopper#readme",
   "dependencies": {
+    "@google/maps": "^0.4.5",
     "axios": "^0.16.2",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

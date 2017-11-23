@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { isEmpty } from 'lodash'
 
 import MapWithASearchBox from '../singleFunction/geoLocator';
-import { signUp, addUserLocation } from '../../reducers'
+import { signUp } from '../../actions'
 import { Button } from '../reusables'
 import UserValues from './UserValues'
 
@@ -32,12 +32,8 @@ class Signup extends Component {
     }
   }
 
-  onSignup = () => {
-    this.props.signUp(this.state.user)
-      .then(() => {
-        if (isEmpty(this.state.location.address)) return
-        return this.props.addUserLocation(this.state.location)
-      })
+  handleSignup = () => {
+    this.props.signUp(this.state)
       .then(() => this.props.history.push('/'))
   }
 
@@ -47,7 +43,7 @@ class Signup extends Component {
 
   render = () => {
     const { user } = this.state
-    const { handleChange, onSignup, handleRequired } = this
+    const { handleChange, handleSignup, handleRequired } = this
 
     return (
       <div>
@@ -65,7 +61,7 @@ class Signup extends Component {
         </div>
 
         <Button
-          onClick={ onSignup }
+          onClick={ handleSignup }
           className='btn btn-primary'
           label='Sign Up!' /> :
       </div>
@@ -73,5 +69,4 @@ class Signup extends Component {
   }
 }
 
-const mapDispatch = { signUp, addUserLocation }
-export default connect(null, mapDispatch)(Signup)
+export default connect(null, { signUp })(Signup)

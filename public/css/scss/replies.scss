@@ -16,8 +16,12 @@
             font-size:16px;
             text-align: center;
             margin:0;
+            color:pink;
             &.signedIn {
                 color: green;
+            }
+            &.myPost {
+                color: rebeccapurple;
             }
         }
         .timePosted {
@@ -53,6 +57,13 @@
             background-color: green;
             &:after {
                 border-color: green green transparent transparent;                
+            }
+        }
+        &.myPost {
+            border-color: rebeccapurple;
+            background-color: rebeccapurple;
+            &:after {
+                border-color: rebeccapurple rebeccapurple transparent transparent;                
             }
         }
         &:after{

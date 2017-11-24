@@ -11,10 +11,10 @@ const Replies = ({replies, currentUser,post}) => {
                 <div className="singleReply">
                     <div className='userInfo'>
                         <span style={{backgroundImage:`url(${reply.user.profilePic})`}} className="userProfilePic"></span>
-                        <p className={`userName ${currentUser.user.id === reply.user.id ? 'signedIn' : ''}`}>{reply.user.name}</p>
+                        <p className={`userName ${post.user.id === reply.user.id ? 'myPost' : currentUser.user.id === reply.user.id ? 'signedIn' : ''}`}>{reply.user.name}</p>
                         <small className='timePosted'>{d3.timeFormat('%I:%M% %p')(new Date(reply.createdAt))}</small>
                     </div>
-                    <div className={`replyBody ${currentUser.user.id === reply.user.id ? 'signedIn' : ''}`}>
+                    <div className={`replyBody ${post.user.id === reply.user.id ? 'myPost' : currentUser.user.id === reply.user.id ? 'signedIn' : ''}`}>
                         <p>{reply.body}</p>
                     </div>
                 </div>

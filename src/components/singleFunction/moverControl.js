@@ -43,15 +43,14 @@ export default class SelectMulti extends Component {
     The return value is an array of objects
     return prop = this.props.selection
     */
-
     const title = this.props.title;
+    const renderYes = this.props.renderBtn;
+    const renderBtn = (renderYes) ? <button disabled className="col-xs-1 col-xs-offset-1 btn btn-default moveUpSM">Edit { renderYes }</button> : <div className="col-xs-1" />;
 
     return (
-
-      <div className="row">
         <div className="col-xs-12">
 
-            <div className="col-xs-1 col-xs-offset-4 textWidth60 center noPadLR">
+            <div className="col-xs-1 col-xs-offset-3 textWidth60 center noPadLR">
               <button onClick={ this.first }>
                 <span className="glyphicon glyphicon-chevron-left textGrey" aria-hidden="true" />
                 <span className="glyphicon glyphicon-chevron-left textGrey" aria-hidden="true" />
@@ -81,9 +80,9 @@ export default class SelectMulti extends Component {
               </button>
             </div>
 
-        </div>
-      </div>
+            { renderBtn }
 
+        </div>
     )
   }
 }

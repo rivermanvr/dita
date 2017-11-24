@@ -130,111 +130,102 @@ class storiesView extends Component {
     //-----------------------
     const toggle = this.state.toggle;
     return (
-      <div className="container marginT marginB noPadLR noMarginLR">
+      <div className="marginT marginB noPadLR noMarginLR">
 
-          <div className="row marginB noPadLR noMarginLR">
-            <div className="col-xs-12 noPadLR noMarginLR">
+        <div className="row marginB noPadLR noMarginLR">
+          <div className="col-xs-12 noPadLR noMarginLR">
 
-              <div className="col-xs-3 center noPadLR">
-                <button className="btn btn-default" disabled>New Story</button>
-              </div>
-
-              <div className="col-xs-6 btn-group center noPadLR" role="group" aria-label="poststory">
-                <Link to="/postsView"><button type="button" className="btn btn-default col-xs-6 center">Posts</button></Link>
-                <Link to="/storiesView"><button type="button" className="btn btn-primary col-xs-6 center">Stories</button></Link>
-              </div>
-
-              <div className="col-xs-3 center noPadLR">
-                <button className="btn btn-default" disabled>Graphics Version</button>
-              </div>
-
+            <div className="col-xs-3 center noPadLR">
+              <button className="btn btn-default" disabled>New Story</button>
             </div>
+
+            <div className="col-xs-6 btn-group center noPadLR" role="group" aria-label="poststory">
+              <Link to="/postsView"><button type="button" className="btn btn-default col-xs-6 center">Posts</button></Link>
+              <Link to="/storiesView"><button type="button" className="btn btn-primary col-xs-6 center">Stories</button></Link>
+            </div>
+
+            <div className="col-xs-3 center noPadLR">
+              <button className="btn btn-default" disabled>Graphics Version</button>
+            </div>
+
+          </div>
+        </div>
+
+        <div className="row noMarginLR">
+          <Mover title={ 'Storylines' } name={ 'SL' } selection={ this.handleSelection } renderBtn={ 'Story' } />
+        </div>
+
+        <div className="row panel panel-default center">
+
+          <div className="col-xs-12 noPadLR">
+            <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>
+            <div className="col-xs-1 moveDown07 noPadLR">{ currentSL.id }</div>
+            <div className="col-xs-2 noPadLR"><h5>Updated: </h5></div>
+            <div className="col-xs-3 moveDown07">{ dateUpdatedSL }</div>
+            <div className="col-xs-2 noPadLR"><h5>Created: </h5></div>
+            <div className="col-xs-3 moveDown07">{ dateCreatedSL }</div>
           </div>
 
-        <div className="container">
-          <div className="row noMarginLR">
-            <div className="col-xs-12 noMarginLR noPadLR">
-              <Mover title={ 'Storylines' } name={ 'SL' } selection={ this.handleSelection } />
-        </div></div></div>
+          <div className="col-xs-12 noPadLR">
+            <div className="col-xs-1 noPadLR pull-left"><h5>Title: </h5></div>
+            <div className="col-xs-9 moveDown07">{ currentSL.title }</div>
+          </div>
 
-        <div className="container">
-          <div className="row col-xs-12 panel panel-default center">
+          <div className="col-xs-12 noPadLR">
+            <div className="col-xs-1 noPadLR pull-left"><h5>Description: </h5></div>
+            <div className="col-xs-9 moveDown07">{ descriptionSL }</div>
+          </div>
 
-            <div className="col-xs-12 noPadLR">
-              <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>
-              <div className="col-xs-1 moveDown07 noPadLR">{ currentSL.id }</div>
-              <div className="col-xs-2 noPadLR"><h5>Updated: </h5></div>
-              <div className="col-xs-3 moveDown07">{ dateUpdatedSL }</div>
-              <div className="col-xs-2 noPadLR"><h5>Created: </h5></div>
-              <div className="col-xs-3 moveDown07">{ dateCreatedSL }</div>
-            </div>
+        </div>
 
-            <div className="col-xs-12 noPadLR">
-              <div className="col-xs-1 noPadLR pull-left"><h5>Title: </h5></div>
-              <div className="col-xs-9 moveDown07">{ currentSL.title }</div>
-            </div>
+        <div className="row noMarginLR">
+          <Mover title={ 'Posts' } name={ 'SLP' } selection={ this.handleSelection } renderBtn={ 'Post' } />
+        </div>
 
-            <div className="col-xs-12 noPadLR">
-              <div className="col-xs-1 noPadLR pull-left"><h5>Description: </h5></div>
-              <div className="col-xs-9 moveDown07">{ descriptionSL }</div>
-            </div>
+        <div className="row panel panel-default center">
 
-        </div></div>
+          <div className="col-xs-12 noPadLR">
+            <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>
+            <div className="col-xs-1 moveDown07 noPadLR">{ post.id }</div>
+            <div className="col-xs-2 noPadLR"><h5>Updated: </h5></div>
+            <div className="col-xs-3 moveDown07">{ dateUpdatedSLP }</div>
+            <div className="col-xs-2 noPadLR"><h5>Zip - (Lat / Long): </h5></div>
+            <div className="col-xs-3 moveDown07">{ post.zip } - ({ post.latitude } / { post.longitude })</div>
+          </div>
 
-        <div className="container">
-          <div className="row noMarginLR">
-            <div className="col-xs-12 noMarginLR noPadLR">
-              <Mover title={ 'Posts' } name={ 'SLP' } selection={ this.handleSelection } />
-        </div></div></div>
+          <div className="col-xs-12 noPadLR">
+            <div className="col-xs-1 noPadLR pull-left"><h5>Title: </h5></div>
+            <div className="col-xs-9 moveDown07">{ post.title }</div>
+          </div>
 
-        <div className="container">
-          <div className="row col-xs-12 panel panel-default center">
+          <div className="col-xs-12 noPadLR">
+            <div className="col-xs-1 noPadLR pull-left"><h5>Post Body: </h5></div>
+            <div className="col-xs-9 moveDown07">{ post.body }</div>
+          </div>
 
-            <div className="col-xs-12 noPadLR">
-              <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>
-              <div className="col-xs-1 moveDown07 noPadLR">{ post.id }</div>
-              <div className="col-xs-2 noPadLR"><h5>Updated: </h5></div>
-              <div className="col-xs-3 moveDown07">{ dateUpdatedSLP }</div>
-              <div className="col-xs-2 noPadLR"><h5>Zip - (Lat / Long): </h5></div>
-              <div className="col-xs-3 moveDown07">{ post.zip } - ({ post.latitude } / { post.longitude })</div>
-            </div>
+        </div>
 
-            <div className="col-xs-12 noPadLR">
-              <div className="col-xs-1 noPadLR pull-left"><h5>Title: </h5></div>
-              <div className="col-xs-9 moveDown07">{ post.title }</div>
-            </div>
+        <div className="row noMarginLR">
+          <Mover title={ 'Replies' } name={ 'SLR' } selection={ this.handleSelection } />
+        </div>
 
-            <div className="col-xs-12 noPadLR">
-              <div className="col-xs-1 noPadLR pull-left"><h5>Post Body: </h5></div>
-              <div className="col-xs-9 moveDown07">{ post.body }</div>
-            </div>
+        <div className="row col-xs-12 panel panel-default center">
 
-        </div></div>
+          <div className="col-xs-12 noPadLR">
+            <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>
+            <div className="col-xs-1 moveDown07 noPadLR">{ replies.id }</div>
+            <div className="col-xs-2 noPadLR"><h5>Updated: </h5></div>
+            <div className="col-xs-3 moveDown07">{ replies.updatedAt }</div>
+            <div className="col-xs-2 noPadLR"><h5>User Name: </h5></div>
+            <div className="col-xs-3 moveDown07">{ replies.user.name }</div>
+          </div>
 
-        <div className="container">
-          <div className="row noMarginLR">
-            <div className="col-xs-12 noMarginLR noPadLR">
-              <Mover title={ 'Replies' } name={ 'SLR' } selection={ this.handleSelection } />
-        </div></div></div>
+          <div className="col-xs-12 noPadLR">
+            <div className="col-xs-1 noPadLR pull-left"><h5>Reply Body: </h5></div>
+            <div className="col-xs-9 moveDown07">{ replies.body }</div>
+          </div>
 
-        <div className="container">
-          <div className="row col-xs-12 panel panel-default center">
-
-            <div className="col-xs-12 noPadLR">
-              <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>
-              <div className="col-xs-1 moveDown07 noPadLR">{ replies.id }</div>
-              <div className="col-xs-2 noPadLR"><h5>Updated: </h5></div>
-              <div className="col-xs-3 moveDown07">{ replies.updatedAt }</div>
-              <div className="col-xs-2 noPadLR"><h5>User Name: </h5></div>
-              <div className="col-xs-3 moveDown07">{ replies.user.name }</div>
-            </div>
-
-            <div className="col-xs-12 noPadLR">
-              <div className="col-xs-1 noPadLR pull-left"><h5>Reply Body: </h5></div>
-              <div className="col-xs-9 moveDown07">{ replies.body }</div>
-            </div>
-
-        </div></div>
+        </div>
 
       </div>
     )

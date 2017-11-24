@@ -22,7 +22,7 @@ import MyLocations from './singleFunction/MyLocations'
 
 export default function () {
   return (
-    <div>
+    <div className="container">
       {/* render on all paths */}
       <Route component={ Navbar } />
 

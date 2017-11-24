@@ -5,10 +5,10 @@ const {
   Category, StoryLine } = require('../db').models
 
 const users = [
-  { id: 1, name: 'kaz', email: 'kaz@dita.net', username: 'kaz', password: 'dita' },
-  { id: 2, name: 'wasif', email: 'wasif@dita.net', username: 'wasif', password: 'dita' },
-  { id: 4, name: 'vince', email: 'vince@riversconsulting.com', username: 'vince', password: 'dita' },
-  { id: 3, name: 'murray', email: 'murray@dita.net', 'username': 'murray', password: 'dita' }
+  { id: 1, name: 'kaz', email: 'kaz@dita.net', username: 'kaz', password: 'dita', profilePic:'https://imagesvc.timeincapp.com/v3/fan/image?url=https://thesixersense.com/wp-content/uploads/getty-images/2017/08/830248940-2017-nba-rookie-photo-shoot.jpg.jpg&' },
+  { id: 2, name: 'wasif', email: 'wasif@dita.net', username: 'wasif', password: 'dita', profilePic:'http://a1.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F0303%2Fr186814_1296x729_16%2D9.jpg' },
+  { id: 4, name: 'vince', email: 'vince@riversconsulting.com', username: 'vince', password: 'dita', profilePic:'https://usatftw.files.wordpress.com/2017/11/usp_nba__philadelphia_76ers_at_los_angeles_lakers_95365191-e1511314321431.jpg?w=1000&h=600&crop=1'},
+  { id: 3, name: 'murray', email: 'murray@dita.net', 'username': 'murray', password: 'dita', profilePic:'https://img.bleacherreport.net/img/images/photos/003/706/425/d41845ec2e5fbd547a2be9b4be9d8e34_crop_north.jpg?h=533&w=800&q=70&crop_x=center&crop_y=top'}
 ]
 
 const posts = [
@@ -19,7 +19,7 @@ const posts = [
   { id: 5, title: 'Garth Brooks', body: 'tickets to Garth concert on friday 12-1 at NJPAC', zip: '07102', latitude: 40.735657, longitude: -74.172367, userId: 4 },
   { id: 6, title: 'Fullstack finished', body: 'December 7, 2017 is our last day of class! - graduating', zip: '10005', latitude: 40.704595, longitude: -74.008906, userId: 4 },
   { id: 7, title: 'ToDo Tuesday 11-21', body: 'Develop a 1 page resume, keep 3 pager', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4 },
-  { id: 8, title: 'Invited to take a test!', body: 'IBM sent a link for a test, I have 5 days to complete it', zip: '07424', latitude: 40.881172, longitude: -74.212063, storylineId: 2 },
+  { id: 8, title: 'Invited to take a test!', body: 'IBM sent a link for a test, I have 5 days to complete it', zip: '07424', latitude: 40.881172, longitude: -74.212063, storylineId: 2, userId:3 },
   { id: 9, title: 'Test Response', body: 'my first test - need to practice for this kind of test', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4, storylineId: 2 },
   { id: 10, title: 'Rejection', body: 'not surprised - was rejected, but now I know what to expect on these tests', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4, storylineId: 2 },
   { id: 11, title: 'reusable components', body: 'This project has me focused on creating single function - reusable components', zip: '10005', latitude: 40.704595, longitude: -74.008906, userId: 4, storylineId: 3 },

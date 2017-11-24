@@ -36,6 +36,13 @@ const defineAttr = {
     validate: { 
       notEmpty: true 
     } 
+  },
+  profilePic: {
+    type: Sequelize.STRING,
+    defaultValue: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1335729-200.png',
+    validate: {
+      isUrl: true
+    }    
   }
   /*Or store location as array? */
     /*

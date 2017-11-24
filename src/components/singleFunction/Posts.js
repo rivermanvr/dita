@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as d3 from 'd3'
 import { Link } from 'react-router-dom'
+import Replies from './Replies'
 
 export const PostCard = ({ content }) => {
   const {
@@ -25,14 +26,7 @@ export const PostCard = ({ content }) => {
       
       <p className="list-group-item-text">{ body }</p>
       <h5>Replies:</h5>
-      {
-        replies.map(reply => (
-          <div key={reply.id}>
-          <p style={{fontWeight:'bold', display:'inline-block'}}>{reply.user.name}:</p>
-          <small className='list-group-item-text'> {reply.body}</small>
-          </div>
-        ))
-      }
+      <Replies postId={id} />
       <small>{ d3.timeFormat('%m/%d/%y')(new Date(createdAt)) }</small>
     </div>
   )

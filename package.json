@@ -51,6 +51,7 @@
     "pg-native": "^2.2.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-fontawesome": "^1.6.1",
     "react-google-maps": "^9.2.2",
     "react-leaflet": "^1.7.4",
     "react-redux": "^5.0.6",

@@ -1,5 +1,7 @@
 /*****  Media Queries  *****/
 @media all {
+  small {
+    color: grey; }
   .backBlack {
     background-color: black; }
   .backGrey {

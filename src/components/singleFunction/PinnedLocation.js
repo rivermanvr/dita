@@ -7,16 +7,18 @@ import { Button } from '../reusables'
 const PinnedLocation = (props) => {
   return (
     <div>
-      <h5>{ props.location.address }</h5>
-      <Button
-        label={ <i className='icon ion-minus'></i> }
-        onClick={ () => props.unpinLocation(props.location) }
-        className='btn btn-primary' />
+      <h5>{ props.location.address }{ props.location.isHome ? ' (home)' : '' }</h5>
       { !props.location.isHome ?
-      <Button
-        label={ <i className='icon ion-home'></i> }
-        onClick={ () => props.setAsHome(props.location) }
-        className='btn btn-primary' /> : null }
+      <div>
+        <Button
+          label={ <i className='icon ion-minus'></i> }
+          onClick={ () => props.unpinLocation(props.location) }
+          className='btn btn-primary' />
+        <Button
+          label={ <i className='icon ion-home'></i> }
+          onClick={ () => props.setAsHome(props.location) }
+          className='btn btn-primary' />
+      </div> : null }
     </div>
   )
 }

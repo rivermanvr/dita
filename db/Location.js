@@ -48,8 +48,11 @@ Location.addLocation = function(userId, data) {
 }
 
 Location.removeLocation = function(userId, id) {
-  return this.findOne({ where: { id, userId } })
-    .then(location => location.destroy())
+  return this.findAll({ where: { userId } })
+    .then(locations => {
+      if (locations.length == 1) throw new Error('Home location cannot be removed')
+      else locations.find(location => location.id == id).destroy()
+    })
 }
 
 Location.setHome = function(userId, id) {

@@ -28,7 +28,7 @@ class AllPostsMap extends Component {
 
     return (
       <div className="map">
-        <Map center={ position } zoom={ zoomLevel } style={{ height: "600px", width: "100%" }}>
+        <Map center={ position } zoom={ zoomLevel } style={{ height: "600px", width: "100%" }} worldCopyJump="true">
           <TileLayer
             attribution={ tileAttr }
             url={ darkTiles }
@@ -48,7 +48,7 @@ class AllPostsMap extends Component {
               return (                
                 <CircleMarker key={ star.post.id } center={ star.latLng } 
                   radius={ radius } color={ strokeColor } fillColor={ fillColor } 
-                  fillOpacity={ fillOpacity } weight={ strokeWeight } >
+                  fillOpacity={ fillOpacity } weight={ strokeWeight }>
                   <Popup>
                     <div>
                       <span style={ spanStyle }>{ star.post.title }</span> <br/>

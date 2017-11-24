@@ -5,22 +5,39 @@ const Sequelize = require('sequelize')
 const Location = db.define('location', {
   address: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: {
+      args: false,
+      msg: 'Location is empty'
+    }
   },
   lat: {
     type: Sequelize.FLOAT,
-    allowNull: false,
-    validate: { min: -90, max: 90 }
+    allowNull: {
+      args: false,
+      msg: 'Location is empty'
+    },
+    validate: {
+      min: -90,
+      max: 90,
+    }
   },
   lng: {
     type: Sequelize.FLOAT,
-    allowNull: false,
-    validate: { min: -180, max: 180 }
+    allowNull: {
+      args: false,
+      msg: 'Location is empty'
+    },
+    validate: {
+      min: -90,
+      max: 90,
+    }
   },
   isHome: {
     type: Sequelize.BOOLEAN,
-    allowNull: false,
-    defaultValue: false
+    allowNull: {
+      args: false,
+      msg: 'Location is empty'
+    }
   }
 })
 

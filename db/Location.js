@@ -17,8 +17,8 @@ const Location = db.define('location', {
       msg: 'Location is empty'
     },
     validate: {
-      min: -90,
-      max: 90,
+      // min: -90,
+      // max: 90,
     }
   },
   lng: {
@@ -28,8 +28,8 @@ const Location = db.define('location', {
       msg: 'Location is empty'
     },
     validate: {
-      min: -90,
-      max: 90,
+      // min: -90,
+      // max: 90,
     }
   },
   isHome: {

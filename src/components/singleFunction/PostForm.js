@@ -3,12 +3,6 @@ import { connect } from 'react-redux';
 import store from '../../store';
 import { addUserPost } from '../../actions/userposts';
 import Select from './select_box';
-import PlacesSearchBox from './geoLocator';
-
-//  on our add post form, we should have 3 options for the user: 
-// 1. use home location (specified on signup, stored in the locations table)
-// 2. use current location (use html5 geolocation)
-// 3. enter new location 
 
 class PostForm extends Component {
   constructor(props){
@@ -20,34 +14,18 @@ class PostForm extends Component {
       userId: props.currentUser.user.id,
       alert: '',
       alertStyle: '', 
-      latitude: 0,
-      longitude: 0
+      address: '',
+      latitude: '',
+      longitude: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.handlePlaceChange = this.handlePlaceChange.bind(this);
   }
 
   handleChange(event) {
     const key = event.target.name, val = event.target.value;
     this.setState({ [key]: val });
-  }
-
-  handlePlaceChange(place) {
-    console.log('place', place)
-    if(place){
-      this.setState({
-        latitude: place.geometry.location.lat(),
-        longitude: place.geometry.location.lng()
-      })
-    }
-    // else {
-    //   this.setState({
-    //     latitude: props.locations.home.latitude,
-    //     longitude: props.locations.home.longitude
-    //   })
-    // }
   }
 
 
@@ -107,16 +85,16 @@ class PostForm extends Component {
             }
           </select>
 
-          <select name="userLocations" className="form-control" onChange={ this.handleChange } >
+          <select name="location" className="form-control" onChange={ this.handleChange }>
             <option>Select Location</option>
             {
-              userLocations.home.map(location => {
-                console.log(location)
+              userLocations.pinnedLocations.length && userLocations.pinnedLocations.map(location => {
+                return (
+                  <option key={ location.id } value={ location.id }>{ location.address }</option>
+                )         
               })
             }
           </select>
-
-          <PlacesSearchBox onChange={ this.handlePlaceChange } />
 
           <div className="form-group">
             <button type="submit" disabled={ !currentUser.user.id } onClick={ this.handleClick } 

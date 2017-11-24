@@ -37,7 +37,7 @@ class AllPostsMap extends Component {
             <Popup>
               <div>
                 <span style={ spanStyle }>You are at</span><br/>
-                <span>lat: { currentView.lat } <br/>lng: { currentView.lng }</span>
+                <span>{ currentView.address } </span>
               </div>
             </Popup>
           </Marker>

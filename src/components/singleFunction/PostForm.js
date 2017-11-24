@@ -11,7 +11,7 @@ class PostForm extends Component {
       title: '',
       body: '',
       storylineId: null,
-      userId: props.currentUser.user.id,
+      userId: null,
       alert: '',
       alertStyle: '', 
       address: '',
@@ -25,7 +25,13 @@ class PostForm extends Component {
 
   handleChange(event) {
     const key = event.target.name, val = event.target.value;
-    this.setState({ [key]: val });
+    if(key === 'latLng'){
+      this.setState({ 
+        latitude: val.split(',')[0],
+        longitude: val.split(',')[1]
+      })
+    }
+    this.setState({ [key]: val, userId: this.props.currentUser.user.id });
   }
 
 
@@ -85,12 +91,12 @@ class PostForm extends Component {
             }
           </select>
 
-          <select name="location" className="form-control" onChange={ this.handleChange }>
+          <select name="latLng" className="form-control" onChange={ this.handleChange }>
             <option>Select Location</option>
             {
               userLocations.pinnedLocations.length && userLocations.pinnedLocations.map(location => {
                 return (
-                  <option key={ location.id } value={ location.id }>{ location.address }</option>
+                  <option key={ location.id } value={ [location.lat, location.lng] }>{ location.address }</option>
                 )         
               })
             }

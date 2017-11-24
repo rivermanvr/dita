@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Map, Marker, Popup, TileLayer, CircleMarker } from 'react-leaflet';
+import { Map, Marker, Popup, TileLayer, CircleMarker, MuiThemeProvider } from 'react-leaflet';
 import Replies from './Replies'
 
 class AllPostsMap extends Component {
@@ -38,7 +38,7 @@ class AllPostsMap extends Component {
             <Popup>
               <div>
                 <span style={ spanStyle }>You are at</span><br/>
-                <span>{ currentView.address } </span>
+                <span>{ currentView.address }</span>
               </div>
             </Popup>
           </Marker>
@@ -47,14 +47,15 @@ class AllPostsMap extends Component {
             stars && stars.map(star => {
               return (                
                 <CircleMarker key={ star.post.id } center={ star.latLng } 
-                  radius={ radius } color = { strokeColor } fillColor={ fillColor } 
+                  radius={ radius } color={ strokeColor } fillColor={ fillColor } 
                   fillOpacity={ fillOpacity } weight={ strokeWeight } >
                   <Popup>
                     <div>
                       <span style={ spanStyle }>{ star.post.title }</span> <br/>
                       <span>{ star.post.body }</span>
-                      </div> 
+                    </div> 
                   </Popup>
+                  
                 </CircleMarker>               
               )
             })

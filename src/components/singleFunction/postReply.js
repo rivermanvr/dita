@@ -25,7 +25,8 @@ class PostReply extends Component{
             body: e.target.value
         })
     }
-    onSubmit(){
+    onSubmit(e){
+        e.preventDefault()
         this.props.handleAdd(this.state)
         this.setState({
             body:''
@@ -34,12 +35,11 @@ class PostReply extends Component{
     render(){
         const {post} = this.props
         const {body} = this.state
-        console.log(post)
         return(
-           <div className="replyForm">
+           <form className="replyForm" onSubmit={this.onSubmit}>
              <input value={body} placeholder={`Reply to ${post.user.name}`} className='replyInput' type="text" onChange={this.onChange}/>
              <FontAwesome name='paper-plane' onClick={this.onSubmit}/>           
-             </div>
+             </form>
         )
     }
 }

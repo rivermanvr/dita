@@ -6,28 +6,39 @@ const env = require('../env')
 
 const defineAttr = {
   name: {
-    type: Sequelize.STRING,
-    allowNull:false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.STRING
   },
   email: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true,
+    unique: {
+      args: true,
+      msg: 'Account already registered with this email'
+    },
     validate: {
-      isEmail: true
+      isEmail: {
+        args: true,
+        msg: 'Must be a valid email'
+      }
     }
   },
   username: {
     type: Sequelize.STRING,
-    unique:true,
-    allowNull:false,
+    unique: {
+      args: true,
+      msg: 'Account already registered with this username'
+    },
+    allowNull: false,
     validate: {
-      len: [2,14],
+      len: {
+        args: [2,14],
+        msg: 'Username must be between 2 and 14 characters'
+      },
       notEmpty: true,
-      is: /^[a-z0-9]+$/i  //will create more advanced regex to disallow special characters
+      is: {
+        args: /^[a-z0-9]+$/i,  //will create more advanced regex to disallow special characters
+        msg: 'Username must be lowercase without special characters'
+      }
     }
   },
   password: { 

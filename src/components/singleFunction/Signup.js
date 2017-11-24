@@ -1,63 +1,84 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { isEmpty } from 'lodash'
 
 import MapWithASearchBox from '../singleFunction/geoLocator';
-import { signUp, addUserLocation } from '../../reducers'
+import { signUp } from '../../actions'
 import { Button } from '../reusables'
 import UserValues from './UserValues'
+import verifyEmptyState from './verifyEmptyState'
+import { handleAxiosErrors } from './handleErrors'
 
 class Signup extends Component {
   state = {
     user: {
-      name: '',
       username: '',
-      email: '',
+      name: '',
       password: '',
+      email: ''
     },
     location: {
       address: '',
-      latitude: '',
-      longitude: '',
+      lat: 0.0,
+      lng: 0.0,
       isHome: true
-    }
+    },
+    hasError: '',
+    isValid: false
+    // brute forcing it
   }
 
   handleChange = newValues => {
-    this.setState({ user: newValues })
+    const nextUserState = { ...this.state.user, ...newValues }
+    this.setState({
+      user: nextUserState,
+      isValid: verifyEmptyState(nextUserState) && verifyEmptyState(this.state.location)
+    })
   }
 
   handlePlaceChange = place => {
     if (place) {
+      const nextLocationState = {
+        ...this.state.location,
+        address: place.formatted_address,
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng(),
+        isHome: true
+      }
+
       this.setState({
-        location: {
-          address: place.formatted_address,
-          latitude: place.geometry.location.lat(),
-          longitude: place.geometry.location.lng(),
-          isHome: true
-        }
+        location: nextLocationState,
+        isValid: verifyEmptyState(nextLocationState) && verifyEmptyState(this.state.user)
       })
     }
   }
 
-  onSignup = () => {
-    this.props.signUp(this.state.user)
-      .then(() => {
-        if (isEmpty(this.state.location.address)) return
-        return this.props.addUserLocation(this.state.location)
-      })
+  handleSignup = () => {
+    if (!verifyEmptyState(this.state.user) || !verifyEmptyState(this.state.location)) {
+      // won't trigger since button is disabled
+      return this.setState({ hasError: 'Required fields are missing' })
+    } 
+
+    this.props.signUp(this.state)
       .then(() => this.props.history.push('/'))
+      .catch(err => this.setState({ hasError: handleAxiosErrors(err)[0] }))
+  }
+
+  handleRequired = inputs => {
+
   }
 
   render = () => {
-    const { user } = this.state
-    const { handleChange, onSignup } = this
+    const { user, hasError, isValid } = this.state
+    const { handleChange, handleSignup, handleRequired } = this
 
     return (
       <div>
+        <div>
+        { hasError && hasError }
+        </div>
         <div className='form-group'>
           <UserValues
-            user={ user }
+            handleRequired={ handleRequired }
             onChange={ handleChange } />
 
           <div>
@@ -68,13 +89,13 @@ class Signup extends Component {
         </div>
 
         <Button
-          onClick={ onSignup }
+          onClick={ handleSignup }
+          disabled={ !isValid }
           className='btn btn-primary'
-          label='Sign Up!' /> :
+          label='Sign Up!' />
       </div>
     )
   }
 }
 
-const mapDispatch = { signUp, addUserLocation }
-export default connect(null, mapDispatch)(Signup)
+export default connect(null, { signUp })(Signup)

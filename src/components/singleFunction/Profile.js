@@ -5,6 +5,7 @@ import _ from 'lodash'
 import { updateUser } from '../../reducers'
 import { Button } from '../reusables'
 import UserValues from './UserValues'
+import verifyEmptyState from './verifyEmptyState'
 
 class Profile extends Component {
   state = {}
@@ -24,10 +25,13 @@ class Profile extends Component {
   handleUpdate = () => {
     // filters through non-empty fields
     // maintains immutability of the state
+    // separate the password field later
     const { user } = this.state
     const userData = Object.keys(user).reduce((data, k) => {
       return !_.isEmpty(user[k]) ? Object.assign(data, { [k]: user[k] }) : data
     }, {})
+
+    if (!verifyEmptyState(userData)) return 
 
     this.props.updateUser(userData)
       .then(() => this.props.history.push('/'))

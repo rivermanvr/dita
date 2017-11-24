@@ -13,7 +13,10 @@ const defineAttr = {
     allowNull: false,
     unique: true,
     validate: {
-      isEmail: true
+      isEmail: {
+        args: true,
+        msg: 'Must be a valid email'
+      }
     }
   },
   username: {
@@ -21,9 +24,15 @@ const defineAttr = {
     unique: true,
     allowNull: false,
     validate: {
-      len: [2,14],
+      len: {
+        args: [2,14],
+        msg: 'Username must be between 2 and 14 characters'
+      },
       notEmpty: true,
-      is: /^[a-z0-9]+$/i  //will create more advanced regex to disallow special characters
+      is: {
+        args: /^[a-z0-9]+$/i,  //will create more advanced regex to disallow special characters
+        msg: 'Username must be lowercase without special characters'
+      }
     }
   },
   password: { 

@@ -6,6 +6,7 @@ import { signUp } from '../../actions'
 import { Button } from '../reusables'
 import UserValues from './UserValues'
 import verifyEmptyState from './verifyEmptyState'
+import { handleAxiosErrors } from './handleErrors'
 
 class Signup extends Component {
   state = {
@@ -52,13 +53,14 @@ class Signup extends Component {
   }
 
   handleSignup = () => {
-    if (verifyEmptyState(this.state.user) && verifyEmptyState(this.state.location)) {
+    // if (!verifyEmptyState(this.state.user) || !verifyEmptyState(this.state.location)) {
       // won't trigger since button is disabled
-      return this.setState({ hasError: 'Required fields are missing' })
-    } 
+      // return this.setState({ hasError: 'Required fields are missing' })
+    // } 
 
     this.props.signUp(this.state)
       .then(() => this.props.history.push('/'))
+      .catch(err => this.setState({ hasError: handleAxiosErrors(err)[0] }))
   }
 
   handleRequired = inputs => {

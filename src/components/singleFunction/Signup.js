@@ -9,14 +9,24 @@ import UserValues from './UserValues'
 
 class Signup extends Component {
   state = {
-    user: {},
+    user: {
+      username: '',
+      name: '',
+      password: '',
+      email: ''
+    },
     location: {
+      address: '',
+      lat: 0.0,
+      lng: 0.0,
       isHome: true
-    }
+    },
+    hasError: ''
+    // brute forcing it
   }
 
   handleChange = newValues => {
-    this.setState({ user: newValues })
+    this.setState({ user: { ...newValues } })
   }
 
   handlePlaceChange = place => {
@@ -27,12 +37,23 @@ class Signup extends Component {
           address: place.formatted_address,
           lat: place.geometry.location.lat(),
           lng: place.geometry.location.lng(),
+          isHome: true
         }
       })
     }
   }
 
   handleSignup = () => {
+    const { user, location } = this.state
+    let isValid = Object.keys(user).reduce((bool, k) => {
+      return bool && user[k]
+    }, true)
+    isValid = Object.keys(location).reduce((bool, k) => {
+      return bool && location[k]
+    }, isValid)
+
+    if (!isValid) return this.setState({ hasError: 'Required fields are missing' })
+
     this.props.signUp(this.state)
       .then(() => this.props.history.push('/'))
   }
@@ -42,15 +63,17 @@ class Signup extends Component {
   }
 
   render = () => {
-    const { user } = this.state
+    const { user, hasError } = this.state
     const { handleChange, handleSignup, handleRequired } = this
 
     return (
       <div>
+        <div>
+        { hasError && hasError }
+        </div>
         <div className='form-group'>
           <UserValues
             handleRequired={ handleRequired }
-            user={ user }
             onChange={ handleChange } />
 
           <div>
@@ -63,7 +86,7 @@ class Signup extends Component {
         <Button
           onClick={ handleSignup }
           className='btn btn-primary'
-          label='Sign Up!' /> :
+          label='Sign Up!' />
       </div>
     )
   }

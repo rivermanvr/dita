@@ -2,8 +2,12 @@ import React, { Component } from 'react'
 
 export default class Textbox extends Component {
   state = {
+    input: '',
     placeHolder: '',
     focused: false,
+    isDirty: false,
+    isRequired: false,
+    isValid: true,
     styles: {
       // some styles here
       // can be expanded more via css
@@ -17,7 +21,12 @@ export default class Textbox extends Component {
   }
 
   onChange = ev => {
-    this.props.onChange(ev)
+    const isValid = this.state.isRequired ? ev.target.value ? true : false : this.state.isValid
+    this.props.onChange(ev, isValid)
+    this.setState({
+      input: ev.target.value,
+      isDirty: this.state.isDirty || true,
+      isValid: isValid })
   }
 
   onFocus = ev => {
@@ -35,12 +44,15 @@ export default class Textbox extends Component {
       type,
       style,
       className,
-      required,
+      isRequired,
       value } = this.props
 
     const {
+      input,
       placeHolder,
       focused,
+      isDirty,
+      isValid,
       styles } = this.state
 
     const {
@@ -50,9 +62,8 @@ export default class Textbox extends Component {
 
     return (
       <span style={ styles.span }>
-        { label ? <label>{ label }</label> : null }
+        { label ? <label>{ `${label}${ isRequired ? '*' : '' }` }</label> : null }
         <input
-          required={ required }
           autoFocus={ focused }
           disabled={ disabled }
           value={ !focused && !value ? placeHolder : value }
@@ -63,6 +74,9 @@ export default class Textbox extends Component {
           onFocus={ onFocus }
           onBlur={ onBlur }
         />
+        <span>
+        { isDirty && !isValid ? `${label || 'this field'} is required` : '' } 
+        </span>
       </span>
     )
   }

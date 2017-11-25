@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Map, Marker, Popup, TileLayer, CircleMarker, MuiThemeProvider } from 'react-leaflet';
 import Replies from './Replies'
+import * as d3 from 'd3';
+
 
 class AllPostsMap extends Component {
   constructor(props){
@@ -10,7 +12,7 @@ class AllPostsMap extends Component {
 
   render(){
     const { posts, currentView } = this.props;    
-    const zoomLevel = 2;
+    const zoomLevel = 9;
     const position = [currentView.lat, currentView.lng]; 
     const darkTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cja8rnhqp0ukm2rpjrq1uxx65/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
     const tileAttr = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
@@ -28,7 +30,7 @@ class AllPostsMap extends Component {
 
     return (
       <div className="map">
-        <Map center={ position } zoom={ zoomLevel } style={{ height: "600px", width: "100%" }}>
+        <Map center={ position } zoom={ zoomLevel } style={{ height: "600px", width: "100%" }} worldCopyJump="true">
           <TileLayer
             attribution={ tileAttr }
             url={ darkTiles }
@@ -48,14 +50,13 @@ class AllPostsMap extends Component {
               return (                
                 <CircleMarker key={ star.post.id } center={ star.latLng } 
                   radius={ radius } color={ strokeColor } fillColor={ fillColor } 
-                  fillOpacity={ fillOpacity } weight={ strokeWeight } >
+                  fillOpacity={ fillOpacity } weight={ strokeWeight }>
                   <Popup>
                     <div>
                       <span style={ spanStyle }>{ star.post.title }</span> <br/>
                       <span>{ star.post.body }</span>
                     </div> 
-                  </Popup>
-                  
+                  </Popup>                  
                 </CircleMarker>               
               )
             })

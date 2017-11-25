@@ -11,7 +11,7 @@
   .backRed {
     background-color: red; }
   .backWhite {
-    background-color: #fff; }
+    background-color: #fff !important; }
   .center {
     text-align: center; }
   .colWidth100 {

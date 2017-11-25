@@ -9,6 +9,7 @@
     "test": "mocha **/*.test.js *.test.js",
     "build:css": "node-sass -w -r public/css/scss -o public/css",
     "seed": "node db/seed.js",
+    "seedVin": "node db/seedVin.js",
     "start:dev": "webpack -w & nodemon --ignore src/ --ignore dist/ server.js"
   },
   "repository": {

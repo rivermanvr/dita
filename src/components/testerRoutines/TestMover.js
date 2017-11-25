@@ -27,7 +27,7 @@ export default class TestMover extends Component {
             <li>name = 'UP', title = 'Posts' data = allPosts filtered</li>
             <li>return prop = this.props.selection</li>
           </ul>
-          <MoverControl title={ this.state.moverTitle } name={ 'SL' } selection={ this.handleSelect } />
+          <MoverControl title={ this.state.moverTitle } name={ 'SL' } selection={ this.handleSelect } renderBtn = { 'Post' } />
         </div>
       </div>
     )

@@ -5,9 +5,9 @@ const {
   Location, Category, StoryLine } = require('../db').models
 
 const users = [
+  { name: 'vince', email: 'vince@rivcon.com', username: 'vince', password: 'dita', profilePic:'https://usatftw.files.wordpress.com/2017/11/usp_nba__philadelphia_76ers_at_los_angeles_lakers_95365191-e1511314321431.jpg?w=1000&h=600&crop=1'},
   { name: 'kaz', email: 'kaz@dita.net', username: 'kaz', password: 'dita', profilePic:'https://imagesvc.timeincapp.com/v3/fan/image?url=https://thesixersense.com/wp-content/uploads/getty-images/2017/08/830248940-2017-nba-rookie-photo-shoot.jpg.jpg&' },
   { name: 'wasif', email: 'wasif@dita.net', username: 'wasif', password: 'dita', profilePic:'http://a1.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F0303%2Fr186814_1296x729_16%2D9.jpg' },
-  { name: 'vince', email: 'vince@riversconsulting.com', username: 'vince', password: 'dita', profilePic:'https://usatftw.files.wordpress.com/2017/11/usp_nba__philadelphia_76ers_at_los_angeles_lakers_95365191-e1511314321431.jpg?w=1000&h=600&crop=1'},
   { name: 'murray', email: 'murray@dita.net', 'username': 'murray', password: 'dita', profilePic:'https://img.bleacherreport.net/img/images/photos/003/706/425/d41845ec2e5fbd547a2be9b4be9d8e34_crop_north.jpg?h=533&w=800&q=70&crop_x=center&crop_y=top'}
 ]
 
@@ -78,17 +78,6 @@ const replies = [
   { body: 'Did you take home the leftovers?', userId: 1, postId: 18 }
 ]
 
-const createCategories = () => {
-  return Promise.all(categories.map(category => Category.create(category)))
-   .then(createUsers)
-}
-
-const createUsers = () => {
-  return Promise.all(users.map(user => User.create(user)))
-    .then(_users => Promise.all(_users.map((user, i) => Location.addLocation(user.id, locations[i]))))
-    .then(createStories)
-}
-
 const createReplies = () => {
   return Promise.all(replies.map(reply => {
     return Reply.create(reply)
@@ -107,6 +96,17 @@ const createStories = () => {
     return StoryLine.create(story)
   }))
     .then(createPosts)
+}
+
+const createUsers = () => {
+  return Promise.all(users.map(user => User.create(user)))
+    .then(_users => Promise.all(_users.map((user, i) => Location.addLocation(user.id, locations[i]))))
+    .then(createStories)
+}
+
+const createCategories = () => {
+  return Promise.all(categories.map(category => Category.create(category)))
+   .then(createUsers)
 }
 
 const seed = () => {

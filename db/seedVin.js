@@ -98,7 +98,20 @@ const replies = [
   { body: 'How old are your kids?', userId: 1, postId: 17 },
   { body: 'It is always good to eat pizza!!', userId: 3, postId: 18 },
   { body: 'I think they should have made a filet minion', userId: 2, postId: 18 },
-  { body: 'Did you take home the leftovers?', userId: 1, postId: 18 }
+  { body: 'Did you take home the leftovers?', userId: 1, postId: 18 },
+
+  { body: 'How do you think you did?', userId: 3, postId: 27 },
+  { body: 'Did you get crack the coding interview?', userId: 1, postId: 27 },
+  { body: 'I am glad we put the components on the NAV bar', userId: 2, postId: 29 },
+  { body: 'We need to practice before Tuesday', userId: 1, postId: 32 },
+  { body: 'They have you working for your dinner!!!', userId: 1, postId: 33 },
+  { body: 'I love puzzles!!', userId: 1, postId: 35 },
+  { body: 'I am glad you had time to be with them, looked like it was a work visit.', userId: 2, postId: 35 },
+  { body: 'How many grandchildren do you have?', userId: 3, postId: 35 },
+  { body: 'How old are your kids?', userId: 1, postId: 35 },
+  { body: 'It is always good to eat pizza!!', userId: 3, postId: 36 },
+  { body: 'I think they should have made a filet minion', userId: 2, postId: 36 },
+  { body: 'Did you take home the leftovers?', userId: 1, postId: 36 }
 ]
 
 const createReplies = () => {

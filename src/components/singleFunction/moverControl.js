@@ -35,7 +35,6 @@ export default class SelectMulti extends Component {
   render() {
     /*
     Important Notes:
-
     This is a carousel bar:    <<     <      >    >> 
     meaning:                 first previous next last
 
@@ -45,42 +44,48 @@ export default class SelectMulti extends Component {
     */
     const title = this.props.title;
     const renderYes = this.props.renderBtn;
-    const renderBtn = (renderYes) ? <button disabled className="col-xs-1 col-xs-offset-1 btn btn-default moveUpSM">Edit { renderYes }</button> : <div className="col-xs-1" />;
+    const renderBtn1 = (renderYes) ? <button disabled className="col-xs-1 col-xs-offset-1 btn btn-default moveUpSM">New { renderYes }</button> : <div className="col-xs-1" />;
+    const renderBtn2 = (renderYes) ? <button disabled className="col-xs-1 col-xs-offset-1 btn btn-default moveUpSM">Edit { renderYes }</button> : <div className="col-xs-1" />;
+    const renderClass = (renderYes) ? 'col-xs-1 col-xs-offset-1 textWidth60 center noPadLR' : 'col-xs-1 col-xs-offset-2 textWidth60 center noPadLR';
+
+    "col-xs-1 col-xs-offset-1 textWidth60 center noPadLR"
 
     return (
         <div className="col-xs-12">
 
-            <div className="col-xs-1 col-xs-offset-3 textWidth60 center noPadLR">
-              <button onClick={ this.first }>
-                <span className="glyphicon glyphicon-chevron-left textGrey" aria-hidden="true" />
-                <span className="glyphicon glyphicon-chevron-left textGrey" aria-hidden="true" />
-              </button>
-            </div>
+          { renderBtn1 }
 
-            <div className="col-xs-1 textWidth60 center noPadLR">
-              <button onClick={ this.previous }>
-                <span className="glyphicon glyphicon-chevron-left textGrey" aria-hidden="true" />
-              </button>
-            </div>
+          <div className={ renderClass }>
+            <button onClick={ this.first }>
+              <span className="glyphicon glyphicon-chevron-left textGrey" aria-hidden="true" />
+              <span className="glyphicon glyphicon-chevron-left textGrey" aria-hidden="true" />
+            </button>
+          </div>
 
-            <div className="col-xs-2 center textWidth120 noPadLR">
-              <h5>{ title }</h5>
-            </div>
+          <div className="col-xs-1 textWidth60 center noPadLR">
+            <button onClick={ this.previous }>
+              <span className="glyphicon glyphicon-chevron-left textGrey" aria-hidden="true" />
+            </button>
+          </div>
 
-            <div className="col-xs-1 textWidth60 center noPadLR">
-              <button onClick={ this.next }>
-                <span className="glyphicon glyphicon-chevron-right textGrey" aria-hidden="true" />
-              </button>
-            </div>
+          <div className="col-xs-2 center textWidth120 noPadLR">
+            <h5>{ title }</h5>
+          </div>
 
-            <div className="col-xs-1 textWidth60 center noPadLR">
-              <button onClick={ this.last }>
-                <span className="glyphicon glyphicon-chevron-right textGrey" aria-hidden="true" />
-                <span className="glyphicon glyphicon-chevron-right textGrey" aria-hidden="true" />
-              </button>
-            </div>
+          <div className="col-xs-1 textWidth60 center noPadLR">
+            <button onClick={ this.next }>
+              <span className="glyphicon glyphicon-chevron-right textGrey" aria-hidden="true" />
+            </button>
+          </div>
 
-            { renderBtn }
+          <div className="col-xs-1 textWidth60 center noPadLR">
+            <button onClick={ this.last }>
+              <span className="glyphicon glyphicon-chevron-right textGrey" aria-hidden="true" />
+              <span className="glyphicon glyphicon-chevron-right textGrey" aria-hidden="true" />
+            </button>
+          </div>
+
+          { renderBtn2 }
 
         </div>
     )

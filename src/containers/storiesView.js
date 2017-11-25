@@ -69,6 +69,8 @@ class storiesView extends Component {
     const allProps = this.props;
     if (allProps.state.userStorylines.length && allProps.state.userPosts.length ) {
       this.initializeState(allProps);
+    } else if (allProps) {
+
     }
   }
 
@@ -76,6 +78,8 @@ class storiesView extends Component {
     const allProps = nextProps;
     if (allProps.state.userStorylines.length && allProps.state.userPosts.length ) {
       this.initializeState(allProps);
+    } else if (allProps) {
+
     }
   }
 
@@ -209,7 +213,7 @@ class storiesView extends Component {
           <Mover title={ 'Replies' } name={ 'SLR' } selection={ this.handleSelection } />
         </div>
 
-        <div className="row col-xs-12 panel panel-default center">
+        <div className="row panel panel-default center">
 
           <div className="col-xs-12 noPadLR">
             <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>

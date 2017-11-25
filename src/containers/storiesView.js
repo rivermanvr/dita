@@ -76,8 +76,28 @@ class storiesView extends Component {
     }
   }
 
-  handleTraverse () {
-
+  handleTraverse (name, action) {
+    const state = this.state;
+    //start at index zero or follow the click event only for Storylines
+    let value = 0;
+    if (action === 'first') {
+      value = 0;
+    } else if (action === 'previous' && state[name] > 0) {
+      value = state[name] - 1 ;
+    } else if (action === 'next' ) {
+      if (name === 'SL' ) {
+        if (state.userStorylines.length > state[name] + 1) {
+          value = state[name] + 1;
+        } else {
+          value = state[name];
+        }
+      }
+    } else if (action === 'last') {
+      if (name === 'SL' ) {
+          value = state.userStorylines.length - 1;
+      }
+    }
+    return value;
   }
 
   formatDates (dateIn) {
@@ -86,35 +106,17 @@ class storiesView extends Component {
 
   handleSelection(arr) {
     //determine the array you are rendering
-    const state = this.state;
     const name = arr[0];
+    const action = arr[1];
     /*  using moverControl returns:
     (name === 'SL') => 'userStorylines';
     (name === 'SLP') => 'userPosts';
     (name === 'SLR') => 'userReplies';
     (name === 'UP') => 'userAllPosts';
     */
-    //start at index zero or follow the click event only for Storylines
-    let value = 0;
-    if (arr[1] === 'first') {
-      value = 0;
-    } else if (arr[1] === 'previous' && state[name] > 0) {
-      value = state[name] - 1 ;
-    } else if (arr[1] === 'next' ) {
-      if (name === 'SL' ) {
-        if (state.userStorylines.length > state[name] + 1) {
-          value = state[name] + 1;
-        } else {
-          value = state[name];
-        }
-      }
-    } else if (arr[1] === 'last') {
-      if (name === 'SL' ) {
-          value = state.userStorylines.length - 1;
-      }
-    }
+    //follow the click event for Storylines:
+    const value = this.handleTraverse(name, action);
     console.log('from mover component: ', name, value)
-    // this.setState({ [name]: value })
     this.initializeState(this.state, 1, name, value);
   }
 
@@ -175,15 +177,11 @@ class storiesView extends Component {
     const toggle = this.state.toggle;
     return (
       <div className="marginT marginB noPadLR noMarginLR">
-
         { renderToggle }
-
         <div className="row noMarginLR">
           <Mover title={ 'Storylines' } name={ 'SL' } selection={ this.handleSelection } renderBtn={ 'Story' } />
         </div>
-
         <div className="row panel panel-default center">
-
           <div className="col-xs-12 noPadLR">
             <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>
             <div className="col-xs-1 moveDown07 noPadLR">{ currentSL.id }</div>
@@ -192,17 +190,14 @@ class storiesView extends Component {
             <div className="col-xs-2 noPadLR"><h5>Created: </h5></div>
             <div className="col-xs-3 moveDown07">{ dateCreatedSL }</div>
           </div>
-
           <div className="col-xs-12 noPadLR">
             <div className="col-xs-1 noPadLR pull-left"><h5>Title: </h5></div>
             <div className="col-xs-9 moveDown07">{ currentSL.title }</div>
           </div>
-
           <div className="col-xs-12 noPadLR">
             <div className="col-xs-1 noPadLR pull-left"><h5>Description: </h5></div>
             <div className="col-xs-9 moveDown07">{ descriptionSL }</div>
           </div>
-
         </div>
 
         <div className="row noMarginLR">
@@ -210,7 +205,6 @@ class storiesView extends Component {
         </div>
 
         <div className="row panel panel-default center">
-
           <div className="col-xs-12 noPadLR">
             <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>
             <div className="col-xs-1 moveDown07 noPadLR">{ post.id }</div>
@@ -229,11 +223,8 @@ class storiesView extends Component {
             <div className="col-xs-1 noPadLR pull-left"><h5>Post Body: </h5></div>
             <div className="col-xs-9 moveDown07">{ post.body }</div>
           </div>
-
         </div>
-
         { renderReplies }
-
       </div>
     )
   }

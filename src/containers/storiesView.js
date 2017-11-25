@@ -31,16 +31,12 @@ class storiesView extends Component {
     }
   }
 
-  initializeState (allProps, origin, name, value) {
-    console.log('>>>>>props>>>>>>>>>>', allProps)
+  initializeState (allProps, origin, name, action) {
     const allState = (origin) ? allProps : allProps.state;
     let toggle;
-    if (origin) {
-      toggle = allState.toggle;
-    } else {
-      toggle = (allProps.location.pathname === '/postsView') ? 'posts' : 'stories';
-    }
-    let postsSLP = [], postsUP = [];
+    if (origin) toggle = allState.toggle;
+    else toggle = (allProps.location.pathname === '/postsView') ? 'posts' : 'stories';
+    let postsSLP = [], postsUP = [], value = 0;
     // if toggle is 'posts', then populate postsUP in state.
     if (toggle === 'posts') {
       postsUP = allState.userPosts.filter(post => {
@@ -49,9 +45,11 @@ class storiesView extends Component {
     // if toggle is 'stories', then populate postsSLP.
     } else {
       if (origin) {
+        value = (name === 'SL') ? this.handleTraverse(name, action, allState) : this.state.SL;
         postsSLP = allState.userPosts.filter(post => {
           return post.storylineId === allState.userStorylines[value].id;
         })
+        value = (name !== 'SL') ? this.handleTraverse(name, action, allState, postsSLP) : value;
       } else {
         postsSLP = allState.userPosts.filter(post => {
           return post.storylineId === allState.userStorylines[this.state.SL].id;
@@ -76,7 +74,7 @@ class storiesView extends Component {
     }
   }
 
-  handleTraverse (name, action) {
+  handleTraverse (name, action, allState, postsSLP) {
     const state = this.state;
     //start at index zero or follow the click event only for Storylines
     let value = 0;
@@ -86,15 +84,20 @@ class storiesView extends Component {
       value = state[name] - 1 ;
     } else if (action === 'next' ) {
       if (name === 'SL' ) {
-        if (state.userStorylines.length > state[name] + 1) {
-          value = state[name] + 1;
-        } else {
-          value = state[name];
-        }
+        if (allState.userStorylines.length > state[name] + 1) value = state[name] + 1;
+        else value = state[name];
+      } else if (name === 'SLP' ) {
+        if (postsSLP.length > state[name] + 1) value = state[name] + 1;
+        else value = state[name];
+      } else if (name === 'SLR' ) {
+        if (postsSLP[this.state.SLP].replies.length > state[name] + 1) value = state[name] + 1;
+        else value = state[name];
       }
     } else if (action === 'last') {
-      if (name === 'SL' ) {
-          value = state.userStorylines.length - 1;
+      if (name === 'SL' ) {value = allState.userStorylines.length - 1}
+      else if (name === 'SLP' ) { value = postsSLP.length - 1 }
+      else if (name === 'SLR' ) {
+        value = postsSLP[this.state.SLP].replies.length - 1
       }
     }
     return value;
@@ -114,17 +117,19 @@ class storiesView extends Component {
     (name === 'SLR') => 'userReplies';
     (name === 'UP') => 'userAllPosts';
     */
-    //follow the click event for Storylines:
-    const value = this.handleTraverse(name, action);
-    console.log('from mover component: ', name, value)
-    this.initializeState(this.state, 1, name, value);
+    this.initializeState(this.state, 1, name, action);
   }
 
   render() {
+    const userName = (this.state.currentUser.id) ? this.state.currentUser.name : '- guest -';
     const renderToggle = (<div className="row marginB noPadLR noMarginLR">
         <div className="col-xs-12 noPadLR noMarginLR">
 
-          <div className="col-xs-6 col-xs-offset-3 btn-group center noPadLR" role="group" aria-label="poststory">
+          <div className="col-xs-3 center noPadLR">
+            <button className="btn btn-default" disabled>Current User: <strong>{ userName }</strong></button>
+          </div>
+
+          <div className="col-xs-6 btn-group center noPadLR" role="group" aria-label="poststory">
             <Link to="/postsView"><button type="button" className="btn btn-default col-xs-6 center">Posts</button></Link>
             <Link to="/storiesView"><button type="button" className="btn btn-primary col-xs-6 center">Stories</button></Link>
           </div>
@@ -136,18 +141,26 @@ class storiesView extends Component {
         </div>
       </div>)
     const state = this.state;
-    if (!state.userStorylines.length || !state.userPosts.length ) return (
-      <div className="marginT marginB noPadLR noMarginLR">
-        { renderToggle }
-        <div className="row panel panel-default center"><h5>-- No Storylines Given Yet -- </h5></div>
-      </div>);
-    console.log('>>>state in render>>>>>', this.state);
+    if (!state.userStorylines.length || !state.userPosts.length ) {
+      return (
+        <div className="marginT marginB noPadLR noMarginLR">
+          { renderToggle }
+          <div className="row panel panel-default center"><h5>-- No Storylines Given Yet -- </h5></div>
+        </div>);
+    }
     // current storyline:
     const currentSL = state.userStorylines[state.SL];
     // Selecting the proper post record that associates to a storyline:
     const post = state.postsSLP[this.state.SLP];
     // Selecting the proper reply record that associates to a storyline/post:
     const replies = post.replies[this.state.SLR];
+    // formating dates
+    const dateUpdatedSL = this.formatDates(currentSL.updatedAt);
+    const dateCreatedSL = this.formatDates(currentSL.createdAt);
+    const dateUpdatedSLP = (post.updatedAt) ? this.formatDates(post.updatedAt) : '-- none --';
+    const dateUpdatedSLR = (replies) ? this.formatDates(replies.updatedAt) : '-- none --';
+    // description may be null.
+    const descriptionSL = (currentSL.description) ? currentSL.description : '-- none --'
     const renderReplies = (!replies) ? <div className="row panel panel-default center"><h5>-- No Replies Given Yet -- </h5></div> : (<div>
         <div className="row noMarginLR">
           <Mover title={ 'Replies' } name={ 'SLR' } selection={ this.handleSelection } />
@@ -157,7 +170,7 @@ class storiesView extends Component {
             <div className="col-xs-1 noPadLR pull-left"><h5>ID: </h5></div>
             <div className="col-xs-1 moveDown07 noPadLR">{ replies.id }</div>
             <div className="col-xs-2 noPadLR"><h5>Updated: </h5></div>
-            <div className="col-xs-3 moveDown07">{ replies.updatedAt }</div>
+            <div className="col-xs-3 moveDown07">{ dateUpdatedSLR }</div>
             <div className="col-xs-2 noPadLR"><h5>User Name: </h5></div>
             <div className="col-xs-3 moveDown07">{ replies.user.name }</div>
           </div>
@@ -166,13 +179,10 @@ class storiesView extends Component {
             <div className="col-xs-9 moveDown07">{ replies.body }</div>
           </div>
         </div>
+        <div className="col-xs-12 center noPadLR">
+          <button className="btn btn-default center" disabled>Respond to this Reply</button>
+        </div>
       </div>);
-    // formating dates
-    const dateUpdatedSL = this.formatDates(currentSL.updatedAt);
-    const dateCreatedSL = this.formatDates(currentSL.createdAt);
-    const dateUpdatedSLP = (post.updatedAt) ? this.formatDates(post.updatedAt) : '-- none --';
-    // description may be null.
-    const descriptionSL = (currentSL.description) ? currentSL.description : '-- none --'
     //-----------------------
     const toggle = this.state.toggle;
     return (

@@ -19,14 +19,14 @@ class storiesView extends Component {
 
   componentDidMount () {
     const allProps = this.props;
-    if (allProps.state.userStorylines.length && allProps.state.userPosts.length ) {
+    if (allProps.state.posts.length ) {
       this.initializeState(allProps);
     }
   }
 
   componentWillReceiveProps (nextProps) {
     const allProps = nextProps;
-    if (allProps.state.userStorylines.length && allProps.state.userPosts.length ) {
+    if (allProps.state.posts.length ) {
       this.initializeState(allProps);
     }
   }
@@ -72,9 +72,6 @@ class storiesView extends Component {
       SLP = this.state.SLP;
       SL = this.state.SL;
     }
-
-    console.log('>>>>>>>>>>>>>>>>>>>>>SL: ', SL, ' SLP: ', SLP, ' SLR: ', SLR)
-
     if (origin) {
       this.setState({ userStorylines: allState.userStorylines,
         postsSLP,
@@ -139,7 +136,9 @@ class storiesView extends Component {
   }
 
   render() {
-    const userName = (this.state.currentUser.id) ? this.state.currentUser.name : '- guest -';
+    const state = this.state;
+    console.log('????', state)
+    const userName = (state.currentUser.id) ? state.currentUser.name : '- guest -';
     const renderToggle = (<div className="row marginB noPadLR noMarginLR">
         <div className="col-xs-12 noPadLR noMarginLR">
 
@@ -158,7 +157,6 @@ class storiesView extends Component {
 
         </div>
       </div>)
-    const state = this.state;
     if (!state.userStorylines.length || !state.userPosts.length ) {
       return (
         <div className="marginT marginB noPadLR noMarginLR">

@@ -57,12 +57,30 @@ class storiesView extends Component {
       }
     }
     //------------------------------------------------------
+    let SL, SLP, SLR;
+    if (name === 'SLR') SLR = value;
+    else if (name === 'SLP' || name === 'SL') SLR = 0;
+    else SLR = this.state.SLR;
+
+    if (name === 'SLP') {
+      SLP = value
+      SL = this.state.SL;
+    } else if (name === 'SL') {
+      SLP = 0;
+      SL = value;
+    } else {
+      SLP = this.state.SLP;
+      SL = this.state.SL;
+    }
+
+    console.log('>>>>>>>>>>>>>>>>>>>>>SL: ', SL, ' SLP: ', SLP, ' SLR: ', SLR)
+
     if (origin) {
       this.setState({ userStorylines: allState.userStorylines,
         postsSLP,
         postsUP,
-        [name]: value
-       })
+        SL, SLP, SLR
+      })
     } else {
       this.setState({ userStorylines: allState.userStorylines,
         userPosts: allState.userPosts,
@@ -70,7 +88,7 @@ class storiesView extends Component {
         postsSLP,
         postsUP,
         toggle
-       })
+      })
     }
   }
 

@@ -20,6 +20,11 @@ export default class App extends Component {
   render() {
     return (
       <div className="container">
+        {/* styles */}
+        <link href="/public/css/allStyles.css" rel="stylesheet" />
+        <link href="/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+        {/* app */}
         <h3>Welcome to Dita</h3>
         <Routes />
       </div>

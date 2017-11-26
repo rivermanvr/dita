@@ -19,21 +19,22 @@ class Navbar extends Component {
       Then add a corresponding Route in the Route.js Component
     ------------------------------------------- */
     const tabs = [
-      { title: 'Login - WZ', path: '/login' },
-      { title: 'Sign Up - WZ', path: '/signup' },
-      { title: 'My Posts - WZ', path: '/myposts' },
-      { title: 'View/Update Profile - WZ', path: '/profile' },
-      { title: 'TestBed - Vince', path: '/testBed' },
-      { title: 'GeoLocateInput(new) - Vince', path: '/google' },
-      { title: 'MoverControl - Vince', path: '/testmover' },
-      { title: 'View_StoriesPosts - Vince', path: '/storiesView' },
-      { title: 'Add Post', path: '/posts' },
-      { title: 'All Posts', path: '/allposts' },
-      { title: 'Map', path: '/allpostsmap' },
-      { title: 'All Posts By Loc - WZ', path: '/allpostsbyloc' },
-      { title: 'Distance Test - WZ', path: '/distancetest' },
-      { title: 'Create Story - WZ', path: '/createstory' },
-      { title: 'My Locations - WZ', path: '/mylocations' },
+      { title: 'LIVE', path: '/' },
+      { title: 'Login - WZ', path: '/dev/login' },
+      { title: 'Sign Up - WZ', path: '/dev/signup' },
+      { title: 'My Posts - WZ', path: '/dev/myposts' },
+      { title: 'View/Update Profile - WZ', path: '/dev/profile' },
+      { title: 'TestBed - Vince', path: '/dev/testBed' },
+      { title: 'GeoLocateInput(new) - Vince', path: '/dev/google' },
+      { title: 'MoverControl - Vince', path: '/dev/testmover' },
+      { title: 'View_StoriesPosts - Vince', path: '/dev/storiesView' },
+      { title: 'Add Post', path: '/dev/posts' },
+      { title: 'All Posts', path: '/dev/allposts' },
+      { title: 'Map', path: '/dev/allpostsmap' },
+      { title: 'All Posts By Loc - WZ', path: '/dev/allpostsbyloc' },
+      { title: 'Distance Test - WZ', path: '/dev/distancetest' },
+      { title: 'Create Story - WZ', path: '/dev/createstory' },
+      { title: 'My Locations - WZ', path: '/dev/mylocations' },
     ];
     return (
       <ul className="nav nav-tabs mainnav" style={ { marginBottom: '10px' } }>

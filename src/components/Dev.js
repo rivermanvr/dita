@@ -3,8 +3,8 @@ import store from '../store'
 import { loadUserData, fetchPosts, fetchStorylines } from '../actions'
 import jwt from 'jsonwebtoken'
 
-import { Link } from 'react-router-dom'
-import Routes from './Routes'
+
+import Routes from './DevRoutes'
 
 export default class App extends Component {
 
@@ -20,7 +20,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="container">
-        <h3>Welcome to Dita (live) <Link to='/dev'>DEV</Link></h3>
+        <h3>Welcome to Dita</h3>
         <Routes />
       </div>
     )

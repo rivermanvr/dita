@@ -34,7 +34,6 @@ class PostForm extends Component {
     this.setState({ [key]: val, userId: this.props.currentUser.user.id });
   }
 
-
   handleSubmit(event) {
     event.preventDefault();
     this.props.handleAdd(this.state);

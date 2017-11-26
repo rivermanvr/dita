@@ -32,12 +32,17 @@ class storiesView extends Component {
 
   initializeState (allProps, origin, name, action) {
     const allState = (origin) ? allProps : allProps.state;
-    let toggle;
+    let toggle, postsUP;
     if (origin) toggle = allState.toggle;
     else toggle = (allProps.location.pathname === '/postsView') ? 'posts' : 'stories';
-    const postsUP = allState.userPosts.filter(post => {
+    if (origin) {
+      postsUP = allState.postsUP;
+    } else {
+      postsUP = allState.userPosts.filter(post => {
         return !post.storylineId;
       })
+    }
+
     let UP = this.state.UP;
     if (origin) UP = this.handleTraverse(name, action, allState);
     console.log('>>>>>init>>>>...:', ' postsUP: ', postsUP, ' origin: ', origin, ' name: ', name, ' action: ', action, ' UP: ', UP);
@@ -79,7 +84,7 @@ class storiesView extends Component {
 
   handleSelection(arr) {
     //determine the array you are rendering
-    const name = arr[0];
+    const name = 'UP';
     const action = arr[1];
     /*  using moverControl returns:
     (name === 'SL') => 'userStorylines';
@@ -87,10 +92,12 @@ class storiesView extends Component {
     (name === 'SLR') => 'userReplies';
     (name === 'UP') => 'userAllPosts';
     */
+    console.log('>>in Selection>>: ', name, action, this.state)
     this.initializeState(this.state, 1, name, action);
   }
 
   render() {
+    const state = this.state;
     const userName = (this.state.currentUser.id) ? this.state.currentUser.name : '- guest -';
     const renderToggle = (<div className="row marginB noPadLR noMarginLR">
         <div className="col-xs-12 noPadLR noMarginLR">
@@ -110,8 +117,6 @@ class storiesView extends Component {
 
         </div>
       </div>)
-    console.log('>>>>>in Render: ', this.state)
-    const state = this.state;
     if (!state.postsUP.length ) {
       return (
         <div className="marginT marginB noPadLR noMarginLR">
@@ -120,11 +125,9 @@ class storiesView extends Component {
         </div>);
     }
     // Selecting the proper post record that associates to a storyline:
-    const post = state.postsSLP[this.state.SLP];
+    const post = state.postsUP[state.UP];
     // formating dates
     const dateUpdatedSLP = (post.updatedAt) ? this.formatDates(post.updatedAt) : '-- none --';
-    // description may be null.
-    const descriptionSL = (currentSL.description) ? currentSL.description : '-- none --'
     //-----------------------
     const toggle = this.state.toggle;
     return (

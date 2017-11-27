@@ -24,7 +24,7 @@ export default class App extends Component {
         {/* styles */}
         <link href="/public/css/style.css" rel="stylesheet" />
 
-        {/* */}
+        {/* top nav */}
         <Nav />
 
         {/* temp headline */}

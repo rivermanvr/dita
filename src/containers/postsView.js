@@ -96,8 +96,8 @@ class postsView extends Component {
           </div>
 
           <div className="col-xs-6 btn-group center noPadLR" role="group" aria-label="poststory">
-            <Link to="/postsView"><button type="button" className="btn btn-primary col-xs-6 center">Posts</button></Link>
-            <Link to="/storiesView"><button type="button" className="btn btn-default col-xs-6 center">Stories</button></Link>
+            <Link to="/dev/postsView"><button type="button" className="btn btn-primary col-xs-6 center">Posts</button></Link>
+            <Link to="/dev/storiesView"><button type="button" className="btn btn-default col-xs-6 center">Stories</button></Link>
           </div>
 
           <div className="col-xs-3 center noPadLR">

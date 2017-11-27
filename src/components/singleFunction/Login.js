@@ -18,13 +18,13 @@ class Login extends Component {
   onSubmit = () => {
     // replace history.push with path to redirect
     this.props.signIn(this.state)
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/dev'))
   }
 
   testSignOut = () => {
     // replace history.push with path to redirect
     this.props.signOut()
-    this.props.history.push('/')
+    this.props.history.push('/dev')
   }
 
   testGetData = () => {

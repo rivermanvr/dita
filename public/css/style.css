@@ -2,6 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -45,6 +46,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/*
+  font-family: 'Roboto', sans-serif;
+*/
 * {
   box-sizing: border-box; }
 
@@ -52,7 +56,8 @@ html {
   font-size: 16px; }
 
 body {
-  font-size: 100%; }
+  font-size: 100%;
+  font-family: 'Roboto', sans-serif; }
 
 a {
   text-decoration: none; }

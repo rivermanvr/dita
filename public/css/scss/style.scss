@@ -19,7 +19,8 @@ body {
 }
 a { text-decoration: none; }
 
-
+main {
+}
 
 
 
@@ -29,3 +30,8 @@ a { text-decoration: none; }
 
 // containers
 @import '_nav.scss';
+@import '_forms.scss';
+@import '_buttons.scss';
+
+// pages
+@import '_login.scss';

@@ -29,7 +29,7 @@ import Profile from './pages/Profile'
 
 export default function () {
   return (
-    <div>
+    <main>
       {/* render on all paths */}
 
       {/* render only on specific paths */}
@@ -38,6 +38,6 @@ export default function () {
         <Route exact path='/signup' component={ Signup } />
         <Route exact path='/profile' component={ Profile } />
       </Switch>
-    </div>
+    </main>
   )
 }

@@ -28,7 +28,7 @@ export default class App extends Component {
         <Nav />
 
         {/* temp headline */}
-        <h3>Welcome to Dita (live) <Link to='/dev'>DEV</Link></h3>
+        {/* <h3>Welcome to Dita (live) <Link to='/dev'>DEV</Link></h3> */}
 
         {/* Routes */}
         <Routes />

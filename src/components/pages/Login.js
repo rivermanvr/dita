@@ -27,7 +27,7 @@ class Login extends Component {
 
     return (
       <div className='login-container'>
-        <div className='login'>
+        <div className='form login'>
           <Textbox
             value={ query }
             onChange={ handleChange('query') }

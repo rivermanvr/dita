@@ -33,17 +33,9 @@ class storiesView extends Component {
 
   initializeState (allProps, origin, name, action) {
     const allState = (origin) ? allProps : allProps.state;
-    let toggle;
+    let toggle, postsSLP = [], postsUP = [], value = 0, SLMade = false, SLMadeArr = [];
     if (origin) toggle = allState.toggle;
     else toggle = (allProps.location.pathname === '/postsView') ? 'posts' : 'stories';
-    let postsSLP = [], postsUP = [], value = 0;
-    // if toggle is 'posts', then populate postsUP in state.
-    if (toggle === 'posts') {
-      postsUP = allState.userPosts.filter(post => {
-        return !post.storylineId;
-      })
-    // if toggle is 'stories', then populate postsSLP.
-    } else {
       if (origin) {
         value = (name === 'SL') ? this.handleTraverse(name, action, allState) : this.state.SL;
         postsSLP = allState.userPosts.filter(post => {
@@ -51,11 +43,21 @@ class storiesView extends Component {
         })
         value = (name !== 'SL') ? this.handleTraverse(name, action, allState, postsSLP) : value;
       } else {
-        postsSLP = allState.userPosts.filter(post => {
-          return post.storylineId === allState.userStorylines[this.state.SL].id;
-        })
+        if (allState.userStorylines[this.state.SL]) {
+          postsSLP = allState.userPosts.filter(post => {
+            return post.storylineId === allState.userStorylines[this.state.SL].id;
+          })
+        } else {
+          // sometimes the set_user_storylines action is too slow!!!!!
+          SLMade = true;
+          SLMadeArr = allState.storylines.filter(story => {
+            return story.userId === allState.currentUser.user.id;
+          })
+          postsSLP = allState.userPosts.filter(post => {
+            return post.storylineId === SLMadeArr[this.state.SL].id;
+          })
+        }
       }
-    }
     //------------------------------------------------------
     let SL, SLP, SLR;
     if (name === 'SLR') SLR = value;
@@ -77,6 +79,14 @@ class storiesView extends Component {
         postsSLP,
         postsUP,
         SL, SLP, SLR
+      })
+    } else if (SLMade) {
+      this.setState({ userStorylines: SLMadeArr,
+        userPosts: allState.userPosts,
+        currentUser: allState.currentUser.user,
+        postsSLP,
+        postsUP,
+        toggle
       })
     } else {
       this.setState({ userStorylines: allState.userStorylines,
@@ -137,7 +147,6 @@ class storiesView extends Component {
 
   render() {
     const state = this.state;
-    console.log('????', state)
     const userName = (state.currentUser.id) ? state.currentUser.name : '- guest -';
     const renderToggle = (<div className="row marginB noPadLR noMarginLR">
         <div className="col-xs-12 noPadLR noMarginLR">

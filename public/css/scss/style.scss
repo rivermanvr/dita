@@ -1,0 +1,22 @@
+// reset
+@import '_reset.scss';
+
+// colors
+@import '_colors.scss';
+
+// general styles
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body { font-size: 100%; }
+a { text-decoration: none; }
+
+
+
+
+
+
+
+
+
+// containers
+@import '_nav.scss';

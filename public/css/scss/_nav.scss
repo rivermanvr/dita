@@ -1,0 +1,14 @@
+nav {
+  background-color: $black;
+  color: $white;
+  display: flex;
+  justify-content: space-between; 
+  & a {
+    color: $white;
+    display: inline-block;
+    padding: 10px 15px;
+    &.active {
+      background-color: $navy;
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Mover from '../components/singleFunction/moverControl';
 
-class storiesView extends Component {
+class postsView extends Component {
   constructor() {
     super();
     this.state = { currentUser: {}, postsUP: [],
@@ -32,6 +32,7 @@ class storiesView extends Component {
 
   initializeState (allProps, origin, name, action) {
     const allState = (origin) ? allProps : allProps.state;
+    console.log('allstate: ', allState);
     let toggle, postsUP;
     if (origin) toggle = allState.toggle;
     else toggle = (allProps.location.pathname === '/postsView') ? 'posts' : 'stories';
@@ -44,12 +45,16 @@ class storiesView extends Component {
     }
 
     let UP = this.state.UP;
-    if (origin) UP = this.handleTraverse(name, action, allState);
-    console.log('>>>>>init>>>>...:', ' postsUP: ', postsUP, ' origin: ', origin, ' name: ', name, ' action: ', action, ' UP: ', UP);
-    this.setState({ currentUser: allState.currentUser.user, postsUP, toggle, UP })
+    if (origin) {
+      UP = this.handleTraverse(name, action);
+      console.log('>>>>>init>>>>...:', ' postsUP: ', postsUP, ' origin: ', origin, ' name: ', name, ' action: ', action, ' UP: ', UP);
+      this.setState({ currentUser: allState.currentUser, postsUP, toggle, UP })
+    } else {
+      this.setState({ currentUser: allState.currentUser.user, postsUP, toggle, UP })
+    }
   }
 
-  handleTraverse (name, action, allState, postsSLP) {
+  handleTraverse (name, action) {
     const state = this.state;
     //start at index zero or follow the click event only for Storylines
     let value = 0;
@@ -58,22 +63,10 @@ class storiesView extends Component {
     } else if (action === 'previous' && state[name] > 0) {
       value = state[name] - 1 ;
     } else if (action === 'next' ) {
-      if (name === 'SL' ) {
-        if (allState.userStorylines.length > state[name] + 1) value = state[name] + 1;
-        else value = state[name];
-      } else if (name === 'SLP' ) {
-        if (postsSLP.length > state[name] + 1) value = state[name] + 1;
-        else value = state[name];
-      } else if (name === 'SLR' ) {
-        if (postsSLP[this.state.SLP].replies.length > state[name] + 1) value = state[name] + 1;
-        else value = state[name];
-      }
+      if (state.postsUP.length > state[name] + 1) value = state[name] + 1;
+      else value = state[name];
     } else if (action === 'last') {
-      if (name === 'SL' ) {value = allState.userStorylines.length - 1}
-      else if (name === 'SLP' ) { value = postsSLP.length - 1 }
-      else if (name === 'SLR' ) {
-        value = postsSLP[this.state.SLP].replies.length - 1
-      }
+      value = state.postsUP.length - 1;
     }
     return value;
   }
@@ -84,7 +77,6 @@ class storiesView extends Component {
 
   handleSelection(arr) {
     //determine the array you are rendering
-    const name = 'UP';
     const action = arr[1];
     /*  using moverControl returns:
     (name === 'SL') => 'userStorylines';
@@ -92,13 +84,14 @@ class storiesView extends Component {
     (name === 'SLR') => 'userReplies';
     (name === 'UP') => 'userAllPosts';
     */
-    console.log('>>in Selection>>: ', name, action, this.state)
-    this.initializeState(this.state, 1, name, action);
+    console.log('>>in Selection>>: ', 'UP', action, this.state)
+    this.initializeState(this.state, 1, 'UP', action);
   }
 
   render() {
     const state = this.state;
-    const userName = (this.state.currentUser.id) ? this.state.currentUser.name : '- guest -';
+    console.log('>>>in render, state: ', state)
+    const userName = (state.currentUser.id) ? state.currentUser.name : '- guest -';
     const renderToggle = (<div className="row marginB noPadLR noMarginLR">
         <div className="col-xs-12 noPadLR noMarginLR">
 
@@ -167,4 +160,4 @@ function mapStateToProps (state) {
   return { state };
 }
 
-export default connect(mapStateToProps)(storiesView);
+export default connect(mapStateToProps)(postsView);

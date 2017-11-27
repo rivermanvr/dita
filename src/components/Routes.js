@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
+/**************** components ****************/
 import Navbar from '../containers/Navbar'
 import TestBed from './testerRoutines/TestBed'
 import TestBedGoogle from './testerRoutines/TestBedGoogle'
@@ -19,6 +20,13 @@ import TestDistance from './testerRoutines/TestDistance'
 import PostDetail from './singleFunction/PostDetail'
 import CreateStory from './singleFunction/CreateStory'
 import MyLocations from './singleFunction/MyLocations'
+/********************************************/
+
+/****************** pages ******************/
+
+
+
+/*******************************************/
 
 export default function () {
   return (

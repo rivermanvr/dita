@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-// reusables
+// components
 import { Textbox, Button } from '../reusables'
-
-// material-ui
-import TextField from 'material-ui/TextField'
-import MatButton from 'material-ui/Button'
 
 // redux
 import { signIn } from '../../reducers'
+
 
 class Login extends Component {
   state = { query: '', password: '' }
@@ -30,32 +28,6 @@ class Login extends Component {
     return (
       <div className='login-container'>
         <div className='login'>
-          {/* <TextField
-            id="query"
-            label="Username or Email"
-            value={ query }
-            onChange={ handleChange('query') }
-            margin="normal" /> 
-          <TextField
-            id="password"
-            label="Password"
-            type='password'
-            value={ password }
-            onChange={ handleChange('password') }
-            margin="normal" />
-
-          <br/>
-          <MatButton raised style={{ backgroundColor: '#006DAA', color: 'white' }}>Log In</MatButton>
-          <br/>
-          <MatButton raised>Sign Up</MatButton>
-
-          <div className='social-login'>
-            <a href='/api/auth/google'>Google</a>
-            <a href='/api/auth/facebook'>Facebook</a>
-          </div> */}
-
-
-
           <Textbox
             value={ query }
             onChange={ handleChange('query') }
@@ -71,11 +43,14 @@ class Login extends Component {
           <Button
             label='Login'
             onClick={ onSubmit }
-            className='btn' />
+            className='btn blue' />
 
+          <Link to='/signup' className='btn default'>Sign Up!</Link>
+
+          <hr/>
           <div className='social-login'>
-            <a href='/api/auth/google' className='btn'>Google</a>
-            <a href='/api/auth/facebook' className='btn'>Facebook</a>
+            <a href='/api/auth/google' className='btn google'>Google</a>
+            <a href='/api/auth/facebook' className='btn facebook'>Facebook</a>
           </div>
         </div>
       </div>

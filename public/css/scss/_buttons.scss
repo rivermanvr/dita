@@ -1,21 +1,31 @@
 .btn {
-  background-color: $navy;
   color: $white;
   text-align: center;
   cursor: pointer;
-  display: inline-block;
   border-radius: 0;
-  padding: 10px;
+  padding: 12px;
   width: 100%;
   border-width: 0;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
-  a.btn {
-    padding-top: 11px;
-    padding-bottom: 11px;
+  &.default {
+    background-color: $gray;
+    color: darken($darkgray, 20%);
+  }
+  &.blue {
+    background-color: $navy;
+    color: $white;
   }
   &.disabled {
     background-color: $gray;
     color: darken($gray, 50%);
   }
+  &.inline {
+    display: inline;
+    padding: 4px 10px;
+  }
+}
+
+.rounded {
+  border-radius: 5px;
 }

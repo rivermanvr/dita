@@ -14,7 +14,10 @@ const Nav = ({ location }) => {
 
   return (
     <nav>
-    <Link to='/'>dita</Link>
+      <div>
+        <Link to='/'>dita</Link>
+        <Link to='/dev' className='btn blue rounded inline'>DEV</Link>
+      </div>
 
       <div>
       { navItems.map(item =>

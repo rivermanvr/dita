@@ -59,7 +59,7 @@ class Signup extends Component {
     } 
 
     this.props.signUp(this.state)
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/dev'))
       .catch(err => this.setState({ hasError: handleAxiosErrors(err)[0] }))
   }
 

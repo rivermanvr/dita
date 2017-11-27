@@ -73,7 +73,8 @@ footer {
   background-color: #dddddd; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
 
 hr {
   width: 100%; }
@@ -104,10 +105,15 @@ textarea:focus, input:focus, button:focus, select:focus {
 
 .textbox {
   padding: 10px;
-  border: solid 1px #bbbbbb; }
+  border: solid 1px #bbbbbb;
+  width: 100%; }
   .textbox:focus {
     border-color: #02040F;
     transition: all 300ms; }
+  .textbox-error {
+    color: red;
+    font-size: 0.8em;
+    margin-bottom: 10px; }
 
 .btn {
   color: #F1FFE7;
@@ -134,14 +140,21 @@ textarea:focus, input:focus, button:focus, select:focus {
 .rounded {
   border-radius: 5px; }
 
+.inverse {
+  background-color: #02040F;
+  border-color: #02040F;
+  color: #F1FFE7; }
+
 .login-container {
   display: flex;
   justify-content: center;
   padding-top: 50px; }
-  .login-container .login {
+  .login-container .form {
     display: grid;
     grid-gap: 10px;
     width: 80%; }
+    .login-container .form.login {
+      grid-gap: 20px; }
   .login-container .social-login {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -151,8 +164,8 @@ textarea:focus, input:focus, button:focus, select:focus {
     .login-container .social-login .facebook {
       background-color: #3b5998; }
   @media screen and (min-width: 400px) {
-    .login-container .login {
+    .login-container .form {
       width: 60%; } }
   @media screen and (min-width: 768px) {
-    .login-container .login {
+    .login-container .form {
       width: 40%; } }

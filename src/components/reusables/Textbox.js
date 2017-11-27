@@ -62,7 +62,7 @@ export default class Textbox extends Component {
 
     return (
       <span style={ styles.span } className='textbox-container'>
-        { label ? <label>{ `${label}${ isRequired ? '*' : '' }` }</label> : null }
+        { label ? <label>{ `${label}${ isRequired ? ' *' : '' }` }</label> : null }
         <input
           autoFocus={ focused }
           disabled={ disabled }
@@ -74,9 +74,10 @@ export default class Textbox extends Component {
           onFocus={ onFocus }
           onBlur={ onBlur }
         />
-        <span>
-        { isDirty && !isValid ? `${label || 'this field'} is required` : '' } 
-        </span>
+        { isRequired ?
+          <span className='textbox-error'>
+          { isDirty && !isValid ? `${ label || 'this field' } is required` : '' } 
+          </span> : null }
       </span>
     )
   }

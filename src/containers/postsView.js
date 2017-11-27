@@ -32,7 +32,6 @@ class postsView extends Component {
 
   initializeState (allProps, origin, name, action) {
     const allState = (origin) ? allProps : allProps.state;
-    console.log('allstate: ', allState);
     let toggle, postsUP;
     if (origin) toggle = allState.toggle;
     else toggle = (allProps.location.pathname === '/postsView') ? 'posts' : 'stories';
@@ -47,7 +46,6 @@ class postsView extends Component {
     let UP = this.state.UP;
     if (origin) {
       UP = this.handleTraverse(name, action);
-      console.log('>>>>>init>>>>...:', ' postsUP: ', postsUP, ' origin: ', origin, ' name: ', name, ' action: ', action, ' UP: ', UP);
       this.setState({ currentUser: allState.currentUser, postsUP, toggle, UP })
     } else {
       this.setState({ currentUser: allState.currentUser.user, postsUP, toggle, UP })
@@ -84,13 +82,11 @@ class postsView extends Component {
     (name === 'SLR') => 'userReplies';
     (name === 'UP') => 'userAllPosts';
     */
-    console.log('>>in Selection>>: ', 'UP', action, this.state)
     this.initializeState(this.state, 1, 'UP', action);
   }
 
   render() {
     const state = this.state;
-    console.log('>>>in render, state: ', state)
     const userName = (state.currentUser.id) ? state.currentUser.name : '- guest -';
     const renderToggle = (<div className="row marginB noPadLR noMarginLR">
         <div className="col-xs-12 noPadLR noMarginLR">

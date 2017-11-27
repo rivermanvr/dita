@@ -1,0 +1,31 @@
+.btn {
+  color: $white;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0;
+  padding: 12px;
+  width: 100%;
+  border-width: 0;
+  box-shadow: $shadow-d1;
+
+  &.default {
+    background-color: $gray;
+    color: darken($darkgray, 20%);
+  }
+  &.blue {
+    background-color: $navy;
+    color: $white;
+  }
+  &.disabled {
+    background-color: $gray;
+    color: darken($gray, 50%);
+  }
+  &.inline {
+    display: inline;
+    padding: 4px 10px;
+  }
+}
+
+.rounded {
+  border-radius: 5px;
+}

@@ -8,9 +8,6 @@ import TestBedGoogle from './testerRoutines/TestBedGoogle'
 import TestMover from './testerRoutines/TestMover'
 import StoriesView from '../containers/storiesView'
 import PostsView from '../containers/postsView'
-import Login from './singleFunction/Login'
-import Profile from './singleFunction/Profile'
-import Signup from './singleFunction/Signup'
 import PostForm from './singleFunction/PostForm'
 import Posts from './singleFunction/Posts'
 import AllPosts from './singleFunction/AllPosts'
@@ -23,19 +20,24 @@ import MyLocations from './singleFunction/MyLocations'
 /********************************************/
 
 /****************** pages ******************/
-
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+import Profile from './pages/Profile'
 
 
 /*******************************************/
 
 export default function () {
   return (
-    <div className="container">
+    <main>
       {/* render on all paths */}
 
       {/* render only on specific paths */}
       <Switch>
+        <Route exact path='/login' component={ Login } />
+        <Route exact path='/signup' component={ Signup } />
+        <Route exact path='/profile' component={ Profile } />
       </Switch>
-    </div>
+    </main>
   )
 }

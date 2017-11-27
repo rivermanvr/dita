@@ -61,7 +61,7 @@ export default class Textbox extends Component {
       onFocus } = this
 
     return (
-      <span style={ styles.span }>
+      <span style={ styles.span } className='textbox-container'>
         { label ? <label>{ `${label}${ isRequired ? '*' : '' }` }</label> : null }
         <input
           autoFocus={ focused }
@@ -69,7 +69,7 @@ export default class Textbox extends Component {
           value={ !focused && !value ? placeHolder : value }
           type={ !focused && !value ? 'text' : type }
           style={ !focused && !value ? styles.placeHolder : style }
-          className={ className }
+          className={ `textbox ${className || ''}` }
           onChange={ onChange }
           onFocus={ onFocus }
           onBlur={ onBlur }

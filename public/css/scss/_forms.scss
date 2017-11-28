@@ -12,6 +12,10 @@ textarea:focus, input:focus, button:focus, select:focus {
 .textbox-container {
   display: grid;
   grid-gap: .625em;
+  & label {
+    font-weight: bold; 
+    font-family: 'Lato', sans-serif;
+  }
 }
 .textbox {
   padding: 10px;

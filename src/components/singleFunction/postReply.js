@@ -1,5 +1,5 @@
 import React, {Component, isValidElement} from 'react'
-import { addReply } from '../../actions';
+import { addReply, recordMetrics } from '../../actions';
 import {connect} from 'react-redux'
 const FontAwesome = require('react-fontawesome');
 
@@ -18,7 +18,7 @@ class PostReply extends Component{
        this.setState({
             userId: this.props.currentUser.user.id,
             postId: this.props.postId
-        },()=>console.log(this.state))
+        },()=>console.log('postReply mounted', this.state))
     }
     onChange(e){
         this.setState({
@@ -55,6 +55,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
       handleAdd: (reply) => {
         dispatch(addReply(reply));
+        const { userId, postId } = reply
+        dispatch(recordMetrics(postId, { userId: +userId, type: 'REPLY' }))
       }
     }
   }

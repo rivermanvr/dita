@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {fetchPosts} from './userposts'
+import {fetchPosts} from './index'
 
 export const addReply = (reply) => dispatch =>
   axios.post('/api/replies', reply)

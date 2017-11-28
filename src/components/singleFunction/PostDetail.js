@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PostCard } from './Posts';
+import { recordMetrics } from '../../actions'
 
+// update half life when visited
 const PostDetail = (props) => {
   const { posts } = props;
   const postId = +props.match.params.id;
+
+  if (postId) {
+    props.recordMetrics(postId, { userId: +props.currentUser.user.id, type: 'VISIT' })
+  }
 
   return (
     <div>
@@ -18,10 +24,11 @@ const PostDetail = (props) => {
   )
 }
 
-const mapStateToProps = ({ posts }) => {
+const mapStateToProps = ({ currentUser, posts }) => {
   return {
+    currentUser,
     posts
   }
 }
 
-export default connect(mapStateToProps)(PostDetail)
+export default connect(mapStateToProps, { recordMetrics })(PostDetail)

@@ -8,7 +8,7 @@ const Replies = ({replies, currentUser,post}) => {
         <div className='replyContainer'>
         {
             replies.map((reply) => (
-                <div className="singleReply">
+                <div key={ reply.id } className="singleReply">
                     <div className='userInfo'>
                         <span style={{backgroundImage:`url(${reply.user.profilePic})`}} className="userProfilePic"></span>
                         <p className={`userName ${post.user.id === reply.user.id ? 'myPost' : currentUser.user.id === reply.user.id ? 'signedIn' : ''}`}>{reply.user.name}</p>

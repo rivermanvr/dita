@@ -18,7 +18,7 @@ export const PostCard = ({ content }) => {
   return (
     <div className="list-group-item">
       <h4 className="list-group-item-heading">
-        <Link to={ `/posts/${ id }`} >
+        <Link to={ `/dev/posts/${ id }`} >
           { title }
         </Link>
         <small>from story <span style={{fontSize:'16px', textTransform:'capitalize'}}>{ storyline && storyline.title }</span></small>

@@ -32,5 +32,17 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 })
 
+router.put('/addlife/:id', (req, res, next) => {
+  Post.addLife(req.params.id, req.body)
+    .then(() => {
+      res.sendStatus(200)
+    })
+    .catch(() => {
+      // log this in system
+      // don't show user
+      console.log('unable to record metrics', req.body)
+      res.sendStatus(200)
+    })
+})
 
 module.exports = router

@@ -34,7 +34,7 @@ class Profile extends Component {
     if (!verifyEmptyState(userData)) return 
 
     this.props.updateUser(userData)
-      .then(() => this.props.history.push('/dev'))
+      .then(() => this.props.history.push('/'))
   }
 
   render = () => {

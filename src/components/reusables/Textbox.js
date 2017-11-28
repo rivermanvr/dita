@@ -62,7 +62,8 @@ export default class Textbox extends Component {
 
     return (
       <span style={ styles.span } className='textbox-container'>
-        { label ? <label>{ `${label}${ isRequired ? ' *' : '' }` }</label> : null }
+        {/* label ? <label>{ `${label}${ isRequired ? ' *' : '' }` }</label> : null */}
+        { label ? <label>{ label }</label> : null }
         <input
           autoFocus={ focused }
           disabled={ disabled }

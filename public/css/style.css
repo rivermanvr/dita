@@ -2,7 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Roboto|Lato:700");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -102,6 +102,9 @@ textarea:focus, input:focus, button:focus, select:focus {
 .textbox-container {
   display: grid;
   grid-gap: .625em; }
+  .textbox-container label {
+    font-weight: bold;
+    font-family: 'Lato', sans-serif; }
 
 .textbox {
   padding: 10px;

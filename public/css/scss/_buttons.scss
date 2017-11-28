@@ -16,7 +16,8 @@
     background-color: $navy;
     color: $white;
   }
-  &.disabled {
+  &.disabled, button:disabled {
+    cursor: not-allowed;
     background-color: $gray;
     color: darken($gray, 50%);
   }

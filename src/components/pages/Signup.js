@@ -92,7 +92,7 @@ class Signup extends Component {
           <Button
             onClick={ handleSignup }
             disabled={ !isValid }
-            className='btn blue'
+            className={ `btn ${!isValid ? 'disabled' : 'blue'}` }
             label='Sign Up!' />
         </div>
       </div>

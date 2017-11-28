@@ -133,7 +133,8 @@ textarea:focus, input:focus, button:focus, select:focus {
   .btn.blue {
     background-color: #006DAA;
     color: #F1FFE7; }
-  .btn.disabled {
+  .btn.disabled, .btn button:disabled {
+    cursor: not-allowed;
     background-color: #dddddd;
     color: #5e5e5e; }
   .btn.inline {

@@ -32,7 +32,10 @@ footer {
   border-top: solid 2px $gray;
   background-color: $gray;
 }
-a { text-decoration: none; }
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
 hr { width: 100%; }
 
 

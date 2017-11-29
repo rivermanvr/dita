@@ -26,6 +26,10 @@ class AddPost extends Component {
     storylineId: 0
   }
 
+  componentDidMount = () => {
+    this.setState({ latitude: this.props.home.lat, longitude: this.props.home.lng })
+  }
+
   componentWillReceiveProps = nextProps => {
     this.setState({ latitude: nextProps.home.lat, longitude: nextProps.home.lng })
   }
@@ -125,7 +129,7 @@ class AddPost extends Component {
           <Textarea
             rows='5'
             placeHolder='Storyline description (optional)'
-            
+            value={ storyDescription }
             onChange={ handleChange('storyDescription') } />
         </div>
 

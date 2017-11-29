@@ -23,6 +23,7 @@ import MyLocations from './singleFunction/MyLocations'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Profile from './pages/Profile'
+import AddPost from './pages/AddPost'
 
 
 /*******************************************/
@@ -37,6 +38,7 @@ export default function () {
         <Route exact path='/login' component={ Login } />
         <Route exact path='/signup' component={ Signup } />
         <Route exact path='/profile' component={ Profile } />
+        <Route exact path='/addpost' component={ AddPost } />
       </Switch>
     </main>
   )

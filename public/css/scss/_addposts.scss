@@ -1,0 +1,25 @@
+.add-post {
+  display: grid;
+  grid-gap: 20px;
+  padding: 20px;
+  position: relative;
+  & .add-post-inputs {
+    display: grid;
+    grid-gap: 20px;
+  }
+  & .add-storyline-inputs {
+    grid-gap: 20px;
+    height: 0px;
+    display: none; 
+    visibility: hidden;
+    transition: height 200ms, display 250ms, visibility 500ms;
+    &.visible {
+      height: auto;
+      display: grid;
+      visibility: visible;
+    }
+  }
+  & .add-post-button-container {
+    position: relative;
+  }
+}

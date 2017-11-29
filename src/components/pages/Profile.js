@@ -52,7 +52,7 @@ class Profile extends Component {
           <Button
             onClick={ handleUpdate }
             disabled={ !isAuthenticated }
-            className='btn blue'
+            className='btn default'
             label='Update Profile' />
         </div>
       </div>

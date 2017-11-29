@@ -24,8 +24,6 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Profile from './pages/Profile'
 import Dashboard from './pages/Dashboard'
-
-
 /*******************************************/
 
 export default function () {

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import DashboardSideBar from './dashboardComponents/DashboardSideBar';
-import AllPosts from '../singleFunction/AllPosts';
-import PostForm from '../singleFunction/PostForm';
-import Posts from '../singleFunction/Posts';
-import MyLocations from '../singleFunction/MyLocations';
+// import AllPosts from '../singleFunction/AllPosts';
+// import PostForm from '../singleFunction/PostForm';
+// import Posts from '../singleFunction/Posts';
+// import MyLocations from '../singleFunction/MyLocations';
 
 const Dashboard = () => {
   return(

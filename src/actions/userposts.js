@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { fetchStorylines, fetchUserStorylines, fetchPosts } from './index'
+
 // ***** ACTION TYPES *****
 export const SET_USER_POSTS = 'SET_USER_POSTS'
 
@@ -15,3 +17,10 @@ export const addUserPost = (newPost) => dispatch =>
     .then(res => dispatch(fetchUserPosts(res.data)))
     .then(res => dispatch(fetchPosts(res.data)))
     .catch(console.log);
+
+export const createStoryAndPost = (storyData, postData) => dispatch =>
+  axios.post('/api/posts/myposts/withstories', { storyData, postData })
+    .then(res => dispatch(fetchUserPosts()))
+    .then(res => dispatch(fetchPosts()))
+    .then(res => dispatch(fetchUserStorylines()))
+    .then(res => dispatch(fetchStorylines()))

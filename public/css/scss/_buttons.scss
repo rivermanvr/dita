@@ -2,15 +2,13 @@
   color: $white;
   text-align: center;
   cursor: pointer;
-  border-radius: 0;
+  border-radius: 2px;
   padding: 12px;
   width: 100%;
   border-width: 0;
-  box-shadow: $shadow-d1;
 
   &.default {
-    background-color: $gray;
-    color: darken($darkgray, 20%);
+    background-color: $darkgunmetal;
   }
   &.blue {
     background-color: $navy;

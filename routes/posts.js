@@ -7,14 +7,30 @@ const { verifyToken } = require('./authMiddleware')
 //     .then(posts => res.send(posts))
 // })
 
+router.post('/myposts/withstories', verifyToken, (req, res, next) => {
+  const { storyData, postData } = req.body
+  Object.assign(storyData, { userId: req.user.id })
+  Object.assign(postData, { userId: req.user.id })
+  StoryLine.create(storyData)
+    .then(storyline => {
+      Object.assign(postData, { storylineId: storyline.id })
+      return Post.create(postData)
+    })
+    .then(post => res.send(200))
+    .catch(next)
+})
+
 router.get('/myposts', verifyToken, (req, res, next) => {
   Post.findPostsWithReplies(req.user.id)
     .then(posts => {
       res.send(posts)
     })
+    .catch(next)
+    
 })
 
-router.post('/myposts', (req, res, next) => {
+router.post('/myposts', verifyToken, (req, res, next) => {
+  Object.assign(req.body, { userId: req.user.id })
   Post.create(req.body)
     .then(post => res.send(post))
     .catch(next);

@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { fetchStorylines } from './storylines'
-import { fetchPosts, fetchUserPosts } from './userposts'
+import { fetchStorylines, fetchPosts, fetchUserPosts } from './index'
 
 // ***** ACTION TYPES *****
 export const SET_USER_STORYLINES = 'SET_USER_STORYLINES'
@@ -12,6 +11,7 @@ export const fetchUserStorylines = () => dispatch =>
   axios.get('/api/storylines/mystorylines')
     .then(res => dispatch(setUserStorylines(res.data)))
 
+// omit this later
 export const addStoryline = (newStoryline) => dispatch => 
   axios.post('/api/storylines', newStoryline)
     .then(res => dispatch(fetchUserStorylines()))
@@ -19,4 +19,3 @@ export const addStoryline = (newStoryline) => dispatch =>
     .then(res => dispatch(fetchUserPosts()))
     .then(res => dispatch(fetchPosts()))
     .catch(console.log);
-

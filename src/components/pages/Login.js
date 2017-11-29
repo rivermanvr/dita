@@ -43,7 +43,7 @@ class Login extends Component {
           <Button
             label='Login'
             onClick={ onSubmit }
-            className='btn blue' />
+            className='btn default' />
 
           <Link to='/signup' className='btn default'>Sign Up!</Link>
 

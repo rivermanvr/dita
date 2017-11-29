@@ -7,7 +7,10 @@ export default class Textbox extends Component {
     styles: {
       // some styles here
       // can be expanded more via css
-      span: { display: 'grid' },
+      span: {
+        display: 'flex',
+        flexDirection: 'column'
+      },
       placeHolder: { color: '#BDBDBD' }
     }
   }
@@ -36,6 +39,7 @@ export default class Textbox extends Component {
       style,
       className,
       required,
+      rows,
       value } = this.props
 
     const {
@@ -52,13 +56,14 @@ export default class Textbox extends Component {
       <span style={ styles.span }>
         { label ? <label>{ label }</label> : null }
         <textarea
+          rows={ rows || '25' }
           required={ required }
           autoFocus={ focused }
           disabled={ disabled }
           value={ !focused && !value ? placeHolder : value }
           type={ !focused && !value ? 'text' : type }
           style={ !focused && !value ? styles.placeHolder : style }
-          className={ className }
+          className={ `textarea ${className || ''}` }
           onChange={ onChange }
           onFocus={ onFocus }
           onBlur={ onBlur } ></textarea>

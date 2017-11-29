@@ -15,6 +15,7 @@ const navItems = [
 
 // add nav items only registered users can see
 const navItemsAuthenticated = [
+  { label: 'Add Post', path: '/addpost' },
   { label: 'Profile', path: '/profile' }
 ]
 

@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 const DashboardSideBar = () => {
   const sidebarItems = [
     { label: 'My Posts', path: '/dashboard/myposts' }, 
-    { label: 'My Locations', path: '/dashboard/mylocations' },
-    { label: 'Add Post', path: '/dashboard/addpost' }
+    { label: 'My Locations', path: '/dashboard/mylocations' }, 
+    { label: 'Profile', path: '/dashboard/profile' }
   ];
 
   return (

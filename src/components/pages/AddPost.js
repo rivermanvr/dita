@@ -68,12 +68,17 @@ class AddPost extends Component {
       })
       })
       .catch(err => {
+        this.setState({ address, latitude, longitude })
         console.log(err)
       })
     }
 
+    // caching in case of error
+    const { address, latitude, longitude } = this.state
+
     if (navigator.geolocation) {
       console.log('querying browser, locating...')
+      this.setState({ address: 'Fetching...', latitude: '', longitude: '' })
       navigator.geolocation.getCurrentPosition(showPosition)
     }
   }

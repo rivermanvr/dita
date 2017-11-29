@@ -273,3 +273,17 @@ select::-ms-expand {
       visibility: visible; }
   .add-post .add-post-button-container {
     position: relative; }
+
+.current-location {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: calc(100% - 50px) 50px; }
+  .current-location button.btn {
+    width: auto;
+    padding: 10px 15px; }
+  .current-location > * {
+    margin-right: 15px;
+    align-self: end; }
+  .current-location > span:nth-child(2) {
+    text-align: right;
+    margin-right: 0; }

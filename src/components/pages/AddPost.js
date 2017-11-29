@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import GoogleMaps from '@google/maps'
+
+// google maps
+let googleMapsClient = GoogleMaps.createClient({
+  key: require('../../../env.json').GoogleAPI,
+  Promise: Promise
+});
 
 // components
 import { Textbox, Textarea, Button } from '../reusables'
@@ -11,10 +18,16 @@ class AddPost extends Component {
   state = {
     title: '',
     body: '',
+    latitude: 0.0,
+    longitude: 0.0,
     addToStoryline: false,
     storyTitle: '',
     storyDescription: '',
     storylineId: 0
+  }
+
+  componentWillReceiveProps = nextProps => {
+    this.setState({ latitude: nextProps.home.lat, longitude: nextProps.home.lng })
   }
 
   handleChange = name => ev => {
@@ -29,9 +42,41 @@ class AddPost extends Component {
     this.props.addPost(this.state)  
   }
 
+  setCurrentLocation = () => {
+    const showPosition = position => {
+      console.log('location found, querying google maps...')
+      googleMapsClient.reverseGeocode({
+        latlng: [
+          position.coords.latitude,
+          position.coords.longitude
+        ]
+      })
+      .asPromise()
+      .then(response => {
+        // currently not working with my API key (Wasif)
+        console.log(('query complete!'))
+        console.log(response.json.results)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+
+      this.setState({
+        address: '', // not working, we want to get this from google API above
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      })
+    }
+
+    if (navigator.geolocation) {
+      console.log('querying browser, locating...')
+      navigator.geolocation.getCurrentPosition(showPosition)
+    }
+  }
+
   render = () => {
-    const { title, body, addToStoryline, storyTitle, storyDescription } = this.state
-    const { handleChange, handlePost, toggleStoryline } = this
+    const { title, body, latitude, longitude, addToStoryline, storyTitle, storyDescription } = this.state
+    const { handleChange, handlePost, toggleStoryline, setCurrentLocation } = this
 
     return (
       <div className='add-post'>
@@ -46,10 +91,17 @@ class AddPost extends Component {
             placeHolder='Click or tap to write...'
             value={ body }
             onChange={ handleChange('body')} />
-          <Textbox
-            label='Location'
-            disabled={ true }
-            value={ this.props.home.address } />
+
+          <div className='current-location'>
+            <Textbox
+              label='Location'
+              disabled={ true }
+              value={ `${this.props.home.address} ${latitude}, ${longitude}` } />
+            <Button
+              label={ <i className='fa fa-location-arrow'></i> }
+              className='btn default inline'
+              onClick={ setCurrentLocation } />
+          </div>
 
           <Button
             label={ !addToStoryline ? 'Add to Storyline' : 'Cancel Adding' }
@@ -73,7 +125,7 @@ class AddPost extends Component {
           <Textarea
             rows='5'
             placeHolder='Storyline description (optional)'
-            value={ storyDescription }
+            
             onChange={ handleChange('storyDescription') } />
         </div>
 

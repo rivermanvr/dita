@@ -23,7 +23,13 @@ import MyLocations from './singleFunction/MyLocations'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Profile from './pages/Profile'
+<<<<<<< HEAD
 import Dashboard from './pages/Dashboard'
+=======
+import AddPost from './pages/AddPost'
+
+
+>>>>>>> 5585b79f4d20ffeb13b21fdf6edd9171ada0e8d3
 /*******************************************/
 
 export default function () {
@@ -36,12 +42,16 @@ export default function () {
         <Route exact path='/login' component={ Login } />
         <Route exact path='/signup' component={ Signup } />
         <Route exact path='/profile' component={ Profile } />
+<<<<<<< HEAD
         <Route exact path='/map' component={ AllPostsMap } />
         <Route exact path='/posts/:id' component={ PostDetail } />
         <Route exact path='/dashboard' component={ Dashboard } />
         <Route exact path='/dashboard/myposts' component={ Posts } />
         <Route exact path='/dashboard/mylocations' component={ MyLocations} />
         <Route exact path='/dashboard/post' component={ PostForm } />
+=======
+        <Route exact path='/addpost' component={ AddPost } />
+>>>>>>> 5585b79f4d20ffeb13b21fdf6edd9171ada0e8d3
       </Switch>
     </main>
   )

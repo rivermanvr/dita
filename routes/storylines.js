@@ -6,7 +6,8 @@ router.get('/mystorylines', verifyToken, (req, res, next) => {
   StoryLine.findAll({ where: {
     userId: req.user.id,
   },
-    order: [['updatedAt', 'DESC']]
+    order: [['updatedAt', 'DESC']],
+    include: [ Post ]
   })
   .then(storylines => res.send(storylines))
   .catch(next)

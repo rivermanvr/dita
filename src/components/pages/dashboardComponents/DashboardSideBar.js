@@ -10,11 +10,11 @@ const DashboardSideBar = () => {
   ];
 
   return (
-    <ul className='list-group'>     
+    <ul>     
       {
         sidebarItems.map(sidebar => {
           return (
-            <Link className='list-group-item' key={ sidebar.label }
+            <Link key={ sidebar.label }
               to={ sidebar.path }
             >{ sidebar.label }</Link>            
           )

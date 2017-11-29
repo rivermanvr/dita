@@ -12,7 +12,7 @@ export default class Textbox extends Component {
       // some styles here
       // can be expanded more via css
       span: { display: 'grid' },
-      placeHolder: { color: '#BDBDBD' }
+      placeHolder: { color: '#bbbbbb' }
     }
   }
 
@@ -64,17 +64,19 @@ export default class Textbox extends Component {
       <span style={ styles.span } className='textbox-container'>
         {/* label ? <label>{ `${label}${ isRequired ? ' *' : '' }` }</label> : null */}
         { label ? <label>{ label }</label> : null }
-        <input
-          autoFocus={ focused }
-          disabled={ disabled }
-          value={ !focused && !value ? placeHolder : value }
-          type={ !focused && !value ? 'text' : type }
-          style={ !focused && !value ? styles.placeHolder : style }
-          className={ `textbox ${className || ''}` }
-          onChange={ onChange }
-          onFocus={ onFocus }
-          onBlur={ onBlur }
-        />
+        <span className={ `input-container ${ focused ? 'focused' : '' }` }>
+          <input
+            autoFocus={ focused }
+            disabled={ disabled }
+            value={ !focused && !value ? placeHolder : value }
+            type={ !focused && !value ? 'text' : type }
+            style={ !focused && !value ? styles.placeHolder : style }
+            className={ `textbox ${className || ''}` }
+            onChange={ onChange }
+            onFocus={ onFocus }
+            onBlur={ onBlur }
+          />
+        </span>
         { isRequired ?
           <span className='textbox-error'>
           { isDirty && !isValid ? `${ label || 'this field' } is required` : '' } 

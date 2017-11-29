@@ -108,7 +108,7 @@ class AddPost extends Component {
           </div>
 
           <Button
-            label={ !addToStoryline ? 'Add to Storyline' : 'Cancel Adding' }
+            label={ !addToStoryline ? 'Add to Storyline' : 'Return to Private Story' }
             onClick={ toggleStoryline }
             className='btn default' /> 
         </div>

@@ -15,7 +15,7 @@ const navItems = [
 
 // add nav items only registered users can see
 const navItemsAuthenticated = [
-  { label: 'Profile', path: '/profile' }
+  { label: 'Profile', path: '/profile', label: 'Dashboard', path: 'dashboard' }
 ]
 
 // add items for guests users

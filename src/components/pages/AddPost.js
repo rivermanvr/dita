@@ -68,12 +68,17 @@ class AddPost extends Component {
       })
       })
       .catch(err => {
+        this.setState({ address, latitude, longitude })
         console.log(err)
       })
     }
 
+    // caching in case of error
+    const { address, latitude, longitude } = this.state
+
     if (navigator.geolocation) {
       console.log('querying browser, locating...')
+      this.setState({ address: 'Fetching...', latitude: '', longitude: '' })
       navigator.geolocation.getCurrentPosition(showPosition)
     }
   }
@@ -83,64 +88,68 @@ class AddPost extends Component {
     const { handleChange, handlePost, toggleStoryline, setCurrentLocation } = this
 
     return (
-      <div className='add-post'>
-        <div className='add-post-inputs'>
-          <Textbox
-            placeHolder='Title (optional)'
-            value={ title }
-            className='title'
-            onChange={ handleChange('title') } />
-          <Textarea
-            rows='30'
-            placeHolder='Click or tap to write...'
-            value={ body }
-            onChange={ handleChange('body')} />
-
-          <div className='current-location'>
+      <div className='add-post-container'>
+        <div className='add-post'>
+          <div className='add-post-inputs'>
             <Textbox
-              label='Location'
-              disabled={ true }
-              value={ `${address}` } />
+              placeHolder='Title (optional)'
+              value={ title }
+              className='title'
+              onChange={ handleChange('title') } />
+            <Textarea
+              rows='30'
+              placeHolder='Click or tap to write...'
+              value={ body }
+              onChange={ handleChange('body')} />
+
+            <div className='current-location'>
+              <Textbox
+                label='Location'
+                disabled={ true }
+                value={ `${address}` } />
+              <Button
+                label={ <i className='fa fa-location-arrow'></i> }
+                className='btn default inline'
+                onClick={ setCurrentLocation } />
+            </div>
+
             <Button
-              label={ <i className='fa fa-location-arrow'></i> }
-              className='btn default inline'
-              onClick={ setCurrentLocation } />
+              label={ !addToStoryline ?
+                <span><i className='ion-ios-plus-outline'></i> <span>Add to Storyline</span></span> :
+                <span><i className='ion-ios-minus-outline'></i> <span>Return to Private Post</span></span> }
+              onClick={ toggleStoryline }
+              className='btn toggle-add-to-story' /> 
           </div>
 
-          <Button
-            label={ !addToStoryline ? 'Add to Storyline' : 'Return to Private Story' }
-            onClick={ toggleStoryline }
-            className='btn default' /> 
-        </div>
+          <div className={ `add-storyline-inputs ${ addToStoryline ? 'visible' : '' }` }>
+            <div className='select'>
+              <select onChange={ handleChange('storylineId') }>
+                <option value={ 0 }>Please select a storyline...</option>
+                { this.props.userStorylines.map(storyline =>
+                  <option
+                    key={ storyline.id }
+                    value={ storyline.id }>{ storyline.title || storyline.description || storyline.posts[0].title || storyline.posts[0].body.slice(0, 15) }</option>) }
+              </select>
+            </div>
 
-        <div className={ `add-storyline-inputs ${ addToStoryline ? 'visible' : '' }` }>
-          <div className='select'>
-            <select onChange={ handleChange('storylineId') }>
-              <option value={ 0 }>Please select a storyline...</option>
-              { this.props.userStorylines.map(storyline =>
-                <option
-                  key={ storyline.id }
-                  value={ storyline.id }>{ storyline.title || storyline.description || storyline.posts[0].title || storyline.posts[0].body.slice(0, 15) }</option>) }
-            </select>
+            <label>Or create a storyline</label>
+            <Textbox
+              placeHolder='Story title (optional)'
+              value={ storyTitle }
+              onChange={ handleChange('storyTitle') } />
+            <Textarea
+              rows='5'
+              placeHolder='Storyline description (optional)'
+              value={ storyDescription }
+              onChange={ handleChange('storyDescription') } />
           </div>
 
-          <label>Or create a storyline</label>
-          <Textbox
-            placeHolder='Story title (optional)'
-            value={ storyTitle }
-            onChange={ handleChange('storyTitle') } />
-          <Textarea
-            rows='5'
-            placeHolder='Storyline description (optional)'
-            value={ storyDescription }
-            onChange={ handleChange('storyDescription') } />
-        </div>
-
-        <div className={ `add-post-button-container ${ addToStoryline ? 'slide-down' : '' }` }>
-          <Button
-            label={ addToStoryline ? 'Post and Share' : 'Add Private Post' }
-            onClick={ handlePost }
-            className='btn default' />
+          <div className={ `add-post-button-container ${ addToStoryline ? 'visible' : '' }` }>
+            <Button
+              label={ addToStoryline ? 'Post and Share' : 'Add Private Post' }
+              onClick={ handlePost }
+              className='btn default' />
+          </div>
         </div>
       </div>
     )

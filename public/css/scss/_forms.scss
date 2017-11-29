@@ -56,6 +56,7 @@ label {
   border: 0;
   padding: 10px 0;
   width: 100%;
+  resize: none;
 }
 
 @keyframes increase-width {
@@ -72,7 +73,7 @@ select {
   outline: 0;
   box-shadow: none;
   border: 0 !important;
-  background: #2c3e50;
+  background: $darkgunmetal;
   background-image: none;
 }
 /* Custom Select */
@@ -80,12 +81,12 @@ select {
   position: relative;
   display: block;
   width: 20em;
-  height: 3em;
-  line-height: 3;
-  background: #2c3e50;
+  height: 2.5em;
+  line-height: 2.5;
+  background: $darkgunmetal;
   overflow: hidden;
-  border-radius: .25em;
-  // border-radius: 2px;
+  // border-radius: .25em;
+  border-radius: 2px;
   width: 100%;
 }
 select {
@@ -108,15 +109,16 @@ select::-ms-expand {
   right: 0;
   bottom: 0;
   padding: 0 1em;
-  background: #34495e;
+  background: $eerieblack;
   pointer-events: none;
+  color: $white;
 }
 /* Transition */
 .select:hover::after {
-  color: #f39c12;
+  // color: #f39c12;
 }
 .select::after {
-  -webkit-transition: .25s all ease;
-  -o-transition: .25s all ease;
-  transition: .25s all ease;
+  // -webkit-transition: .25s all ease;
+  // -o-transition: .25s all ease;
+  // transition: .25s all ease;
 }

@@ -10,12 +10,13 @@ import { signOut } from '../actions'
 
 // to add nav items, add label and path here
 const navItems = [
-  { label: 'About', path: '/about' }
+  { label: 'About', path: '/about' },
+  { label: 'Map', path: '/map' }
 ]
 
 // add nav items only registered users can see
 const navItemsAuthenticated = [
-  { label: 'Profile', path: '/profile', label: 'Dashboard', path: 'dashboard' }
+  { label: 'Profile', path: '/profile' } , { label: 'Dashboard', path: '/dashboard' }
 ]
 
 // add items for guests users

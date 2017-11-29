@@ -117,7 +117,10 @@ class AddPost extends Component {
           <div className='select'>
             <select onChange={ handleChange('storylineId') }>
               <option value={ 0 }>Please select a storyline...</option>
-              { this.props.userStorylines.map(storyline => <option key={ storyline.id } value={ storyline.id }>{ storyline.title }</option>) }
+              { this.props.userStorylines.map(storyline =>
+                <option
+                  key={ storyline.id }
+                  value={ storyline.id }>{ storyline.title || storyline.description || storyline.posts[0].title || storyline.posts[0].body.slice(0, 15) }</option>) }
             </select>
           </div>
 

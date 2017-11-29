@@ -287,13 +287,7 @@ select::-ms-expand {
   grid-template-columns: calc(100% - 50px) 50px; }
   .current-location button.btn {
     width: auto;
-    padding: 6px 10px;
-    background-color: #ffffff;
-    color: #02040F;
-    border: solid 1px #393E41;
-    border-radius: 3px;
-    font-size: 1.2em;
-    color: #393E41; }
+    padding: 10px 15px; }
   .current-location > * {
     margin-right: 15px;
     align-self: end; }

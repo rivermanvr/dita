@@ -23,9 +23,8 @@ import MyLocations from './singleFunction/MyLocations'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Profile from './pages/Profile'
+import Dashboard from './pages/Dashboard'
 import AddPost from './pages/AddPost'
-
-
 /*******************************************/
 
 export default function () {
@@ -38,6 +37,12 @@ export default function () {
         <Route exact path='/login' component={ Login } />
         <Route exact path='/signup' component={ Signup } />
         <Route exact path='/profile' component={ Profile } />
+        <Route exact path='/map' component={ AllPostsMap } />
+        <Route exact path='/posts/:id' component={ PostDetail } />
+        <Route exact path='/dashboard' component={ Dashboard } />
+        <Route exact path='/dashboard/myposts' component={ Posts } />
+        <Route exact path='/dashboard/mylocations' component={ MyLocations} />
+        <Route exact path='/dashboard/profile' component={ Profile } />
         <Route exact path='/addpost' component={ AddPost } />
       </Switch>
     </main>

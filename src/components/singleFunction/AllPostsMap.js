@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Map, Marker, Popup, TileLayer, CircleMarker, MuiThemeProvider } from 'react-leaflet';
+import { withRouter, Link } from 'react-router-dom';
+import { Map, Marker, Popup, TileLayer, CircleMarker } from 'react-leaflet';
 import Replies from './Replies'
 import * as d3 from 'd3';
 
@@ -15,53 +16,49 @@ class AllPostsMap extends Component {
     const zoomLevel = 9;
     const position = [currentView.lat, currentView.lng]; 
     const darkTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cja8rnhqp0ukm2rpjrq1uxx65/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
-    const tileAttr = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
+    const tileAttr = '&copy; <a href="https://www.mapbox.com/">Mapbox</a>';
 
-    const stars = posts.map(post => {
-      let latLng; 
-      if(post.latitude && post.longitude) latLng = [post.latitude, post.longitude]
-      else latLng = [0, 0]
-      return { post: post, latLng: latLng }
+    posts.forEach(d => {
+      d.latLng = new L.LatLng(d.latitude, d.longitude);
     })
 
-    const fillColor = 'yellow', fillOpacity = 1, strokeColor = '#000', strokeWeight = 1;
-    let radius = 5 // we should change this based on our genius algorithm!! 
+    const fillColor = '#f9e359', fillOpacity = 0.7, strokeColor = '#fff', strokeWeight = 1;
     const spanStyle = { fontSize: '1.5em' }
-
+  
     return (
-      <div className="map">
-        <Map center={ position } zoom={ zoomLevel } style={{ height: "600px", width: "100%" }} worldCopyJump="true">
-          <TileLayer
-            attribution={ tileAttr }
-            url={ darkTiles }
-          />
-          
-          <Marker position={ position }>
-            <Popup>
-              <div>
-                <span style={ spanStyle }>You are at</span><br/>
-                <span>{ currentView.address }</span>
-              </div>
-            </Popup>
-          </Marker>
+      <div>
+        <Map center={ position } zoom={ zoomLevel } style={{ height: "100vh", width: "100%" }} worldCopyJump="true" zoomControl={ false } >
+            <TileLayer
+              attribution={ tileAttr }
+              url={ darkTiles }
+            />
+            
+            <Marker position={ position }>
+              <Popup>
+                <div>
+                  <span style={ spanStyle }>You are at</span><br/>
+                  <span>{ currentView.address }</span>
+                </div>
+              </Popup>
+            </Marker>
+           
+            {
+              posts && posts.map(post => {
+                return (                
+                  <CircleMarker key={ post.id } center={ [post.latLng.lat, post.latLng.lng] } 
+                    radius={ post.halflife / 7 } color={ strokeColor } fillColor={ fillColor } 
+                    fillOpacity={ fillOpacity } weight={ strokeWeight }>
+                    <Popup>
+                      <div>
+                        <a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>
+                        <span>{ post.body }</span>
+                      </div> 
+                    </Popup>                  
+                  </CircleMarker>               
+                )
+              })
+            }
 
-          {
-            stars && stars.map(star => {
-              return (                
-                <CircleMarker key={ star.post.id } center={ star.latLng } 
-                  radius={ radius } color={ strokeColor } fillColor={ fillColor } 
-                  fillOpacity={ fillOpacity } weight={ strokeWeight }>
-                  <Popup>
-                    <div>
-                      <span style={ spanStyle }>{ star.post.title }</span> <br/>
-                      <span>{ star.post.body }</span>
-                    </div> 
-                  </Popup>                  
-                </CircleMarker>               
-              )
-            })
-          }
-          
         </Map>
       </div>
     )

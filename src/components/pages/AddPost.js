@@ -4,7 +4,7 @@ import GoogleMaps from '@google/maps'
 
 // google maps
 let googleMapsClient = GoogleMaps.createClient({
-  key: require('../../../env.json').GoogleAPI,
+  key: require('../../../env.json').GoogleServerAPI,
   Promise: Promise
 });
 
@@ -18,6 +18,7 @@ class AddPost extends Component {
   state = {
     title: '',
     body: '',
+    address: '',
     latitude: 0.0,
     longitude: 0.0,
     addToStoryline: false,
@@ -27,11 +28,11 @@ class AddPost extends Component {
   }
 
   componentDidMount = () => {
-    this.setState({ latitude: this.props.home.lat, longitude: this.props.home.lng })
+    this.setState({ address: this.props.home.address, latitude: this.props.home.lat, longitude: this.props.home.lng })
   }
 
   componentWillReceiveProps = nextProps => {
-    this.setState({ latitude: nextProps.home.lat, longitude: nextProps.home.lng })
+    this.setState({ address: nextProps.home.address, latitude: nextProps.home.lat, longitude: nextProps.home.lng })
   }
 
   handleChange = name => ev => {
@@ -58,17 +59,16 @@ class AddPost extends Component {
       .asPromise()
       .then(response => {
         // currently not working with my API key (Wasif)
-        console.log(('query complete!'))
-        console.log(response.json.results)
+        console.log(('query complete! set address'))
+
+        this.setState({
+        address: response.json.results[0].formatted_address,
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      })
       })
       .catch(err => {
         console.log(err)
-      })
-
-      this.setState({
-        address: '', // not working, we want to get this from google API above
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
       })
     }
 
@@ -79,7 +79,7 @@ class AddPost extends Component {
   }
 
   render = () => {
-    const { title, body, latitude, longitude, addToStoryline, storyTitle, storyDescription } = this.state
+    const { title, body, address, addToStoryline, storyTitle, storyDescription } = this.state
     const { handleChange, handlePost, toggleStoryline, setCurrentLocation } = this
 
     return (
@@ -100,7 +100,7 @@ class AddPost extends Component {
             <Textbox
               label='Location'
               disabled={ true }
-              value={ `${this.props.home.address} ${latitude}, ${longitude}` } />
+              value={ `${address}` } />
             <Button
               label={ <i className='fa fa-location-arrow'></i> }
               className='btn default inline'

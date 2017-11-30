@@ -14,8 +14,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
-    .google { background-color: $googlered; }
-    .facebook { background-color: $facebookblue; }
+    .google { background-color: $googlered; color: $white; }
+    .facebook { background-color: $facebookblue; color: $white; }
   }
   @media screen and (min-width: 400px) {
     .form {

@@ -61,6 +61,7 @@ body {
   font-size: 100%;
   font-family: 'Roboto', sans-serif;
   display: flex;
+  font-size: 14px;
   flex-direction: column; }
 
 #root {
@@ -83,6 +84,10 @@ hr {
 h3 {
   font-size: 1.5em; }
 
+/* Fonts */
+h1 {
+  font-size: 3rem; }
+
 i {
   font-size: 1.5em; }
 
@@ -90,6 +95,8 @@ nav {
   background-color: #02040F;
   color: #ffffff;
   display: flex;
+  position: relative;
+  z-index: 10;
   justify-content: space-between; }
   nav a {
     color: #ffffff;
@@ -229,12 +236,35 @@ select::-ms-expand {
   border-color: #02040F;
   color: #ffffff; }
 
+.bold, .homePage .hero .heroContent h1 {
+  font-weight: bold; }
+
 .dashboard-item {
   display: grid;
   grid-gap: 20px; }
   .dashboard-item .dashboard-header {
     padding: 20px 0;
     border-bottom: solid 1px #D8D4D5; }
+
+.searchMap form {
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  grid-column-gap: 10px; }
+
+.searchMap .fa-search {
+  position: relative;
+  border: 2px solid white;
+  border-radius: 2px; }
+  .searchMap .fa-search:hover {
+    cursor: pointer; }
+  .searchMap .fa-search:before {
+    content: "\f002";
+    font-size: 21px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: azure;
+    transform: translate(-50%, -50%); }
 
 .login-container {
   display: flex;
@@ -251,15 +281,48 @@ select::-ms-expand {
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px; }
     .login-container .social-login .google {
-      background-color: #dd4b39; }
+      background-color: #dd4b39;
+      color: #ffffff; }
     .login-container .social-login .facebook {
-      background-color: #3b5998; }
+      background-color: #3b5998;
+      color: #ffffff; }
   @media screen and (min-width: 400px) {
     .login-container .form {
       width: 60%; } }
   @media screen and (min-width: 768px) {
     .login-container .form {
       width: 40%; } }
+
+.homePage .hero {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(-45deg, #EE7752, #E73C7E); }
+  .homePage .hero .heroContent {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    display: inline-block;
+    transform: translate(-50%, -50%); }
+    .homePage .hero .heroContent h1 {
+      color: white; }
+    .homePage .hero .heroContent .locationCont {
+      margin: 1.15em auto;
+      width: 75%; }
+      .homePage .hero .heroContent .locationCont input {
+        display: block;
+        width: 100%; }
+      .homePage .hero .heroContent .locationCont input {
+        box-sizing: border-box;
+        border: 1px solid transparent;
+        padding: 12px 8px;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        font-size: 14px;
+        outline: none;
+        text-overflow: 'ellipses'; }
 
 .add-post-container {
   padding: 40px; }

@@ -21,7 +21,7 @@ const PlacesSearchBox = compose(
         },
         onPlacesChanged: () => {
           const places = refs.searchBox.getPlaces();
-
+          console.log(places)
           this.setState({
             places,
           });

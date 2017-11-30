@@ -44,9 +44,6 @@ export default function () {
         <Route exact path='/map' component={ AllPostsMap } />
         <Route exact path='/posts/:id' component={ PostDetail } />
         <Route path='/dashboard' component={ Dashboard } />
-        {/* <Route exact path='/dashboard/myposts' component={ MyPosts } />
-        <Route exact path='/dashboard/mylocations' component={ MyLocations } />
-        <Route exact path='/dashboard/profile' component={ Profile } /> */}
         <Route exact path='/addpost' component={ AddPost } />
       </Switch>
           <AnimatedRoute atEnter={{opacity:0}} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} exact path='/' component={Home}/>

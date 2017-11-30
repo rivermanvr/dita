@@ -14,11 +14,10 @@ export const PostCard = ({ content }) => {
     id
   } = content
 
-
   return (
     <div>
       <h4>
-        <Link to={ `/dev/posts/${ id }`} >
+        <Link to={ `/posts/${ id }`} >
           { title }
         </Link>
         <small>from story <span style={{fontSize:'16px', textTransform:'capitalize'}}>{ storyline && storyline.title }</span></small>
@@ -34,11 +33,11 @@ export const PostCard = ({ content }) => {
 
 const Posts = ({ userPosts, pathname }) => {
   // blank for now, will do all posts otherwise
-  const posts = pathname == '/myposts' ? userPosts : []
+  const posts = pathname == '/dashboard/myposts' ? userPosts : []
 
   return (
     <div>
-      { pathname == '/myposts' ? <h4>My posts</h4> : <h4>Posts</h4> }
+      { pathname == '/dashboard/myposts' ? <h4>My posts</h4> : <h4>Posts</h4> }
 
       { posts.map(post => <PostCard key={ post.id } content={ post } />) }
     </div>

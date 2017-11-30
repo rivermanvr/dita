@@ -7,20 +7,18 @@ import MyLocations from '../singleFunction/MyLocations';
 import Profile from './Profile';
 
 const Dashboard = () => {
-  return(
-    <div>  
+  return(   
+    <div>
       <div>
-        <div>
-          <DashboardSideBar render={ DashboardSideBar }/> 
-        </div>
-
-        <div>
-          <Route exact path='/dashboard/myposts' component={ PostCard } />
-          <Route exact path='/dashboard/mylocations' component={ MyLocations} />
-          <Route exact path='/dashboard/profile' component={ Profile } />
-        </div>
-        
+        <DashboardSideBar /> 
       </div>
+
+      <div>
+        <Route exact path='/dashboard/myposts' component={ PostCard } />
+        <Route exact path='/dashboard/mylocations' component={ MyLocations} />
+        <Route exact path='/dashboard/profile' component={ Profile } />
+      </div>
+      
     </div>
   )  
 

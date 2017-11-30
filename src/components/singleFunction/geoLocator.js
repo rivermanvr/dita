@@ -47,16 +47,6 @@ const PlacesSearchBox = compose(
       <input
         type="text"
         placeholder="Enter a location/address..."
-        style={{
-          boxSizing: `border-box`,
-          border: `1px solid transparent`,
-          padding: `12px 8px`,
-          borderRadius: `3px`,
-          boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-          fontSize: `14px`,
-          outline: `none`,
-          textOverflow: `ellipses`,
-        }}
         className='textbox'
       />
     </StandaloneSearchBox>

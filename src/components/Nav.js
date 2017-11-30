@@ -24,6 +24,8 @@ const navItemsAuthenticated = [
 const navItemsGuests = [
   { label: 'Login', path: '/login' },
   { label: 'Sign Up', path: '/signup' },
+  { label: 'Profile', path: '/profile' },
+  { label: 'Map', path: '/map'}
 ]
 
 const Nav = ({ isAuthenticated, location, logout }) => {

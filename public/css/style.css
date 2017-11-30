@@ -61,6 +61,7 @@ body {
   font-size: 100%;
   font-family: 'Roboto', sans-serif;
   display: flex;
+  font-size: 12px;
   flex-direction: column; }
 
 #root {
@@ -79,17 +80,12 @@ a {
 hr {
   width: 100%; }
 
-/**** needs font family!! ****/
-h3 {
-  font-size: 1.5em; }
-
-i {
-  font-size: 1.5em; }
-
 nav {
   background-color: #02040F;
   color: #ffffff;
   display: flex;
+  position: relative;
+  z-index: 10;
   justify-content: space-between; }
   nav a {
     color: #ffffff;
@@ -224,18 +220,6 @@ select::-ms-expand {
 .rounded {
   border-radius: 5px; }
 
-.inverse {
-  background-color: #02040F;
-  border-color: #02040F;
-  color: #ffffff; }
-
-.dashboard-item {
-  display: grid;
-  grid-gap: 20px; }
-  .dashboard-item .dashboard-header {
-    padding: 20px 0;
-    border-bottom: solid 1px #D8D4D5; }
-
 .login-container {
   display: flex;
   justify-content: center;
@@ -262,90 +246,3 @@ select::-ms-expand {
   @media screen and (min-width: 768px) {
     .login-container .form {
       width: 40%; } }
-
-.add-post-container {
-  padding: 40px; }
-
-.add-post {
-  display: grid;
-  grid-gap: 20px;
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
-  z-index: 5;
-  background-color: white;
-  max-width: 800px;
-  margin: 0 auto; }
-  .add-post .toggle-add-to-story {
-    color: #02040F;
-    text-align: left;
-    padding-left: 0; }
-    .add-post .toggle-add-to-story i {
-      font-size: 2em;
-      margin-right: 10px; }
-    .add-post .toggle-add-to-story > span {
-      display: flex;
-      align-items: center; }
-  .add-post .add-post-inputs {
-    display: grid;
-    grid-gap: 20px;
-    background-color: white; }
-  .add-post .add-storyline-inputs {
-    grid-gap: 20px;
-    z-index: -1;
-    display: none; }
-    .add-post .add-storyline-inputs.visible {
-      display: grid; }
-
-.current-location {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: calc(100% - 40px) 30px; }
-  .current-location button.btn {
-    width: auto; }
-  .current-location > * {
-    align-self: end; }
-  .current-location i {
-    font-size: 2em; }
-  .current-location > span:last-child {
-    text-align: right;
-    margin-right: 0; }
-
-.my-locations {
-  max-width: 800px;
-  padding: 20px; }
-  .my-locations > div {
-    padding-top: 20px; }
-  .my-locations i {
-    font-size: 2em; }
-  .my-locations .home-location {
-    display: flex;
-    grid-gap: 15px;
-    padding-bottom: 40px;
-    border-bottom: solid 1px #D8D4D5; }
-    .my-locations .home-location * {
-      align-self: center;
-      text-align: left;
-      margin-right: 10px; }
-  .my-locations .search-loc {
-    padding-top: 20px; }
-  .my-locations .buttons {
-    display: grid;
-    grid-auto-flow: column;
-    justify-content: right;
-    grid-gap: 5px; }
-  .my-locations label {
-    font-size: 1.2em; }
-
-.pinned-location {
-  display: grid;
-  grid-auto-flow: column;
-  border-bottom: solid 1px #D8D4D5;
-  padding: 20px 0;
-  min-height: 75px; }
-  .pinned-location i {
-    font-size: 1.7em; }
-  .pinned-location > * {
-    align-self: center; }
-  .pinned-location:first-child {
-    border-top: solid 1px #D8D4D5; }

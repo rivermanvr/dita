@@ -79,6 +79,13 @@ a {
 hr {
   width: 100%; }
 
+/**** needs font family!! ****/
+h3 {
+  font-size: 1.5em; }
+
+i {
+  font-size: 1.5em; }
+
 nav {
   background-color: #02040F;
   color: #ffffff;
@@ -194,7 +201,6 @@ select::-ms-expand {
 
 /* Transition */
 .btn {
-  color: #ffffff;
   text-align: center;
   cursor: pointer;
   border-radius: 2px;
@@ -202,7 +208,8 @@ select::-ms-expand {
   width: 100%;
   border-width: 0; }
   .btn.default {
-    background-color: #1D2833; }
+    background-color: #1D2833;
+    color: #ffffff; }
   .btn.blue {
     background-color: #006DAA;
     color: #ffffff; }
@@ -221,6 +228,13 @@ select::-ms-expand {
   background-color: #02040F;
   border-color: #02040F;
   color: #ffffff; }
+
+.dashboard-item {
+  display: grid;
+  grid-gap: 20px; }
+  .dashboard-item .dashboard-header {
+    padding: 20px 0;
+    border-bottom: solid 1px #D8D4D5; }
 
 .login-container {
   display: flex;
@@ -284,13 +298,52 @@ select::-ms-expand {
 .current-location {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: calc(100% - 50px) 50px; }
+  grid-template-columns: calc(100% - 40px) 30px; }
   .current-location button.btn {
-    width: auto;
-    padding: 10px 15px; }
+    width: auto; }
   .current-location > * {
-    margin-right: 15px;
     align-self: end; }
-  .current-location > span:nth-child(2) {
+  .current-location i {
+    font-size: 2em; }
+  .current-location > span:last-child {
     text-align: right;
     margin-right: 0; }
+
+.my-locations {
+  max-width: 800px;
+  padding: 20px; }
+  .my-locations > div {
+    padding-top: 20px; }
+  .my-locations i {
+    font-size: 2em; }
+  .my-locations .home-location {
+    display: flex;
+    grid-gap: 15px;
+    padding-bottom: 40px;
+    border-bottom: solid 1px #D8D4D5; }
+    .my-locations .home-location * {
+      align-self: center;
+      text-align: left;
+      margin-right: 10px; }
+  .my-locations .search-loc {
+    padding-top: 20px; }
+  .my-locations .buttons {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: right;
+    grid-gap: 5px; }
+  .my-locations label {
+    font-size: 1.2em; }
+
+.pinned-location {
+  display: grid;
+  grid-auto-flow: column;
+  border-bottom: solid 1px #D8D4D5;
+  padding: 20px 0;
+  min-height: 75px; }
+  .pinned-location i {
+    font-size: 1.7em; }
+  .pinned-location > * {
+    align-self: center; }
+  .pinned-location:first-child {
+    border-top: solid 1px #D8D4D5; }

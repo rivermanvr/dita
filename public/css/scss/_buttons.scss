@@ -1,5 +1,4 @@
 .btn {
-  color: $white;
   text-align: center;
   cursor: pointer;
   border-radius: 2px;
@@ -9,6 +8,7 @@
 
   &.default {
     background-color: $darkgunmetal;
+    color: $white;
   }
   &.blue {
     background-color: $navy;

@@ -1,0 +1,46 @@
+.my-locations {
+  max-width: 800px;
+  padding: 20px;
+  & > div {
+    padding-top: 20px;
+  }
+  & i { font-size: 2em; }
+  & .home-location {
+    display: flex;
+    grid-gap: 15px;
+    padding-bottom: 40px;
+    border-bottom: solid 1px $lightgray;
+    & * {
+      align-self: center;
+      text-align: left;
+      margin-right: 10px;
+    }
+  }
+  & .search-loc {
+    padding-top: 20px;
+  }
+  & .buttons {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: right;
+    grid-gap: 5px;
+  }
+  & label {
+    font-size: 1.2em;
+  }
+}
+
+.pinned-location {
+  display: grid;
+  grid-auto-flow: column; 
+  border-bottom: solid 1px $lightgray;
+  padding: 20px 0;
+  min-height: 75px; // 
+  & i { font-size: 1.7em; }
+  & > * {
+    align-self: center;
+  }
+  &:first-child {
+    border-top: solid 1px $lightgray;
+  }
+}

@@ -54,17 +54,16 @@ $displace: -290px; // cheating here
 .current-location {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: calc(100% - 50px) 50px;
+  grid-template-columns: calc(100% - 40px) 30px;
   // background-color: white;
   & button.btn {
     width: auto;
-    padding: 10px 15px;
   }
   & > * {
-    margin-right: 15px;
     align-self: end;
   }
-  & > span:nth-child(2) {
+  & i { font-size: 2em; }
+  & > span:last-child {
     text-align: right;
     margin-right: 0;
   }

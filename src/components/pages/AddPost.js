@@ -108,8 +108,8 @@ class AddPost extends Component {
                 disabled={ true }
                 value={ `${address}` } />
               <Button
-                label={ <i className='fa fa-location-arrow'></i> }
-                className='btn default inline'
+                label={ <i className='ion-ios-navigate-outline'></i> }
+                className='btn inline'
                 onClick={ setCurrentLocation } />
             </div>
 

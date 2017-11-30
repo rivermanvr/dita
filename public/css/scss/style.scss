@@ -21,6 +21,7 @@ body {
   font-size: 100%;
   font-family: 'Roboto', sans-serif;
   display: flex;
+  font-size:12px;
   flex-direction: column;
 }
 #root {
@@ -35,8 +36,11 @@ footer {
 a { text-decoration: none; }
 hr { width: 100%; }
 
+/* Fonts */
 
-
+h1 {
+  font-size: 3rem;
+}
 
 
 
@@ -44,6 +48,9 @@ hr { width: 100%; }
 @import '_nav.scss';
 @import '_forms.scss';
 @import '_buttons.scss';
+@import '_helpers.scss';
 
 // pages
+@import '_map.scss';
 @import '_login.scss';
+@import '_home.scss';

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { AnimatedSwitch, AnimatedRoute } from 'react-router-transition'
 
 /**************** components ****************/
 import Navbar from '../containers/Navbar'
@@ -23,7 +24,7 @@ import MyLocations from './singleFunction/MyLocations'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Profile from './pages/Profile'
-
+import Home from './pages/Home'
 
 /*******************************************/
 
@@ -38,6 +39,8 @@ export default function () {
         <Route exact path='/signup' component={ Signup } />
         <Route exact path='/profile' component={ Profile } />
       </Switch>
+          <AnimatedRoute atEnter={{opacity:0}} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} exact path='/' component={Home}/>
+          <AnimatedRoute atEnter={{opacity:0}} atLeave={{ opacity: 1 }} atActive={{ opacity: 1 }} exact path='/map' component={AllPostsMap}/>          
     </main>
   )
 }

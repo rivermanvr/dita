@@ -25,6 +25,7 @@
   "homepage": "https://github.com/DiAJVince/graceshopper#readme",
   "dependencies": {
     "@google/maps": "^0.4.5",
+    "animated": "^0.2.1",
     "axios": "^0.16.2",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -57,7 +58,9 @@
     "react-leaflet": "^1.7.4",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "react-router-transition": "^1.1.2",
     "react-select": "^1.0.0-rc.10",
+    "react-transition-group": "^2.2.1",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",

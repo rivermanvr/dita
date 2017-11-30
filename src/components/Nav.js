@@ -5,7 +5,8 @@ import { withRouter, Link } from 'react-router-dom'
 const navItems = [
   { label: 'Login', path: '/login' },
   { label: 'Sign Up', path: '/signup' },
-  { label: 'Profile', path: '/profile' }
+  { label: 'Profile', path: '/profile' },
+  { label: 'Map', path: '/map'}
 ]
 
 const Nav = ({ location }) => {

@@ -61,6 +61,7 @@ body {
   font-size: 100%;
   font-family: 'Roboto', sans-serif;
   display: flex;
+  font-size: 12px;
   flex-direction: column; }
 
 #root {
@@ -78,10 +79,16 @@ a {
 hr {
   width: 100%; }
 
+/* Fonts */
+h1 {
+  font-size: 3rem; }
+
 nav {
   background-color: #02040F;
   color: #F1FFE7;
   display: flex;
+  position: relative;
+  z-index: 10;
   justify-content: space-between; }
   nav a {
     color: #F1FFE7;
@@ -134,6 +141,29 @@ textarea:focus, input:focus, button:focus, select:focus {
 .rounded {
   border-radius: 5px; }
 
+.bold, .homePage .hero .heroContent h1 {
+  font-weight: bold; }
+
+.searchMap form {
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  grid-column-gap: 10px; }
+
+.searchMap .fa-search {
+  position: relative;
+  border: 2px solid white;
+  border-radius: 2px; }
+  .searchMap .fa-search:hover {
+    cursor: pointer; }
+  .searchMap .fa-search:before {
+    content: "\f002";
+    font-size: 21px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: azure;
+    transform: translate(-50%, -50%); }
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -156,3 +186,25 @@ textarea:focus, input:focus, button:focus, select:focus {
   @media screen and (min-width: 768px) {
     .login-container .login {
       width: 40%; } }
+
+.homePage .hero {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(-45deg, #EE7752, #E73C7E); }
+  .homePage .hero .heroContent {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    display: inline-block;
+    transform: translate(-50%, -50%); }
+    .homePage .hero .heroContent h1 {
+      color: white; }
+    .homePage .hero .heroContent .locationCont {
+      margin: 1.15em auto;
+      width: 75%; }
+      .homePage .hero .heroContent .locationCont input {
+        display: block;
+        width: 100%; }

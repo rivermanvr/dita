@@ -1,0 +1,43 @@
+.homePage {
+    .hero {
+        position: absolute;
+        height:100vh;
+        width:100%;
+        top:0;
+        left:0;
+        background: linear-gradient(-45deg, #EE7752, #E73C7E);
+
+        .heroContent {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            display: inline-block;
+            transform: translate(-50%,-50%);
+            h1 {
+                @extend .bold;
+                color:white;
+            }
+            .locationCont {
+                margin:1.15em auto;
+                width:75%;
+                input {
+                    display: block;
+                    width:100%;
+                }
+
+                // exported from geoLoc
+                & input {
+                  box-sizing: border-box;
+                  border: 1px solid transparent;
+                  padding: 12px 8px;
+                  border-radius: 3px;
+                  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                  font-size: 14px;
+                  outline: none;
+                  text-overflow: 'ellipses';
+                }
+                
+            }
+        }
+    }
+}

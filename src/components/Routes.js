@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { AnimatedSwitch, AnimatedRoute } from 'react-router-transition'
 
 /**************** components ****************/
 import Navbar from '../containers/Navbar'
@@ -26,6 +27,8 @@ import Dashboard from './pages/Dashboard'
 import AddPost from './pages/AddPost'
 import MyLocations from './pages/dashboardComponents/MyLocations'
 import MyPosts from './pages/dashboardComponents/DashboardMyPosts'
+import Home from './pages/Home'
+
 /*******************************************/
 
 export default function () {
@@ -46,6 +49,8 @@ export default function () {
         <Route exact path='/dashboard/profile' component={ Profile } />
         <Route exact path='/addpost' component={ AddPost } />
       </Switch>
+          <AnimatedRoute atEnter={{opacity:0}} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} exact path='/' component={Home}/>
+          <AnimatedRoute atEnter={{opacity:0}} atLeave={{ opacity: 1 }} atActive={{ opacity: 1 }} exact path='/map' component={AllPostsMap}/>          
     </main>
   )
 }

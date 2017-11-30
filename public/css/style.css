@@ -326,9 +326,17 @@ select::-ms-expand {
     .login-container .social-login .facebook {
       background-color: #3b5998;
       color: #ffffff; }
+  @media screen and (min-width: 400px) {
+    .login-container .form {
+      width: 60%; } }
+  @media screen and (min-width: 768px) {
+    .login-container .form {
+      width: 40%; } }
 
 .login-container.profile {
   justify-content: left; }
+  .login-container.profile .form {
+    width: 100%; }
 
 .homePage .hero {
   position: absolute;

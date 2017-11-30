@@ -17,10 +17,23 @@
     .google { background-color: $googlered; color: $white; }
     .facebook { background-color: $facebookblue; color: $white; }
   }
+  @media screen and (min-width: 400px) { 
+    & .form { 
+      width: 60%; 
+    } 
+  }  
+  @media screen and (min-width: 768px) { 
+    & .form { 
+      width: 40%; 
+    } 
+  }  
 }
 
 .profile-container {
 }
 .login-container.profile {
   justify-content: left;
+  & .form {
+    width: 100%;
+  }
 }

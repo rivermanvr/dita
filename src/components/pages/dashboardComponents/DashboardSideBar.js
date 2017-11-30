@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 const DashboardSideBar = () => {
   const sidebarItems = [
+    { label: 'Profile', path: '/dashboard/profile' },
     { label: 'My Posts', path: '/dashboard/myposts' }, 
-    { label: 'My Locations', path: '/dashboard/mylocations' }, 
-    { label: 'Profile', path: '/dashboard/profile' }
+    { label: 'My Locations', path: '/dashboard/mylocations' }    
   ];
 
   return (
@@ -14,9 +14,9 @@ const DashboardSideBar = () => {
       {
         sidebarItems.map(sidebar => {
           return (
-            <Link key={ sidebar.label }
-              to={ sidebar.path }
-            >{ sidebar.label }</Link>            
+            <li key={ sidebar.label }>
+              <Link to={ sidebar.path }>{ sidebar.label }</Link>  
+            </li>          
           )
         })
       }

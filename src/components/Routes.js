@@ -26,6 +26,7 @@ import Profile from './pages/Profile'
 import Dashboard from './pages/Dashboard'
 import AddPost from './pages/AddPost'
 import MyLocations from './pages/dashboardComponents/MyLocations'
+import MyPosts from './pages/dashboardComponents/DashboardMyPosts'
 import Home from './pages/Home'
 
 /*******************************************/
@@ -43,7 +44,7 @@ export default function () {
         <Route exact path='/map' component={ AllPostsMap } />
         <Route exact path='/posts/:id' component={ PostDetail } />
         <Route exact path='/dashboard' component={ Dashboard } />
-        <Route exact path='/dashboard/myposts' component={ Posts } />
+        <Route exact path='/dashboard/myposts' component={ MyPosts } />
         <Route exact path='/dashboard/mylocations' component={ MyLocations } />
         <Route exact path='/dashboard/profile' component={ Profile } />
         <Route exact path='/addpost' component={ AddPost } />

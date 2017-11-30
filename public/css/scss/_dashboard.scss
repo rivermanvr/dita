@@ -1,0 +1,8 @@
+.dashboard-item {
+  display: grid;
+  grid-gap: 20px;
+  & .dashboard-header {
+    padding: 20px 0;
+    border-bottom: solid 1px $lightgray;
+  }
+}

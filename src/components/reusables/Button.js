@@ -16,7 +16,7 @@ export default class Button extends Component {
     const { onClick } = this
 
     return (
-      <span>
+      <span style={ { display: `${ className.match(/inline/g) ? 'inline-block' : 'block' }` } }>
         <button
           disabled={ disabled }
           onClick={ onClick }

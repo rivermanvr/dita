@@ -35,13 +35,15 @@ class SearchAddLoc extends Component {
   render = () => {
     return (
       <div>
-        <h5>Add a new place</h5>
-        <MapWithASearchBox selection={ this.handlePlaceChange } />
-        <Button
-          label={ <i className='icon ion-plus'></i> }
-          disabled={ isEmpty(this.state.address) }
-          onClick={ this.handleAddClick }
-          className='btn btn-primary' />
+        <label>Add a new location</label>
+        <div className='current-location'>
+          <MapWithASearchBox selection={ this.handlePlaceChange } />
+          <Button
+            label={ <i className='ion-ios-plus-outline'></i> }
+            disabled={ isEmpty(this.state.address) }
+            onClick={ this.handleAddClick }
+            className='btn btn-primary' />
+        </div>
       </div>
     )
   }

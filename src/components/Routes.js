@@ -16,7 +16,6 @@ import AllPostsByLoc from './singleFunction/AllPostsByLoc'
 import TestDistance from './testerRoutines/TestDistance'
 import PostDetail from './singleFunction/PostDetail'
 import CreateStory from './singleFunction/CreateStory'
-import MyLocations from './singleFunction/MyLocations'
 /********************************************/
 
 /****************** pages ******************/
@@ -25,6 +24,7 @@ import Signup from './pages/Signup'
 import Profile from './pages/Profile'
 import Dashboard from './pages/Dashboard'
 import AddPost from './pages/AddPost'
+import MyLocations from './pages/dashboardComponents/MyLocations'
 /*******************************************/
 
 export default function () {
@@ -41,7 +41,7 @@ export default function () {
         <Route exact path='/posts/:id' component={ PostDetail } />
         <Route exact path='/dashboard' component={ Dashboard } />
         <Route exact path='/dashboard/myposts' component={ Posts } />
-        <Route exact path='/dashboard/mylocations' component={ MyLocations} />
+        <Route exact path='/dashboard/mylocations' component={ MyLocations } />
         <Route exact path='/dashboard/profile' component={ Profile } />
         <Route exact path='/addpost' component={ AddPost } />
       </Switch>

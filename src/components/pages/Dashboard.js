@@ -10,6 +10,10 @@ const Dashboard = () => {
   return(   
     <div className='dashboard'>
       <div className='dashboard-sidebar-container'>
+        <div className='dashboard-label'>
+          <i className='ion-ios-speedometer-outline'></i><span>Dashboard</span>
+        </div>
+        <i className='divider ion-ios-more-outline'></i>
         <DashboardSideBar />
       </div>
 

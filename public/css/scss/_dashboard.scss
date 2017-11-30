@@ -23,6 +23,9 @@
     display: block;
     text-align: center;
     padding: 10px 0;
+    & > * {
+      margin-right: 3px;
+    }
   }
 
   & li:first-child {

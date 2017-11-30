@@ -13,7 +13,10 @@ const Dashboard = () => {
         <div className='dashboard-label'>
           <i className='ion-ios-speedometer-outline'></i><span>Dashboard</span>
         </div>
-        <i className='divider ion-ios-more-outline'></i>
+        <div className='divider'>
+          <i className='ion-ios-more-outline'></i>
+          <i className='ion-ios-more-outline'></i>
+        </div>
         <DashboardSideBar />
       </div>
 

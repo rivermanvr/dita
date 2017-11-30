@@ -260,6 +260,8 @@ select::-ms-expand {
     display: block;
     text-align: center;
     padding: 10px 0; }
+    .dashboard-sidebar-container .divider > * {
+      margin-right: 3px; }
   .dashboard-sidebar-container li:first-child {
     border-top: solid 1px #D8D4D5; }
   .dashboard-sidebar-container li a {

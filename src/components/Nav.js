@@ -9,7 +9,7 @@ import { Button } from './reusables'
 import { signOut } from '../actions'
 
 // to add nav items, add label and path here
-const navItems = [
+const navItemsDefault = [
   { label: 'Map', path: '/map' },
   { label: 'About', path: '/about' }
 ]
@@ -28,7 +28,8 @@ const navItemsGuests = [
 
 const Nav = ({ isAuthenticated, location, logout }) => {
   // location sub-path will be parsed out, eg. /posts/1 will still highlight /posts label
-  const pathName = '/' + location.pathname.split('/')[1]
+  const pathName = '/' + location.pathname.split('/')[1],
+    navItems = navItemsDefault.concat(isAuthenticated ? navItemsAuthenticated : navItemsGuests)
 
   return (
     <nav>
@@ -44,25 +45,7 @@ const Nav = ({ isAuthenticated, location, logout }) => {
           to={ item.path }
           key={ item.label }>{ item.label }</Link>
       )}
-      { isAuthenticated ?
-        <span>
-          { navItemsAuthenticated.map(item =>
-          <Link
-            className={ item.path == pathName ? 'active' : '' }
-            to={ item.path }
-            key={ item.label }>{ item.label }</Link>
-          )}
-          <a onClick={ logout }>Sign Out</a>
-        </span> :
-        <span>
-          { navItemsGuests.map(item =>
-          <Link
-            className={ item.path == pathName ? 'active' : '' }
-            to={ item.path }
-            key={ item.label }>{ item.label }</Link>
-          )}
-        </span>
-      }
+      { isAuthenticated ? <a onClick={ logout }>Sign Out</a> : null }
       </div>
     </nav>
   )

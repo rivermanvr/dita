@@ -43,17 +43,23 @@ class Profile extends Component {
     const { user } = this.state 
 
     return (
-      <div className='login-container'>
-        <div className='form'>
-          <UserValues
-            user={ user }
-            onChange={ handleChange } />
+      <div className='profile-container dashboard-item'>
+        <div className='dashboard-header'>
+          <h3>My Profile</h3>
+        </div>
 
-          <Button
-            onClick={ handleUpdate }
-            disabled={ !isAuthenticated }
-            className='btn default'
-            label='Update Profile' />
+        <div className='login-container profile'>
+          <div className='form'>
+            <UserValues
+              user={ user }
+              onChange={ handleChange } />
+
+            <Button
+              onClick={ handleUpdate }
+              disabled={ !isAuthenticated }
+              className='btn default'
+              label='Update Profile' />
+          </div>
         </div>
       </div>
     )

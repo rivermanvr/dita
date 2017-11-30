@@ -239,9 +239,19 @@ select::-ms-expand {
 .bold, .homePage .hero .heroContent h1 {
   font-weight: bold; }
 
+.dashboard {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 20% 80%;
+  min-height: calc(100vh - 90px); }
+
+.dashboard-sidebar-container {
+  padding: 20px; }
+
 .dashboard-item {
   display: grid;
-  grid-gap: 20px; }
+  grid-gap: 20px;
+  padding: 20px; }
   .dashboard-item .dashboard-header {
     padding: 20px 0;
     border-bottom: solid 1px #D8D4D5; }
@@ -292,6 +302,9 @@ select::-ms-expand {
   @media screen and (min-width: 768px) {
     .login-container .form {
       width: 40%; } }
+
+.login-container.profile {
+  justify-content: left; }
 
 .homePage .hero {
   position: absolute;

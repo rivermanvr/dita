@@ -10,7 +10,7 @@ const DashboardSideBar = () => {
   ];
 
   return (
-    <ul>     
+    <ul className='dashboard-sidebar'>
       {
         sidebarItems.map(sidebar => {
           return (

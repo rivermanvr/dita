@@ -2,23 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import DashboardSideBar from './dashboardComponents/DashboardSideBar';
-import { PostCard } from './dashboardComponents/DashboardMyPosts';
-import MyLocations from '../singleFunction/MyLocations';
+import Posts from './dashboardComponents/DashboardMyPosts';
+import MyLocations from './dashboardComponents/MyLocations'
 import Profile from './Profile';
 
 const Dashboard = () => {
   return(   
-    <div>
-      <div>
-        <DashboardSideBar /> 
+    <div className='dashboard'>
+      <div className='dashboard-sidebar-container'>
+        <DashboardSideBar />
       </div>
 
-      <div>
-        <Route exact path='/dashboard/myposts' component={ PostCard } />
-        <Route exact path='/dashboard/mylocations' component={ MyLocations} />
-        <Route exact path='/dashboard/profile' component={ Profile } />
+      <div className='dashboard-main-container'>
+        <Switch>
+          <Route exact path='/dashboard/mylocations' component={ MyLocations } />
+          <Route exact path='/dashboard/myposts' component={ Posts } />
+          <Route exact path='/dashboard/profile' component={ Profile } /> 
+        </Switch>
       </div>
-      
     </div>
   )  
 

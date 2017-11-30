@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import Replies from '../../singleFunction/Replies'
 
 export const PostCard = ({ content }) => {
+  if (!content) return <div></div>
+
   const {
     createdAt,
     title,
@@ -36,9 +38,10 @@ const Posts = ({ userPosts, pathname }) => {
   const posts = pathname == '/dashboard/myposts' ? userPosts : []
 
   return (
-    <div>
-      { pathname == '/dashboard/myposts' ? <h4>My posts</h4> : <h4>Posts</h4> }
-
+    <div className='dashboard-item'>
+      <div className='dashboard-header'>
+          <h3>My Posts</h3>
+        </div>
       { posts.map(post => <PostCard key={ post.id } content={ post } />) }
     </div>
   )

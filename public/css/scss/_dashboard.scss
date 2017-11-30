@@ -1,6 +1,18 @@
+.dashboard {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 20% 80%;
+  min-height: calc(100vh - 90px);
+}
+
+.dashboard-sidebar-container {
+  padding: 20px;
+}
+
 .dashboard-item {
   display: grid;
   grid-gap: 20px;
+  padding: 20px;
   & .dashboard-header {
     padding: 20px 0;
     border-bottom: solid 1px $lightgray;

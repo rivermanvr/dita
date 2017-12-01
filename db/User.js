@@ -11,10 +11,10 @@ const defineAttr = {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
-    // unique: {
-    //   args: true,
-    //   msg: 'Account already registered with this email'
-    // },
+    unique: {
+      args: true,
+      msg: 'Account already registered with this email'
+    },
     validate: {
       isEmail: {
         args: true,
@@ -24,10 +24,10 @@ const defineAttr = {
   },
   username: {
     type: Sequelize.STRING,
-    // unique: {
-    //   args: true,
-    //   msg: 'Account already registered with this username'
-    // },
+    unique: {
+      args: true,
+      msg: 'Account already registered with this username'
+    },
     allowNull: false,
     validate: {
       len: {

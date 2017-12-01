@@ -118,6 +118,7 @@ for sentence in sentences:
   post_data['longitude'] = random.choice(longitudes[5:])
   post_data['userId'] = randint(5, 1000)
   post_data['storyId'] = randint(0, 37) 
+  post_data['halflife'] = randint(1, 100)
   posts.append(post_data)
 
 print 'posts', len(posts)

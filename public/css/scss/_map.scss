@@ -22,3 +22,73 @@
       }
     }
   }
+
+.halflife {
+  shape-rendering: geometricPrecision;
+  &.halflife-core {
+    // fill: yellow;
+    // animation: pulse 2s infinite;
+    fill-opacity: 1;
+    z-index: 5;
+  }
+  &.halflife-outline {
+    // stroke: white;
+    animation: ping 4s infinite;
+    z-index: 2;
+  }
+  @for $i from 1 through 25 {
+    // dying star: blue
+    &.hl-#{$i} {
+      fill: lighten(blue, percentage(1 / $i)); 
+      stroke: lighten(blue, percentage(1 / $i)); 
+    }    
+  }
+  @for $i from 26 through 50 {
+    // trending less: orange
+    &.hl-#{$i} {
+      fill: lighten(orange, percentage(1 / ($i - 25))); 
+      stroke: lighten(orange, percentage(1 / ($i - 25))); 
+    }
+  }
+  @for $i from 51 through 75 {
+    // new star: yellow
+    &.hl-#{$i} {
+      fill: lighten(yellow, percentage(1 / ($i - 50))); 
+      stroke: lighten(yellow, percentage(1 / ($i - 50))); 
+    }
+  }
+  @for $i from 76 through 100 {
+    // trending high!: purple
+    &.hl-#{$i} {
+      
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    fill-opacity: 0.5;
+  }
+  50% {
+    fill-opacity: 1;
+  }
+  100% {
+    fill-opacity: 0.5;
+  }
+}
+
+@keyframes ping {
+  0% {
+    stroke-width: 1;
+    stroke-opacity: 0;
+  }
+  50% {
+    // stroke: yellow;
+    stroke-width: 12;
+    stroke-opacity: .1;
+  }
+  100% {
+    stroke-width: 17;
+    stroke-opacity: 0;
+  }
+}

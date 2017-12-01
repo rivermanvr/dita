@@ -307,6 +307,259 @@ select::-ms-expand {
     color: azure;
     transform: translate(-50%, -50%); }
 
+.halflife {
+  shape-rendering: geometricPrecision; }
+  .halflife.halflife-core {
+    fill-opacity: 1;
+    z-index: 5; }
+  .halflife.halflife-outline {
+    animation: ping 4s infinite;
+    z-index: 2; }
+  .halflife.hl-1 {
+    fill: white;
+    stroke: white; }
+  .halflife.hl-2 {
+    fill: white;
+    stroke: white; }
+  .halflife.hl-3 {
+    fill: #aaaaff;
+    stroke: #aaaaff; }
+  .halflife.hl-4 {
+    fill: #8080ff;
+    stroke: #8080ff; }
+  .halflife.hl-5 {
+    fill: #6666ff;
+    stroke: #6666ff; }
+  .halflife.hl-6 {
+    fill: #5555ff;
+    stroke: #5555ff; }
+  .halflife.hl-7 {
+    fill: #4949ff;
+    stroke: #4949ff; }
+  .halflife.hl-8 {
+    fill: #4040ff;
+    stroke: #4040ff; }
+  .halflife.hl-9 {
+    fill: #3939ff;
+    stroke: #3939ff; }
+  .halflife.hl-10 {
+    fill: #3333ff;
+    stroke: #3333ff; }
+  .halflife.hl-11 {
+    fill: #2e2eff;
+    stroke: #2e2eff; }
+  .halflife.hl-12 {
+    fill: #2b2bff;
+    stroke: #2b2bff; }
+  .halflife.hl-13 {
+    fill: #2727ff;
+    stroke: #2727ff; }
+  .halflife.hl-14 {
+    fill: #2424ff;
+    stroke: #2424ff; }
+  .halflife.hl-15 {
+    fill: #2222ff;
+    stroke: #2222ff; }
+  .halflife.hl-16 {
+    fill: #2020ff;
+    stroke: #2020ff; }
+  .halflife.hl-17 {
+    fill: #1e1eff;
+    stroke: #1e1eff; }
+  .halflife.hl-18 {
+    fill: #1c1cff;
+    stroke: #1c1cff; }
+  .halflife.hl-19 {
+    fill: #1b1bff;
+    stroke: #1b1bff; }
+  .halflife.hl-20 {
+    fill: #1a1aff;
+    stroke: #1a1aff; }
+  .halflife.hl-21 {
+    fill: #1818ff;
+    stroke: #1818ff; }
+  .halflife.hl-22 {
+    fill: #1717ff;
+    stroke: #1717ff; }
+  .halflife.hl-23 {
+    fill: #1616ff;
+    stroke: #1616ff; }
+  .halflife.hl-24 {
+    fill: #1515ff;
+    stroke: #1515ff; }
+  .halflife.hl-25 {
+    fill: #1414ff;
+    stroke: #1414ff; }
+  .halflife.hl-26 {
+    fill: white;
+    stroke: white; }
+  .halflife.hl-27 {
+    fill: white;
+    stroke: white; }
+  .halflife.hl-28 {
+    fill: #ffe1aa;
+    stroke: #ffe1aa; }
+  .halflife.hl-29 {
+    fill: #ffd280;
+    stroke: #ffd280; }
+  .halflife.hl-30 {
+    fill: #ffc966;
+    stroke: #ffc966; }
+  .halflife.hl-31 {
+    fill: #ffc355;
+    stroke: #ffc355; }
+  .halflife.hl-32 {
+    fill: #ffbf49;
+    stroke: #ffbf49; }
+  .halflife.hl-33 {
+    fill: #ffbc40;
+    stroke: #ffbc40; }
+  .halflife.hl-34 {
+    fill: #ffb939;
+    stroke: #ffb939; }
+  .halflife.hl-35 {
+    fill: #ffb733;
+    stroke: #ffb733; }
+  .halflife.hl-36 {
+    fill: #ffb52e;
+    stroke: #ffb52e; }
+  .halflife.hl-37 {
+    fill: #ffb42b;
+    stroke: #ffb42b; }
+  .halflife.hl-38 {
+    fill: #ffb327;
+    stroke: #ffb327; }
+  .halflife.hl-39 {
+    fill: #ffb224;
+    stroke: #ffb224; }
+  .halflife.hl-40 {
+    fill: #ffb122;
+    stroke: #ffb122; }
+  .halflife.hl-41 {
+    fill: #ffb020;
+    stroke: #ffb020; }
+  .halflife.hl-42 {
+    fill: #ffb01e;
+    stroke: #ffb01e; }
+  .halflife.hl-43 {
+    fill: #ffaf1c;
+    stroke: #ffaf1c; }
+  .halflife.hl-44 {
+    fill: #ffae1b;
+    stroke: #ffae1b; }
+  .halflife.hl-45 {
+    fill: #ffae1a;
+    stroke: #ffae1a; }
+  .halflife.hl-46 {
+    fill: #ffae18;
+    stroke: #ffae18; }
+  .halflife.hl-47 {
+    fill: #ffad17;
+    stroke: #ffad17; }
+  .halflife.hl-48 {
+    fill: #ffad16;
+    stroke: #ffad16; }
+  .halflife.hl-49 {
+    fill: #ffad15;
+    stroke: #ffad15; }
+  .halflife.hl-50 {
+    fill: #ffac14;
+    stroke: #ffac14; }
+  .halflife.hl-51 {
+    fill: white;
+    stroke: white; }
+  .halflife.hl-52 {
+    fill: white;
+    stroke: white; }
+  .halflife.hl-53 {
+    fill: #ffffaa;
+    stroke: #ffffaa; }
+  .halflife.hl-54 {
+    fill: #ffff80;
+    stroke: #ffff80; }
+  .halflife.hl-55 {
+    fill: #ffff66;
+    stroke: #ffff66; }
+  .halflife.hl-56 {
+    fill: #ffff55;
+    stroke: #ffff55; }
+  .halflife.hl-57 {
+    fill: #ffff49;
+    stroke: #ffff49; }
+  .halflife.hl-58 {
+    fill: #ffff40;
+    stroke: #ffff40; }
+  .halflife.hl-59 {
+    fill: #ffff39;
+    stroke: #ffff39; }
+  .halflife.hl-60 {
+    fill: #ffff33;
+    stroke: #ffff33; }
+  .halflife.hl-61 {
+    fill: #ffff2e;
+    stroke: #ffff2e; }
+  .halflife.hl-62 {
+    fill: #ffff2b;
+    stroke: #ffff2b; }
+  .halflife.hl-63 {
+    fill: #ffff27;
+    stroke: #ffff27; }
+  .halflife.hl-64 {
+    fill: #ffff24;
+    stroke: #ffff24; }
+  .halflife.hl-65 {
+    fill: #ffff22;
+    stroke: #ffff22; }
+  .halflife.hl-66 {
+    fill: #ffff20;
+    stroke: #ffff20; }
+  .halflife.hl-67 {
+    fill: #ffff1e;
+    stroke: #ffff1e; }
+  .halflife.hl-68 {
+    fill: #ffff1c;
+    stroke: #ffff1c; }
+  .halflife.hl-69 {
+    fill: #ffff1b;
+    stroke: #ffff1b; }
+  .halflife.hl-70 {
+    fill: #ffff1a;
+    stroke: #ffff1a; }
+  .halflife.hl-71 {
+    fill: #ffff18;
+    stroke: #ffff18; }
+  .halflife.hl-72 {
+    fill: #ffff17;
+    stroke: #ffff17; }
+  .halflife.hl-73 {
+    fill: #ffff16;
+    stroke: #ffff16; }
+  .halflife.hl-74 {
+    fill: #ffff15;
+    stroke: #ffff15; }
+  .halflife.hl-75 {
+    fill: #ffff14;
+    stroke: #ffff14; }
+
+@keyframes pulse {
+  0% {
+    fill-opacity: 0.5; }
+  50% {
+    fill-opacity: 1; }
+  100% {
+    fill-opacity: 0.5; } }
+
+@keyframes ping {
+  0% {
+    stroke-width: 1;
+    stroke-opacity: 0; }
+  50% {
+    stroke-width: 12;
+    stroke-opacity: .1; }
+  100% {
+    stroke-width: 17;
+    stroke-opacity: 0; } }
+
 .login-container {
   display: flex;
   justify-content: center;

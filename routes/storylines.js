@@ -1,13 +1,13 @@
 const router = require('express').Router()
 const { verifyToken } = require('./authMiddleware')
-const { StoryLine, Post } = require('../db').models
+const { StoryLine, Post, Reply } = require('../db').models
 
 router.get('/mystorylines', verifyToken, (req, res, next) => {
   StoryLine.findAll({ where: {
     userId: req.user.id,
   },
     order: [['updatedAt', 'DESC']],
-    include: [ Post ]
+    include: [ { model: Post, include: [ Reply ] } ]
   })
   .then(storylines => res.send(storylines))
   .catch(next)

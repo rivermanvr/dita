@@ -245,7 +245,7 @@ select::-ms-expand {
 .dashboard {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: minmax(200px, 300px) 80%;
   min-height: calc(100vh - 90px); }
 
 .dashboard-sidebar-container {
@@ -911,6 +911,42 @@ select::-ms-expand {
       position: absolute;
       top: 0;
       left: 5%; }
+
+.storyline-card {
+  width: 400px; }
+  .storyline-card:hover {
+    background-color: inherit;
+    color: inherit; }
+  .storyline-card .storyline-card-latest-post-preview {
+    min-height: 95px;
+    padding-bottom: 5px;
+    margin: 0 15px;
+    width: calc(100% - 30px);
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    bottom: 50px;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(0, 0, 0, 0.23);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: grid;
+    grid-gap: 5px; }
+    .storyline-card .storyline-card-latest-post-preview:hover {
+      background-color: #1D2833;
+      color: white; }
+    .storyline-card .storyline-card-latest-post-preview .more {
+      justify-self: center;
+      align-self: end;
+      cursor: pointer; }
+  .storyline-card .post-card-footer:before {
+    background-color: transparent; }
+  .storyline-card .latest-story {
+    padding: 0 0 10px 0;
+    text-align: center;
+    position: absolute;
+    bottom: 150px;
+    width: 90%;
+    left: 5%;
+    font-family: 'Lato', sans-serif; }
 
 .my-locations > div {
   padding-top: 20px; }

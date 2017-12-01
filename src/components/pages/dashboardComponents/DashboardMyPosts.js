@@ -2,48 +2,18 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as d3 from 'd3'
 import { Link } from 'react-router-dom'
-import Replies from '../../singleFunction/Replies'
 
-export const xPostCard = ({ content }) => {
-  if (!content) return <div></div>
 
-  const {
-    createdAt,
-    title,
-    body,
-    storyline,
-    replies,
-    id
-  } = content
-
-  return (
-    <div>
-      <h4>
-        <Link to={ `/posts/${ id }`} >
-          { title }
-        </Link>
-        <small>from story <span style={{fontSize:'16px', textTransform:'capitalize'}}>{ storyline && storyline.title }</span></small>
-      </h4>
-      
-      <p>{ body }</p>
-      <h5>Replies:</h5>
-      <Replies postId={id} />
-      <small>{ d3.timeFormat('%m/%d/%y')(new Date(createdAt)) }</small>
-    </div>
-  )
-}
-
-const Posts = ({ userPosts, pathname }) => {
-  // blank for now, will do all posts otherwise
-  const posts = pathname == '/dashboard/myposts' ? userPosts : []
-
+export const Posts = ({ posts }) => {
   return (
     <div className='dashboard-item'>
       <h3 className='dashboard-header'>My Posts</h3>
 
       <div className='post-cards-container'>
-      { userPosts && userPosts.map(post => {
-        let title = (post.title || post.body).slice(0, 30)
+      { posts && posts.map(post => {
+        let title = (post.title || post.body).slice(0, 30),
+          body = post.body.slice(0, 500)
+
         return <div key={ post.id } className='post-card'>
           <div className='post-card-header'>
             <h4>{ `${title}${title.length > 30 ? '...' : ''}` }</h4>
@@ -51,7 +21,7 @@ const Posts = ({ userPosts, pathname }) => {
           </div>
 
           <div className='post-card-body'>
-            <p>{ post.body }</p>
+            <p>{ `${body}${body.length > 30 ? '...' : ''}` }</p>
           </div>
 
           <div className='post-card-footer'>
@@ -66,11 +36,5 @@ const Posts = ({ userPosts, pathname }) => {
   )
 }
 
-const mapState = ({ userPosts }, ownProps) => (
-  { 
-    userPosts,
-    pathname: ownProps.location.pathname
-  }
-)
-
+const mapState = ({ userPosts }) => ({ posts: userPosts })
 export default connect(mapState)(Posts)

@@ -1,7 +1,7 @@
 .dashboard {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: minmax(200px, 300px) 80%;
   min-height: calc(100vh - 90px);
 }
 

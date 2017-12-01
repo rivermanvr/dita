@@ -883,7 +883,7 @@ select::-ms-expand {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative; }
   .post-card:hover {
-    background-color: #353740;
+    background-color: #1D2833;
     color: white; }
   .post-card > * {
     padding: 15px; }

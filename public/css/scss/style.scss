@@ -41,7 +41,8 @@ hr { width: 100%; }
 
 // header styles
 /**** needs font family!! ****/
-h3 { font-size: 1.5em; }
+h3 { font-size: 1.3rem; }
+h4 { font-size: 1.2rem; }
 /* Fonts */
 
 h1 {
@@ -67,4 +68,5 @@ i { font-size: 1.5em; }
 @import '_login.scss';
 @import '_home.scss';
 @import '_addposts.scss';
+@import '_myposts.scss';
 @import '_mylocations.scss';

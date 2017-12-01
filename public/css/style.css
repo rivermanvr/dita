@@ -82,7 +82,10 @@ hr {
 
 /**** needs font family!! ****/
 h3 {
-  font-size: 1.5em; }
+  font-size: 1.3rem; }
+
+h4 {
+  font-size: 1.2rem; }
 
 /* Fonts */
 h1 {
@@ -865,6 +868,49 @@ select::-ms-expand {
   .current-location > span:last-child {
     text-align: right;
     margin-right: 0; }
+
+.post-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -20px -20px 0; }
+
+.post-card {
+  margin: 0 20px 20px 0;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(0, 0, 0, 0.23);
+  height: 300px;
+  width: 300px;
+  border-radius: 5px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative; }
+  .post-card:hover {
+    background-color: #353740;
+    color: white; }
+  .post-card > * {
+    padding: 15px; }
+  .post-card .post-card-footer {
+    font-size: .8rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; }
+    .post-card .post-card-footer > * {
+      align-self: center; }
+    .post-card .post-card-footer .replies-count-container {
+      text-align: center;
+      padding-left: 23px; }
+    .post-card .post-card-footer .more {
+      cursor: pointer;
+      text-align: right; }
+    .post-card .post-card-footer:before {
+      content: '';
+      width: 90%;
+      height: 1px;
+      background-color: #D8D4D5;
+      position: absolute;
+      top: 0;
+      left: 5%; }
 
 .my-locations > div {
   padding-top: 20px; }

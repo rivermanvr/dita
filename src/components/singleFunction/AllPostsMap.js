@@ -13,7 +13,7 @@ class AllPostsMap extends Component {
 
   render(){
     const { posts, currentView } = this.props;    
-    const zoomLevel = 9;
+    const zoomLevel = 3;
     const position = [currentView.lat, currentView.lng]; 
     const darkTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cja8rnhqp0ukm2rpjrq1uxx65/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
     const tileAttr = '&copy; <a href="https://www.mapbox.com/">Mapbox</a>';

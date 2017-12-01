@@ -269,6 +269,7 @@ select::-ms-expand {
     padding: 30px 20px;
     border-bottom: solid 1px #D8D4D5;
     transition: all 300ms;
+    color: inherit;
     cursor: pointer; }
     .dashboard-sidebar-container li a:hover {
       background-color: #1D2833;
@@ -306,6 +307,445 @@ select::-ms-expand {
     color: azure;
     transform: translate(-50%, -50%); }
 
+.map-container {
+  position: absolute;
+  top: 34px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 34px); }
+  .map-container .map {
+    z-index: 10; }
+  .map-container .legend-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 20;
+    background-color: rgba(12, 13, 14, 0.62);
+    color: #ffffff; }
+    .map-container .legend-bar .legend-container {
+      padding: 10px 15px;
+      display: flex;
+      line-height: 1.2; }
+      .map-container .legend-bar .legend-container > * {
+        align-self: center; }
+    .map-container .legend-bar .legend-circle {
+      display: inline-block;
+      border-radius: 100%;
+      padding: 0;
+      width: .9rem;
+      height: .9rem;
+      margin-right: 10px; }
+    .map-container .legend-bar .hl0 {
+      background-color: #D3152E; }
+    .map-container .legend-bar .hl25 {
+      background-color: #FF6E2E; }
+    .map-container .legend-bar .hl50 {
+      background-color: #F7CB15; }
+    .map-container .legend-bar .hl100 {
+      background-color: #05A8AA; }
+
+.halflife {
+  shape-rendering: geometricPrecision;
+  stroke: transparent; }
+  .halflife.halflife-core {
+    fill-opacity: 1;
+    z-index: 5; }
+  .halflife.halflife-outline {
+    animation: ping 4s infinite;
+    z-index: 2; }
+  .halflife.hl-1 {
+    animation: ping 5s infinite;
+    fill: #e8001f;
+    stroke: #e8001f; }
+  .halflife.hl-2 {
+    animation: ping 5s infinite;
+    fill: #e8001f;
+    stroke: #e8001f; }
+  .halflife.hl-3 {
+    animation: ping 5s infinite;
+    fill: #e8001f;
+    stroke: #e8001f; }
+  .halflife.hl-4 {
+    animation: ping 5s infinite;
+    fill: #e8001f;
+    stroke: #e8001f; }
+  .halflife.hl-5 {
+    animation: ping 5s infinite;
+    fill: #e8001f;
+    stroke: #e8001f; }
+  .halflife.hl-6 {
+    animation: ping 5s infinite;
+    fill: #e60220;
+    stroke: #e60220; }
+  .halflife.hl-7 {
+    animation: ping 5s infinite;
+    fill: #e40422;
+    stroke: #e40422; }
+  .halflife.hl-8 {
+    animation: ping 5s infinite;
+    fill: #e20723;
+    stroke: #e20723; }
+  .halflife.hl-9 {
+    animation: ping 5s infinite;
+    fill: #e00825;
+    stroke: #e00825; }
+  .halflife.hl-10 {
+    animation: ping 5s infinite;
+    fill: #df0925;
+    stroke: #df0925; }
+  .halflife.hl-11 {
+    animation: ping 5s infinite;
+    fill: #de0a26;
+    stroke: #de0a26; }
+  .halflife.hl-12 {
+    animation: ping 5s infinite;
+    fill: #dd0b27;
+    stroke: #dd0b27; }
+  .halflife.hl-13 {
+    animation: ping 5s infinite;
+    fill: #dc0c27;
+    stroke: #dc0c27; }
+  .halflife.hl-14 {
+    animation: ping 5s infinite;
+    fill: #db0d28;
+    stroke: #db0d28; }
+  .halflife.hl-15 {
+    animation: ping 5s infinite;
+    fill: #db0d28;
+    stroke: #db0d28; }
+  .halflife.hl-16 {
+    animation: ping 5s infinite;
+    fill: #da0e29;
+    stroke: #da0e29; }
+  .halflife.hl-17 {
+    animation: ping 5s infinite;
+    fill: #da0e29;
+    stroke: #da0e29; }
+  .halflife.hl-18 {
+    animation: ping 5s infinite;
+    fill: #d90f29;
+    stroke: #d90f29; }
+  .halflife.hl-19 {
+    animation: ping 5s infinite;
+    fill: #d90f2a;
+    stroke: #d90f2a; }
+  .halflife.hl-20 {
+    animation: ping 5s infinite;
+    fill: #d90f2a;
+    stroke: #d90f2a; }
+  .halflife.hl-21 {
+    animation: ping 5s infinite;
+    fill: #d90f2a;
+    stroke: #d90f2a; }
+  .halflife.hl-22 {
+    animation: ping 5s infinite;
+    fill: #d8102a;
+    stroke: #d8102a; }
+  .halflife.hl-23 {
+    animation: ping 5s infinite;
+    fill: #d8102a;
+    stroke: #d8102a; }
+  .halflife.hl-24 {
+    animation: ping 5s infinite;
+    fill: #d8102a;
+    stroke: #d8102a; }
+  .halflife.hl-25 {
+    animation: ping 5s infinite;
+    fill: #d8102b;
+    stroke: #d8102b; }
+  .halflife.hl-26 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-27 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-28 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-29 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-30 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-31 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-32 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-33 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-34 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-35 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-36 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-37 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-38 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-39 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-40 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-41 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-42 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-43 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-44 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-45 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-46 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-47 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-48 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-49 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-50 {
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
+  .halflife.hl-51 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-52 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-53 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-54 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-55 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-56 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-57 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-58 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-59 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-60 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-61 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-62 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-63 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-64 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-65 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-66 {
+    fill: #ffd00d;
+    stroke: #ffd00d; }
+  .halflife.hl-67 {
+    fill: #fecf0e;
+    stroke: #fecf0e; }
+  .halflife.hl-68 {
+    fill: #fecf0e;
+    stroke: #fecf0e; }
+  .halflife.hl-69 {
+    fill: #fdcf0f;
+    stroke: #fdcf0f; }
+  .halflife.hl-70 {
+    fill: #fdcf0f;
+    stroke: #fdcf0f; }
+  .halflife.hl-71 {
+    fill: #fdcf0f;
+    stroke: #fdcf0f; }
+  .halflife.hl-72 {
+    fill: #fdce10;
+    stroke: #fdce10; }
+  .halflife.hl-73 {
+    fill: #fcce10;
+    stroke: #fcce10; }
+  .halflife.hl-74 {
+    fill: #fcce10;
+    stroke: #fcce10; }
+  .halflife.hl-75 {
+    fill: #fcce10;
+    stroke: #fcce10; }
+  .halflife.hl-76 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-77 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-78 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-79 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-80 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-81 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-82 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-83 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-84 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-85 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-86 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-87 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-88 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-89 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-90 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-91 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-92 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-93 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-94 {
+    animation: ping-twice 3s infinite;
+    fill: #00acaf;
+    stroke: #00acaf; }
+  .halflife.hl-95 {
+    animation: ping-twice 3s infinite;
+    fill: #01acae;
+    stroke: #01acae; }
+  .halflife.hl-96 {
+    animation: ping-twice 3s infinite;
+    fill: #01acae;
+    stroke: #01acae; }
+  .halflife.hl-97 {
+    animation: ping-twice 3s infinite;
+    fill: #01acae;
+    stroke: #01acae; }
+  .halflife.hl-98 {
+    animation: ping-twice 3s infinite;
+    fill: #01acae;
+    stroke: #01acae; }
+  .halflife.hl-99 {
+    animation: ping-twice 3s infinite;
+    fill: #01acae;
+    stroke: #01acae; }
+  .halflife.hl-100 {
+    animation: ping-twice 3s infinite;
+    fill: #02abae;
+    stroke: #02abae; }
+
+@keyframes pulse {
+  0% {
+    fill-opacity: 0.5; }
+  50% {
+    fill-opacity: 1; }
+  100% {
+    fill-opacity: 0.5; } }
+
+@keyframes ping {
+  0% {
+    stroke-width: 1;
+    stroke-opacity: 0; }
+  50% {
+    stroke-width: 12;
+    stroke-opacity: .2; }
+  100% {
+    stroke-width: 17;
+    stroke-opacity: 0; } }
+
+@keyframes ping-twice {
+  0% {
+    stroke-width: 1;
+    stroke-opacity: 0; }
+  20% {
+    stroke-width: 12;
+    stroke-opacity: .3; }
+  40% {
+    stroke-width: 17;
+    stroke-opacity: 0; }
+  60% {
+    stroke-width: 1;
+    stroke-opacity: 0; }
+  80% {
+    stroke-width: 12;
+    stroke-opacity: .3; }
+  100% {
+    stroke-width: 17;
+    stroke-opacity: 0; } }
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -313,7 +753,8 @@ select::-ms-expand {
   .login-container .form {
     display: grid;
     grid-gap: 10px;
-    width: 100%; }
+    width: 100%;
+    max-width: 400px; }
     .login-container .form.login {
       grid-gap: 20px; }
   .login-container .social-login {
@@ -336,7 +777,15 @@ select::-ms-expand {
 .login-container.profile {
   justify-content: left; }
   .login-container.profile .form {
-    width: 100%; }
+    width: 100%;
+    max-width: 100%; }
+    @media screen and (min-width: 994px) {
+      .login-container.profile .form {
+        max-width: 1000px; }
+      .login-container.profile .form > div {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 1fr 1fr; } }
 
 .homePage .hero {
   position: absolute;

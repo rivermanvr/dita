@@ -307,8 +307,49 @@ select::-ms-expand {
     color: azure;
     transform: translate(-50%, -50%); }
 
+.map-container {
+  position: absolute;
+  top: 34px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 34px); }
+  .map-container .map {
+    z-index: 10; }
+  .map-container .legend-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 20;
+    background-color: rgba(12, 13, 14, 0.62);
+    color: #ffffff; }
+    .map-container .legend-bar .legend-container {
+      padding: 10px 15px;
+      display: flex;
+      line-height: 1.2; }
+      .map-container .legend-bar .legend-container > * {
+        align-self: center; }
+    .map-container .legend-bar .legend-circle {
+      display: inline-block;
+      border-radius: 100%;
+      padding: 0;
+      width: .9rem;
+      height: .9rem;
+      margin-right: 10px; }
+    .map-container .legend-bar .hl0 {
+      background-color: #D3152E; }
+    .map-container .legend-bar .hl25 {
+      background-color: #FF6E2E; }
+    .map-container .legend-bar .hl50 {
+      background-color: #F7CB15; }
+    .map-container .legend-bar .hl100 {
+      background-color: #05A8AA; }
+
 .halflife {
-  shape-rendering: geometricPrecision; }
+  shape-rendering: geometricPrecision;
+  stroke: transparent; }
   .halflife.halflife-core {
     fill-opacity: 1;
     z-index: 5; }
@@ -316,230 +357,355 @@ select::-ms-expand {
     animation: ping 4s infinite;
     z-index: 2; }
   .halflife.hl-1 {
-    fill: white;
-    stroke: white; }
+    animation: ping 5s infinite;
+    fill: #e8001f;
+    stroke: #e8001f; }
   .halflife.hl-2 {
-    fill: white;
-    stroke: white; }
+    animation: ping 5s infinite;
+    fill: #e8001f;
+    stroke: #e8001f; }
   .halflife.hl-3 {
-    fill: #aaaaff;
-    stroke: #aaaaff; }
+    animation: ping 5s infinite;
+    fill: #e8001f;
+    stroke: #e8001f; }
   .halflife.hl-4 {
-    fill: #8080ff;
-    stroke: #8080ff; }
+    animation: ping 5s infinite;
+    fill: #e8001f;
+    stroke: #e8001f; }
   .halflife.hl-5 {
-    fill: #6666ff;
-    stroke: #6666ff; }
+    animation: ping 5s infinite;
+    fill: #e8001f;
+    stroke: #e8001f; }
   .halflife.hl-6 {
-    fill: #5555ff;
-    stroke: #5555ff; }
+    animation: ping 5s infinite;
+    fill: #e60220;
+    stroke: #e60220; }
   .halflife.hl-7 {
-    fill: #4949ff;
-    stroke: #4949ff; }
+    animation: ping 5s infinite;
+    fill: #e40422;
+    stroke: #e40422; }
   .halflife.hl-8 {
-    fill: #4040ff;
-    stroke: #4040ff; }
+    animation: ping 5s infinite;
+    fill: #e20723;
+    stroke: #e20723; }
   .halflife.hl-9 {
-    fill: #3939ff;
-    stroke: #3939ff; }
+    animation: ping 5s infinite;
+    fill: #e00825;
+    stroke: #e00825; }
   .halflife.hl-10 {
-    fill: #3333ff;
-    stroke: #3333ff; }
+    animation: ping 5s infinite;
+    fill: #df0925;
+    stroke: #df0925; }
   .halflife.hl-11 {
-    fill: #2e2eff;
-    stroke: #2e2eff; }
+    animation: ping 5s infinite;
+    fill: #de0a26;
+    stroke: #de0a26; }
   .halflife.hl-12 {
-    fill: #2b2bff;
-    stroke: #2b2bff; }
+    animation: ping 5s infinite;
+    fill: #dd0b27;
+    stroke: #dd0b27; }
   .halflife.hl-13 {
-    fill: #2727ff;
-    stroke: #2727ff; }
+    animation: ping 5s infinite;
+    fill: #dc0c27;
+    stroke: #dc0c27; }
   .halflife.hl-14 {
-    fill: #2424ff;
-    stroke: #2424ff; }
+    animation: ping 5s infinite;
+    fill: #db0d28;
+    stroke: #db0d28; }
   .halflife.hl-15 {
-    fill: #2222ff;
-    stroke: #2222ff; }
+    animation: ping 5s infinite;
+    fill: #db0d28;
+    stroke: #db0d28; }
   .halflife.hl-16 {
-    fill: #2020ff;
-    stroke: #2020ff; }
+    animation: ping 5s infinite;
+    fill: #da0e29;
+    stroke: #da0e29; }
   .halflife.hl-17 {
-    fill: #1e1eff;
-    stroke: #1e1eff; }
+    animation: ping 5s infinite;
+    fill: #da0e29;
+    stroke: #da0e29; }
   .halflife.hl-18 {
-    fill: #1c1cff;
-    stroke: #1c1cff; }
+    animation: ping 5s infinite;
+    fill: #d90f29;
+    stroke: #d90f29; }
   .halflife.hl-19 {
-    fill: #1b1bff;
-    stroke: #1b1bff; }
+    animation: ping 5s infinite;
+    fill: #d90f2a;
+    stroke: #d90f2a; }
   .halflife.hl-20 {
-    fill: #1a1aff;
-    stroke: #1a1aff; }
+    animation: ping 5s infinite;
+    fill: #d90f2a;
+    stroke: #d90f2a; }
   .halflife.hl-21 {
-    fill: #1818ff;
-    stroke: #1818ff; }
+    animation: ping 5s infinite;
+    fill: #d90f2a;
+    stroke: #d90f2a; }
   .halflife.hl-22 {
-    fill: #1717ff;
-    stroke: #1717ff; }
+    animation: ping 5s infinite;
+    fill: #d8102a;
+    stroke: #d8102a; }
   .halflife.hl-23 {
-    fill: #1616ff;
-    stroke: #1616ff; }
+    animation: ping 5s infinite;
+    fill: #d8102a;
+    stroke: #d8102a; }
   .halflife.hl-24 {
-    fill: #1515ff;
-    stroke: #1515ff; }
+    animation: ping 5s infinite;
+    fill: #d8102a;
+    stroke: #d8102a; }
   .halflife.hl-25 {
-    fill: #1414ff;
-    stroke: #1414ff; }
+    animation: ping 5s infinite;
+    fill: #d8102b;
+    stroke: #d8102b; }
   .halflife.hl-26 {
-    fill: white;
-    stroke: white; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-27 {
-    fill: white;
-    stroke: white; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-28 {
-    fill: #ffe1aa;
-    stroke: #ffe1aa; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-29 {
-    fill: #ffd280;
-    stroke: #ffd280; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-30 {
-    fill: #ffc966;
-    stroke: #ffc966; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-31 {
-    fill: #ffc355;
-    stroke: #ffc355; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-32 {
-    fill: #ffbf49;
-    stroke: #ffbf49; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-33 {
-    fill: #ffbc40;
-    stroke: #ffbc40; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-34 {
-    fill: #ffb939;
-    stroke: #ffb939; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-35 {
-    fill: #ffb733;
-    stroke: #ffb733; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-36 {
-    fill: #ffb52e;
-    stroke: #ffb52e; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-37 {
-    fill: #ffb42b;
-    stroke: #ffb42b; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-38 {
-    fill: #ffb327;
-    stroke: #ffb327; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-39 {
-    fill: #ffb224;
-    stroke: #ffb224; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-40 {
-    fill: #ffb122;
-    stroke: #ffb122; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-41 {
-    fill: #ffb020;
-    stroke: #ffb020; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-42 {
-    fill: #ffb01e;
-    stroke: #ffb01e; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-43 {
-    fill: #ffaf1c;
-    stroke: #ffaf1c; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-44 {
-    fill: #ffae1b;
-    stroke: #ffae1b; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-45 {
-    fill: #ffae1a;
-    stroke: #ffae1a; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-46 {
-    fill: #ffae18;
-    stroke: #ffae18; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-47 {
-    fill: #ffad17;
-    stroke: #ffad17; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-48 {
-    fill: #ffad16;
-    stroke: #ffad16; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-49 {
-    fill: #ffad15;
-    stroke: #ffad15; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-50 {
-    fill: #ffac14;
-    stroke: #ffac14; }
+    fill: #ff6e2e;
+    stroke: #ff6e2e; }
   .halflife.hl-51 {
-    fill: white;
-    stroke: white; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-52 {
-    fill: white;
-    stroke: white; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-53 {
-    fill: #ffffaa;
-    stroke: #ffffaa; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-54 {
-    fill: #ffff80;
-    stroke: #ffff80; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-55 {
-    fill: #ffff66;
-    stroke: #ffff66; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-56 {
-    fill: #ffff55;
-    stroke: #ffff55; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-57 {
-    fill: #ffff49;
-    stroke: #ffff49; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-58 {
-    fill: #ffff40;
-    stroke: #ffff40; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-59 {
-    fill: #ffff39;
-    stroke: #ffff39; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-60 {
-    fill: #ffff33;
-    stroke: #ffff33; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-61 {
-    fill: #ffff2e;
-    stroke: #ffff2e; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-62 {
-    fill: #ffff2b;
-    stroke: #ffff2b; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-63 {
-    fill: #ffff27;
-    stroke: #ffff27; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-64 {
-    fill: #ffff24;
-    stroke: #ffff24; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-65 {
-    fill: #ffff22;
-    stroke: #ffff22; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-66 {
-    fill: #ffff20;
-    stroke: #ffff20; }
+    fill: #ffd00d;
+    stroke: #ffd00d; }
   .halflife.hl-67 {
-    fill: #ffff1e;
-    stroke: #ffff1e; }
+    fill: #fecf0e;
+    stroke: #fecf0e; }
   .halflife.hl-68 {
-    fill: #ffff1c;
-    stroke: #ffff1c; }
+    fill: #fecf0e;
+    stroke: #fecf0e; }
   .halflife.hl-69 {
-    fill: #ffff1b;
-    stroke: #ffff1b; }
+    fill: #fdcf0f;
+    stroke: #fdcf0f; }
   .halflife.hl-70 {
-    fill: #ffff1a;
-    stroke: #ffff1a; }
+    fill: #fdcf0f;
+    stroke: #fdcf0f; }
   .halflife.hl-71 {
-    fill: #ffff18;
-    stroke: #ffff18; }
+    fill: #fdcf0f;
+    stroke: #fdcf0f; }
   .halflife.hl-72 {
-    fill: #ffff17;
-    stroke: #ffff17; }
+    fill: #fdce10;
+    stroke: #fdce10; }
   .halflife.hl-73 {
-    fill: #ffff16;
-    stroke: #ffff16; }
+    fill: #fcce10;
+    stroke: #fcce10; }
   .halflife.hl-74 {
-    fill: #ffff15;
-    stroke: #ffff15; }
+    fill: #fcce10;
+    stroke: #fcce10; }
   .halflife.hl-75 {
-    fill: #ffff14;
-    stroke: #ffff14; }
+    fill: #fcce10;
+    stroke: #fcce10; }
+  .halflife.hl-76 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-77 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-78 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-79 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-80 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-81 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-82 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-83 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-84 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-85 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-86 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-87 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-88 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-89 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-90 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-91 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-92 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-93 {
+    animation: ping-twice 3s infinite;
+    fill: #00adaf;
+    stroke: #00adaf; }
+  .halflife.hl-94 {
+    animation: ping-twice 3s infinite;
+    fill: #00acaf;
+    stroke: #00acaf; }
+  .halflife.hl-95 {
+    animation: ping-twice 3s infinite;
+    fill: #01acae;
+    stroke: #01acae; }
+  .halflife.hl-96 {
+    animation: ping-twice 3s infinite;
+    fill: #01acae;
+    stroke: #01acae; }
+  .halflife.hl-97 {
+    animation: ping-twice 3s infinite;
+    fill: #01acae;
+    stroke: #01acae; }
+  .halflife.hl-98 {
+    animation: ping-twice 3s infinite;
+    fill: #01acae;
+    stroke: #01acae; }
+  .halflife.hl-99 {
+    animation: ping-twice 3s infinite;
+    fill: #01acae;
+    stroke: #01acae; }
+  .halflife.hl-100 {
+    animation: ping-twice 3s infinite;
+    fill: #02abae;
+    stroke: #02abae; }
 
 @keyframes pulse {
   0% {
@@ -555,7 +721,27 @@ select::-ms-expand {
     stroke-opacity: 0; }
   50% {
     stroke-width: 12;
-    stroke-opacity: .1; }
+    stroke-opacity: .2; }
+  100% {
+    stroke-width: 17;
+    stroke-opacity: 0; } }
+
+@keyframes ping-twice {
+  0% {
+    stroke-width: 1;
+    stroke-opacity: 0; }
+  20% {
+    stroke-width: 12;
+    stroke-opacity: .3; }
+  40% {
+    stroke-width: 17;
+    stroke-opacity: 0; }
+  60% {
+    stroke-width: 1;
+    stroke-opacity: 0; }
+  80% {
+    stroke-width: 12;
+    stroke-opacity: .3; }
   100% {
     stroke-width: 17;
     stroke-opacity: 0; } }

@@ -32,11 +32,12 @@ class AllPostsMap extends Component {
     const spanStyle = { fontSize: '1.5em' }
   
     return (
-      <div>
+      <div className='map-container'>
         <Map
           center={ position }
           zoom={ zoomLevel }
-          style={{ height: "100vh", width: "100%" }}
+          style={{ height: "calc(100vh - 34px)", width: "100%" }}
+          className='map'
           worldCopyJump="true" zoomControl={ false }
           onViewportChanged={
             (view) => {
@@ -56,40 +57,35 @@ class AllPostsMap extends Component {
                 </div>
               </Popup>
             </Marker>
-
-          {/* add a second circle maker to radiate out, stroke only and fade, like a pulse */}
-           
-           {/*
-
-                    className={ `halflife halflife-${Math.floor(post.halflife)}` }
-                      className={ `halflife halflife-${Math.floor(post.halflife)}-outline` }
-
-
-           */}
             {
               posts && posts.map(post => {
                 return (                
                   <CircleMarker key={ post.id } center={ [post.latLng.lat, post.latLng.lng] } 
-                    radius={ Math.sqrt(post.halflife) / 5 + zoomLevel }  fillColor={ 'transparent' } 
+                    radius={ Math.sqrt(post.halflife) / 2 + zoomLevel }  fillColor={ 'transparent' } 
                     className={ `halflife halflife-outline hl-${Math.ceil(post.halflife)}` }
-                     weight={ 1 }>
-                     <CircleMarker center={ [post.latLng.lat, post.latLng.lng] } 
-                      radius={ Math.sqrt(post.halflife) / 5 + zoomLevel } 
-                      className={ `halflife halflife-core hl-${Math.ceil(post.halflife)}` }
-                       weight={ 0 }>
+                    weight={ 1 }>
                     <Popup>
                       <div>
                         <a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>
                         <span>{ post.body }</span>
                       </div> 
                     </Popup>                  
-                    </CircleMarker>               
+                    <CircleMarker center={ [post.latLng.lat, post.latLng.lng] } 
+                      radius={ Math.sqrt(post.halflife) / 2 + zoomLevel } 
+                      className={ `halflife halflife-core hl-${Math.ceil(post.halflife)}` }
+                      weight={ 0 }></CircleMarker>
                   </CircleMarker>               
                 )
               })
             }
-
         </Map>
+
+        <div className='legend-bar'>
+          <span className='legend-container'><span className='legend-circle hl100'></span>Trending</span>
+          <span className='legend-container'><span className='legend-circle hl50'></span>New!</span>
+          <span className='legend-container'><span className='legend-circle hl25'></span>Fading</span>
+          <span className='legend-container'><span className='legend-circle hl0'></span>Shrinking</span>
+        </div>
       </div>
     )
   }  
@@ -103,5 +99,3 @@ const mapStateToProps = ({ posts, currentView }) => {
 }
 
 export default connect (mapStateToProps)(AllPostsMap)
-
-

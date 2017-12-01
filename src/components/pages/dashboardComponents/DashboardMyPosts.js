@@ -21,12 +21,12 @@ export const Posts = ({ posts }) => {
           </div>
 
           <div className='post-card-body'>
-            <p>{ `${body}${body.length > 30 ? '...' : ''}` }</p>
+            <p>{ `${body}${body.length > 500 ? '...' : ''}` }</p>
           </div>
 
           <div className='post-card-footer'>
             <span>{ d3.timeFormat('%m/%d/%y')(new Date(post.createdAt)) }</span>
-            <span className='replies-count-container'><i className='ion-ios-chatboxes-outline'></i> <span className='replies-count'>{ post.replies.length }</span></span>
+            <span onClick={ () => console.log('open modal') } className='replies-count-container'><i className='ion-ios-chatboxes-outline'></i> <span className='replies-count'>{ post.replies.length }</span></span>
             <span onClick={ () => console.log('open modal') } className='more'><i className='ion-ios-more-outline'></i></span>
           </div>
         </div>

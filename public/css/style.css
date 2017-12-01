@@ -899,7 +899,8 @@ select::-ms-expand {
       align-self: center; }
     .post-card .post-card-footer .replies-count-container {
       text-align: center;
-      padding-left: 23px; }
+      padding-left: 23px;
+      cursor: pointer; }
     .post-card .post-card-footer .more {
       cursor: pointer;
       text-align: right; }
@@ -918,6 +919,7 @@ select::-ms-expand {
     background-color: inherit;
     color: inherit; }
   .storyline-card .storyline-card-latest-post-preview {
+    cursor: pointer;
     min-height: 95px;
     padding-bottom: 5px;
     margin: 0 15px;
@@ -935,10 +937,11 @@ select::-ms-expand {
       color: white; }
     .storyline-card .storyline-card-latest-post-preview .more {
       justify-self: center;
-      align-self: end;
-      cursor: pointer; }
-  .storyline-card .post-card-footer:before {
-    background-color: transparent; }
+      align-self: end; }
+  .storyline-card .post-card-footer {
+    grid-template-columns: 1fr 1fr; }
+    .storyline-card .post-card-footer:before {
+      background-color: transparent; }
   .storyline-card .latest-story {
     padding: 0 0 10px 0;
     text-align: center;

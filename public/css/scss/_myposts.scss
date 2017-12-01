@@ -45,6 +45,7 @@ $card-size: 300px;
     & .replies-count-container {
       text-align: center;
       padding-left: 23px;
+      cursor: pointer;
     }
     & .more {
       cursor: pointer;
@@ -69,6 +70,7 @@ $card-size: 300px;
     color: inherit;    
   }
   & .storyline-card-latest-post-preview {
+    cursor: pointer;
     min-height: 95px;
     padding-bottom: 5px;
     margin: 0 15px;
@@ -90,11 +92,13 @@ $card-size: 300px;
     & .more {
       justify-self: center;
       align-self: end;
-      cursor: pointer;
     }
   }
-  & .post-card-footer:before {
-    background-color: transparent;
+  & .post-card-footer {
+    grid-template-columns: 1fr 1fr;
+    &:before {
+      background-color: transparent;
+    }
   }
   & .latest-story {
     padding: 0 0 10px 0;

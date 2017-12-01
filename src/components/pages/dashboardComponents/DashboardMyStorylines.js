@@ -13,7 +13,6 @@ const Storylines = ({ storylines }) => {
       { storylines && storylines.map(storyline => {
         let title = (storyline.title || storyline.description).slice(0, 30),
           totalHalflife = storyline.posts.reduce((total, post) => (total += post.halflife), 0),
-          totalReplies = storyline.posts.reduce((total, post) => (total += post.replies.length), 0),
           latestStory = storyline.posts[storyline.posts.length - 1],
           latestStoryTitle = (latestStory.title || latestStory.body).slice(0, 30),
           latestStoryBody = latestStory.body.slice(0, 200)
@@ -30,15 +29,14 @@ const Storylines = ({ storylines }) => {
           </div>
 
           <div className='latest-story'>Latest story</div>
-          <div className='storyline-card-latest-post-preview'>
+          <div onClick={ () => console.log('open modal') } className='storyline-card-latest-post-preview'>
             <label>{ latestStoryTitle }</label>
             <p>{ `${latestStoryBody}${latestStoryBody.length > 200 ? '...' : ''}` }</p>
-            <span onClick={ () => console.log('open modal') } className='more'><i className='ion-ios-more-outline'></i></span>
+            <span className='more'><i className='ion-ios-more-outline'></i></span>
           </div>
 
           <div className='post-card-footer'>
             <span>{ d3.timeFormat('%m/%d/%y')(new Date(storyline.updatedAt)) }</span>
-            <span className='replies-count-container'><i className='ion-ios-chatboxes-outline'></i> <span className='replies-count'>{ totalReplies }</span></span>
             <span onClick={ () => console.log('open carousel') } className='more'><i className='ion-ios-more-outline'></i></span>
           </div>
         </div>

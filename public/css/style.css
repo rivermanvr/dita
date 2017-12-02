@@ -288,7 +288,23 @@ select::-ms-expand {
   padding: 40px; }
   .dashboard-item .dashboard-header {
     padding: 20px 0;
-    border-bottom: solid 1px #D8D4D5; }
+    border-bottom: solid 1px #D8D4D5;
+    display: flex;
+    flex-direction: column; }
+    .dashboard-item .dashboard-header > * {
+      align-self: start; }
+    .dashboard-item .dashboard-header i {
+      border: solid 1px #1D2833;
+      border-radius: 100%;
+      width: 33px;
+      height: 33px;
+      padding-left: 5px;
+      margin-bottom: 30px;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      cursor: pointer; }
+      .dashboard-item .dashboard-header i:hover {
+        color: #ffffff;
+        background-color: #1D2833; }
 
 .hl-1 {
   animation: ping 5s infinite;

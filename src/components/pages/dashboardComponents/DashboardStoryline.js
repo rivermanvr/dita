@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom'
 import { Posts } from './DashboardMyPosts'
 
 
-const Storyline = ({ storyline }) => {
+const Storyline = ({ storyline, back }) => {
   if (!storyline) return <div></div>
 
   return (
     <div className='dashboard-item'>
-      <h3 className='dashboard-header'>{ storyline.title }</h3>
+      <h3 className='dashboard-header'><i className='ion-ios-arrow-thin-left' onClick={ back }></i> <span>{ storyline.title }</span></h3>
 
       <Posts posts={ storyline.posts } />
     </div>
@@ -20,4 +20,9 @@ const Storyline = ({ storyline }) => {
 }
 
 const mapState = ({ userStorylines }, ownProps) => ({ storyline: userStorylines.find(storyline => storyline.id == ownProps.match.params.id) })
-export default connect(mapState)(Storyline)
+const mapDispatch = ({}, ownProps) => dispatch => ({
+  back() {
+    ownProps.history.goBack()
+  }
+})
+export default connect(mapState, mapDispatch)(Storyline)

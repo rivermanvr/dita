@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { Posts } from './DashboardMyPosts'
 
 
-const Storyline = ({ storyline, back }) => {
+export const Storyline = ({ storyline, back }) => {
   if (!storyline) return <div></div>
 
   return (

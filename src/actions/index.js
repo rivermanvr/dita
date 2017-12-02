@@ -7,3 +7,4 @@ export * from './userstorylines';
 export * from './location';
 export * from './userlocations';
 export * from './bulkactions';
+export * from './modal';

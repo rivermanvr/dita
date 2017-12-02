@@ -16,6 +16,14 @@
     <link rel='stylesheet' href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
     
   </head>
+
+  <script>
+    // set token from oauth
+    if (document.location.search.indexOf('=') === 1) {
+      window.localStorage.setItem('ditaKey', document.location.search.slice(2))
+      window.location = '/'
+    }
+  </script>
   
   <body>
     <div id="root"></div>

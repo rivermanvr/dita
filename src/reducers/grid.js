@@ -5,31 +5,6 @@ const MAXLAT = 90,
   MINLAT = -90,
   MAXLNG = 180,
   MINLNG = -180,
-  buildGrid = latStep => {
-    let startT = new Date()
-    console.log('building grid')    
-
-    // copy
-    let latMax = MAXLAT,
-      latMin = MINLAT,
-      output = {}
-
-    while(latMax >= latMin) {
-      let lngMax = MAXLNG,
-        lngMin = MINLNG
-
-      while(lngMax >= lngMin) {
-        output[`${latMax},${lngMax}`] = { nodes: [], averageHl: 0, count: 0 }
-        lngMax -= latStep * 2
-      }
-      latMax -= latStep
-    }
-
-    let finT = new Date()
-    console.log(`build complete in ${(finT-startT)}ms`)
-    // delete output[0]
-    return output
-  },
   addToBucket = (post, grid) => {
     // return the [lat][lng] for the bucket
     let bucketLat = Math.round(post.latitude / LATSTEP, 1) * LATSTEP,

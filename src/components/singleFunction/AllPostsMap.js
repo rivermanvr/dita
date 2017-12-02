@@ -10,27 +10,25 @@ import {PostCard} from './Posts'
 
 
 class AllPostsMap extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      isVisible: false,
-      zoomLevel: 9,
-      postDetail: null
-    }
-    this.changeRadius = this.changeRadius.bind(this)
-    this.handleModal = this.handleModal.bind(this)
+  state = {
+    isVisible: false,
+    zoomLevel: 9,
+    postDetail: null
   }
 
-  changeRadius(zoomLevel) {
+  changeRadius = zoomLevel => {
     this.setState({ zoomLevel })
   }
-  handleModal = (content) => {
-      this.setState({
-        postDetail: content
-      },()=>this.props.toggleModal())
-    }
+  handleModal = content => {
+    this.setState({
+      postDetail: content
+    },()=>this.props.toggleModal())
+  }
+  handleUserDashboard = post => {
+    console.log('stuff')
+  }
 
-  render(){
+  render = () => {
     const { posts, currentView, modal } = this.props;
     const { isVisible, zoomLevel, postDetail } = this.state;
     const position = [currentView.lat, currentView.lng]; 
@@ -81,6 +79,7 @@ class AllPostsMap extends Component {
                         <a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>
                         <span>{ post.body }</span>
                         <p data-post={post} onClick={() => this.handleModal(post)}>View Detail</p>
+                        <p data-post={post} onClick={() => this.handleUserDashboard(post)}>View Dash</p>
                       </div> 
                     </Popup>                  
                     <CircleMarker center={ [post.latLng.lat, post.latLng.lng] } 

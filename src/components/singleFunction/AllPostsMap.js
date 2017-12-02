@@ -82,18 +82,18 @@ class AllPostsMap extends Component {
                 return (                
                   <CircleMarker key={ i } center={ [zone.lat, zone.lng] }
                     radius={ Math.sqrt(zone.halflife) / 2 + zoomLevel }  fillColor={ 'transparent' } 
-                    className={ `halflife halflife-outline hl-${Math.ceil(zone.halflife)}` }
+                    className={ `halflife halflife-outline hl-${zone.halflife}` }
                     weight={ 1 }>
                     <Popup>
                       <div>
                         {/*<a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>*/}
                         {/* trigger a zoom */}
-                        <span>{ `${zone.count}, ${zone.lat}, ${zone.lng}` } for debugging</span>
+                        <span>{ `${zone.count}, ${zone.lat}, ${zone.lng}, ${zone.halflife}` } for debugging</span>
                       </div> 
                     </Popup>                  
                     <CircleMarker center={ [zone.lat, zone.lng] } 
                       radius={ Math.sqrt(zone.halflife) / 2 + zoomLevel } 
-                      className={ `halflife halflife-core hl-${Math.ceil(zone.halflife)}` }
+                      className={ `halflife halflife-core hl-${zone.halflife}` }
                       weight={ 0 }></CircleMarker>
                   </CircleMarker>
                 )
@@ -117,16 +117,13 @@ const mapStateToProps = ({ posts, currentView, grid }) => {
   return {
     posts, currentView,
     grid: Object.keys(grid)
-            .filter(key => grid[key].count > 0)
             .map(key => ({
-              lat: +key.split(',')[0] / 2 + Math.random() * 5 + 1,
-              lng: +key.split(',')[1] / 2 + Math.random() * 10 + 3,
-              // lat: +key.split(',')[0] / 2,
-              // lng: +key.split(',')[1] / 2,
-              halflife: grid[key].averageHl,
+              // center of each grid
+              lat: +key.split(',')[0] + 5,
+              lng: +key.split(',')[1] + 10,
+              halflife: Math.ceil(grid[key].averageHl),
               count: grid[key].count
             }))
   }
 }
-
 export default connect (mapStateToProps)(AllPostsMap)

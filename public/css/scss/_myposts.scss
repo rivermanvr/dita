@@ -25,6 +25,16 @@ $card-size: 300px;
     padding: 15px;
   }
   & .post-card-header {
+    display: flex;
+    justify-content: space-between;
+    & .trending-status {
+      align-self: center;
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-radius: 100%;
+      animation: status-pulse 4s infinite;
+    }
   }
   & .post-card-body {
   }
@@ -109,5 +119,17 @@ $card-size: 300px;
     left: 5%;
     // border-bottom: solid 1px $lightgray;
     font-family: 'Lato', sans-serif;
+  }
+}
+
+@keyframes status-pulse {
+  0% {
+    opacity: .5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .5; 
   }
 }

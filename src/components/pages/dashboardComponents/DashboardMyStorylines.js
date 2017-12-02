@@ -21,7 +21,7 @@ const Storylines = ({ storylines }) => {
         return <div key={ storyline.id } className='post-card storyline-card'>
           <div className='post-card-header'>
             <h4>{ `${title}${title.length > 30 ? '...' : ''}` }</h4>
-            <span className={ `trending-status hl-${Math.ceil(totalHalflife)}` }></span>
+            <span className={ `trending-status hl-${Math.ceil(totalHalflife/storyline.posts.length)}` }></span>
           </div>
 
           <div className='post-card-body'>

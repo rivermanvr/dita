@@ -290,6 +290,556 @@ select::-ms-expand {
     padding: 20px 0;
     border-bottom: solid 1px #D8D4D5; }
 
+.hl-1 {
+  animation: ping 5s infinite;
+  fill: #e8001f;
+  stroke: #e8001f;
+  background-color: #e8001f; }
+
+.hl-2 {
+  animation: ping 5s infinite;
+  fill: #e8001f;
+  stroke: #e8001f;
+  background-color: #e8001f; }
+
+.hl-3 {
+  animation: ping 5s infinite;
+  fill: #e8001f;
+  stroke: #e8001f;
+  background-color: #e8001f; }
+
+.hl-4 {
+  animation: ping 5s infinite;
+  fill: #e8001f;
+  stroke: #e8001f;
+  background-color: #e8001f; }
+
+.hl-5 {
+  animation: ping 5s infinite;
+  fill: #e8001f;
+  stroke: #e8001f;
+  background-color: #e8001f; }
+
+.hl-6 {
+  animation: ping 5s infinite;
+  fill: #e60220;
+  stroke: #e60220;
+  background-color: #e60220; }
+
+.hl-7 {
+  animation: ping 5s infinite;
+  fill: #e40422;
+  stroke: #e40422;
+  background-color: #e40422; }
+
+.hl-8 {
+  animation: ping 5s infinite;
+  fill: #e20723;
+  stroke: #e20723;
+  background-color: #e20723; }
+
+.hl-9 {
+  animation: ping 5s infinite;
+  fill: #e00825;
+  stroke: #e00825;
+  background-color: #e00825; }
+
+.hl-10 {
+  animation: ping 5s infinite;
+  fill: #df0925;
+  stroke: #df0925;
+  background-color: #df0925; }
+
+.hl-11 {
+  animation: ping 5s infinite;
+  fill: #de0a26;
+  stroke: #de0a26;
+  background-color: #de0a26; }
+
+.hl-12 {
+  animation: ping 5s infinite;
+  fill: #dd0b27;
+  stroke: #dd0b27;
+  background-color: #dd0b27; }
+
+.hl-13 {
+  animation: ping 5s infinite;
+  fill: #dc0c27;
+  stroke: #dc0c27;
+  background-color: #dc0c27; }
+
+.hl-14 {
+  animation: ping 5s infinite;
+  fill: #db0d28;
+  stroke: #db0d28;
+  background-color: #db0d28; }
+
+.hl-15 {
+  animation: ping 5s infinite;
+  fill: #db0d28;
+  stroke: #db0d28;
+  background-color: #db0d28; }
+
+.hl-16 {
+  animation: ping 5s infinite;
+  fill: #da0e29;
+  stroke: #da0e29;
+  background-color: #da0e29; }
+
+.hl-17 {
+  animation: ping 5s infinite;
+  fill: #da0e29;
+  stroke: #da0e29;
+  background-color: #da0e29; }
+
+.hl-18 {
+  animation: ping 5s infinite;
+  fill: #d90f29;
+  stroke: #d90f29;
+  background-color: #d90f29; }
+
+.hl-19 {
+  animation: ping 5s infinite;
+  fill: #d90f2a;
+  stroke: #d90f2a;
+  background-color: #d90f2a; }
+
+.hl-20 {
+  animation: ping 5s infinite;
+  fill: #d90f2a;
+  stroke: #d90f2a;
+  background-color: #d90f2a; }
+
+.hl-21 {
+  animation: ping 5s infinite;
+  fill: #d90f2a;
+  stroke: #d90f2a;
+  background-color: #d90f2a; }
+
+.hl-22 {
+  animation: ping 5s infinite;
+  fill: #d8102a;
+  stroke: #d8102a;
+  background-color: #d8102a; }
+
+.hl-23 {
+  animation: ping 5s infinite;
+  fill: #d8102a;
+  stroke: #d8102a;
+  background-color: #d8102a; }
+
+.hl-24 {
+  animation: ping 5s infinite;
+  fill: #d8102a;
+  stroke: #d8102a;
+  background-color: #d8102a; }
+
+.hl-25 {
+  animation: ping 5s infinite;
+  fill: #d8102b;
+  stroke: #d8102b;
+  background-color: #d8102b; }
+
+.hl-26 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-27 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-28 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-29 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-30 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-31 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-32 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-33 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-34 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-35 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-36 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-37 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-38 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-39 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-40 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-41 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-42 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-43 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-44 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-45 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-46 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-47 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-48 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-49 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-50 {
+  fill: #ff6e2e;
+  stroke: #ff6e2e;
+  background-color: #ff6e2e; }
+
+.hl-51 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-52 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-53 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-54 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-55 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-56 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-57 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-58 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-59 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-60 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-61 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-62 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-63 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-64 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-65 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-66 {
+  fill: #ffd00d;
+  stroke: #ffd00d;
+  background-color: #ffd00d; }
+
+.hl-67 {
+  fill: #fecf0e;
+  stroke: #fecf0e;
+  background-color: #fecf0e; }
+
+.hl-68 {
+  fill: #fecf0e;
+  stroke: #fecf0e;
+  background-color: #fecf0e; }
+
+.hl-69 {
+  fill: #fdcf0f;
+  stroke: #fdcf0f;
+  background-color: #fdcf0f; }
+
+.hl-70 {
+  fill: #fdcf0f;
+  stroke: #fdcf0f;
+  background-color: #fdcf0f; }
+
+.hl-71 {
+  fill: #fdcf0f;
+  stroke: #fdcf0f;
+  background-color: #fdcf0f; }
+
+.hl-72 {
+  fill: #fdce10;
+  stroke: #fdce10;
+  background-color: #fdce10; }
+
+.hl-73 {
+  fill: #fcce10;
+  stroke: #fcce10;
+  background-color: #fcce10; }
+
+.hl-74 {
+  fill: #fcce10;
+  stroke: #fcce10;
+  background-color: #fcce10; }
+
+.hl-75 {
+  fill: #fcce10;
+  stroke: #fcce10;
+  background-color: #fcce10; }
+
+.hl-76 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-77 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-78 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-79 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-80 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-81 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-82 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-83 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-84 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-85 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-86 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-87 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-88 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-89 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-90 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-91 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-92 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-93 {
+  animation: ping-twice 3s infinite;
+  fill: #00adaf;
+  stroke: #00adaf;
+  background-color: #00adaf; }
+
+.hl-94 {
+  animation: ping-twice 3s infinite;
+  fill: #00acaf;
+  stroke: #00acaf;
+  background-color: #00acaf; }
+
+.hl-95 {
+  animation: ping-twice 3s infinite;
+  fill: #01acae;
+  stroke: #01acae;
+  background-color: #01acae; }
+
+.hl-96 {
+  animation: ping-twice 3s infinite;
+  fill: #01acae;
+  stroke: #01acae;
+  background-color: #01acae; }
+
+.hl-97 {
+  animation: ping-twice 3s infinite;
+  fill: #01acae;
+  stroke: #01acae;
+  background-color: #01acae; }
+
+.hl-98 {
+  animation: ping-twice 3s infinite;
+  fill: #01acae;
+  stroke: #01acae;
+  background-color: #01acae; }
+
+.hl-99 {
+  animation: ping-twice 3s infinite;
+  fill: #01acae;
+  stroke: #01acae;
+  background-color: #01acae; }
+
+.hl-100 {
+  animation: ping-twice 3s infinite;
+  fill: #02abae;
+  stroke: #02abae;
+  background-color: #02abae; }
+
 .searchMap form {
   display: grid;
   grid-template-columns: 10fr 1fr;
@@ -362,353 +912,453 @@ select::-ms-expand {
   .halflife.hl-1 {
     animation: ping 5s infinite;
     fill: #e8001f;
-    stroke: #e8001f; }
+    stroke: #e8001f;
+    background-color: #e8001f; }
   .halflife.hl-2 {
     animation: ping 5s infinite;
     fill: #e8001f;
-    stroke: #e8001f; }
+    stroke: #e8001f;
+    background-color: #e8001f; }
   .halflife.hl-3 {
     animation: ping 5s infinite;
     fill: #e8001f;
-    stroke: #e8001f; }
+    stroke: #e8001f;
+    background-color: #e8001f; }
   .halflife.hl-4 {
     animation: ping 5s infinite;
     fill: #e8001f;
-    stroke: #e8001f; }
+    stroke: #e8001f;
+    background-color: #e8001f; }
   .halflife.hl-5 {
     animation: ping 5s infinite;
     fill: #e8001f;
-    stroke: #e8001f; }
+    stroke: #e8001f;
+    background-color: #e8001f; }
   .halflife.hl-6 {
     animation: ping 5s infinite;
     fill: #e60220;
-    stroke: #e60220; }
+    stroke: #e60220;
+    background-color: #e60220; }
   .halflife.hl-7 {
     animation: ping 5s infinite;
     fill: #e40422;
-    stroke: #e40422; }
+    stroke: #e40422;
+    background-color: #e40422; }
   .halflife.hl-8 {
     animation: ping 5s infinite;
     fill: #e20723;
-    stroke: #e20723; }
+    stroke: #e20723;
+    background-color: #e20723; }
   .halflife.hl-9 {
     animation: ping 5s infinite;
     fill: #e00825;
-    stroke: #e00825; }
+    stroke: #e00825;
+    background-color: #e00825; }
   .halflife.hl-10 {
     animation: ping 5s infinite;
     fill: #df0925;
-    stroke: #df0925; }
+    stroke: #df0925;
+    background-color: #df0925; }
   .halflife.hl-11 {
     animation: ping 5s infinite;
     fill: #de0a26;
-    stroke: #de0a26; }
+    stroke: #de0a26;
+    background-color: #de0a26; }
   .halflife.hl-12 {
     animation: ping 5s infinite;
     fill: #dd0b27;
-    stroke: #dd0b27; }
+    stroke: #dd0b27;
+    background-color: #dd0b27; }
   .halflife.hl-13 {
     animation: ping 5s infinite;
     fill: #dc0c27;
-    stroke: #dc0c27; }
+    stroke: #dc0c27;
+    background-color: #dc0c27; }
   .halflife.hl-14 {
     animation: ping 5s infinite;
     fill: #db0d28;
-    stroke: #db0d28; }
+    stroke: #db0d28;
+    background-color: #db0d28; }
   .halflife.hl-15 {
     animation: ping 5s infinite;
     fill: #db0d28;
-    stroke: #db0d28; }
+    stroke: #db0d28;
+    background-color: #db0d28; }
   .halflife.hl-16 {
     animation: ping 5s infinite;
     fill: #da0e29;
-    stroke: #da0e29; }
+    stroke: #da0e29;
+    background-color: #da0e29; }
   .halflife.hl-17 {
     animation: ping 5s infinite;
     fill: #da0e29;
-    stroke: #da0e29; }
+    stroke: #da0e29;
+    background-color: #da0e29; }
   .halflife.hl-18 {
     animation: ping 5s infinite;
     fill: #d90f29;
-    stroke: #d90f29; }
+    stroke: #d90f29;
+    background-color: #d90f29; }
   .halflife.hl-19 {
     animation: ping 5s infinite;
     fill: #d90f2a;
-    stroke: #d90f2a; }
+    stroke: #d90f2a;
+    background-color: #d90f2a; }
   .halflife.hl-20 {
     animation: ping 5s infinite;
     fill: #d90f2a;
-    stroke: #d90f2a; }
+    stroke: #d90f2a;
+    background-color: #d90f2a; }
   .halflife.hl-21 {
     animation: ping 5s infinite;
     fill: #d90f2a;
-    stroke: #d90f2a; }
+    stroke: #d90f2a;
+    background-color: #d90f2a; }
   .halflife.hl-22 {
     animation: ping 5s infinite;
     fill: #d8102a;
-    stroke: #d8102a; }
+    stroke: #d8102a;
+    background-color: #d8102a; }
   .halflife.hl-23 {
     animation: ping 5s infinite;
     fill: #d8102a;
-    stroke: #d8102a; }
+    stroke: #d8102a;
+    background-color: #d8102a; }
   .halflife.hl-24 {
     animation: ping 5s infinite;
     fill: #d8102a;
-    stroke: #d8102a; }
+    stroke: #d8102a;
+    background-color: #d8102a; }
   .halflife.hl-25 {
     animation: ping 5s infinite;
     fill: #d8102b;
-    stroke: #d8102b; }
+    stroke: #d8102b;
+    background-color: #d8102b; }
   .halflife.hl-26 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-27 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-28 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-29 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-30 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-31 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-32 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-33 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-34 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-35 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-36 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-37 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-38 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-39 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-40 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-41 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-42 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-43 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-44 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-45 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-46 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-47 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-48 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-49 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-50 {
     fill: #ff6e2e;
-    stroke: #ff6e2e; }
+    stroke: #ff6e2e;
+    background-color: #ff6e2e; }
   .halflife.hl-51 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-52 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-53 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-54 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-55 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-56 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-57 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-58 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-59 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-60 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-61 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-62 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-63 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-64 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-65 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-66 {
     fill: #ffd00d;
-    stroke: #ffd00d; }
+    stroke: #ffd00d;
+    background-color: #ffd00d; }
   .halflife.hl-67 {
     fill: #fecf0e;
-    stroke: #fecf0e; }
+    stroke: #fecf0e;
+    background-color: #fecf0e; }
   .halflife.hl-68 {
     fill: #fecf0e;
-    stroke: #fecf0e; }
+    stroke: #fecf0e;
+    background-color: #fecf0e; }
   .halflife.hl-69 {
     fill: #fdcf0f;
-    stroke: #fdcf0f; }
+    stroke: #fdcf0f;
+    background-color: #fdcf0f; }
   .halflife.hl-70 {
     fill: #fdcf0f;
-    stroke: #fdcf0f; }
+    stroke: #fdcf0f;
+    background-color: #fdcf0f; }
   .halflife.hl-71 {
     fill: #fdcf0f;
-    stroke: #fdcf0f; }
+    stroke: #fdcf0f;
+    background-color: #fdcf0f; }
   .halflife.hl-72 {
     fill: #fdce10;
-    stroke: #fdce10; }
+    stroke: #fdce10;
+    background-color: #fdce10; }
   .halflife.hl-73 {
     fill: #fcce10;
-    stroke: #fcce10; }
+    stroke: #fcce10;
+    background-color: #fcce10; }
   .halflife.hl-74 {
     fill: #fcce10;
-    stroke: #fcce10; }
+    stroke: #fcce10;
+    background-color: #fcce10; }
   .halflife.hl-75 {
     fill: #fcce10;
-    stroke: #fcce10; }
+    stroke: #fcce10;
+    background-color: #fcce10; }
   .halflife.hl-76 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-77 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-78 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-79 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-80 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-81 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-82 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-83 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-84 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-85 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-86 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-87 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-88 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-89 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-90 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-91 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-92 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-93 {
     animation: ping-twice 3s infinite;
     fill: #00adaf;
-    stroke: #00adaf; }
+    stroke: #00adaf;
+    background-color: #00adaf; }
   .halflife.hl-94 {
     animation: ping-twice 3s infinite;
     fill: #00acaf;
-    stroke: #00acaf; }
+    stroke: #00acaf;
+    background-color: #00acaf; }
   .halflife.hl-95 {
     animation: ping-twice 3s infinite;
     fill: #01acae;
-    stroke: #01acae; }
+    stroke: #01acae;
+    background-color: #01acae; }
   .halflife.hl-96 {
     animation: ping-twice 3s infinite;
     fill: #01acae;
-    stroke: #01acae; }
+    stroke: #01acae;
+    background-color: #01acae; }
   .halflife.hl-97 {
     animation: ping-twice 3s infinite;
     fill: #01acae;
-    stroke: #01acae; }
+    stroke: #01acae;
+    background-color: #01acae; }
   .halflife.hl-98 {
     animation: ping-twice 3s infinite;
     fill: #01acae;
-    stroke: #01acae; }
+    stroke: #01acae;
+    background-color: #01acae; }
   .halflife.hl-99 {
     animation: ping-twice 3s infinite;
     fill: #01acae;
-    stroke: #01acae; }
+    stroke: #01acae;
+    background-color: #01acae; }
   .halflife.hl-100 {
     animation: ping-twice 3s infinite;
     fill: #02abae;
-    stroke: #02abae; }
+    stroke: #02abae;
+    background-color: #02abae; }
 
 @keyframes pulse {
   0% {
@@ -887,6 +1537,16 @@ select::-ms-expand {
     color: white; }
   .post-card > * {
     padding: 15px; }
+  .post-card .post-card-header {
+    display: flex;
+    justify-content: space-between; }
+    .post-card .post-card-header .trending-status {
+      align-self: center;
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-radius: 100%;
+      animation: status-pulse 4s infinite; }
   .post-card .post-card-footer {
     font-size: .8rem;
     position: absolute;
@@ -950,6 +1610,14 @@ select::-ms-expand {
     width: 90%;
     left: 5%;
     font-family: 'Lato', sans-serif; }
+
+@keyframes status-pulse {
+  0% {
+    opacity: .5; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: .5; } }
 
 .my-locations > div {
   padding-top: 20px; }

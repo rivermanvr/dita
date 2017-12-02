@@ -20,6 +20,11 @@ import re
 # locations (saves as locations.json)
 #####################################
 cities = json.load(open('./some_random_json_i_found/cities.json'))
+fh = open('./some_random_json_i_found/iso.csv').readlines()
+
+country_list = ['Argentina', 'Australia', 'Austria', 'Belgium', 'Brazil', 'Canada', 'China', 'Croatia', 'Cuba', 'Czech Republic', 'Denmark', 'Ecuador', 'Egypt', 'Finland', 'France', 'Germany', 'Ghana', 'Greece', 'Guatemala', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Ireland', 'Israel', 'Italy', 'Japan', '"Korea, Republic of"', 'Lebanon', 'Liechtenstein', 'Luxembourg', 'Malaysia', 'Mexico', 'Morocco', 'Netherlands', 'New Zealand', 'Norway', 'Pakistan', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Puerto Rico', 'Russian Federation', 'Singapore', 'South Africa', 'Spain', 'Sri Lanka', 'Switzerland', '"Taiwan, Province of China"', 'Thailand', 'Turkey', 'Ukraine', 'United Kingdom', 'United States', 'Viet Nam', '"Virgin Islands, British"', '"Virgin Islands, U.S."']
+iso = [ line.split(',')[1][:2] for line in fh if line.split(',')[0] in country_list ]
+print(iso)
 main_locations = [
   { 'address': 'Saitama', 'lat': 36.0187669, 'lng': 139.0248439, 'isHome': True },
   { 'address': 'New Hyde Park', 'lat': 40.7326609, 'lng': -73.6948277, 'isHome': True },
@@ -29,20 +34,20 @@ main_locations = [
 
 locations = [ location for location in main_locations ]
 
-for city in cities:
-  city_data = {}
-  city_data['address'] = city['name']
-  city_data['lat'] = city['lat']
-  city_data['lng'] = city['lng']
-  city_data['isHome'] = 'true'  
-  locations.append(city_data)
+for city in cities:    
+  if city['country'] in iso:
+    city_data = {}
+    city_data['address'] = city['name']
+    city_data['lat'] = city['lat']
+    city_data['lng'] = city['lng']
+    city_data['isHome'] = 'true'  
+    locations.append(city_data)
 
 print('locations', len(locations))
 locations = locations[:5] + random.sample(locations[5:], 996)
-    
+
 with open('locations.json', 'w') as loc_fp:  
   json.dump(locations, loc_fp)
-
 
 
 #################################

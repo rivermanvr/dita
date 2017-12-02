@@ -140,7 +140,6 @@ for sentence in sentences:
 print('posts', len(posts))
 posts = random.sample(posts, 100)
 
-
 with open('posts.json', 'w') as posts_fp:
   json.dump(posts, posts_fp)
 

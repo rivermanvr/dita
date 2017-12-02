@@ -22,7 +22,6 @@ class Navbar extends Component {
       { title: 'LIVE', path: '/' },
       { title: 'Login - WZ', path: '/dev/login' },
       { title: 'Sign Up - WZ', path: '/dev/signup' },
-      { title: 'My Posts - WZ', path: '/dev/myposts' },
       { title: 'View/Update Profile - WZ', path: '/dev/profile' },
       { title: 'TestBed - Vince', path: '/dev/testBed' },
       { title: 'GeoLocateInput(new) - Vince', path: '/dev/google' },
@@ -34,6 +33,7 @@ class Navbar extends Component {
       { title: 'All Posts', path: '/dev/allposts' },
       { title: 'Map', path: '/dev/allpostsmap' },
       { title: 'My Locations - WZ', path: '/dev/mylocations' },
+      { title: 'My Posts - WZ', path: '/dev/myposts' },
       { title: 'Distance Test - WZ', path: '/dev/distancetest' }
     ];
     return (

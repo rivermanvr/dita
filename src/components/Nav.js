@@ -17,7 +17,7 @@ const navItemsDefault = [
 // add nav items only registered users can see
 const navItemsAuthenticated = [
   { label: 'Add Post', path: '/addpost' },
-  { label: 'Dashboard', path: '/dashboard/mystories' }
+  { label: 'Dashboard', path: '/dashboard/mystorylines' }
 ]
 
 // add items for guests users
@@ -28,7 +28,7 @@ const navItemsGuests = [
 
 const Nav = ({ isAuthenticated, location, logout }) => {
   // location sub-path will be parsed out, eg. /posts/1 will still highlight /posts label
-  const pathName = '/' + location.pathname.split('/')[1],
+  const pathName = location.pathname.split('/')[1],
     navItems = navItemsDefault.concat(isAuthenticated ? navItemsAuthenticated : navItemsGuests)
 
   return (
@@ -41,7 +41,7 @@ const Nav = ({ isAuthenticated, location, logout }) => {
       <div>
       { navItems.map(item =>
         <Link
-          className={ item.path == pathName ? 'active' : '' }
+          className={ item.path.split('/')[1] == pathName ? 'active' : '' }
           to={ item.path }
           key={ item.label }>{ item.label }</Link>
       )}

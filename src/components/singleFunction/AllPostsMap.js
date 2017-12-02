@@ -18,7 +18,7 @@ class AllPostsMap extends Component {
   }
 
   render(){
-    const { posts, currentView } = this.props;    
+    const { posts, grid, currentView } = this.props;    
     const { zoomLevel } = this.state;
     const position = [currentView.lat, currentView.lng]; 
     const darkTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cja8rnhqp0ukm2rpjrq1uxx65/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
@@ -58,6 +58,7 @@ class AllPostsMap extends Component {
               </Popup>
             </Marker>
             {
+              zoomLevel > 5 ?
               posts && posts.map(post => {
                 return (                
                   <CircleMarker key={ post.id } center={ [post.latLng.lat, post.latLng.lng] } 
@@ -76,6 +77,26 @@ class AllPostsMap extends Component {
                       weight={ 0 }></CircleMarker>
                   </CircleMarker>               
                 )
+              }) :
+              grid && grid.map((zone, i) => {
+                return (                
+                  <CircleMarker key={ i } center={ [zone.lat, zone.lng] }
+                    radius={ Math.sqrt(zone.halflife) / 2 + zoomLevel }  fillColor={ 'transparent' } 
+                    className={ `halflife halflife-outline hl-${Math.ceil(zone.halflife)}` }
+                    weight={ 1 }>
+                    <Popup>
+                      <div>
+                        {/*<a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>*/}
+                        {/* trigger a zoom */}
+                        <span>{ `${zone.count}, ${zone.lat}, ${zone.lng}` } for debugging</span>
+                      </div> 
+                    </Popup>                  
+                    <CircleMarker center={ [zone.lat, zone.lng] } 
+                      radius={ Math.sqrt(zone.halflife) / 2 + zoomLevel } 
+                      className={ `halflife halflife-core hl-${Math.ceil(zone.halflife)}` }
+                      weight={ 0 }></CircleMarker>
+                  </CircleMarker>
+                )
               })
             }
         </Map>
@@ -92,9 +113,19 @@ class AllPostsMap extends Component {
 }
 
 
-const mapStateToProps = ({ posts, currentView }) => {
+const mapStateToProps = ({ posts, currentView, grid }) => {
   return {
-    posts, currentView
+    posts, currentView,
+    grid: Object.keys(grid)
+            .filter(key => grid[key].count > 0)
+            .map(key => ({
+              lat: +key.split(',')[0] / 2 + Math.random() * 5 + 1,
+              lng: +key.split(',')[1] / 2 + Math.random() * 10 + 3,
+              // lat: +key.split(',')[0] / 2,
+              // lng: +key.split(',')[1] / 2,
+              halflife: grid[key].averageHl,
+              count: grid[key].count
+            }))
   }
 }
 

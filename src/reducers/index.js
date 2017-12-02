@@ -17,7 +17,8 @@ const rootReducer = combineReducers({
   storylines,
   userStorylines,
   userLocations,
-  replies
+  replies,
+  grid
 });
 
 export default rootReducer;

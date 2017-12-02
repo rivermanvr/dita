@@ -4,28 +4,38 @@ import { withRouter, Link } from 'react-router-dom';
 import { Map, Marker, Popup, TileLayer, CircleMarker } from 'react-leaflet';
 import Replies from './Replies'
 import * as d3 from 'd3';
+import {changeActiveModal} from '../../actions'
+import Modal from '../reusables/Modal'
+import {PostCard} from './Posts'
+
 
 class AllPostsMap extends Component {
   constructor(props){
     super(props);
     this.state = {
       isVisible: false,
-      zoomLevel: 9
+      zoomLevel: 9,
+      postDetail: null
     }
     this.changeRadius = this.changeRadius.bind(this)
+    this.handleModal = this.handleModal.bind(this)
   }
 
   changeRadius(zoomLevel) {
     this.setState({ zoomLevel })
   }
+  handleModal = (content) => {
+      this.setState({
+        postDetail: content
+      },()=>this.props.toggleModal())
+    }
 
   render(){
-    const { posts, currentView } = this.props;
-    const { isVisible, zoomLevel } = this.state;
+    const { posts, currentView, modal } = this.props;
+    const { isVisible, zoomLevel, postDetail } = this.state;
     const position = [currentView.lat, currentView.lng]; 
     const darkTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cja8rnhqp0ukm2rpjrq1uxx65/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
     const tileAttr = '&copy; <a href="https://www.mapbox.com/">Mapbox</a>';
-
     posts.forEach(d => {
       d.latLng = new L.LatLng(d.latitude, d.longitude);
     })
@@ -70,6 +80,7 @@ class AllPostsMap extends Component {
                       <div>
                         <a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>
                         <span>{ post.body }</span>
+                        <p data-post={post} onClick={() => this.handleModal(post)}>View Detail</p>
                       </div> 
                     </Popup>                  
                     <CircleMarker center={ [post.latLng.lat, post.latLng.lng] } 
@@ -88,16 +99,28 @@ class AllPostsMap extends Component {
           <span className='legend-container'><span className='legend-circle hl25'></span>Fading</span>
           <span className='legend-container'><span className='legend-circle hl0'></span>Shrinking</span>
         </div>
+
+        <Modal isActive={modal} >
+          {postDetail ? <PostCard key={postDetail.id} content={postDetail} /> : <div></div>}
+        </Modal>
       </div>
     )
   }  
 }
 
 
-const mapStateToProps = ({ posts, currentView }) => {
+const mapStateToProps = ({ posts, currentView, modal }) => {
   return {
-    posts, currentView
+    posts, currentView, modal
   }
 }
 
-export default connect (mapStateToProps)(AllPostsMap)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleModal: () => {
+      dispatch(changeActiveModal());
+    }
+  }
+}
+
+export default connect (mapStateToProps, mapDispatchToProps)(AllPostsMap)

@@ -9,8 +9,18 @@ class Home extends Component {
         super()
         this.viewSelected = this.viewSelected.bind(this)
     }
+    componentDidMount(){
+        if(this.props.isAuthenticated){
+            this.props.history.push("/map")
+        }
+    }
+    componentWillReceiveProps(newProps){
+        if((newProps.isAuthenticated !== this.props.isAuthenticated) && newProps.isAuthenticated){
+            newProps.history.push("/map")
+        }
+    }
     viewSelected = () => {
-        this.props.history.push("/map");    
+        this.props.history.push("/map") 
     }
     render(){
         return (
@@ -28,4 +38,8 @@ class Home extends Component {
     }
 }
 
-export default connect()(Home)
+const mapStateToProps = ({currentUser}) => {
+    return currentUser
+}
+
+export default connect(mapStateToProps)(Home)

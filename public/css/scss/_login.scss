@@ -6,6 +6,7 @@
     display: grid;
     grid-gap: 10px;
     width: 100%;
+    max-width: 400px;
     &.login {
       grid-gap: 20px;
     }
@@ -35,5 +36,17 @@
   justify-content: left;
   & .form {
     width: 100%;
+    max-width: 100%;
+
+    @media screen and (min-width: 994px) {
+      & {
+        max-width: 1000px;
+      }
+      & > div {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   }
 }

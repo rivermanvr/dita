@@ -41,17 +41,14 @@ export default function () {
         <Route exact path='/login' component={ Login } />
         <Route exact path='/signup' component={ Signup } />
         <Route exact path='/profile' component={ Profile } />
-        <Route exact path='/map' component={ AllPostsMap } />
         <Route exact path='/posts/:id' component={ PostDetail } />
         <Route path='/dashboard' component={ Dashboard } />
         <Route path='/modal' component={testModal} />
-        {/* <Route exact path='/dashboard/myposts' component={ MyPosts } />
-        <Route exact path='/dashboard/mylocations' component={ MyLocations } />
-        <Route exact path='/dashboard/profile' component={ Profile } /> */}
         <Route exact path='/addpost' component={ AddPost } />
+        <AnimatedRoute atEnter={{opacity:0}} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} exact path='/' component={Home}/>
+        <AnimatedRoute atEnter={{opacity:0}} atLeave={{ opacity: 1 }} atActive={{ opacity: 1 }} exact path='/map' component={AllPostsMap}/>          
       </Switch>
-          <AnimatedRoute atEnter={{opacity:0}} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} exact path='/' component={Home}/>
-          <AnimatedRoute atEnter={{opacity:0}} atLeave={{ opacity: 1 }} atActive={{ opacity: 1 }} exact path='/map' component={AllPostsMap}/>          
+
     </main>
   )
 }

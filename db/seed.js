@@ -19,24 +19,24 @@ const locations = [
 ]
 
 const posts = [
-  { title: 'Thoughts Monday 11-20', body: 'Need to spend a 1/2 hour on -crack-the-code-interview each day', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4 },
-  { title: 'ToDo Tuesday 11-21', body: 'Develop a 1 page resume, keep 3 pager', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4 },
-  { title: 'ToDo Friday 11-17', body: 'Going to brunch at the Culinary Institute on Sat', zip: '10026', latitude: 41.745849, longitude: -73.932718, userId: 4 },
-  { title: 'RivCon ToDo', body: 'Need to do paperwork for Corp Insurance Coverages', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4 },
-  { title: 'Garth Brooks', body: 'tickets to Garth concert on friday 12-1 at NJPAC', zip: '07102', latitude: 40.735657, longitude: -74.172367, userId: 4 },
-  { title: 'Fullstack finished', body: 'December 7, 2017 is our last day of class! - graduating', zip: '10005', latitude: 40.704595, longitude: -74.008906, userId: 4 },
-  { title: 'ToDo Tuesday 11-21', body: 'Develop a 1 page resume, keep 3 pager', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4 },
-  { title: 'Invited to take a test!', body: 'IBM sent a link for a test, I have 5 days to complete it', zip: '07424', latitude: 40.881172, longitude: -74.212063, storylineId: 2, userId:3 },
-  { title: 'Test Response', body: 'my first test - need to practice for this kind of test', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4, storylineId: 2 },
-  { title: 'Rejection', body: 'not surprised - was rejected, but now I know what to expect on these tests', zip: '07424', latitude: 40.881172, longitude: -74.212063, userId: 4, storylineId: 2 },
-  { title: 'reusable components', body: 'This project has me focused on creating single function - reusable components', zip: '10005', latitude: 40.704595, longitude: -74.008906, userId: 4, storylineId: 3 },
-  { title: 'Working on my final items', body: 'need to get these final items finished before Tuesday night', zip: '10005', latitude: 40.704595, longitude: -74.008906, userId: 4, storylineId: 3 },
-  { title: '1 or two nights to finish up', body: 'We need to clean up our code quickly, only a few days left', zip: '10005', latitude: 40.704595, longitude: -74.008906, userId: 4, storylineId: 3 },
-  { title: 'presenting results', body: 'We have to present our final results on Tuesday the 5th of Dec.', zip: '10005', latitude: 40.704595, longitude: -74.008906, userId: 4, storylineId: 3 },
-  { title: 'Working on the ceiling', body: 'Neal had a leak in the roof, showing him how to spackle the ceiling', zip: '07076', latitude: 40.640040, longitude: -74.369018, userId: 4, storylineId: 1 },
-  { title: 'molding', body: 'working on the basement floor molding now', zip: '07076', latitude: 40.640040, longitude: -74.369018, userId: 4, storylineId: 1 },
-  { title: 'doing puzzles', body: 'doing puzzles with the grand-kids.  Ryan is REALLY GOOD at it.', zip: '07076', latitude: 40.640040, longitude: -74.369018, userId: 4, storylineId: 1 },
-  { title: 'pizza time', body: 'time for pizza and garlic bread for dinner, it was a nice day', zip: '07076', latitude: 40.640040, longitude: -74.369018, userId: 4, storylineId: 1 }
+  { title: 'Thoughts Monday 11-20', body: 'Need to spend a 1/2 hour on -crack-the-code-interview each day', zip: '07424', latitude: 70.881172, longitude: -94.212063, userId: 4, halflife: 10 },
+  { title: 'ToDo Tuesday 11-21', body: 'Develop a 1 page resume, keep 3 pager', zip: '07424', latitude: 42.881172, longitude: -74.212063, userId: 4, halflife: 15 },
+  { title: 'ToDo Friday 11-17', body: 'Going to brunch at the Culinary Institute on Sat', zip: '10026', latitude: 44.745849, longitude: -73.932718, userId: 4, halflife: 25 },
+  { title: 'RivCon ToDo', body: 'Need to do paperwork for Corp Insurance Coverages', zip: '07424', latitude: 40.881172, longitude: -77.212063, userId: 4, halflife: 35 },
+  { title: 'Garth Brooks', body: 'tickets to Garth concert on friday 12-1 at NJPAC', zip: '07102', latitude: 40.735657, longitude: -84.172367, userId: 4, halflife: 45 },
+  { title: 'Fullstack finished', body: 'December 7, 2017 is our last day of class! - graduating', zip: '10005', latitude: 30.704595, longitude: -74.008906, userId: 4, halflife: 55 },
+  { title: 'ToDo Tuesday 11-21', body: 'Develop a 1 page resume, keep 3 pager', zip: '07424', latitude: 10.881172, longitude: -134.212063, userId: 4, halflife: 65 },
+  { title: 'Invited to take a test!', body: 'IBM sent a link for a test, I have 5 days to complete it', zip: '07424', latitude: 10.881172, longitude: -74.212063, storylineId: 2, userId:3, halflife: 75 },
+  { title: 'Test Response', body: 'my first test - need to practice for this kind of test', zip: '07424', latitude: 45.881172, longitude: -94.212063, userId: 4, storylineId: 2, halflife: 85 },
+  { title: 'Rejection', body: 'not surprised - was rejected, but now I know what to expect on these tests', zip: '07424', latitude: 0.881172, longitude: -24.212063, userId: 4, storylineId: 2, halflife: 95 },
+  { title: 'reusable components', body: 'This project has me focused on creating single function - reusable components', zip: '10005', latitude: 80.704595, longitude: -144.008906, userId: 4, storylineId: 3, halflife: 30 },
+  { title: 'Working on my final items', body: 'need to get these final items finished before Tuesday night', zip: '10005', latitude: 40.704595, longitude: -64.008906, userId: 4, storylineId: 3, halflife: 40 },
+  { title: '1 or two nights to finish up', body: 'We need to clean up our code quickly, only a few days left', zip: '10005', latitude: 70.704595, longitude: -34.008906, userId: 4, storylineId: 3, halflife: 50 },
+  { title: 'presenting results', body: 'We have to present our final results on Tuesday the 5th of Dec.', zip: '10005', latitude: 60.704595, longitude: -74.008906, userId: 4, storylineId: 3, halflife: 60 },
+  { title: 'Working on the ceiling', body: 'Neal had a leak in the roof, showing him how to spackle the ceiling', zip: '07076', latitude: 80.640040, longitude: -84.369018, userId: 4, storylineId: 1, halflife: 70 },
+  { title: 'molding', body: 'working on the basement floor molding now', zip: '07076', latitude: 30.640040, longitude: -94.369018, userId: 4, storylineId: 1, halflife: 80 },
+  { title: 'doing puzzles', body: 'doing puzzles with the grand-kids.  Ryan is REALLY GOOD at it.', zip: '07076', latitude: 20.640040, longitude: -114.369018, userId: 4, storylineId: 1, halflife: 90 },
+  { title: 'pizza time', body: 'time for pizza and garlic bread for dinner, it was a nice day', zip: '07076', latitude: 80.640040, longitude: -124.369018, userId: 4, storylineId: 1, halflife: 100 }
 ]
 
 const categories = [

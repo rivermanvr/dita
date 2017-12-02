@@ -17,7 +17,7 @@ const navItemsDefault = [
 // add nav items only registered users can see
 const navItemsAuthenticated = [
   { label: 'Add Post', path: '/addpost' },
-  { label: 'Dashboard', path: '/dashboard' }
+  { label: 'Dashboard', path: '/dashboard/mystories' }
 ]
 
 // add items for guests users

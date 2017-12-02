@@ -22,3 +22,150 @@
       }
     }
   }
+
+.map-container {
+  position: absolute;
+  top: 34px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 34px);
+  & .map {
+    z-index: 10;
+  }
+  & .legend-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 20;
+    background-color: rgba(12, 13, 14, .62);
+    color: $white;
+    & .legend-container {
+      padding: 10px 15px;
+      display: flex;
+      & > * { align-self: center; }
+      line-height: 1.2;
+    }
+    & .legend-circle {
+      display: inline-block;
+      border-radius: 100%;
+      padding: 0;
+      width: .9rem;
+      height: .9rem;
+      margin-right: 10px;
+    }
+    & .hl0 { background-color: $hl0; }
+    & .hl25 { background-color: $hl25; }
+    & .hl50 { background-color: $hl50; }
+    & .hl100 { background-color: $hl100; }
+  }
+}
+
+.halflife {
+  shape-rendering: geometricPrecision;
+  stroke: transparent;
+
+  &.halflife-core {
+    // fill: yellow;
+    // animation: pulse 2s infinite;
+    fill-opacity: 1;
+    z-index: 5;
+  }
+  &.halflife-outline {
+    // stroke: white;
+    animation: ping 4s infinite;
+    z-index: 2;
+  }
+
+  @for $i from 1 through 25 {
+    // dying star
+    &.hl-#{$i} {
+      animation: ping 5s infinite;
+      fill: saturate($hl0, percentage(1 / $i)); 
+      stroke: saturate($hl0, percentage(1 / $i)); 
+    }    
+  }
+  @for $i from 26 through 50 {
+    // trending less
+    &.hl-#{$i} {
+      fill: saturate($hl25, percentage(1 / ($i - 25))); 
+      stroke: saturate($hl25, percentage(1 / ($i - 25))); 
+    }
+  }
+  @for $i from 51 through 75 {
+    // new star
+    &.hl-#{$i} {
+      fill: saturate($hl50, percentage(1 / ($i - 50))); 
+      stroke: saturate($hl50, percentage(1 / ($i - 50))); 
+    }
+  }
+  @for $i from 76 through 100 {
+    // trending high!
+    &.hl-#{$i} {
+      // fill: white;
+      // stroke: white;
+      animation: ping-twice 3s infinite;
+      fill: saturate($hl100, percentage(1 / ($i - 75))); 
+      stroke: saturate($hl100, percentage(1 / ($i - 75))); 
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    fill-opacity: 0.5;
+  }
+  50% {
+    fill-opacity: 1;
+  }
+  100% {
+    fill-opacity: 0.5;
+  }
+}
+
+@keyframes ping {
+  0% {
+    stroke-width: 1;
+    stroke-opacity: 0;
+  }
+  50% {
+    // stroke: yellow;
+    stroke-width: 12;
+    stroke-opacity: .2;
+  }
+  100% {
+    stroke-width: 17;
+    stroke-opacity: 0;
+  }
+}
+
+@keyframes ping-twice {
+  0% {
+    stroke-width: 1;
+    stroke-opacity: 0;
+  }
+  20% {
+    // stroke: yellow;
+    stroke-width: 12;
+    stroke-opacity: .3;
+  }
+  40% {
+    stroke-width: 17;
+    stroke-opacity: 0;
+  }
+  60% {
+    stroke-width: 1;
+    stroke-opacity: 0;
+  }
+  80% {
+    // stroke: yellow;
+    stroke-width: 12;
+    stroke-opacity: .3;
+  }
+  100% {
+    stroke-width: 17;
+    stroke-opacity: 0;
+  }
+}

@@ -25,7 +25,7 @@ class AllPostsMap extends Component {
     },()=>this.props.toggleModal())
   }
   handleUserDashboard = post => {
-    console.log('stuff')
+    this.props.history.push(`/dashboard/${post.userId}/storylines`)
   }
 
   render = () => {

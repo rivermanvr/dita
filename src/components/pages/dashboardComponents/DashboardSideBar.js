@@ -2,14 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const DashboardSideBar = () => {
-  const sidebarItems = [
-    { label: 'My Storylines', path: '/dashboard/mystorylines' },
-    { label: 'My Posts', path: '/dashboard/myposts' },
-    { label: 'My Locations', path: '/dashboard/mylocations' },
-    { label: 'Profile', path: '/dashboard/profile' }
-  ];
-
+const DashboardSideBar = ({ sidebarItems }) => {
   return (
     <ul className='dashboard-sidebar'>
       {
@@ -22,9 +15,7 @@ const DashboardSideBar = () => {
         })
       }
     </ul>
- 
   )
 }
 
 export default DashboardSideBar;
-

@@ -6,9 +6,20 @@ import Posts from './dashboardComponents/DashboardMyPosts';
 import Storylines from './dashboardComponents/DashboardMyStorylines';
 import AStoryline from './dashboardComponents/DashboardStoryline';
 import MyLocations from './dashboardComponents/MyLocations'
+import UserStorylines from './dashboardComponents/DashboardUserStorylines'
+import UserPosts from './dashboardComponents/DashboardUserPosts'
 import Profile from './Profile';
 
-const Dashboard = () => {
+
+const sidebarItems = [
+  { label: 'My Storylines', path: '/dashboard/mystorylines' },
+  { label: 'My Posts', path: '/dashboard/myposts' },
+  { label: 'My Locations', path: '/dashboard/mylocations' },
+  { label: 'Profile', path: '/dashboard/profile' }
+];
+
+const Dashboard = ({ userId }) => {
+  console.log(userId)
   return(   
     <div className='dashboard'>
       <div className='dashboard-sidebar-container'>
@@ -19,11 +30,14 @@ const Dashboard = () => {
           <i className='ion-ios-more-outline'></i>
           <i className='ion-ios-more-outline'></i>
         </div>
-        <DashboardSideBar />
+        <DashboardSideBar sidebarItems={ sidebarItems } />
       </div>
 
       <div className='dashboard-main-container'>
         <Switch>
+          <Route exact path='/dashboard/:userId/storylines' component={ UserStorylines } />
+          {/* <Route exact path='/dashboard/:userId/storylines/:id' component={ AStoryline } /> */}
+          <Route exact path='/dashboard/:userId/posts' component={ UserPosts } />
           <Route exact path='/dashboard/mylocations' component={ MyLocations } />
           <Route exact path='/dashboard/mystorylines' component={ Storylines } />
           <Route exact path='/dashboard/mystorylines/:id' component={ AStoryline } />
@@ -35,5 +49,5 @@ const Dashboard = () => {
   )  
 }
 
-export default Dashboard;
-
+const mapDispatch = ({}, ownProps) => ({ userId: ownProps })
+export default connect(null, mapDispatch)(Dashboard)

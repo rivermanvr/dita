@@ -28,13 +28,13 @@ class Navbar extends Component {
       { title: 'GeoLocateInput(new) - Vince', path: '/dev/google' },
       { title: 'MoverControl - Vince', path: '/dev/testmover' },
       { title: 'View_StoriesPosts - Vince', path: '/dev/storiesView' },
+      { title: 'All Posts By Loc - WZ', path: '/dev/allpostsbyloc' },
+      { title: 'Create Story - WZ', path: '/dev/createstory' },
       { title: 'Add Post', path: '/dev/posts' },
       { title: 'All Posts', path: '/dev/allposts' },
       { title: 'Map', path: '/dev/allpostsmap' },
-      { title: 'All Posts By Loc - WZ', path: '/dev/allpostsbyloc' },
-      { title: 'Distance Test - WZ', path: '/dev/distancetest' },
-      { title: 'Create Story - WZ', path: '/dev/createstory' },
       { title: 'My Locations - WZ', path: '/dev/mylocations' },
+      { title: 'Distance Test - WZ', path: '/dev/distancetest' }
     ];
     return (
       <ul className="nav nav-tabs mainnav" style={ { marginBottom: '10px' } }>

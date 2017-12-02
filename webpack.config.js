@@ -6,7 +6,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
   },
-  devtool: 'source-map',
+  devtool: 'eval-cheap-module-source-map',
   module: {
     loaders: [
       {
@@ -14,6 +14,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
+          cacheDirectory: true,
           presets: ['env', 'react', 'stage-2']
         }
       }

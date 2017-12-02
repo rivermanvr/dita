@@ -408,6 +408,42 @@ select::-ms-expand {
         color: #ffffff;
         background-color: #1D2833; }
 
+.modalWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  transition: all .2s linear; }
+  .modalWrapper.modalHidden {
+    z-index: -1;
+    opacity: 0;
+    transition: all .2s linear; }
+    .modalWrapper.modalHidden .modalContents {
+      min-width: 0;
+      width: 0;
+      height: 0;
+      min-height: 0;
+      transition: all .2s linear; }
+  .modalWrapper .modalContents {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    min-width: 45%;
+    width: auto;
+    min-height: 400px;
+    border-radius: 4px;
+    display: grid;
+    grid-auto-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    box-shadow: black 0px 0px 15px 0px;
+    transition: all .2s linear; }
+
 .hl-1 {
   animation: ping 5s infinite;
   fill: #e8001f;
@@ -957,42 +993,6 @@ select::-ms-expand {
   fill: #02abae;
   stroke: #02abae;
   background-color: #02abae; }
-
-.modalWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-  transition: all .2s linear; }
-  .modalWrapper.modalHidden {
-    z-index: -1;
-    opacity: 0;
-    transition: all .2s linear; }
-    .modalWrapper.modalHidden .modalContents {
-      min-width: 0;
-      width: 0;
-      height: 0;
-      min-height: 0;
-      transition: all .2s linear; }
-  .modalWrapper .modalContents {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    min-width: 45%;
-    width: auto;
-    min-height: 400px;
-    border-radius: 4px;
-    display: grid;
-    grid-auto-columns: 1fr;
-    justify-content: center;
-    align-items: center;
-    box-shadow: black 0px 0px 15px 0px;
-    transition: all .2s linear; }
 
 .searchMap form {
   display: grid;
@@ -1680,10 +1680,11 @@ select::-ms-expand {
 
 .post-card {
   margin: 0 20px 20px 0;
-  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.26), 0 2px 3px rgba(0, 0, 0, 0.3);
   height: 300px;
   width: 300px;
   border-radius: 5px;
+  background-color: #f5f4f4;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative; }
   .post-card:hover {
@@ -1742,7 +1743,7 @@ select::-ms-expand {
     position: absolute;
     left: 0;
     bottom: 50px;
-    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.26), 0 2px 3px rgba(0, 0, 0, 0.3);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: grid;
     grid-gap: 5px; }

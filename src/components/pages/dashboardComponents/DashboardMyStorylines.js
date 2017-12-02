@@ -37,7 +37,7 @@ const Storylines = ({ storylines }) => {
 
           <div className='post-card-footer'>
             <span>{ d3.timeFormat('%m/%d/%y')(new Date(storyline.updatedAt)) }</span>
-            <span onClick={ () => console.log('open carousel') } className='more'><i className='ion-ios-more-outline'></i></span>
+            <Link to={ `/dashboard/mystorylines/${storyline.id}` } className='more'><i className='ion-ios-more-outline'></i></Link>
           </div>
         </div>
       })}

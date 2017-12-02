@@ -44,9 +44,7 @@ class Profile extends Component {
 
     return (
       <div className='profile-container dashboard-item'>
-        <div className='dashboard-header'>
-          <h3>My Profile</h3>
-        </div>
+        <h3 className='dashboard-header'>My Profile</h3>
 
         <div className='login-container profile'>
           <div className='form'>

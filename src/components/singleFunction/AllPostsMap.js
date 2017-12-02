@@ -5,11 +5,13 @@ import { Map, Marker, Popup, TileLayer, CircleMarker } from 'react-leaflet';
 import Replies from './Replies'
 import * as d3 from 'd3';
 
-
 class AllPostsMap extends Component {
   constructor(props){
     super(props);
-    this.state = { zoomLevel: 9 }
+    this.state = {
+      isVisible: false,
+      zoomLevel: 9
+    }
     this.changeRadius = this.changeRadius.bind(this)
   }
 
@@ -18,8 +20,8 @@ class AllPostsMap extends Component {
   }
 
   render(){
-    const { posts, currentView } = this.props;    
-    const { zoomLevel } = this.state;
+    const { posts, currentView } = this.props;
+    const { isVisible, zoomLevel } = this.state;
     const position = [currentView.lat, currentView.lng]; 
     const darkTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cja8rnhqp0ukm2rpjrq1uxx65/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
     const tileAttr = '&copy; <a href="https://www.mapbox.com/">Mapbox</a>';

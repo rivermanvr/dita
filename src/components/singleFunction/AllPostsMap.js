@@ -6,7 +6,7 @@ import Replies from './Replies'
 import * as d3 from 'd3';
 import {changeActiveModal} from '../../actions'
 import Modal from '../reusables/Modal'
-import {PostCard} from './Posts'
+import PostDetail from './PostDetail'
 
 
 class AllPostsMap extends Component {
@@ -100,9 +100,10 @@ class AllPostsMap extends Component {
           <span className='legend-container'><span className='legend-circle hl0'></span>Shrinking</span>
         </div>
 
-        <Modal isActive={modal} >
-          {postDetail ? <PostCard key={postDetail.id} content={postDetail} /> : <div></div>}
-        </Modal>
+        {
+          modal ? <Modal isActive={modal}><PostDetail post={postDetail} /></Modal> : <div></div>
+        }
+
       </div>
     )
   }  

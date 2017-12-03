@@ -18,7 +18,13 @@ class PostReply extends Component{
        this.setState({
             userId: this.props.currentUser.user.id,
             postId: this.props.postId
-        },()=>console.log('postReply mounted', this.state))
+        })
+    }
+    componentWillReceiveProps(newProps){
+        this.setState({
+            userId: newProps.currentUser.user.id,
+            postId: newProps.postId
+        })
     }
     onChange(e){
         this.setState({
@@ -37,8 +43,8 @@ class PostReply extends Component{
         const {body} = this.state
         return(
            <form className="replyForm" onSubmit={this.onSubmit}>
-             <input value={body} placeholder={`Reply to ${post.user.name}`} className='replyInput' type="text" onChange={this.onChange}/>
-             <FontAwesome name='paper-plane' onClick={this.onSubmit}/>           
+             <input value={body} placeholder={post && `Reply to ${post.user.name}` } className='replyInput' type="text" onChange={this.onChange}/>
+             <i className='ion-android-send'></i>         
              </form>
         )
     }
@@ -47,7 +53,7 @@ class PostReply extends Component{
 const mapStateToProps = ({currentUser}, props) => {
     return {
         currentUser,
-        postId: props.post.id
+        postId: props.post ? props.post.id : ''
     }
 }
 

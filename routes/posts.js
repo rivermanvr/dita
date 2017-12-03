@@ -37,7 +37,7 @@ router.post('/myposts', verifyToken, (req, res, next) => {
 })
 
 router.get('/', (req, res, next) => {
-  Post.findAll({ include: [{ model: StoryLine }, {model: User}, { model: Reply, include: [ User ]}] })
+  Post.findAll({ include: [{ model: StoryLine, include:[{model:Post, order:[['createdAt', 'DESC']]}] }, {model: User}, { model: Reply, include: [ User ]}] })
     .then(posts => res.send(posts))
     .catch(next);
 })

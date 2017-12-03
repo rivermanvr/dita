@@ -19,7 +19,6 @@ class Modal extends Component{
         if(newProps.modal){
             document.addEventListener('click', this.handleOutsideClick,false)
         }
-        console.log(newProps.children)
         this.setState({
             content: newProps.children
         })

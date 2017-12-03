@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import * as d3 from 'd3'
+import { withRouter } from 'react-router-dom'
 import PostReply from './postReply'
 
-const Replies = ({replies, currentUser,post}) => {
+const Replies = ({replies, currentUser,post, handleUserDashboard}) => {
     return (
         <div className='replyContainer'>
             <div className="replyGroup">
@@ -11,8 +12,8 @@ const Replies = ({replies, currentUser,post}) => {
                     replies.map((reply) => (
                         <div key={ reply.id } className="singleReply">
                             <div className='userInfo'>
-                                <span style={{backgroundImage:`url(${reply.user.profilePic})`}} className="userProfilePic"></span>
-                                <p className={`userName ${post.user.id === reply.user.id ? 'myPost' : currentUser.user.id === reply.user.id ? 'signedIn' : ''}`}>{reply.user.name}</p>
+                                <span onClick={() => handleUserDashboard(reply)} style={{backgroundImage:`url(${reply.user.profilePic})`}} className="userProfilePic"></span>
+                                <p onClick={() => handleUserDashboard(reply)} className={`userName ${post.user.id === reply.user.id ? 'myPost' : currentUser.user.id === reply.user.id ? 'signedIn' : ''}`}>{reply.user.name}</p>
                             </div>
                             <div className={`replyBody ${post.user.id === reply.user.id ? 'myPost' : currentUser.user.id === reply.user.id ? 'signedIn' : ''}`}>
                                 <small className='timePosted'>{d3.timeFormat('%m/%d')(new Date(reply.createdAt)) + ' at ' + d3.timeFormat('%I:%M% %p')(new Date(reply.createdAt))}</small>                            
@@ -35,4 +36,4 @@ const mapStateToProps = ({posts,currentUser}, props) => {
     }
 }
 
-export default connect(mapStateToProps)(Replies)
+export default withRouter(connect(mapStateToProps)(Replies))

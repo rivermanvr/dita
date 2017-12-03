@@ -55,9 +55,15 @@
                 display: block;
                 background-size: cover;
                 background-position: center;
+                &:hover {
+                    cursor: pointer;
+                }
             }
             .userName {
                 text-align: center;
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
         .postInfo {

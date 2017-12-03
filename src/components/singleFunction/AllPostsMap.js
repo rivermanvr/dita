@@ -4,12 +4,13 @@ import { withRouter, Link } from 'react-router-dom';
 import { Map, Marker, Popup, TileLayer, CircleMarker } from 'react-leaflet';
 import Replies from './Replies'
 import * as d3 from 'd3';
+import { setCurrentLocation } from '../../actions'
 
 
 class AllPostsMap extends Component {
   constructor(props){
     super(props);
-    this.state = { zoomLevel: 6 }
+    this.state = { zoomLevel: 5 }
     this.changeRadius = this.changeRadius.bind(this)
   }
 
@@ -18,8 +19,15 @@ class AllPostsMap extends Component {
   }
 
   handleRegionZoom = e => {
-    console.log(e)
+    console.log(e.latlng.lat)
     console.log('click!')
+    // this.props.setCurrentLocation({
+    //   lat: e.latlng.lat,
+    //   lng: e.latlng.lng
+    // })
+    // setTimeout(() => {
+    //   this.setState({ zoomLevel: 6 })
+    // }, 300)
   }
 
   render(){
@@ -84,19 +92,17 @@ class AllPostsMap extends Component {
                 )
               }) :
               grid && grid.map((zone, i) => {
-                console.log(zone)
                 return (                
                   <CircleMarker key={ i } center={ [zone.lat, zone.lng] }
                     radius={ Math.sqrt(zone.halflife / 2) + 3 }  fillColor={ 'transparent' } 
                     className={ `halflife halflife-outline hl-${zone.halflife}` }
                     onClick={ this.handleRegionZoom }
                     weight={ 1 }>
-                    {/*<Popup>
+                    <Popup>
                       <div>
-                        <a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>
                         <span>{ `${zone.count}, ${zone.lat}, ${zone.lng}, ${zone.halflife}` } for debugging</span>
                       </div> 
-                    </Popup>*/}
+                    </Popup>
                     <CircleMarker center={ [zone.lat, zone.lng] } 
                       radius={ Math.sqrt(zone.halflife / 2) + 3 } 
                       className={ `halflife halflife-core hl-${zone.halflife}` }
@@ -125,11 +131,11 @@ const mapStateToProps = ({ posts, currentView, grid }) => {
     grid: Object.keys(grid)
             .map(key => ({
               // center of each grid
-              lat: +key.split(',')[0] + 5,
-              lng: +key.split(',')[1] + 10,
+              lat: +key.split(',')[0],
+              lng: +key.split(',')[1],
               halflife: Math.ceil(grid[key].averageHl),
               count: grid[key].count
             }))
   }
 }
-export default connect (mapStateToProps)(AllPostsMap)
+export default connect(mapStateToProps, { setCurrentLocation })(AllPostsMap)

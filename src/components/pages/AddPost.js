@@ -2,9 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import GoogleMaps from '@google/maps'
 
+let env;
+if (process.env.NODE_ENV !== 'production') {
+  env = require('../../../env.json');
+} else {
+  env = process.env;
+}
+
 // google maps
 let googleMapsClient = GoogleMaps.createClient({
-  key: process.env.GoogleServerAPI || require('../../../env.json').GoogleServerAPI,
+  key: env.GoogleServerAPI,
   Promise: Promise
 });
 

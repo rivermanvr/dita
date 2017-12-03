@@ -1,15 +1,21 @@
 const router = require( 'express' ).Router(),
   passport = require('passport'),
   FacebookStrategy = require('passport-facebook').Strategy,
-  env = require('../../env'),
   { User } = require('../../db').models,
   { generateToken } = require('../authMiddleware'),
   faker = require('faker')
 
+  let env;
+  if (process.env.NODE_ENV !== 'production') {
+    env = require('../../env');
+  } else {
+    env = process.env;
+  }
+
 passport.use(
   new FacebookStrategy({
-    clientID: process.env.FACEBOOK_APP_ID || env.FACEBOOK_APP_ID,
-    clientSecret: process.env.FACEBOOK_APP_SECRET || env.FACEBOOK_APP_SECRET,
+    clientID: env.FACEBOOK_APP_ID,
+    clientSecret: env.FACEBOOK_APP_SECRET,
     callbackURL: 'http://localhost:2020/api/auth/facebook/verify',
     profileFields : [ 'emails', 'displayName', 'name', 'photos' ]
   },

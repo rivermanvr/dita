@@ -3,7 +3,13 @@ const Sequelize = require('sequelize')
 const { or } = db.Op
 const faker = require('faker')
 const bcrypt = require('bcrypt-as-promised')
-const env = require('../env')
+
+let env;
+if (process.env.NODE_ENV !== 'production') {
+  env = require('../env');
+} else {
+  env = process.env;
+}
 
 const defineAttr = {
   name: {
@@ -71,8 +77,7 @@ const defineAttr = {
 }
 
 const hashInstancePass = (instance) => {
-  const pSALTROUNDS = process.env.SALTROUNDS || env.SALTROUNDS;
-  return bcrypt.hash(instance.password, pSALTROUNDS)
+  return bcrypt.hash(instance.password, 10)
     .then(hashedPassword => {
       instance.password = hashedPassword
       return instance

@@ -7,7 +7,9 @@ import userStorylines from './userStorylines';
 import userLocations from './userLocations';
 import currentView from './currentView';
 import replies from './replies'
+import grid from './grid'
 import modal from './modal'
+import users from './users'
 
 const rootReducer = combineReducers({
   currentUser,
@@ -18,7 +20,9 @@ const rootReducer = combineReducers({
   userStorylines,
   userLocations,
   replies,
-  modal
+  grid,
+  modal,
+  users
 });
 
 export default rootReducer;

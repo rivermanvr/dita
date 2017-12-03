@@ -12,10 +12,10 @@ const defineAttr = {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: {
-      args: true,
-      msg: 'Account already registered with this email'
-    },
+    // unique: {
+    //   args: true,
+    //   msg: 'Account already registered with this email'
+    // },
     validate: {
       isEmail: {
         args: true,
@@ -25,10 +25,10 @@ const defineAttr = {
   },
   username: {
     type: Sequelize.STRING,
-    unique: {
-      args: true,
-      msg: 'Account already registered with this username'
-    },
+    // unique: {
+    //   args: true,
+    //   msg: 'Account already registered with this username'
+    // },
     allowNull: false,
     validate: {
       len: {
@@ -127,7 +127,6 @@ User.updateUser = function(id, data) {
 }
 
 User.passportAuth = function(query, data) {
-  console.log(query)
   return this.findOne({ where: query })
     .then(user => {
       if (user) return user
@@ -135,6 +134,12 @@ User.passportAuth = function(query, data) {
       Object.assign(data, query, { password: faker.internet.password() })
       return this.create(data)
     })
+}
+
+User.getPublicInfo = function() {
+  return this.findAll({
+    attributes: [ 'id', 'username', 'profilePic' ]
+  })
 }
 
 module.exports = User; 

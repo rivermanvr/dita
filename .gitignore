@@ -9,6 +9,7 @@ npm-debug.log
 # installed packages (better: `npm install` / `bower install`)
 node_modules/*
 bower_components
+env.json
 package-lock.json
 
 # OS-generated files

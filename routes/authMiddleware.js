@@ -1,5 +1,11 @@
 const jwt = require('jsonwebtoken')
-const env = require('../env')
+
+let env;
+if (process.env.NODE_ENV !== 'production') {
+  env = require('../env');
+} else {
+  env = process.env;
+}
 
 const publicUserData = (user) => ({
   user: {
@@ -15,8 +21,7 @@ module.exports.verifyToken = (req, res, next) => {
   const token = req.headers['authorization']
   if (token) {
     const key = token.split(' ')[1]
-    const pJWT = process.env.JWTKEY || env.JWTKEY;
-    jwt.verify(key, pJWT, (err, data) => {
+    jwt.verify(key, env.JWTKEY, (err, data) => {
       if (err) return res.sendStatus(403)
 
       req.user = data.user
@@ -28,6 +33,5 @@ module.exports.verifyToken = (req, res, next) => {
 }
 
 module.exports.generateToken = (data) => {
-  const pJWT = process.env.JWTKEY || env.JWTKEY;  
-  return jwt.sign(publicUserData(data), pJWT)
+  return jwt.sign(publicUserData(data), env.JWTKEY)
 }

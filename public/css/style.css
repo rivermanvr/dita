@@ -556,7 +556,6 @@ select::-ms-expand {
     min-width: 35%;
     width: auto;
     min-height: 650px; } }
-
 .hl-1 {
   animation: ping 5s infinite;
   fill: #e8001f;

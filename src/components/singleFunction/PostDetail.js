@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { recordMetrics } from '../../actions'
+import { recordMetrics, setActivePost } from '../../actions'
 import {connect} from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import Replies from './Replies'
 import * as d3 from 'd3'
 
@@ -17,6 +18,8 @@ class PostDetail extends Component{
     this.handlePrev = this.handlePrev.bind(this)
   }
   componentDidMount(){
+    console.log('loading?')
+    this.props.recordMetrics(this.props.post.id, { userId: +this.props.userId, type: 'REPLY' })
     let storyPosts = this.props.posts.filter((post) => this.props.post.storylineId === post.storylineId);
     let currentPostIndex
     if(storyPosts[0].storylineId == null) {
@@ -27,6 +30,7 @@ class PostDetail extends Component{
       currentPostIndex = storyPosts.indexOf(this.props.post)
     }
     this.setState({
+      post: this.props.posts.find(post => post.id == this.props.post.id),
       posts: storyPosts,
       currentPostIndex: currentPostIndex,
       currentPost: this.props.post
@@ -41,6 +45,9 @@ class PostDetail extends Component{
       currentPostIndex: currentPostIndex,
       currentPost: newProps.post
     })*/
+  }
+  handleUserDashboard = post => {
+    this.props.history.push(`/userdashboard/${post.userId}/storylines`)
   }
   handleNext = () => {
     if(this.state.currentPostIndex === this.state.posts.length -1){
@@ -79,8 +86,8 @@ class PostDetail extends Component{
         <h4 className="storyLineTitle">{currentPost.storyline && currentPost.storyline.title}</h4>
         <div className="fullPost">
           <div className="userInfo">
-            <span className='profilePic' style={{backgroundImage:`url(${currentPost.user && currentPost.user.profilePic})`}}></span>
-            <h4 className="userName">{currentPost.user && currentPost.user.name}</h4>
+            <span className='profilePic' onClick={() => this.handleUserDashboard(currentPost)} style={{backgroundImage:`url(${currentPost.user && currentPost.user.profilePic})`}}></span>
+            <h4 className="userName" onClick={() => this.handleUserDashboard(currentPost)}>{currentPost.user && currentPost.user.name}</h4>
           </div>
           <div className="postInfo">
             <h4 className="postTitle">{currentPost && currentPost.title} <small>on {d3.timeFormat('%m/%d')(new Date(currentPost && currentPost.createdAt))}</small></h4>
@@ -92,7 +99,7 @@ class PostDetail extends Component{
           <i className="ion-ios-more-outline"></i>
         </div>
         <div className="postReplies">
-          {currentPost && <Replies postId={currentPost && currentPost.id} />}
+          {currentPost && <Replies handleUserDashboard={this.handleUserDashboard} postId={currentPost && currentPost.id} />}
         </div>
           {posts && <div className="detailFooter"><i onClick={this.handlePrev} className="ion-android-arrow-back"></i>
           <p>{currentPostIndex + 1} of {posts && posts.length}</p>
@@ -104,10 +111,12 @@ class PostDetail extends Component{
   }
 }
 
-const mapStateToProps = ({posts}) => {
+const mapStateToProps = ({ currentUser, posts, activePost }) => {
   return {
-    posts
+    userId: currentUser.isAuthenticated && currentUser.user.id,
+    posts,
+    activePost
   }
 }
 
-export default connect(mapStateToProps)(PostDetail)
+export default withRouter(connect(mapStateToProps, { recordMetrics, setActivePost })(PostDetail))

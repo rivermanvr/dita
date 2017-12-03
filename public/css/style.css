@@ -121,6 +121,8 @@ i {
         color: green; }
       .replyContainer .userInfo .userName.myPost {
         color: rebeccapurple; }
+      .replyContainer .userInfo .userName:hover {
+        cursor: pointer; }
     .replyContainer .userInfo .userProfilePic {
       background-size: cover;
       background-repeat: no-repeat;
@@ -130,6 +132,8 @@ i {
       border-radius: 6px;
       display: block;
       margin: 0 auto; }
+      .replyContainer .userInfo .userProfilePic:hover {
+        cursor: pointer; }
   .replyContainer .replyBody {
     position: relative;
     padding: 12px 8px;
@@ -254,8 +258,12 @@ i {
       display: block;
       background-size: cover;
       background-position: center; }
+      .postDetail .fullPost .userInfo .profilePic:hover {
+        cursor: pointer; }
     .postDetail .fullPost .userInfo .userName {
       text-align: center; }
+      .postDetail .fullPost .userInfo .userName:hover {
+        cursor: pointer; }
     .postDetail .fullPost .postInfo .postTitle {
       color: #1d2833;
       text-transform: capitalize;

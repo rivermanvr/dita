@@ -45,16 +45,16 @@ const replies = require('./dita-seed/replies.json');
 //   { title: 'pizza time', body: 'time for pizza and garlic bread for dinner, it was a nice day', zip: '07076', latitude: 40.640040, longitude: -74.369018, userId: 4, storylineId: 1 }
 // ]
 
-const categories = [
-  { name: 'Fun' },
-  { name: 'Work' },
-  { name: 'Inspirational' },
-  { name: 'Happy' },
-  { name: 'Sad' },
-  { name: 'Technology' },
-  { name: 'School' },
-  { name: 'Funny' }
-]
+// const categories = [
+//   { name: 'Fun' },
+//   { name: 'Work' },
+//   { name: 'Inspirational' },
+//   { name: 'Happy' },
+//   { name: 'Sad' },
+//   { name: 'Technology' },
+//   { name: 'School' },
+//   { name: 'Funny' }
+// ]
 
 // const stories = [
 //   { title: 'Sunday with the family', description: 'At Pam & Neal"s home', userId: 4 },
@@ -84,40 +84,116 @@ const categories = [
 //   { body: 'Did you take home the leftovers?', userId: 1, postId: 18 }
 // ]
 
+
+
+let prof, wasif, vince, murray
+let profStory, wasifStory, vinceStory, murrayStory
+let profPost, wasifPost, vincePost, murrayPost
+
+const createPowerUserReplies = posts => {
+  const users = [murray, vince, prof, wasif]  
+  return Promise.all(replies.slice(0, 4).map((reply, i) => {
+    Object.assign(reply, { postId: posts[i].id, userId: users[i].id })
+    return Reply.create(reply)
+  }))
+}
+
+const createPowerUserPosts = stories => {
+  const users = [prof, wasif, vince, murray]
+  return Promise.all(posts.slice(0, 4).map((post, i) => {
+    Object.assign(post, { storylineId: stories[i].id, userId: users[i].id })
+    return Post.create(post)
+  }))
+  .then(([_profPost, _wasifPost, _vincePost, _murrayPost]) => {
+    profPost = _profPost
+    wasifPost = _wasifPost
+    vincePost = _vincePost
+    murrayPost = _murrayPost
+  })
+  .then(() => [profPost, wasifPost, vincePost, murrayPost])
+  .then(posts => {
+    return createPowerUserReplies(posts)
+  })
+}
+
+const createPowerUserStories = users => {
+  return Promise.all(stories.slice(0, 4).map((story, i) => {
+    Object.assign(story, { userId: users[i].id })
+    return StoryLine.create(story)
+  }))
+  .then(([_profStory, _wasifStory, _vinceStory, _murrayStory]) => {
+    profStory = _profStory
+    wasifStory = _wasifStory
+    vinceStory = _vinceStory
+    murrayStory = _murrayStory
+  })
+  .then(() => [profStory, wasifStory, vinceStory, murrayStory])
+  .then(stories => {
+    return createPowerUserPosts(stories)
+  })
+}
+
+const createPowerUsers = () => {
+  return Promise.all(users.slice(0, 4).map(user => User.create(user)))
+    .then(([ _prof, _wasif, _vince, _murray ]) => {
+      prof = _prof
+      wasif = _wasif
+      vince = _vince
+      murray = _murray
+    })
+    .then(() => {
+      return Promise.all([prof, wasif, vince, murray].map((user, i) => Location.addLocation(user.id, locations[i])))
+        .then(() => [prof, wasif, vince, murray])
+    })
+    .then(users => {
+      return createPowerUserStories(users)
+    })
+}
+
+const createPowerUserCategories = () => {
+  return Promise.all(categories.map(category => Category.create(category)))
+   .then(createPowerUsers)
+}
+
+
 const createReplies = () => {
-  return Promise.all(replies.map(reply => {
+  return Promise.all(replies.slice(5, -1).map(reply => {
     return Reply.create(reply)
   }))
 }
 
 const createPosts = () => {
-  return Promise.all(posts.map(post => {
+  return Promise.all(posts.slice(5, -1).map(post => {
     return Post.create(post)
   }))
    .then(() => createReplies(users))
 }
 
 const createStories = () => {
-  return Promise.all(stories.map(story => {
+  return Promise.all(stories.slice(5, -1).map(story => {
     return StoryLine.create(story)
   }))
     .then(createPosts)
 }
 
 const createUsers = () => {
-  return Promise.all(users.map(user => User.create(user)))
-    .then(_users => Promise.all(_users.map((user, i) => Location.addLocation(user.id, locations[i]))))
+  return Promise.all(users.slice(5, -1).map(user => User.create(user)))
+    .then(_users => Promise.all(_users.map((user, i) => {
+      Location.addLocation(user.id, locations[i])
+    })))
     .then(createStories)
 }
 
-const createCategories = () => {
-  return Promise.all(categories.map(category => Category.create(category)))
-   .then(createUsers)
-}
+
+// const createCategories = () => {
+//   return Promise.all(categories.map(category => Category.create(category)))
+//    .then(createUsers)
+// }
 
 const seed = () => {
   return db.sync({ force: true })
-  .then(createCategories)
+  .then(createPowerUsers)
+  .then(createUsers)
 }
 
 seed()

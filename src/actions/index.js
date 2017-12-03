@@ -8,3 +8,4 @@ export * from './location';
 export * from './userlocations';
 export * from './bulkactions';
 export * from './modal';
+export * from './users';

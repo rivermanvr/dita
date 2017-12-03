@@ -2,6 +2,12 @@
     max-width:500px; //change this to be 100% of wrapper when components are in appropriate places
     padding:0 12px;
     box-sizing: border-box;
+    text-align: left;
+    .replyGroup {
+        overflow: scroll;
+        max-height:300px;
+        margin-bottom: 1.15em;
+    }
     .singleReply {
         display: grid;
         padding: 4px 0;
@@ -24,12 +30,6 @@
                 color: rebeccapurple;
             }
         }
-        .timePosted {
-            font-size:10px!important;
-            text-align: center;
-            font-weight:lighter;
-            display: block;
-        }
         .userProfilePic {
             background-size: cover;
             background-repeat: no-repeat;
@@ -48,8 +48,15 @@
         background-color: pink;
         border-radius: 4px;
         align-self: flex-start;
+        .timePosted {
+            font-size: 9px;
+            color: white;
+            position: absolute;
+            bottom: 7%;
+            right: 4%;
+        }
         p {
-            margin:0;
+            margin:4px 0;
             color: white;
         }
         &.signedIn {
@@ -93,7 +100,7 @@
     grid-template-columns: 5fr .45fr;
     border:1px solid grey;
     border-radius:4px;
-    .fa-paper-plane {
+    i {
         transition: all .075s linear;
         align-self: center;
         justify-self: center;

@@ -6,31 +6,29 @@ import Replies from './Replies'
 import * as d3 from 'd3';
 import {changeActiveModal} from '../../actions'
 import Modal from '../reusables/Modal'
-import {PostCard} from './Posts'
+import PostDetail from './PostDetail'
 
 
 class AllPostsMap extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      isVisible: false,
-      zoomLevel: 9,
-      postDetail: null
-    }
-    this.changeRadius = this.changeRadius.bind(this)
-    this.handleModal = this.handleModal.bind(this)
+  state = {
+    isVisible: false,
+    zoomLevel: 9,
+    postDetail: null
   }
 
-  changeRadius(zoomLevel) {
+  changeRadius = zoomLevel => {
     this.setState({ zoomLevel })
   }
-  handleModal = (content) => {
-      this.setState({
-        postDetail: content
-      },()=>this.props.toggleModal())
-    }
+  handleModal = content => {
+    this.setState({
+      postDetail: content
+    },()=>this.props.toggleModal())
+  }
+  handleUserDashboard = post => {
+    this.props.history.push(`/userdashboard/${post.userId}/storylines`)
+  }
 
-  render(){
+  render = () => {
     const { posts, currentView, modal } = this.props;
     const { isVisible, zoomLevel, postDetail } = this.state;
     const position = [currentView.lat, currentView.lng]; 
@@ -81,6 +79,7 @@ class AllPostsMap extends Component {
                         <a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>
                         <span>{ post.body }</span>
                         <p data-post={post} onClick={() => this.handleModal(post)}>View Detail</p>
+                        <p data-post={post} onClick={() => this.handleUserDashboard(post)}>View Dash</p>
                       </div> 
                     </Popup>                  
                     <CircleMarker center={ [post.latLng.lat, post.latLng.lng] } 
@@ -100,9 +99,10 @@ class AllPostsMap extends Component {
           <span className='legend-container'><span className='legend-circle hl0'></span>Shrinking</span>
         </div>
 
-        <Modal isActive={modal} >
-          {postDetail ? <PostCard key={postDetail.id} content={postDetail} /> : <div></div>}
-        </Modal>
+        {
+          modal ? <Modal isActive={modal}><PostDetail post={postDetail} /></Modal> : <div></div>
+        }
+
       </div>
     )
   }  

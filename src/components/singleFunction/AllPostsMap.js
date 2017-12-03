@@ -7,6 +7,7 @@ import * as d3 from 'd3';
 import {changeActiveModal} from '../../actions'
 import Modal from '../reusables/Modal'
 import PostDetail from './PostDetail'
+import { isEmpty } from 'lodash'
 
 
 class AllPostsMap extends Component {
@@ -17,6 +18,7 @@ class AllPostsMap extends Component {
   }
 
   changeRadius = zoomLevel => {
+    console.log(zoomLevel)
     this.setState({ zoomLevel })
   }
   handleModal = content => {
@@ -41,7 +43,7 @@ class AllPostsMap extends Component {
   }
 
   render = () => {
-    const { posts, currentView, grid, modal } = this.props;
+    const { posts, currentView, grid5, grid3, modal } = this.props;
     const { isVisible, zoomLevel, postDetail } = this.state;
     const position = [currentView.lat, currentView.lng]; 
     const darkTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cja8rnhqp0ukm2rpjrq1uxx65/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
@@ -80,7 +82,7 @@ class AllPostsMap extends Component {
               </Popup>
             </Marker>
             {
-              zoomLevel > 5 ?
+              zoomLevel > 6 ?
               posts && posts.map(post => {
                 return (                
                   <CircleMarker key={ post.id } center={ [post.latLng.lat, post.latLng.lng] } 
@@ -102,7 +104,27 @@ class AllPostsMap extends Component {
                   </CircleMarker>               
                 )
               }) :
-              grid && grid.map((zone, i) => {
+              zoomLevel < 4 ?
+              grid3 && grid3.map((zone, i) => {
+                return (                
+                  <CircleMarker key={ i } center={ [zone.lat, zone.lng] }
+                    radius={ Math.sqrt(zone.halflife / 2) + 3 }  fillColor={ 'transparent' } 
+                    className={ `halflife halflife-outline hl-${zone.halflife}` }
+                    onClick={ this.handleRegionZoom }
+                    weight={ 1 }>
+                    <Popup>
+                      <div>
+                        <span>{ `${zone.count}, ${zone.lat}, ${zone.lng}, ${zone.halflife}` } for debugging</span>
+                      </div> 
+                    </Popup>
+                    <CircleMarker center={ [zone.lat, zone.lng] } 
+                      radius={ Math.sqrt(zone.halflife / 2) + 3 } 
+                      className={ `halflife halflife-core hl-${zone.halflife}` }
+                      weight={ 0 }></CircleMarker>
+                  </CircleMarker>
+                )
+              }) :
+              grid5 && grid5.map((zone, i) => {
                 return (                
                   <CircleMarker key={ i } center={ [zone.lat, zone.lng] }
                     radius={ Math.sqrt(zone.halflife / 2) + 3 }  fillColor={ 'transparent' } 
@@ -144,13 +166,21 @@ class AllPostsMap extends Component {
 const mapStateToProps = ({ posts, currentView, grid, modal }) => {
   return {
     posts, currentView, modal,
-    grid: Object.keys(grid)
+    grid5: Object.keys(grid.zoomMid)
             .map(key => ({
               // center of each grid
-              lat: +key.split(',')[0],
-              lng: +key.split(',')[1],
-              halflife: Math.ceil(grid[key].averageHl),
-              count: grid[key].count
+              lat: +key.split(',')[0] + 1 + Math.random() * 0.5 + 0.3,
+              lng: +key.split(',')[1] + 2 + Math.random() * 1 + 0.6,
+              halflife: Math.ceil(grid.zoomMid[key].averageHl),
+              count: grid.zoomMid[key].count
+            })),
+    grid3: Object.keys(grid.zoomHigh)
+            .map(key => ({
+              // center of each grid
+              lat: +key.split(',')[0] + 0.5 + Math.random() * 0.3 + 0.1,
+              lng: +key.split(',')[1] + 1 + Math.random() * 0.5 + 0.2,
+              halflife: Math.ceil(grid.zoomHigh[key].averageHl),
+              count: grid.zoomHigh[key].count
             }))
   }
 }

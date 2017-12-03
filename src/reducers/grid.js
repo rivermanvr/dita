@@ -5,10 +5,10 @@ const MAXLAT = 90,
   MINLAT = -90,
   MAXLNG = 180,
   MINLNG = -180,
-  addToBucket = (post, grid) => {
+  addToBucket = (post, grid, step) => {
     // return the [lat][lng] for the bucket
-    let bucketLat = Math.round(post.latitude / LATSTEP, 1) * LATSTEP,
-      bucketLng = Math.round(post.longitude / (LATSTEP * 2), 1) * LATSTEP * 2,
+    let bucketLat = Math.round(post.latitude / step, 1) * step,
+      bucketLng = Math.round(post.longitude / (step * 2), 1) * step * 2,
       bucketKey = `${bucketLat},${bucketLng}`,
       bucket = grid[bucketKey] || { nodes: [], averageHl: 0, count: 0 }
 
@@ -27,19 +27,23 @@ const MAXLAT = 90,
     let startT = new Date()
     console.log('creating new grid state')
 
-    let gridCopy = cloneDeep(grid)
+    let gridCopyMid = cloneDeep(grid.zoomMid),
+      gridCopyHigh = cloneDeep(grid.zoomHigh)
+
     posts.forEach(post => {
-      gridCopy = { ...gridCopy, ...addToBucket(post, gridCopy) }
+      gridCopyMid = { ...gridCopyMid, ...addToBucket(post, gridCopyMid, LATSTEPMID) }
+      gridCopyHigh = { ...gridCopyHigh, ...addToBucket(post, gridCopyHigh, LATSTEPHIGH) }
     })
 
     let finT = new Date()
     console.log(`build complete in ${(finT-startT)}ms`)
 
-    return gridCopy
+    return { zoomMid: gridCopyMid, zoomHigh: gridCopyHigh }
   }
 
-const LATSTEP = 10
-const initialState = {}
+const LATSTEPMID = 2
+const LATSTEPHIGH = 4
+const initialState = { zoomMid: {}, zoomHigh: {} }
 
 export default (state = initialState, action) => {
   switch (action.type) {

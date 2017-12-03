@@ -15,7 +15,8 @@ module.exports.verifyToken = (req, res, next) => {
   const token = req.headers['authorization']
   if (token) {
     const key = token.split(' ')[1]
-    jwt.verify(key, env.JWTKEY, (err, data) => {
+    const pJWT = process.env.JWTKEY || env.JWTKEY;
+    jwt.verify(key, pJWT, (err, data) => {
       if (err) return res.sendStatus(403)
 
       req.user = data.user
@@ -27,5 +28,6 @@ module.exports.verifyToken = (req, res, next) => {
 }
 
 module.exports.generateToken = (data) => {
-  return jwt.sign(publicUserData(data), env.JWTKEY)
+  const pJWT = process.env.JWTKEY || env.JWTKEY;  
+  return jwt.sign(publicUserData(data), pJWT)
 }

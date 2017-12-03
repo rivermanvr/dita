@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { recordMetrics } from '../../actions'
+import { recordMetrics, setActivePost } from '../../actions'
 import {connect} from 'react-redux'
 import Replies from './Replies'
 import * as d3 from 'd3'
@@ -17,6 +17,8 @@ class PostDetail extends Component{
     this.handlePrev = this.handlePrev.bind(this)
   }
   componentDidMount(){
+    console.log('loading?')
+    this.props.recordMetrics(this.props.post.id, { userId: +this.props.userId, type: 'REPLY' })
     let storyPosts = this.props.posts.filter((post) => this.props.post.storylineId === post.storylineId);
     let currentPostIndex
     if(storyPosts[0].storylineId == null) {
@@ -27,6 +29,7 @@ class PostDetail extends Component{
       currentPostIndex = storyPosts.indexOf(this.props.post)
     }
     this.setState({
+      post: this.props.posts.find(post => post.id == this.props.post.id),
       posts: storyPosts,
       currentPostIndex: currentPostIndex,
       currentPost: this.props.post
@@ -104,10 +107,12 @@ class PostDetail extends Component{
   }
 }
 
-const mapStateToProps = ({posts}) => {
+const mapStateToProps = ({ currentUser, posts, activePost }) => {
   return {
-    posts
+    userId: currentUser.isAuthenticated && currentUser.user.id,
+    posts,
+    activePost
   }
 }
 
-export default connect(mapStateToProps)(PostDetail)
+export default connect(mapStateToProps, { recordMetrics, setActivePost })(PostDetail)

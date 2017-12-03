@@ -56,6 +56,7 @@ const types = {
 const msPerDay = 24 * 60 * 60 * 1000
 
 Post.prototype.updateHalfLife = function(life) {
+  console.log(life)
   const daysPassed = Math.floor((new Date() - new Date(this.createdAt)) / msPerDay) + 1
   let hlToAdd = types[life.type]/daysPassed
   // doesn't take into account for unauth user spamming..

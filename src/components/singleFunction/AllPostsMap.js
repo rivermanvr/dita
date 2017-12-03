@@ -43,7 +43,7 @@ class AllPostsMap extends Component {
   }
 
   render = () => {
-    const { posts, currentView, grid5, grid3, modal } = this.props;
+    const { posts, currentView, grid4, grid3, modal } = this.props;
     const { isVisible, zoomLevel, postDetail } = this.state;
     const position = [currentView.lat, currentView.lng]; 
     const darkTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cja8rnhqp0ukm2rpjrq1uxx65/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
@@ -82,7 +82,7 @@ class AllPostsMap extends Component {
               </Popup>
             </Marker>
             {
-              zoomLevel > 6 ?
+              zoomLevel > 7 ?
               posts && posts.map(post => {
                 return (                
                   <CircleMarker key={ post.id } center={ [post.latLng.lat, post.latLng.lng] } 
@@ -124,7 +124,7 @@ class AllPostsMap extends Component {
                   </CircleMarker>
                 )
               }) :
-              grid5 && grid5.map((zone, i) => {
+              grid4 && grid4.map((zone, i) => {
                 return (                
                   <CircleMarker key={ i } center={ [zone.lat, zone.lng] }
                     radius={ Math.sqrt(zone.halflife / 2) + 3 }  fillColor={ 'transparent' } 
@@ -166,11 +166,11 @@ class AllPostsMap extends Component {
 const mapStateToProps = ({ posts, currentView, grid, modal }) => {
   return {
     posts, currentView, modal,
-    grid5: Object.keys(grid.zoomMid)
+    grid4: Object.keys(grid.zoomMid)
             .map(key => ({
               // center of each grid
-              lat: +key.split(',')[0] + 1 + Math.random() * 0.5 + 0.3,
-              lng: +key.split(',')[1] + 2 + Math.random() * 1 + 0.6,
+              lat: +key.split(',')[0] + Math.random() * 0.2,
+              lng: +key.split(',')[1] + Math.random() * 0.5,
               halflife: Math.ceil(grid.zoomMid[key].averageHl),
               count: grid.zoomMid[key].count
             })),

@@ -41,7 +41,7 @@ const MAXLAT = 90,
     return { zoomMid: gridCopyMid, zoomHigh: gridCopyHigh }
   }
 
-const LATSTEPMID = 2
+const LATSTEPMID = 1
 const LATSTEPHIGH = 4
 const initialState = { zoomMid: {}, zoomHigh: {} }
 

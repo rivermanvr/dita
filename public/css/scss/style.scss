@@ -57,11 +57,14 @@ i { font-size: 1.5em; }
 
 
 // containers
+@import '_replies.scss';
+@import '_postDetail.scss';
 @import '_nav.scss';
 @import '_forms.scss';
 @import '_buttons.scss';
 @import '_helpers.scss';
 @import '_dashboard.scss';
+@import '_modal.scss';
 
 // pages
 @import '_map.scss';

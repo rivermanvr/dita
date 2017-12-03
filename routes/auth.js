@@ -1,8 +1,9 @@
 const router = require( 'express' ).Router();
 const { User } = require('../db').models
-
-
 const { generateToken } = require('./authMiddleware')
+
+router.use('/google', require('./passport/google'))
+router.use('/facebook', require('./passport/facebook'))
 
 // login
 router.post('/', (req, res, next) => {

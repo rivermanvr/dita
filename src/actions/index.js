@@ -8,3 +8,5 @@ export * from './location';
 export * from './userlocations';
 export * from './bulkactions';
 export * from './grid';
+export * from './modal';
+export * from './users';

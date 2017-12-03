@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ChangeView from '../singleFunction/changeView'
 import { setLocationFromGeoLoc } from '../../actions'
-
 //add on finish method which then switches to map view. on finish is called only when url is '/'
 
 class Home extends Component {

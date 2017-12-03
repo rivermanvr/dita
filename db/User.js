@@ -1,6 +1,7 @@
 const db = require( './db' );
 const Sequelize = require('sequelize') 
 const { or } = db.Op
+const faker = require('faker')
 const bcrypt = require('bcrypt-as-promised')
 const env = require('../env')
 
@@ -11,10 +12,10 @@ const defineAttr = {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: {
-      args: true,
-      msg: 'Account already registered with this email'
-    },
+    // unique: {
+    //   args: true,
+    //   msg: 'Account already registered with this email'
+    // },
     validate: {
       isEmail: {
         args: true,
@@ -24,10 +25,10 @@ const defineAttr = {
   },
   username: {
     type: Sequelize.STRING,
-    unique: {
-      args: true,
-      msg: 'Account already registered with this username'
-    },
+    // unique: {
+    //   args: true,
+    //   msg: 'Account already registered with this username'
+    // },
     allowNull: false,
     validate: {
       len: {
@@ -54,6 +55,12 @@ const defineAttr = {
     validate: {
       isUrl: true
     }    
+  },
+  googleId: {
+    type: db.Sequelize.STRING
+  },
+  facebookId: {
+    type: db.Sequelize.STRING
   }
   /*Or store location as array? */
     /*
@@ -117,6 +124,22 @@ User.updateUser = function(id, data) {
       if (!user) throw new Error('user not found')
       return user.update(data)
     })
+}
+
+User.passportAuth = function(query, data) {
+  return this.findOne({ where: query })
+    .then(user => {
+      if (user) return user
+
+      Object.assign(data, query, { password: faker.internet.password() })
+      return this.create(data)
+    })
+}
+
+User.getPublicInfo = function() {
+  return this.findAll({
+    attributes: [ 'id', 'username', 'profilePic' ]
+  })
 }
 
 module.exports = User; 

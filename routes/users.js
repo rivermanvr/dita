@@ -18,4 +18,10 @@ router.put('/', verifyToken, (req, res, next) => {
     .catch(next)
 })
 
+router.get('/', (req, res, next) => {
+  User.getPublicInfo()
+    .then(users => res.send(users))
+    .catch(next)
+})
+
 module.exports = router

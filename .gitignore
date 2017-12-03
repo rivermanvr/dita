@@ -1,15 +1,10 @@
-# Compiled JS
-dist/
-bundle.js
-bundle.js.map
-
-# NPM errors
-npm-debug.log
-
 # installed packages (better: `npm install` / `bower install`)
-node_modules/*
+node_modules
+dist/
 bower_components
+bundle.js
 env.json
+npm-debug.log
 package-lock.json
 
 # OS-generated files
@@ -35,4 +30,3 @@ Thumbs.db
 # IntelliJ
 *.iml
 /.idea
-

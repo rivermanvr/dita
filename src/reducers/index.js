@@ -4,7 +4,7 @@ import posts from './posts';
 import userPosts from './userPosts';
 import storylines from './storylines';
 import userStorylines from './userStorylines';
-import userLocations from './userLocations';
+import userLocations from './userlocations';
 import currentView from './currentView';
 import replies from './replies'
 import grid from './grid'

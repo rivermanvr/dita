@@ -1,15 +1,21 @@
 const router = require( 'express' ).Router(),
   passport = require('passport'),
   GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
-  env = require('../../env'),
   { User } = require('../../db').models,
   { generateToken } = require('../authMiddleware'),
   faker = require('faker')
 
+  let env;
+  if (process.env.NODE_ENV !== 'production') {
+    env = require('../../env');
+  } else {
+    env = process.env;
+  }
+
 passport.use(
   new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID || env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET || env.GOOGLE_CLIENT_SECRET,
+    clientID: env.GOOGLE_CLIENT_ID,
+    clientSecret: env.GOOGLE_CLIENT_SECRET,
     callbackURL: 'http://localhost:2020/api/auth/google/verify'
   },
   (accessToken, refreshToken, profile, done) => {

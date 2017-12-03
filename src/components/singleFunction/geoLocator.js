@@ -4,6 +4,8 @@ import { withScriptjs } from 'react-google-maps';
 
 const { StandaloneSearchBox } = require('react-google-maps/lib/components/places/StandaloneSearchBox');
 
+console.log('>>>>>>>>>>>>>>>>>>', process.env)
+
 const PlacesSearchBox = compose(
   withProps({
     googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${ process.env.GoogleAPI || require('../../../env').GoogleAPI }&v=3.exp&libraries=geometry,drawing,places`,

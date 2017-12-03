@@ -97,7 +97,12 @@ i {
 .replyContainer {
   max-width: 500px;
   padding: 0 12px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  text-align: left; }
+  .replyContainer .replyGroup {
+    overflow: scroll;
+    max-height: 300px;
+    margin-bottom: 1.15em; }
   .replyContainer .singleReply {
     display: grid;
     padding: 4px 0;
@@ -116,11 +121,6 @@ i {
         color: green; }
       .replyContainer .userInfo .userName.myPost {
         color: rebeccapurple; }
-    .replyContainer .userInfo .timePosted {
-      font-size: 10px !important;
-      text-align: center;
-      font-weight: lighter;
-      display: block; }
     .replyContainer .userInfo .userProfilePic {
       background-size: cover;
       background-repeat: no-repeat;
@@ -137,8 +137,14 @@ i {
     background-color: pink;
     border-radius: 4px;
     align-self: flex-start; }
+    .replyContainer .replyBody .timePosted {
+      font-size: 9px;
+      color: white;
+      position: absolute;
+      bottom: 7%;
+      right: 4%; }
     .replyContainer .replyBody p {
-      margin: 0;
+      margin: 4px 0;
       color: white; }
     .replyContainer .replyBody.signedIn {
       border-color: green;
@@ -173,7 +179,7 @@ i {
   grid-template-columns: 5fr .45fr;
   border: 1px solid grey;
   border-radius: 4px; }
-  .replyForm .fa-paper-plane {
+  .replyForm i {
     transition: all .075s linear;
     align-self: center;
     justify-self: center;
@@ -181,13 +187,13 @@ i {
     height: 100%;
     position: relative;
     border-left: 1px solid grey; }
-    .replyForm .fa-paper-plane:before {
+    .replyForm i:before {
       position: absolute;
       top: 50%;
       left: 50%;
       font-size: 18px;
       transform: translate(-50%, -50%); }
-    .replyForm .fa-paper-plane:hover {
+    .replyForm i:hover {
       color: green;
       cursor: pointer;
       transition: all .075s linear; }
@@ -195,6 +201,95 @@ i {
     padding: 12px 8px;
     min-width: 100%;
     border: none; }
+
+.postDetail {
+  text-align: center;
+  position: relative; }
+  .postDetail .trending-status {
+    position: absolute;
+    top: 0;
+    right: 1%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    animation: status-pulse 4s infinite; }
+  .postDetail .storyLineTitle {
+    text-align: center;
+    color: aliceblue;
+    display: inline-block;
+    position: relative;
+    font-size: 1rem;
+    text-transform: capitalize;
+    margin-bottom: 1.15em; }
+    .postDetail .storyLineTitle:before {
+      content: '';
+      height: 1px;
+      width: 5%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -7%;
+      background-color: aliceblue; }
+    .postDetail .storyLineTitle:after {
+      content: '';
+      height: 1px;
+      width: 5%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: -7%;
+      background-color: aliceblue; }
+  .postDetail .fullPost {
+    display: grid;
+    grid-template-columns: 17% 83%;
+    grid-column-gap: 15px;
+    text-align: left;
+    background-color: aliceblue;
+    border-radius: 4px;
+    padding: 12px; }
+    .postDetail .fullPost .userInfo .profilePic {
+      border-radius: 50%;
+      height: 75px;
+      width: 75px;
+      display: block;
+      background-size: cover;
+      background-position: center; }
+    .postDetail .fullPost .userInfo .userName {
+      text-align: center; }
+    .postDetail .fullPost .postInfo .postTitle {
+      color: #1d2833;
+      text-transform: capitalize;
+      margin-bottom: .5em; }
+      .postDetail .fullPost .postInfo .postTitle small {
+        font-size: 9px; }
+  .postDetail .divider {
+    padding: 10px 0; }
+    .postDetail .divider i {
+      margin: 0 1px;
+      color: white; }
+  .postDetail .postReplies {
+    text-align: left;
+    background-color: aliceblue;
+    border-radius: 4px;
+    padding: 10px; }
+  .postDetail .detailFooter {
+    position: absolute;
+    bottom: 0;
+    height: 25px;
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+    .postDetail .detailFooter i {
+      vertical-align: middle;
+      color: white; }
+      .postDetail .detailFooter i:hover {
+        cursor: pointer;
+        opacity: .75;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+    .postDetail .detailFooter p {
+      color: white;
+      display: inline-block;
+      margin: 0 15px; }
 
 nav {
   background-color: #02040F;
@@ -410,11 +505,11 @@ select::-ms-expand {
 
 .modalWrapper {
   position: absolute;
-  top: 0;
+  top: -34px;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.75);
   z-index: 9999;
   transition: all .2s linear; }
   .modalWrapper.modalHidden {
@@ -432,18 +527,35 @@ select::-ms-expand {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    min-width: 45%;
+    background-color: #1d2833;
+    min-width: 35%;
+    max-width: 35%;
     width: auto;
-    min-height: 400px;
+    min-height: 675px;
     border-radius: 4px;
     display: grid;
     grid-auto-columns: 1fr;
-    justify-content: center;
-    align-items: center;
-    box-shadow: black 0px 0px 15px 0px;
+    padding: 30px;
+    box-shadow: #1d2833 0px 0px 15px 0px;
     transition: all .2s linear; }
 
+@keyframes openModalWrapper {
+  from {
+    z-index: -1;
+    opacity: 0; }
+  to {
+    z-index: 9999;
+    opacity: 1; } }
+
+@keyframes modalContents {
+  from {
+    min-width: 0;
+    width: 0;
+    min-height: 0; }
+  to {
+    min-width: 35%;
+    width: auto;
+    min-height: 650px; } }
 .hl-1 {
   animation: ping 5s infinite;
   fill: #e8001f;

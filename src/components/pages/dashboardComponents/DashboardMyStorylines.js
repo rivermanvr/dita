@@ -4,7 +4,7 @@ import * as d3 from 'd3'
 import { Link } from 'react-router-dom'
 
 
-export const Storylines = ({ storylines }) => {
+export const Storylines = ({ storylines, storyPath }) => {
   return (
     <div className='post-cards-container'>
     { storylines && storylines.map(storyline => {
@@ -34,7 +34,7 @@ export const Storylines = ({ storylines }) => {
 
         <div className='post-card-footer'>
           <span>{ d3.timeFormat('%m/%d/%y')(new Date(storyline.updatedAt)) }</span>
-          <Link to={ `/dashboard/mystorylines/${storyline.id}` } className='more'><i className='ion-ios-more-outline'></i></Link>
+          <Link to={ `${storyPath}/${storyline.id}` } className='more'><i className='ion-ios-more-outline'></i></Link>
         </div>
       </div>
     })}
@@ -47,7 +47,7 @@ export const MyStorylines = ({ storylines }) => {
     <div className='dashboard-item'>
       <h3 className='dashboard-header'>My Storylines</h3>
 
-      <Storylines storylines={ storylines } />
+      <Storylines storylines={ storylines } storyPath='/dashboard/mystorylines' />
     </div>
   )
 }

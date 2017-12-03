@@ -1,56 +1,58 @@
-import { SET_GRID, ADD_TO_GRID } from '../actions'
+import { SET_GRID, ADD_TO_GRID, calcDistance } from '../actions'
 import { cloneDeep } from 'lodash'
 
 const MAXLAT = 90,
   MINLAT = -90,
   MAXLNG = 180,
   MINLNG = -180,
-  addToBucket = (post, grid, step) => {
-    // return the [lat][lng] for the bucket
-    let bucketLat = Math.round(post.latitude / step, 1) * step,
-      bucketLng = Math.round(post.longitude / (step * 2), 1) * step * 2,
-      bucketKey = `${bucketLat},${bucketLng}`,
-      bucket = grid[bucketKey] || { nodes: [], averageHl: 0, count: 0 }
-
-    let averageHl = (bucket.averageHl * bucket.count + post.halflife) / ++bucket.count
-
-    // pushing to nodes is a little heavy
-    return {
-      [bucketKey]: {
-        nodes: [ ...bucket.nodes, post ],
-        count: bucket.count,
-        averageHl
-      }
-    }
-  },
-  newGridState = (posts, grid) => {
+  newGridState = (posts) => {
     let startT = new Date()
-    console.log('creating new grid state')
+    console.log('creating new map')
 
-    let gridCopyMid = cloneDeep(grid.zoomMid),
-      gridCopyHigh = cloneDeep(grid.zoomHigh)
+    let uniMap = posts.map((post, i) => {
+      // search vertices
+      let lat = post.latitude,
+        lon = post.longitude
 
-    posts.forEach(post => {
-      gridCopyMid = { ...gridCopyMid, ...addToBucket(post, gridCopyMid, LATSTEPMID) }
-      gridCopyHigh = { ...gridCopyHigh, ...addToBucket(post, gridCopyHigh, LATSTEPHIGH) }
+      post.vertices = []
+
+      posts.slice(i + 1).forEach(p => {
+        if (calcDistance(lat, lon, p.latitude, p.longitude) < RADIUS) {
+          post.vertices.push(p)
+        }
+      })
+
+      return post
+    })
+
+    let toShow = uniMap.filter(m => m.vertices.length),
+      toVanish = toShow.reduce((vs, i) => (vs.concat(i.vertices)), []).map(v => v.id)
+
+    let newMap = uniMap.filter(v => !toVanish.includes(v.id)).map(v => {
+      if (v.vertices.length) {
+        v.verticeData = {
+          averageHl: v.vertices.reduce((total, i) => (total += i.halflife), 0) / v.vertices.length,
+          count: v.vertices.length
+        }  
+      }
+      return v
     })
 
     let finT = new Date()
     console.log(`build complete in ${(finT-startT)}ms`)
-
-    return { zoomMid: gridCopyMid, zoomHigh: gridCopyHigh }
+    return newMap
   }
 
-const LATSTEPMID = 1
-const LATSTEPHIGH = 4
-const initialState = { zoomMid: {}, zoomHigh: {} }
+const RADIUS = 25;
+const initialState = []
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_GRID:
-      return { ...state, ...newGridState(action.posts, state) }
+      return [ ...state, ...newGridState(action.posts) ]
     case ADD_TO_GRID:
-      return { ...state, ...addToBucket(action.post, state) }
+      return state
+      // return { ...state, ...addToBucket(action.post, state) }
     default:
       return state
   }

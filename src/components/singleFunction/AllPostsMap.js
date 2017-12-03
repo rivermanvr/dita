@@ -9,12 +9,17 @@ import * as d3 from 'd3';
 class AllPostsMap extends Component {
   constructor(props){
     super(props);
-    this.state = { zoomLevel: 9 }
+    this.state = { zoomLevel: 6 }
     this.changeRadius = this.changeRadius.bind(this)
   }
 
   changeRadius(zoomLevel) {
     this.setState({ zoomLevel })
+  }
+
+  handleRegionZoom = e => {
+    console.log(e)
+    console.log('click!')
   }
 
   render(){
@@ -62,7 +67,7 @@ class AllPostsMap extends Component {
               posts && posts.map(post => {
                 return (                
                   <CircleMarker key={ post.id } center={ [post.latLng.lat, post.latLng.lng] } 
-                    radius={ Math.sqrt(post.halflife) / 2 + zoomLevel }  fillColor={ 'transparent' } 
+                    radius={ Math.sqrt(post.halflife / 2) + zoomLevel }  fillColor={ 'transparent' } 
                     className={ `halflife halflife-outline hl-${Math.ceil(post.halflife)}` }
                     weight={ 1 }>
                     <Popup>
@@ -72,27 +77,28 @@ class AllPostsMap extends Component {
                       </div> 
                     </Popup>                  
                     <CircleMarker center={ [post.latLng.lat, post.latLng.lng] } 
-                      radius={ Math.sqrt(post.halflife) / 2 + zoomLevel } 
+                      radius={ Math.sqrt(post.halflife / 2) + zoomLevel } 
                       className={ `halflife halflife-core hl-${Math.ceil(post.halflife)}` }
                       weight={ 0 }></CircleMarker>
                   </CircleMarker>               
                 )
               }) :
               grid && grid.map((zone, i) => {
+                console.log(zone)
                 return (                
                   <CircleMarker key={ i } center={ [zone.lat, zone.lng] }
-                    radius={ Math.sqrt(zone.halflife) / 2 + zoomLevel }  fillColor={ 'transparent' } 
+                    radius={ Math.sqrt(zone.halflife / 2) + 3 }  fillColor={ 'transparent' } 
                     className={ `halflife halflife-outline hl-${zone.halflife}` }
+                    onClick={ this.handleRegionZoom }
                     weight={ 1 }>
-                    <Popup>
+                    {/*<Popup>
                       <div>
-                        {/*<a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>*/}
-                        {/* trigger a zoom */}
+                        <a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>
                         <span>{ `${zone.count}, ${zone.lat}, ${zone.lng}, ${zone.halflife}` } for debugging</span>
                       </div> 
-                    </Popup>                  
+                    </Popup>*/}
                     <CircleMarker center={ [zone.lat, zone.lng] } 
-                      radius={ Math.sqrt(zone.halflife) / 2 + zoomLevel } 
+                      radius={ Math.sqrt(zone.halflife / 2) + 3 } 
                       className={ `halflife halflife-core hl-${zone.halflife}` }
                       weight={ 0 }></CircleMarker>
                   </CircleMarker>

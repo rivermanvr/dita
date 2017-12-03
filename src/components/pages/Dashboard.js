@@ -24,18 +24,24 @@ const getUserSidebarItems = userId =>
     { label: 'Posts', path: `/userdashboard/${userId}/posts` }
   ]
 
-const Dashboard = ({ userId }) => {
+const Dashboard = ({ user }) => {
   return(   
     <div className='dashboard'>
       <div className='dashboard-sidebar-container'>
-        <div className='dashboard-label'>
-          <i className='ion-ios-speedometer-outline'></i><span>Dashboard</span>
-        </div>
+        { 
+          user ?
+          <div className='dashboard-label'>
+            <i className='ion-ios-person-outline'></i><span>{ user.username }</span>
+          </div> :
+          <div className='dashboard-label'>
+            <i className='ion-ios-speedometer-outline'></i><span>Dashboard</span>
+          </div>
+        }
         <div className='divider'>
           <i className='ion-ios-more-outline'></i>
           <i className='ion-ios-more-outline'></i>
         </div>
-        <DashboardSideBar sidebarItems={ userId ? getUserSidebarItems(userId) : sidebarItems } />
+        <DashboardSideBar sidebarItems={ user ? getUserSidebarItems(user.id) : sidebarItems } />
       </div>
 
       <div className='dashboard-main-container'>
@@ -54,10 +60,10 @@ const Dashboard = ({ userId }) => {
   )  
 }
 
-const mapDispatch = ({}, ownProps) => {
+const mapState = ({ users }, ownProps) => {
   let userId = ownProps.location.pathname.split('/')[2]
   userId = +userId
 
-  return { userId: Number.isNaN(userId) ? null : userId }
+  return { user: Number.isNaN(userId) ? null : users.find(user => user.id == userId) }
 }
-export default connect(null, mapDispatch)(Dashboard)
+export default connect(mapState)(Dashboard)

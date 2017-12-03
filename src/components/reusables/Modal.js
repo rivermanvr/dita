@@ -12,8 +12,10 @@ class Modal extends Component{
     }
     componentDidMount(){
         this.setState({
-            content: this.props.children
+            content: this.props.children,
+            active: this.props.isActive
         })
+        document.addEventListener('click', this.handleOutsideClick,false)        
     }
     componentWillReceiveProps(newProps) {
         if(newProps.modal){
@@ -25,18 +27,21 @@ class Modal extends Component{
     }
     closeModal = () => {
         document.removeEventListener('click', this.handleOutsideClick,false)
+        console.log('hey')
         this.props.toggleModal()
     }
     handleOutsideClick = (e) => {
         if(this.node.contains(e.target)){
             return
         }
-        console.log('hey')
         this.closeModal()
+    }
+    componentWillUnmount = () => {
+        console.log('unmounted')
     }
     render(){
         const {children, isActive} = this.props
-        const {content} = this.state
+        const {content, active} = this.state
         return (
             <div className={`modalWrapper ${isActive ? '' : 'modalHidden'}`}>
                 <div className="modalContents" ref={node => { this.node = node; }}>

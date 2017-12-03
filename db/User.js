@@ -71,7 +71,8 @@ const defineAttr = {
 }
 
 const hashInstancePass = (instance) => {
-  return bcrypt.hash(instance.password, env.SALTROUNDS)
+  const pSALTROUNDS = process.env.SALTROUNDS || env.SALTROUNDS;
+  return bcrypt.hash(instance.password, pSALTROUNDS)
     .then(hashedPassword => {
       instance.password = hashedPassword
       return instance

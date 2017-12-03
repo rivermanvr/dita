@@ -8,8 +8,8 @@ const router = require( 'express' ).Router(),
 
 passport.use(
   new FacebookStrategy({
-    clientID: env.FACEBOOK_APP_ID,
-    clientSecret: env.FACEBOOK_APP_SECRET,
+    clientID: process.env.FACEBOOK_APP_ID || env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET || env.FACEBOOK_APP_SECRET,
     callbackURL: 'http://localhost:2020/api/auth/facebook/verify',
     profileFields : [ 'emails', 'displayName', 'name', 'photos' ]
   },

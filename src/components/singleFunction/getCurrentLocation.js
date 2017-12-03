@@ -4,7 +4,7 @@ import GoogleMaps from '@google/maps'
 
 // google maps
 let googleMapsClient = GoogleMaps.createClient({
-  key: require('../../../env.json').GoogleServerAPI,
+  key: process.env.GoogleServerAPI || require('../../../env.json').GoogleServerAPI,
   Promise: Promise
 });
 

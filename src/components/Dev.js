@@ -25,7 +25,7 @@ export default class App extends Component {
         <link href="/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
         {/* app */}
-        <h3>Welcome to Dita</h3>
+        <h3>Welcome to Dita - Development Environment</h3>
         <Routes />
       </div>
     )

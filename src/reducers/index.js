@@ -10,6 +10,7 @@ import replies from './replies'
 import grid from './grid'
 import modal from './modal'
 import users from './users'
+import activePost from './activePost';
 
 const rootReducer = combineReducers({
   currentUser,
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
   replies,
   grid,
   modal,
-  users
+  users,
+  activePost
 });
 
 export default rootReducer;

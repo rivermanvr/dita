@@ -9,13 +9,15 @@ import MyLocations from './dashboardComponents/MyLocations'
 import UserStorylines from './dashboardComponents/DashboardUserStorylines'
 import UserPosts from './dashboardComponents/DashboardUserPosts'
 import Profile from './Profile';
+import Analytics from './dashboardComponents/dashboardAnalytics';
 
 
 const sidebarItems = [
   { label: 'My Storylines', path: '/dashboard/mystorylines' },
   { label: 'My Posts', path: '/dashboard/myposts' },
   { label: 'My Locations', path: '/dashboard/mylocations' },
-  { label: 'Profile', path: '/dashboard/profile' }
+  { label: 'Profile', path: '/dashboard/profile' },
+  { label: 'Analytics', path: '/dashboard/analytics' }
 ]
 
 const getUserSidebarItems = userId =>
@@ -54,6 +56,7 @@ const Dashboard = ({ user }) => {
           <Route exact path='/dashboard/mystorylines/:id' component={ AStoryline } />
           <Route exact path='/dashboard/myposts' component={ Posts } />
           <Route exact path='/dashboard/profile' component={ Profile } /> 
+          <Route exact path='/dashboard/analytics' component={ Analytics } />
         </Switch>
       </div>
     </div>

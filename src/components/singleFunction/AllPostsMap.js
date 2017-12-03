@@ -4,68 +4,38 @@ import { withRouter, Link } from 'react-router-dom';
 import { Map, Marker, Popup, TileLayer, CircleMarker } from 'react-leaflet';
 import Replies from './Replies'
 import * as d3 from 'd3';
-import {changeActiveModal} from '../../actions'
-import Modal from '../reusables/Modal'
-import PostDetail from './PostDetail'
-import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 
 class AllPostsMap extends Component {
-  state = {
-    isVisible: false,
-    zoomLevel: 9,
-    postDetail: null
+  constructor(props){
+    super(props);
+    this.state = { zoomLevel: 9 }
+    this.changeRadius = this.changeRadius.bind(this)
   }
 
-  changeRadius = zoomLevel => {
+  changeRadius(zoomLevel) {
     this.setState({ zoomLevel })
   }
-  handleModal = content => {
-    this.setState({
-      postDetail: content
-    },()=>this.props.toggleModal())
-  }
-  handleUserDashboard = post => {
-    this.props.history.push(`/userdashboard/${post.userId}/storylines`)
-  }
 
-  handleRegionZoom = e => {
-    console.log(e.latlng.lat)
-    console.log('click!')
-    // this.props.setCurrentLocation({
-    //   lat: e.latlng.lat,
-    //   lng: e.latlng.lng
-    // })
-    // setTimeout(() => {
-    //   this.setState({ zoomLevel: 6 })
-    // }, 300)
-  }
-
-  render = () => {
-    const { posts, currentView, modal } = this.props;
-    const { isVisible, zoomLevel, postDetail } = this.state;
+  render(){
+    const { posts, currentView } = this.props;    
+    const { zoomLevel } = this.state;
     const position = [currentView.lat, currentView.lng]; 
     const darkTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cja8rnhqp0ukm2rpjrq1uxx65/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
     const tileAttr = '&copy; <a href="https://www.mapbox.com/">Mapbox</a>';
+
     posts.forEach(d => {
       d.latLng = new L.LatLng(d.latitude, d.longitude);
     })
 
     const fillColor = 'red', fillOpacity = 0.7, strokeColor = '#fff', strokeWeight = 1;
     const spanStyle = { fontSize: '1.5em' }
-
-    const markers = [
-      { position: [49.8397, 24.0297] },
-      { position: [52.2297, 21.0122] },
-      { position: [51.5074, -0.0901] },
-    ];
   
     return (
       <div className='map-container'>
-        <Map className='markercluster-map'
+        <Map
           center={ position }
           zoom={ zoomLevel }
-          maxZoom={ 18 }
           style={{ height: "calc(100vh - 34px)", width: "100%" }}
           className='map'
           worldCopyJump="true" zoomControl={ false }
@@ -88,63 +58,25 @@ class AllPostsMap extends Component {
               </Popup>
             </Marker>
             {
-
-              // <Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
-              //   <TileLayer
-              //     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              //     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              //   />
-               
-              //   <MarkerClusterGroup>
-              //     <Marker position={[49.8397, 24.0297]} />
-              //     <Marker position={[52.2297, 21.0122]} />
-              //     <Marker position={[51.5074, -0.0901]} />
-              //   </MarkerClusterGroup>
-              // </Map>
-
-              // zoomLevel > 5 ?
               posts && posts.map(post => {
-                return (       
-                <MarkerClusterGroup>         
+                return (                
                   <CircleMarker key={ post.id } center={ [post.latLng.lat, post.latLng.lng] } 
-                    radius={ Math.sqrt(post.halflife / 2) + zoomLevel }  fillColor={ 'transparent' } 
+                    radius={ Math.sqrt(post.halflife) / 2 + zoomLevel }  fillColor={ 'transparent' } 
                     className={ `halflife halflife-outline hl-${Math.ceil(post.halflife)}` }
                     weight={ 1 }>
                     <Popup>
                       <div>
                         <a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>
                         <span>{ post.body }</span>
-                        <p data-post={post} onClick={() => this.handleModal(post)}>View Detail</p>
-                        <p data-post={post} onClick={() => this.handleUserDashboard(post)}>View Dash</p>
                       </div> 
                     </Popup>                  
                     <CircleMarker center={ [post.latLng.lat, post.latLng.lng] } 
-                      radius={ Math.sqrt(post.halflife / 2) + zoomLevel } 
+                      radius={ Math.sqrt(post.halflife) / 2 + zoomLevel } 
                       className={ `halflife halflife-core hl-${Math.ceil(post.halflife)}` }
                       weight={ 0 }></CircleMarker>
-                  </CircleMarker>  
-                </MarkerClusterGroup>             
+                  </CircleMarker>               
                 )
-              }) 
-              // grid && grid.map((zone, i) => {
-              //   return (                
-              //     <CircleMarker key={ i } center={ [zone.lat, zone.lng] }
-              //       radius={ Math.sqrt(zone.halflife / 2) + 3 }  fillColor={ 'transparent' } 
-              //       className={ `halflife halflife-outline hl-${zone.halflife}` }
-              //       onClick={ this.handleRegionZoom }
-              //       weight={ 1 }>
-              //       <Popup>
-              //         <div>
-              //           <span>{ `${zone.count}, ${zone.lat}, ${zone.lng}, ${zone.halflife}` } for debugging</span>
-              //         </div> 
-              //       </Popup>
-              //       <CircleMarker center={ [zone.lat, zone.lng] } 
-              //         radius={ Math.sqrt(zone.halflife / 2) + 3 } 
-              //         className={ `halflife halflife-core hl-${zone.halflife}` }
-              //         weight={ 0 }></CircleMarker>
-              //     </CircleMarker>
-              //   )
-              // })
+              })
             }
         </Map>
 
@@ -154,37 +86,16 @@ class AllPostsMap extends Component {
           <span className='legend-container'><span className='legend-circle hl25'></span>Fading</span>
           <span className='legend-container'><span className='legend-circle hl0'></span>Shrinking</span>
         </div>
-
-        {
-          modal ? <Modal isActive={modal}><PostDetail post={postDetail} /></Modal> : <div></div>
-        }
-
       </div>
     )
   }  
 }
 
 
-const mapStateToProps = ({ posts, currentView, grid, modal }) => {
+const mapStateToProps = ({ posts, currentView }) => {
   return {
-    posts, currentView, modal,
-    grid: Object.keys(grid)
-            .map(key => ({
-              // center of each grid
-              lat: +key.split(',')[0],
-              lng: +key.split(',')[1],
-              halflife: Math.ceil(grid[key].averageHl),
-              count: grid[key].count
-            }))
+    posts, currentView
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleModal: () => {
-      dispatch(changeActiveModal());
-    }
-  }
-}
-
-export default connect (mapStateToProps, mapDispatchToProps)(AllPostsMap)
+export default connect (mapStateToProps)(AllPostsMap)

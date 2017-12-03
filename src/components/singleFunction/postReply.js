@@ -9,21 +9,38 @@ class PostReply extends Component{
         this.state = {
             body: '',
             postId: '',
-            userId:''
+            userId:'',
+            showReplies: ''
         }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
     componentDidMount(){
+      let loggedIn 
+      if(!this.props.currentUser.isAuthenticated){
+        loggedIn = false
+      }
+      else {
+          loggedIn = true
+      }
        this.setState({
             userId: this.props.currentUser.user.id,
-            postId: this.props.postId
+            postId: this.props.postId,
+            showReplies: loggedIn
         })
     }
     componentWillReceiveProps(newProps){
+        let loggedIn 
+        if(!newProps.currentUser.isAuthenticated){
+            loggedIn = false
+        }
+        else {
+            loggedIn = true
+        }
         this.setState({
             userId: newProps.currentUser.user.id,
-            postId: newProps.postId
+            postId: newProps.postId,
+            showReplies: loggedIn
         })
     }
     onChange(e){
@@ -33,19 +50,27 @@ class PostReply extends Component{
     }
     onSubmit(e){
         e.preventDefault()
-        this.props.handleAdd(this.state)
+        const post = {
+            body: this.state.body,
+            postId: this.state.postId,
+            userId: this.state.userId
+        }
+        this.props.handleAdd(post)
         this.setState({
             body:''
         })
     }
     render(){
         const {post} = this.props
-        const {body} = this.state
-        return(
-           <form className="replyForm" onSubmit={this.onSubmit}>
-             <input value={body} placeholder={post && `Reply to ${post.user.name}` } className='replyInput' type="text" onChange={this.onChange}/>
-             <i className='ion-android-send'></i>         
-             </form>
+        const {body, showReplies} = this.state
+        return (
+           <div>
+           {showReplies && <form className="replyForm" onSubmit={this.onSubmit}>
+                <input value={body} placeholder={post && `Reply to ${post.user.name}` } className='replyInput' type="text" onChange={this.onChange}/>
+                <i className='ion-android-send'></i>         
+            </form>
+            }
+            </div>
         )
     }
 }

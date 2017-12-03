@@ -48,6 +48,7 @@ class PostDetail extends Component{
   }
   handleUserDashboard = post => {
     this.props.history.push(`/userdashboard/${post.userId}/storylines`)
+    this.props.toggleModal()
   }
   handleNext = () => {
     if(this.state.currentPostIndex === this.state.posts.length -1){

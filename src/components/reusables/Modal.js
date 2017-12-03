@@ -37,7 +37,7 @@ class Modal extends Component{
         this.closeModal()
     }
     componentWillUnmount = () => {
-        console.log('unmounted')
+        document.removeEventListener('click', this.handleOutsideClick,false)        
     }
     render(){
         const {children, isActive} = this.props

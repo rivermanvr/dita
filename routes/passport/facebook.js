@@ -7,7 +7,7 @@ const router = require( 'express' ).Router(),
 
   let env;
   if (process.env.NODE_ENV !== 'production') {
-    env = require('../env');
+    env = require('../../env');
   } else {
     env = process.env;
   }

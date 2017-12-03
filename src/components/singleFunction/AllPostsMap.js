@@ -80,7 +80,7 @@ class AllPostsMap extends Component {
               </Popup>
             </Marker>
             {
-              zoomLevel > 5 ?
+              // zoomLevel > 5 ?
               posts && posts.map(post => {
                 return (                
                   <CircleMarker key={ post.id } center={ [post.latLng.lat, post.latLng.lng] } 
@@ -102,25 +102,25 @@ class AllPostsMap extends Component {
                   </CircleMarker>               
                 )
               }) :
-              grid && grid.map((zone, i) => {
-                return (                
-                  <CircleMarker key={ i } center={ [zone.lat, zone.lng] }
-                    radius={ Math.sqrt(zone.halflife / 2) + 3 }  fillColor={ 'transparent' } 
-                    className={ `halflife halflife-outline hl-${zone.halflife}` }
-                    onClick={ this.handleRegionZoom }
-                    weight={ 1 }>
-                    <Popup>
-                      <div>
-                        <span>{ `${zone.count}, ${zone.lat}, ${zone.lng}, ${zone.halflife}` } for debugging</span>
-                      </div> 
-                    </Popup>
-                    <CircleMarker center={ [zone.lat, zone.lng] } 
-                      radius={ Math.sqrt(zone.halflife / 2) + 3 } 
-                      className={ `halflife halflife-core hl-${zone.halflife}` }
-                      weight={ 0 }></CircleMarker>
-                  </CircleMarker>
-                )
-              })
+              // grid && grid.map((zone, i) => {
+              //   return (                
+              //     <CircleMarker key={ i } center={ [zone.lat, zone.lng] }
+              //       radius={ Math.sqrt(zone.halflife / 2) + 3 }  fillColor={ 'transparent' } 
+              //       className={ `halflife halflife-outline hl-${zone.halflife}` }
+              //       onClick={ this.handleRegionZoom }
+              //       weight={ 1 }>
+              //       <Popup>
+              //         <div>
+              //           <span>{ `${zone.count}, ${zone.lat}, ${zone.lng}, ${zone.halflife}` } for debugging</span>
+              //         </div> 
+              //       </Popup>
+              //       <CircleMarker center={ [zone.lat, zone.lng] } 
+              //         radius={ Math.sqrt(zone.halflife / 2) + 3 } 
+              //         className={ `halflife halflife-core hl-${zone.halflife}` }
+              //         weight={ 0 }></CircleMarker>
+              //     </CircleMarker>
+              //   )
+              // })
             }
         </Map>
 

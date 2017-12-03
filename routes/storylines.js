@@ -24,11 +24,14 @@ router.post('/', verifyToken, (req, res, next) => {
 })
 
 router.get('/', (req, res, next) => {
-  StoryLine.findAll()
-    .then(storylines => {
-      res.send(storylines)
-    })
-    .catch(next);
+  StoryLine.findAll({
+    order: [['updatedAt', 'DESC']],
+    include: [ { model: Post, include: [ Reply ] }]
+  })
+  .then(storylines => {
+    res.send(storylines)
+  })
+  .catch(next);
 })
 
 module.exports = router

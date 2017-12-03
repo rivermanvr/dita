@@ -32,7 +32,7 @@ export const Posts = ({ posts }) => {
   )
 }
 
-const MyPosts = ({ posts }) => {
+export const MyPosts = ({ posts }) => {
   return (
     <div className='dashboard-item'>
       <h3 className='dashboard-header'>My Posts</h3>

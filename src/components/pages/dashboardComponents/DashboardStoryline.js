@@ -19,7 +19,12 @@ export const Storyline = ({ storyline, back }) => {
   )
 }
 
-const mapState = ({ userStorylines }, ownProps) => ({ storyline: userStorylines.find(storyline => storyline.id == ownProps.match.params.id) })
+const mapState = ({ storylines, userStorylines }, ownProps) => {
+  let rootStorylines = ownProps.match.params.userId ? storylines : userStorylines
+  return {
+    storyline: rootStorylines.find(storyline => storyline.id == ownProps.match.params.id)
+  }
+}
 const mapDispatch = ({}, ownProps) => dispatch => ({
   back() {
     ownProps.history.goBack()

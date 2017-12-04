@@ -6,20 +6,18 @@
     height:100vh;
     background-color: transparentize($color: #ffffff, $amount: .25);
     z-index: 9999;
-    //animation-name:openModalWrapper ;
-    //animation-duration: .2s;
-    transition: all .2s linear;
+    transition: all 0.45s cubic-bezier(.25,.8,.25,1);
     &.modalHidden {
         z-index: -1;
         opacity:0;
-        transition: all .2s linear;
-
+        transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+        
         .modalContents {
             min-width: 0;
             width:0;
             height:0;
             min-height:0;
-            transition: all .2s linear;
+            transition: all 0.5s cubic-bezier(.25,.8,.25,1);
         }
     }
     .modalContents {
@@ -30,39 +28,13 @@
         background-color: #1d2833;
         min-width:35%;
         max-width:35%;
-        width:auto;
-        min-height:675px;
+        width:35%;
+        height:675px;
         border-radius: 4px;
         display: grid;
         grid-auto-columns: 1fr;
         padding:30px;
         box-shadow: #1d2833 0px 0px 15px 0px;
-        //animation-name: modalContents ;
-        //animation-duration: .2s;
-        transition: all .2s linear;
-    }
-}
-
-@keyframes openModalWrapper {
-    from {
-        z-index: -1;
-        opacity:0;
-    }
-    to {
-        z-index: 9999;
-        opacity: 1;        
-    }
-}
-
-@keyframes modalContents {
-    from {
-        min-width: 0;
-        width:0;
-        min-height:0;   
-    }
-    to {
-        min-width:35%;
-        width:auto;
-        min-height:650px;
+        transition: all 0.45s cubic-bezier(.25,.8,.25,1);
     }
 }

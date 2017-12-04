@@ -15,7 +15,8 @@ class Modal extends Component{
             content: this.props.children,
             active: this.props.isActive
         })
-        document.addEventListener('click', this.handleOutsideClick,false)        
+        document.addEventListener('click', this.handleOutsideClick,false)  
+        window.setTimeout(()=> this.toggleShow.classList.remove('modalHidden'),0)      
     }
     componentWillReceiveProps(newProps) {
         if(newProps.modal){
@@ -24,11 +25,13 @@ class Modal extends Component{
         this.setState({
             content: newProps.children
         })
+        window.setTimeout(()=> this.toggleShow.classList.remove('modalHidden'),0)              
     }
     closeModal = () => {
         document.removeEventListener('click', this.handleOutsideClick,false)
         console.log('hey')
-        this.props.toggleModal()
+        this.toggleShow.classList.add('modalHidden')                   
+        window.setTimeout(()=> this.props.toggleModal(), 350)
     }
     handleOutsideClick = (e) => {
         if(this.node.contains(e.target)){
@@ -43,7 +46,7 @@ class Modal extends Component{
         const {children, isActive} = this.props
         const {content, active} = this.state
         return (
-            <div className={`modalWrapper ${isActive ? '' : 'modalHidden'}`}>
+            <div className='modalWrapper modalHidden' ref={node => { this.toggleShow = node; }}>
                 <div className="modalContents" ref={node => { this.node = node; }}>
                     {content}
                 </div>

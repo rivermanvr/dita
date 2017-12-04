@@ -25,6 +25,7 @@ import Signup from './pages/Signup'
 import Profile from './pages/Profile'
 import Dashboard from './pages/Dashboard'
 import AddPost from './pages/AddPost'
+import EditPost from './pages/EditPost'
 import MyLocations from './pages/dashboardComponents/MyLocations'
 import MyPosts from './pages/dashboardComponents/DashboardMyPosts'
 import Home from './pages/Home'
@@ -46,6 +47,7 @@ export default function () {
         <Route path='/userdashboard' component={ Dashboard } />
         <Route path='/modal' component={testModal} />
         <Route exact path='/addpost' component={ AddPost } />
+        <Route exact path='/editpost/:id' component={ EditPost } />
         <AnimatedRoute atEnter={{opacity:0}} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} exact path='/' component={Home}/>
         <AnimatedRoute atEnter={{opacity:0}} atLeave={{ opacity: 1 }} atActive={{ opacity: 1 }} exact path='/map' component={AllPostsMap}/>          
       </Switch>

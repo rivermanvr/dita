@@ -9,8 +9,13 @@ nav {
     color: $white;
     display: inline-block;
     padding: 10px 15px;
+    transition: all cubic-bezier(.51,.19,.27,.81) 200ms;
     &.active {
       background-color: $navy;
     }
+    &:hover {
+      background-color: transparentize($navy, 0.1);
+    }
   }
+  
 }

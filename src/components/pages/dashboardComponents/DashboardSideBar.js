@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-const DashboardSideBar = ({ sidebarItems }) => {
+const DashboardSideBar = ({ sidebarItems, location }) => {
+  const pathName = location.pathname
+
   return (
     <ul className='dashboard-sidebar'>
       {
         sidebarItems.map(sidebar => {
           return (
             <li key={ sidebar.label }>
-              <Link to={ sidebar.path }>{ sidebar.label }</Link>  
+              <Link to={ sidebar.path } className={ pathName.includes(sidebar.root) ? 'active' : '' }>{ sidebar.label }</Link>  
             </li>          
           )
         })
@@ -18,4 +20,4 @@ const DashboardSideBar = ({ sidebarItems }) => {
   )
 }
 
-export default DashboardSideBar;
+export default withRouter(DashboardSideBar);

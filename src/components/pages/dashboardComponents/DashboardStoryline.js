@@ -12,7 +12,13 @@ export const Storyline = ({ storyline, back }) => {
 
   return (
     <div className='dashboard-item'>
-      <h3 className='dashboard-header'><i className='ion-ios-arrow-thin-left' onClick={ back }></i> <span>{ storyline.title }</span></h3>
+      <h3 className='dashboard-header'>
+        <span className='dashboard-header-return-container' onClick={ back }>
+          <i className='ion-ios-arrow-thin-left'></i>
+          <span>Return to storylines</span>
+        </span>
+        <span>{ storyline.title }</span>
+      </h3>
 
       <Posts posts={ storyline.posts } />
     </div>

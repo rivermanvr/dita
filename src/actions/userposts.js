@@ -18,6 +18,12 @@ export const addUserPost = (newPost) => dispatch =>
     .then(res => dispatch(fetchPosts(res.data)))
     .catch(console.log);
 
+export const updateUserPost = post => dispatch => 
+  axios.put(`/api/posts/myposts/${post.id}`, post)
+    .then(res => dispatch(fetchUserPosts(res.data)))
+    .then(res => dispatch(fetchPosts(res.data)))
+    .catch(console.log);
+
 export const createStoryAndPost = (storyData, postData) => dispatch =>
   axios.post('/api/posts/myposts/withstories', { storyData, postData })
     .then(res => dispatch(fetchUserPosts()))

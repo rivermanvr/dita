@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as d3 from 'd3'
 import { Link } from 'react-router-dom'
@@ -39,14 +39,35 @@ export const _Posts = ({ posts, modal, toggleModal }) => {
   )
 }
 
-export const MyPosts = ({ posts }) => {
-  return (
-    <div className='dashboard-item'>
-      <h3 className='dashboard-header'>My Posts</h3>
+export class MyPosts extends Component {
+  state = {
+    toggleState: 'All',
+    viewStates: [ 'All', 'Shared', 'Private' ]
+  }
+  handleToggle = newVs => {
+    this.setState({ toggleState: newVs })
+  }
 
-      <Posts posts={ posts } />
-    </div>
-  )
+  render = () => {
+    const { viewStates, toggleState } = this.state
+    const { posts } = this.props
+    let postsToRender = toggleState == 'All' ? posts : toggleState == 'Shared' ? posts.filter(post => post.storylineId) : posts.filter(post => !post.storylineId)
+
+    return (    
+      <div className='dashboard-item my-posts'>
+        <div className='dashboard-header'>
+          <h3>My Posts</h3>
+          <div className='switch-container'>
+          { viewStates.map(vs => (
+            <div className={ `switch ${toggleState == vs ? 'active' : ''}` } onClick={ () => this.handleToggle(vs) }>{ vs }</div>
+          ))}
+          </div>
+        </div>
+
+        <Posts posts={ postsToRender } />
+      </div>
+    )
+  }
 }
 
 const mapState = ({ userPosts }) => ({ posts: userPosts })

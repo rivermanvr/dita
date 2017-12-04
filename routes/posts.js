@@ -61,4 +61,17 @@ router.put('/addlife/:id', (req, res, next) => {
     })
 })
 
+router.put('/myposts/:id', verifyToken, (req, res, next) => {
+  if (req.user.id != req.body.userId) return res.sendStatus(403)
+  res.sendStatus(200)
+
+  Post.findOne({ where: { userId: req.user.id, id: req.params.id }})
+    .then(post => {
+      if (!post) throw new Error('post not found?')
+      return post.update(req.body)
+    })
+    .then(() => res.sendStatus(200))
+    .catch(next)
+})
+
 module.exports = router

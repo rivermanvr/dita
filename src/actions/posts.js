@@ -11,7 +11,7 @@ export const fetchPosts = () => dispatch =>
   axios.get('/api/posts')
     .then(res => {
       dispatch(getPosts(res.data))
-      dispatch(setGrid(res.data))
+      // dispatch(setGrid(res.data))
     })
     .catch(console.log);
 

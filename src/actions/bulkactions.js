@@ -2,7 +2,7 @@ import {
   fetchUserPosts, setUserPosts,
   fetchUserStorylines, setUserStorylines,
   fetchUserLocations, setUserLocations,
-  setLocationFromPin } from './index'
+  setLocationFromPin, fetchGrid } from './index'
 
 export const loadUser = () => dispatch => {
   dispatch(fetchUserPosts())

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import store from '../store'
-import { loadUserData, fetchPosts, fetchStorylines, fetchUsers } from '../actions'
+import { loadUserData, fetchPosts, fetchStorylines, fetchUsers, fetchGrid } from '../actions'
 import jwt from 'jsonwebtoken'
 
 import { Link } from 'react-router-dom'
@@ -10,6 +10,7 @@ import Nav from './Nav'
 export default class App extends Component {
 
   componentDidMount() {
+    store.dispatch(fetchGrid())
     store.dispatch(fetchPosts())
     store.dispatch(fetchStorylines())
     store.dispatch(fetchUsers())

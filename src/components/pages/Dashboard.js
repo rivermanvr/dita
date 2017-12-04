@@ -9,7 +9,7 @@ import MyLocations from './dashboardComponents/MyLocations'
 import UserStorylines from './dashboardComponents/DashboardUserStorylines'
 import UserPosts from './dashboardComponents/DashboardUserPosts'
 import Profile from './Profile';
-import Analytics from './dashboardComponents/dashboardAnalytics';
+import Analytics from './dashboardComponents/DashboardAnalytics';
 
 
 const sidebarItems = [

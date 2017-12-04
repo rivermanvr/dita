@@ -61,7 +61,7 @@ export const MyStorylines = ({ storylines }) => {
 
 const mapState = ({ userStorylines }) => ({ storylines: userStorylines })
 const mapStorylinesState = ({ modal }) => ({ modal })
-const mapStorylinesDispatch = () => dispatch => ({
+const mapStorylinesDispatch = dispatch => ({
   toggleModal(post) {
     dispatch(setModal())
     dispatch(setActivePost(post))

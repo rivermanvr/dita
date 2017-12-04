@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { recordMetrics, setActivePost } from '../../actions'
+import { recordMetrics, setActivePost, setModal } from '../../actions'
 import {connect} from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Replies from './Replies'
@@ -48,7 +48,7 @@ class PostDetail extends Component{
   }
   handleUserDashboard = post => {
     this.props.history.push(`/userdashboard/${post.userId}/storylines`)
-    this.props.toggleModal()
+    this.props.setModal()
   }
   handleNext = () => {
     if(this.state.currentPostIndex === this.state.posts.length -1){
@@ -120,4 +120,4 @@ const mapStateToProps = ({ currentUser, posts, activePost }) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, { recordMetrics, setActivePost })(PostDetail))
+export default withRouter(connect(mapStateToProps, { recordMetrics, setActivePost, setModal })(PostDetail))

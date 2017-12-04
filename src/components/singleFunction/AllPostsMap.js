@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { Map, Marker, Popup, TileLayer, CircleMarker } from 'react-leaflet';
 import Replies from './Replies'
 import * as d3 from 'd3';
-import { changeActiveModal, setCurrentLocation, setActivePost } from '../../actions'
+import { setModal, setActivePost } from '../../actions'
 import Modal from '../reusables/Modal'
 import PostDetail from './PostDetail'
 import { isEmpty } from 'lodash'
@@ -26,19 +26,7 @@ class AllPostsMap extends Component {
   handleUserDashboard = post => {
     this.props.history.push(`/userdashboard/${post.userId}/storylines`)
   }
-
-  handleRegionZoom = (lat, lng) => {
-    console.log(lat, lng)
-    console.log('click!')
-    // this.props.setCurrentLocation({
-    //   lat: lat,
-    //   lng: lng
-    // })
-    // setTimeout(() => {
-    //   this.setState({ zoomLevel: 9 })
-    // }, 800)
-  }
-
+  
   render = () => {
     const { posts, currentView, grid, modal } = this.props;
     const { isVisible, zoomLevel, postDetail } = this.state;
@@ -116,7 +104,7 @@ class AllPostsMap extends Component {
                     {
                       post.verticeData ?
                       <div className='cluster-popup-inner'>
-                        <a style={ spanStyle } onClick={ () => this.handleRegionZoom(post.latitude, post.longitude) }>{ post.verticeData.count } posts</a>
+                        <a style={ spanStyle }>{ post.verticeData.count } posts</a>
                         {/*<a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>
                         <span>{ post.body }</span>
                         <p data-post={post} onClick={() => this.handleModal(post)}>View Detail</p>
@@ -148,7 +136,6 @@ class AllPostsMap extends Component {
         </div>
 
         {
-          // modal ? <Modal isActive={modal}><PostDetail post={postDetail} toggleModal={this.props.toggleModal}/></Modal> : <div></div>
           modal ? <Modal isActive={modal}><PostDetail /></Modal> : <div></div>
         }
 
@@ -164,12 +151,11 @@ const mapStateToProps = ({ posts, currentView, grid, modal }) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    toggleModal: () => {
-      dispatch(changeActiveModal());
+    toggleModal() {
+      dispatch(setModal());
     },
-    setCurrentLocation,
     setActivePost(post) {
       dispatch(setActivePost(post))
     }

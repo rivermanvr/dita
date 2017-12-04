@@ -51,7 +51,7 @@ export const MyPosts = ({ posts }) => {
 
 const mapState = ({ userPosts }) => ({ posts: userPosts })
 const mapPostState = ({ modal }) => ({ modal })
-const mapPostDispatch = () => dispatch => ({
+const mapPostDispatch = dispatch => ({
   toggleModal(post) {
     dispatch(setModal())
     dispatch(setActivePost(post))

@@ -16,10 +16,11 @@ let googleMapsClient = GoogleMaps.createClient({
 });
 
 // components
-import { Textbox, Textarea, Button } from '../reusables'
+import { Textbox, Textarea, Button, Modal, Message } from '../reusables'
+import { Loading, LoadingArrows, DoneCheck } from '../reusables/animatedDivs'
 
 // redux
-import { addUserPost, createStoryAndPost } from '../../actions'
+import { addUserPost, createStoryAndPost, setModal } from '../../actions'
 
 class AddPost extends Component {
   state = {
@@ -31,7 +32,9 @@ class AddPost extends Component {
     addToStoryline: false,
     storyTitle: '',
     storyDescription: '',
-    storylineId: 0
+    storylineId: 0,
+    messageDisplayed: '',
+    loading: false
   }
 
   componentDidMount = () => {
@@ -51,7 +54,23 @@ class AddPost extends Component {
   }
 
   handlePost = () => {
-    this.props.addPost(this.state)  
+    this.setState({
+      messageDisplayed: 'Creating your post',
+      loading: true
+    }, () => {
+      this.props.setModal()
+      // this.props.addPost(this.state) // fakin it ;)
+      setTimeout(() => {
+        this.setState({
+          messageDisplayed: 'Post created!',
+          loading: false
+        })
+      }, 1500)
+    })
+  }
+  handleOkClick = () => {
+    this.props.setModal()
+    this.props.history.push('/dashboard/myposts')
   }
 
   setCurrentLocation = () => {
@@ -91,8 +110,8 @@ class AddPost extends Component {
   }
 
   render = () => {
-    const { title, body, address, addToStoryline, storyTitle, storyDescription } = this.state
-    const { handleChange, handlePost, toggleStoryline, setCurrentLocation } = this
+    const { title, body, address, addToStoryline, storyTitle, storyDescription, messageDisplayed, loading } = this.state
+    const { handleChange, handlePost, toggleStoryline, setCurrentLocation, handleOkClick } = this
 
     return (
       <div className='add-post-container'>
@@ -158,14 +177,23 @@ class AddPost extends Component {
               className='btn default' />
           </div>
         </div>
+        { this.props.modal &&
+          <Modal isActive={ this.props.modal } className='modal-message'>
+            <div className={ `add-edit-message-container ${loading ? '' : 'done'}` }>
+              <Message body={ messageDisplayed } />
+              { loading ? <LoadingArrows /> : <DoneCheck /> }
+            </div>
+            <Button label='Ok!' className={ `btn default ${loading ? 'hidden': ''}` } onClick={ handleOkClick }/>
+          </Modal> }
       </div>
     )
   }
 }
 
-const mapState = ({ userLocations, userStorylines }) => ({
+const mapState = ({ userLocations, userStorylines, modal }) => ({
   home: userLocations.home,
-  userStorylines
+  userStorylines,
+  modal
 })
 const mapDispatch = (dispatch, ownProps) => ({
   addPost(post) {
@@ -191,6 +219,9 @@ const mapDispatch = (dispatch, ownProps) => ({
         ownProps.history.push('/dashboard')
       })
     }
+  },
+  setModal() {
+    dispatch(setModal())
   }
 })
 export default connect(mapState, mapDispatch)(AddPost)

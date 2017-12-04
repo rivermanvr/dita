@@ -43,10 +43,10 @@ class Modal extends Component{
         document.removeEventListener('click', this.handleOutsideClick,false)        
     }
     render(){
-        const {children, isActive} = this.props
+        const {children, isActive, className} = this.props
         const {content, active} = this.state
         return (
-            <div className='modalWrapper modalHidden' ref={node => { this.toggleShow = node; }}>
+            <div className={ `modalWrapper modalHidden ${className}` } ref={node => { this.toggleShow = node; }}>
                 <div className="modalContents" ref={node => { this.node = node; }}>
                     {content}
                 </div>

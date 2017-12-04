@@ -71,8 +71,7 @@ footer {
   padding: 20px;
   text-align: right;
   border-top: solid 2px #dddddd;
-  background-color: #dddddd;
-  z-index: 999; }
+  background-color: #dddddd; }
 
 a {
   text-decoration: none;

@@ -14,12 +14,12 @@ export const _Posts = ({ posts, modal, toggleModal }) => {
   return (
     <div className='post-cards-container'>
     { posts && posts.map(post => {
-      let title = (post.title || post.body).slice(0, 30),
+      let title = (post.title || post.body).slice(0, 26),
         body = post.body.slice(0, 500)
 
       return <div key={ post.id } className='post-card'>
         <div className='post-card-header'>
-          <h4>{ `${title}${title.length > 30 ? '...' : ''}` }</h4>
+          <h4>{ `${title.trim()}${title.length >= 26 ? '...' : ''}` }</h4>
           <span className={ `trending-status hl-${Math.ceil(post.halflife)}` }></span>
         </div>
 

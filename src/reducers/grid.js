@@ -49,7 +49,7 @@ const initialState = []
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_GRID:
-      return [ ...state, ...newGridState(action.posts) ]
+      return newGridState(action.posts)
     case ADD_TO_GRID:
       return state
       // return { ...state, ...addToBucket(action.post, state) }

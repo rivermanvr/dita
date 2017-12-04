@@ -43,11 +43,11 @@ class Replies extends Component{
 }
 
 const mapStateToProps = ({posts,currentUser}, props) => {
-    return {
-        replies: props.postId ? posts.find((post) => post.id === props.postId).replies.sort((a,b) => a.id - b.id) : [],
-        post:posts.find((post) => post.id === props.postId),
-        currentUser,
-    }
+  return {
+    replies: props.postId ? posts.find((post) => post.id === props.postId).replies.sort((a,b) => a.id - b.id) : [],
+    post:posts.find((post) => post.id === props.postId),
+    currentUser,
+  }
 }
 
 export default withRouter(connect(mapStateToProps)(Replies))

@@ -9,6 +9,12 @@ import Modal from '../reusables/Modal'
 import PostDetail from './PostDetail'
 import { isEmpty } from 'lodash'
 
+const findMaxGrid = (grid, zoom) => {
+  let gridKey = Object.keys(grid).reduce((f, k) => {
+    return k <= zoom && k > f ? k : f
+  }, 0)
+  return grid[gridKey] && grid[gridKey].nodes || []
+}
 
 class AllPostsMap extends Component {
   state = {
@@ -28,8 +34,9 @@ class AllPostsMap extends Component {
   }
   
   render = () => {
-    const { posts, currentView, grid, modal } = this.props;
+    const { posts, currentView, modal } = this.props;
     const { isVisible, zoomLevel, postDetail } = this.state;
+    const grid = findMaxGrid(this.props.grid, zoomLevel);
     const position = [currentView.lat, currentView.lng]; 
     const darkTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cja8rnhqp0ukm2rpjrq1uxx65/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
     const tileAttr = '&copy; <a href="https://www.mapbox.com/">Mapbox</a>';
@@ -104,11 +111,7 @@ class AllPostsMap extends Component {
                     {
                       post.verticeData ?
                       <div className='cluster-popup-inner'>
-                        <a style={ spanStyle }>{ post.verticeData.count } posts</a>
-                        {/*<a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>
-                        <span>{ post.body }</span>
-                        <p data-post={post} onClick={() => this.handleModal(post)}>View Detail</p>
-                        <p data-post={post} onClick={() => this.handleUserDashboard(post)}>View Dash</p>*/}
+                        <a style={ spanStyle }>{ post.verticeData.count + 1 } posts</a>
                       </div> :
                       <div>
                         <a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>

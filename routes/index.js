@@ -6,4 +6,6 @@ router.use('/posts', require('./posts'))
 router.use('/storylines', require('./storylines'))
 router.use('/locations', require('./locations'))
 router.use('/replies', require('./replies'))
+router.use('/grid', require('./grid'))
+
 module.exports = router;

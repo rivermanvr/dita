@@ -309,9 +309,12 @@ nav {
   nav a {
     color: #ffffff;
     display: inline-block;
-    padding: 10px 15px; }
+    padding: 10px 15px;
+    transition: all cubic-bezier(0.51, 0.19, 0.27, 0.81) 200ms; }
     nav a.active {
       background-color: #006DAA; }
+    nav a:hover {
+      background-color: rgba(0, 109, 170, 0.9); }
 
 input, textarea, button, select {
   font-size: 1em;
@@ -481,11 +484,19 @@ select::-ms-expand {
     cursor: pointer; }
     .dashboard-sidebar-container li a:hover {
       background-color: #1D2833;
+      border-color: #1D2833;
       color: #ffffff; }
       .dashboard-sidebar-container li a:hover:visited {
         color: #ffffff; }
     .dashboard-sidebar-container li a:visited {
       color: inherit; }
+    .dashboard-sidebar-container li a.active {
+      background-color: rgba(29, 40, 51, 0.95);
+      color: #ffffff;
+      border-color: #1D2833; }
+      .dashboard-sidebar-container li a.active:hover {
+        background-color: #1D2833;
+        border-color: #1D2833; }
 
 .dashboard-item {
   display: grid;
@@ -498,18 +509,39 @@ select::-ms-expand {
     flex-direction: column; }
     .dashboard-item .dashboard-header > * {
       align-self: start; }
+    .dashboard-item .dashboard-header .dashboard-header-return-container {
+      cursor: pointer;
+      display: flex;
+      margin-bottom: 30px; }
+      .dashboard-item .dashboard-header .dashboard-header-return-container > * {
+        align-self: center; }
+      .dashboard-item .dashboard-header .dashboard-header-return-container span {
+        font-size: 1rem;
+        font-style: italic;
+        display: inline-block;
+        position: relative; }
+        .dashboard-item .dashboard-header .dashboard-header-return-container span:after {
+          content: '';
+          width: 0%;
+          height: 2px;
+          background-color: #1D2833;
+          position: absolute;
+          bottom: -3px;
+          left: 0;
+          transition: all 300ms; }
+      .dashboard-item .dashboard-header .dashboard-header-return-container:hover span:after {
+        width: 100%; }
+      .dashboard-item .dashboard-header .dashboard-header-return-container:hover i {
+        color: #ffffff;
+        background-color: #1D2833; }
     .dashboard-item .dashboard-header i {
       border: solid 1px #1D2833;
       border-radius: 100%;
       width: 33px;
       height: 33px;
       padding-left: 5px;
-      margin-bottom: 30px;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      cursor: pointer; }
-      .dashboard-item .dashboard-header i:hover {
-        color: #ffffff;
-        background-color: #1D2833; }
+      margin-right: 12px;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
 
 .modalWrapper {
   position: absolute;
@@ -1887,7 +1919,7 @@ select::-ms-expand {
     color: inherit; }
   .storyline-card .storyline-card-latest-post-preview {
     cursor: pointer;
-    min-height: 95px;
+    height: 95px;
     padding-bottom: 5px;
     margin: 0 15px;
     width: calc(100% - 30px);

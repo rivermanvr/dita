@@ -16,13 +16,13 @@ const sidebarItems = [
   { label: 'My Posts', path: '/dashboard/myposts' },
   { label: 'My Locations', path: '/dashboard/mylocations' },
   { label: 'Profile', path: '/dashboard/profile' }
-]
+].map(item => ({ ...item, root: item.path }))
 
 const getUserSidebarItems = userId =>
   [
     { label: 'Storylines', path: `/userdashboard/${userId}/storylines` },
     { label: 'Posts', path: `/userdashboard/${userId}/posts` }
-  ]
+  ].map(item => ({ ...item, root: item.path }))
 
 const Dashboard = ({ user }) => {
   return(   

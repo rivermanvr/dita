@@ -71,7 +71,7 @@ class AllPostsMap extends Component {
             <Marker position={ position }>
               <Popup>
                 <div>
-                  <span style={ spanStyle }>You are at</span><br/>
+                  <span style={ spanStyle }>You are at</span>
                   <span>{ currentView.address }</span>
                 </div>
               </Popup>
@@ -86,10 +86,12 @@ class AllPostsMap extends Component {
                     weight={ 1 }>
                     <Popup>
                       <div>
-                        <a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>
+                        <h4 style={ spanStyle } onClick={ () => this.handleModal(post) }>{ post.title }</h4>
                         <span>{ post.body }</span>
-                        <p data-post={post} onClick={() => this.handleModal(post)}>View Detail</p>
-                        <p data-post={post} onClick={() => this.handleUserDashboard(post)}>View Dash</p>
+                        <div className='leaflet-popup-footer'>
+                          <p data-post={post} onClick={() => this.handleModal(post)}>Full Story</p>
+                          <p data-post={post} onClick={() => this.handleUserDashboard(post)}>More by user</p>
+                        </div>
                       </div> 
                     </Popup>                  
                     <CircleMarker center={ [post.latLng.lat, post.latLng.lng] } 
@@ -114,10 +116,12 @@ class AllPostsMap extends Component {
                         <a style={ spanStyle }>{ post.verticeData.count + 1 } posts</a>
                       </div> :
                       <div>
-                        <a style={ spanStyle } href={`/posts/${post.id}`}>{ post.title }</a> <br/>
+                        <h4 style={ spanStyle } onClick={ () => this.handleModal(post) }>{ post.title }</h4>
                         <span>{ post.body }</span>
-                        <p data-post={post} onClick={() => this.handleModal(post)}>View Detail</p>
-                        <p data-post={post} onClick={() => this.handleUserDashboard(post)}>View Dash</p>
+                        <div className='leaflet-popup-footer'>
+                          <p data-post={post} onClick={() => this.handleModal(post)}>Full Story</p>
+                          <p data-post={post} onClick={() => this.handleUserDashboard(post)}>More by user</p>
+                        </div>
                       </div>
                     }
                     </Popup>                  

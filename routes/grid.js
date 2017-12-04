@@ -18,15 +18,11 @@ function calcDistance (lat1, lon1, lat2, lon2, unit) {
   return dist
 }
 
-const MAXLAT = 90,
-  MINLAT = -90,
-  MAXLNG = 180,
-  MINLNG = -180,
-  newGridState = (posts, radius) => {
+const newGridState = (posts, radius) => {
     let startT = new Date()
     console.log('creating new map')
 
-    let uniMap = posts.map((post, i) => {
+    let uniMap = JSON.parse(JSON.stringify(posts)).map((post, i) => {
       // search vertices
       let lat = post.latitude,
         lon = post.longitude
@@ -60,8 +56,8 @@ const MAXLAT = 90,
     return newMap
   },
   zoomRadius = [
-    { zoom: 0, radius: 100 },
-    { zoom: 3, radius: 50 }, 
+    { zoom: 0, radius: 500 },
+    { zoom: 3, radius: 250 }, 
     { zoom: 5, radius: 25 }
   ]
 

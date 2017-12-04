@@ -543,6 +543,22 @@ select::-ms-expand {
       margin-right: 12px;
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
 
+.my-posts .dashboard-header {
+  display: flex;
+  flex-direction: row; }
+  .my-posts .dashboard-header > * {
+    align-self: center; }
+
+.my-posts .switch {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin-left: 12px;
+  margin-top: 2px;
+  padding: 6px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #1D2833;
+  color: #ffffff; }
+
 .modalWrapper {
   position: absolute;
   top: -34px;

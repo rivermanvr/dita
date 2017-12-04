@@ -115,3 +115,26 @@
     }
   }
 }
+
+.my-posts {
+  & .dashboard-header {
+    display: flex;
+    flex-direction: row;
+    & > * { align-self: center; }
+  }
+  & .switch {
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    margin-left: 12px;
+    margin-top: 2px;
+    padding: 6px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: $darkgunmetal;
+    color: $white;
+    // border: solid 1px $darkgunmetal;
+    // &:hover {
+    //   background-color: $darkgunmetal;
+    //   color: $white;
+    // }
+  }
+}

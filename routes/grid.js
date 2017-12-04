@@ -56,6 +56,10 @@ const newGridState = (posts, radius) => {
     return newMap
   },
   zoomRadius = [
+    // set as many zoom radius as desired
+    // front end clusters based on max zoom level within these keys
+    // ex 4 will use zoom of 5
+    //    1 will use zoom of 3
     { zoom: 0, radius: 500 },
     { zoom: 3, radius: 250 }, 
     { zoom: 5, radius: 25 }

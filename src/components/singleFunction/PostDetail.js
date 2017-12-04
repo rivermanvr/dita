@@ -18,22 +18,22 @@ class PostDetail extends Component{
     this.handlePrev = this.handlePrev.bind(this)
   }
   componentDidMount(){
-    console.log('loading?')
-    this.props.recordMetrics(this.props.post.id, { userId: +this.props.userId, type: 'REPLY' })
-    let storyPosts = this.props.posts.filter((post) => this.props.post.storylineId === post.storylineId);
+    let currentPost = this.props.posts.find(post => post.id == this.props.activePost) 
+    this.props.recordMetrics(currentPost.id, { userId: +this.props.userId, type: 'REPLY' })
+    let storyPosts = this.props.posts.filter((post) => currentPost.storylineId === post.storylineId);
     let currentPostIndex
     if(storyPosts[0].storylineId == null) {
       storyPosts = null
       currentPostIndex = 0
     }
     else {
-      currentPostIndex = storyPosts.indexOf(this.props.post)
+      currentPostIndex = storyPosts.indexOf(currentPost)
     }
     this.setState({
-      post: this.props.posts.find(post => post.id == this.props.post.id),
+      post: this.props.posts.find(post => post.id == currentPost.id),
       posts: storyPosts,
       currentPostIndex: currentPostIndex,
-      currentPost: this.props.post
+      currentPost
     })
   }
   componentWillReceiveProps(newProps){

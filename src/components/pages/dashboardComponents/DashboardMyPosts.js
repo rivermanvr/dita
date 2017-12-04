@@ -3,8 +3,14 @@ import { connect } from 'react-redux'
 import * as d3 from 'd3'
 import { Link } from 'react-router-dom'
 
+// components
+import PostDetail from '../../singleFunction/PostDetail'
+import Modal from '../../reusables/Modal'
 
-export const Posts = ({ posts }) => {
+// redux
+import { setActivePost, setModal } from '../../../actions'
+
+export const _Posts = ({ posts, modal, toggleModal }) => {
   return (
     <div className='post-cards-container'>
     { posts && posts.map(post => {
@@ -23,11 +29,12 @@ export const Posts = ({ posts }) => {
 
         <div className='post-card-footer'>
           <span>{ d3.timeFormat('%m/%d/%y')(new Date(post.createdAt)) }</span>
-          <span onClick={ () => console.log('open modal') } className='replies-count-container'><i className='ion-ios-chatboxes-outline'></i> <span className='replies-count'>{ post.replies.length }</span></span>
-          <span onClick={ () => console.log('open modal') } className='more'><i className='ion-ios-more-outline'></i></span>
+          <span onClick={ () => toggleModal(post) } className='replies-count-container'><i className='ion-ios-chatboxes-outline'></i> <span className='replies-count'>{ post.replies.length }</span></span>
+          <span onClick={ () => toggleModal(post) } className='more'><i className='ion-ios-more-outline'></i></span>
         </div>
       </div>
     })}
+    { modal && <Modal isActive={ modal }><PostDetail /></Modal> }
     </div>
   )
 }
@@ -43,4 +50,12 @@ export const MyPosts = ({ posts }) => {
 }
 
 const mapState = ({ userPosts }) => ({ posts: userPosts })
+const mapPostState = ({ modal }) => ({ modal })
+const mapPostDispatch = () => dispatch => ({
+  toggleModal(post) {
+    dispatch(setModal())
+    dispatch(setActivePost(post))
+  }
+})
+export const Posts = connect(mapPostState, mapPostDispatch)(_Posts)
 export default connect(mapState)(MyPosts)

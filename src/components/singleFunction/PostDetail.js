@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { recordMetrics, setActivePost, setModal } from '../../actions'
 import {connect} from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import Replies from './Replies'
 import * as d3 from 'd3'
 
@@ -50,6 +50,10 @@ class PostDetail extends Component{
     this.props.history.push(`/userdashboard/${post.userId}/storylines`)
     this.props.setModal()
   }
+  handleEditPost = post => {
+    this.props.history.push(`/editpost/${post.id}`)
+    this.props.setModal()
+  }
   handleNext = () => {
     if(this.state.currentPostIndex === this.state.posts.length -1){
       this.setState({
@@ -79,8 +83,9 @@ class PostDetail extends Component{
     }
   }
   render(){
-    const { post } = this.props;
+    const { userId } = this.props
     const {posts, currentPost, currentPostIndex} = this.state
+
     return (
       <div className="postDetail">
         {/*<span className={ `trending-status hl-${Math.ceil(currentPost && currentPost.halflife)}` }></span>*/}
@@ -94,6 +99,14 @@ class PostDetail extends Component{
             <h4 className="postTitle">{currentPost && currentPost.title} <small>on {d3.timeFormat('%m/%d')(new Date(currentPost && currentPost.createdAt))}</small></h4>
             <p className="postBody">{currentPost && currentPost.body}</p>
           </div>
+          {
+            currentPost.userId == userId ?
+            <div className='edit-button'>
+            {/* MURRAY THIS NEEDS TO BE STYLIZED */}
+              <i className='ion-ios-compose-outline' onClick={ () => this.handleEditPost(currentPost) }></i>
+            </div> : null
+          }
+          
         </div>
         <div className="divider">
           <i className="ion-ios-more-outline"></i>

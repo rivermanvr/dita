@@ -15,6 +15,10 @@ const Post = db.define('post', {
       len: [0,500]
     }
   },
+  address: {
+    type: Sequelize.STRING,
+    defaultValue: ''
+  },
   latitude: {
     type: Sequelize.FLOAT,
     allowNull: true,

@@ -41,26 +41,26 @@ export const _Posts = ({ posts, modal, toggleModal }) => {
 
 export class MyPosts extends Component {
   state = {
-    toggleState: 0,
+    toggleState: 'All',
     viewStates: [ 'All', 'Shared', 'Private' ]
   }
-  handleToggle = () => {
-    const { toggleState, viewStates } = this.state
-    let newToggleState = toggleState + 1 > viewStates.length - 1 ? 0 : toggleState + 1
-    this.setState({ toggleState: newToggleState })
+  handleToggle = newVs => {
+    this.setState({ toggleState: newVs })
   }
 
   render = () => {
-    const toView = this.state.viewStates[this.state.toggleState]
+    const { viewStates, toggleState } = this.state
     const { posts } = this.props
-    let postsToRender = toView == 'All' ? posts : toView == 'Shared' ? posts.filter(post => post.storylineId) : posts.filter(post => !post.storylineId)
+    let postsToRender = toggleState == 'All' ? posts : toggleState == 'Shared' ? posts.filter(post => post.storylineId) : posts.filter(post => !post.storylineId)
 
-    return (
+    return (    
       <div className='dashboard-item my-posts'>
         <div className='dashboard-header'>
           <h3>My Posts</h3>
-          <div className='switch' onClick={ this.handleToggle }>
-            <div className='toggle'>{ toView }</div>
+          <div className='switch-container'>
+          { viewStates.map(vs => (
+            <div className={ `switch ${toggleState == vs ? 'active' : ''}` } onClick={ () => this.handleToggle(vs) }>{ vs }</div>
+          ))}
           </div>
         </div>
 

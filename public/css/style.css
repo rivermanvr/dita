@@ -545,17 +545,18 @@ select::-ms-expand {
 
 .my-posts .dashboard-header {
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+  position: relative; }
   .my-posts .dashboard-header > * {
     align-self: center; }
 
 .my-posts .switch {
+  cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  margin-left: 12px;
-  margin-top: 2px;
+  position: absolute;
+  right: 0;
   padding: 6px 10px;
   border-radius: 3px;
-  cursor: pointer;
   background-color: #1D2833;
   color: #ffffff; }
 

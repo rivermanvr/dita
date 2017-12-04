@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { Map, Marker, Popup, TileLayer, CircleMarker } from 'react-leaflet';
 import Replies from './Replies'
 import * as d3 from 'd3';
-import { changeActiveModal, setCurrentLocation } from '../../actions'
+import { changeActiveModal, setCurrentLocation, setActivePost } from '../../actions'
 import Modal from '../reusables/Modal'
 import PostDetail from './PostDetail'
 import { isEmpty } from 'lodash'
@@ -13,17 +13,15 @@ import { isEmpty } from 'lodash'
 class AllPostsMap extends Component {
   state = {
     isVisible: false,
-    zoomLevel: 5,
-    postDetail: null
+    zoomLevel: 5
   }
 
   changeRadius = zoomLevel => {
     this.setState({ zoomLevel })
   }
-  handleModal = content => {
-    this.setState({
-      postDetail: content
-    },()=>this.props.toggleModal())
+  handleModal = post => {
+    this.props.setActivePost(post)
+    this.props.toggleModal()
   }
   handleUserDashboard = post => {
     this.props.history.push(`/userdashboard/${post.userId}/storylines`)
@@ -150,7 +148,7 @@ class AllPostsMap extends Component {
         </div>
 
         {
-          modal ? <Modal isActive={modal}><PostDetail post={postDetail} /></Modal> : <div></div>
+          modal ? <Modal isActive={modal}><PostDetail /></Modal> : <div></div>
         }
 
       </div>
@@ -170,7 +168,10 @@ const mapDispatchToProps = (dispatch) => {
     toggleModal: () => {
       dispatch(changeActiveModal());
     },
-    setCurrentLocation
+    setCurrentLocation,
+    setActivePost(post) {
+      dispatch(setActivePost(post))
+    }
   }
 }
 

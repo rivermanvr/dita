@@ -148,6 +148,7 @@ class AllPostsMap extends Component {
         </div>
 
         {
+          // modal ? <Modal isActive={modal}><PostDetail post={postDetail} toggleModal={this.props.toggleModal}/></Modal> : <div></div>
           modal ? <Modal isActive={modal}><PostDetail /></Modal> : <div></div>
         }
 

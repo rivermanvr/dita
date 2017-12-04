@@ -59,11 +59,13 @@ class AddPost extends Component {
       loading: true
     }, () => {
       this.props.setModal()
-      // this.props.addPost(this.state) // fakin it ;)
       setTimeout(() => {
-        this.setState({
-          messageDisplayed: 'Post created!',
-          loading: false
+        this.props.addPost(this.state) // fakin it ;)
+        .then(() => {
+          this.setState({
+            messageDisplayed: 'Post created!',
+            loading: false
+          })
         })
       }, 1500)
     })
@@ -149,7 +151,7 @@ class AddPost extends Component {
 
           <div className={ `add-storyline-inputs ${ addToStoryline ? 'visible' : '' }` }>
             <div className='select'>
-              <select onChange={ handleChange('storylineId') } value={ storylineId }>
+              <select onChange={ handleChange('storylineId') } value={ storylineId || 0 }>
                 <option value={ 0 }>Please select a storyline...</option>
                 { this.props.userStorylines.map(storyline =>
                   <option
@@ -207,21 +209,13 @@ const mapDispatch = (dispatch, ownProps) => ({
     // else createStoryAndPost
     const { storyTitle, storyDescription, title, body } = post
     if (post.addToStoryline && !post.storylineId) {
-      dispatch(createStoryAndPost(
+      return dispatch(createStoryAndPost(
         { title: post.storyTitle, description: post.storyDescription },
         { title, body }
       ))
-      .then(() => {
-        // placeholder
-        ownProps.history.push('/map')
-      })
     } else {
       // private post
-      dispatch(addUserPost(post))
-      .then(() => {
-        // placeholder
-        ownProps.history.push('/dashboard')
-      })
+      return dispatch(addUserPost(post))
     }
   },
   setModal() {

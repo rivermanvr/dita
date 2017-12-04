@@ -31,7 +31,8 @@ const Analytics = ({ userPosts, currentView, posts, users, allLocations}) => {
   return (
     <div className='dashboard-item'>
       <h3>Your visitors</h3>
-      <p>Your post visitors are from these locations</p>
+      <p>Your posts were viewed by <span style={ spanStyle }>{ visitorLocations.length }</span> users<br/>
+      from these locations</p>
       <div>
         <Map
           center={ position }

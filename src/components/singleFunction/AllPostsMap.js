@@ -34,7 +34,7 @@ class AllPostsMap extends Component {
   }
   
   render = () => {
-    const { posts, currentView, grid, modal } = this.props;
+    const { posts, currentView, modal } = this.props;
     const { isVisible, zoomLevel, postDetail } = this.state;
     const grid = findMaxGrid(this.props.grid, zoomLevel);
     const position = [currentView.lat, currentView.lng]; 

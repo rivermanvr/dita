@@ -58,7 +58,7 @@ class PostReply extends Component{
         this.props.handleAdd(post)
         this.setState({
             body:''
-        })
+        })     
     }
     render(){
         const {post} = this.props

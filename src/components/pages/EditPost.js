@@ -19,10 +19,12 @@ let googleMapsClient = GoogleMaps.createClient({
 import { Textbox, Textarea, Button } from '../reusables'
 
 // redux
-import { addUserPost, createStoryAndPost } from '../../actions'
+import { updateUserPost, createStoryAndPost } from '../../actions'
 
 class AddPost extends Component {
   state = {
+    id: null,
+    userId: null,
     title: '',
     body: '',
     address: '',
@@ -35,11 +37,11 @@ class AddPost extends Component {
   }
 
   componentDidMount = () => {
-    this.setState({ address: this.props.home.address, latitude: this.props.home.lat, longitude: this.props.home.lng })
+    this.setState({ address: this.props.home.address, latitude: this.props.home.lat, longitude: this.props.home.lng, ...this.props })
   }
 
   componentWillReceiveProps = nextProps => {
-    this.setState({ address: nextProps.home.address, latitude: nextProps.home.lat, longitude: nextProps.home.lng })
+    this.setState({ address: nextProps.home.address, latitude: nextProps.home.lat, longitude: nextProps.home.lng, ...nextProps })
   }
 
   handleChange = name => ev => {
@@ -50,8 +52,8 @@ class AddPost extends Component {
     this.setState({ addToStoryline: !this.state.addToStoryline })
   }
 
-  handlePost = () => {
-    this.props.addPost(this.state)  
+  handleUpdate = () => {
+    this.props.updatePost(this.state)  
   }
 
   setCurrentLocation = () => {
@@ -91,8 +93,8 @@ class AddPost extends Component {
   }
 
   render = () => {
-    const { title, body, address, addToStoryline, storyTitle, storyDescription, storylineId } = this.state
-    const { handleChange, handlePost, toggleStoryline, setCurrentLocation } = this
+    const { title, body, address, addToStoryline, storyTitle, storyDescription, storylineId, latitude, longitude } = this.state
+    const { handleChange, handleUpdate, toggleStoryline, setCurrentLocation } = this
 
     return (
       <div className='add-post-container'>
@@ -113,25 +115,26 @@ class AddPost extends Component {
               <Textbox
                 label='Location'
                 disabled={ true }
-                value={ `${address}` } />
+                value={ `${address || `${latitude}, ${longitude}`}` } />
               <Button
                 label={ <i className='ion-ios-navigate-outline'></i> }
                 className='btn inline'
                 onClick={ setCurrentLocation } />
             </div>
 
+            {/*
             <Button
-              label={ !addToStoryline ?
+              label={ !addToStoryline || !+storylineId ?
                 <span><i className='ion-ios-plus-outline'></i> <span>Add to Storyline</span></span> :
                 <span><i className='ion-ios-minus-outline'></i> <span>Return to Private Post</span></span> }
               onClick={ toggleStoryline }
-              className='btn toggle-add-to-story' /> 
+              className='btn toggle-add-to-story' /> */}
           </div>
 
-          <div className={ `add-storyline-inputs ${ addToStoryline ? 'visible' : '' }` }>
+          {/*<div className={ `add-storyline-inputs ${ addToStoryline || !+storylineId ? 'visible' : '' }` }>
             <div className='select'>
               <select onChange={ handleChange('storylineId') } value={ storylineId }>
-                <option value={ 0 }>Please select a storyline...</option>
+                <option value={ 0 }>{ !+storylineId ? 'Please select a storyline...' : 'Create a storyline...' }</option>
                 { this.props.userStorylines.map(storyline =>
                   <option
                     key={ storyline.id }
@@ -153,12 +156,18 @@ class AddPost extends Component {
                   onChange={ handleChange('storyDescription') } />
               </div>
               : null }
-          </div>
+          </div>*/}
 
+          {/*<div className={ `add-post-button-container ${ addToStoryline ? 'visible' : '' }` }>
+            <Button
+              label={ addToStoryline ? 'Update' : 'Convert to Private Post' }
+              onClick={ handleUpdate }
+              className='btn default' />
+          </div>*/}
           <div className={ `add-post-button-container ${ addToStoryline ? 'visible' : '' }` }>
             <Button
-              label={ addToStoryline ? 'Post and Share' : 'Add Private Post' }
-              onClick={ handlePost }
+              label={ 'Update' }
+              onClick={ handleUpdate }
               className='btn default' />
           </div>
         </div>
@@ -167,34 +176,40 @@ class AddPost extends Component {
   }
 }
 
-const mapState = ({ userLocations, userStorylines }) => ({
-  home: userLocations.home,
-  userStorylines
-})
+const mapState = ({ userLocations, userStorylines, userPosts }, ownProps) => {
+  let post = userPosts.find(post => post.id == ownProps.match.params.id) || {}
+
+  return {
+    home: userLocations.home,
+    ...post,
+    userStorylines,
+    addToStoryline: post.storylineId ? true : false,
+  }
+}
 const mapDispatch = (dispatch, ownProps) => ({
-  addPost(post) {
-    post.storylineId = 1*post.storylineId || null
+  updatePost(post) {
+    // post.storylineId = 1*post.storylineId && post.addStoryline || null
     // if addStoryline: true
     // if storylineId, omit storyTitle and storyDescription
     // else createStoryAndPost
-    const { storyTitle, storyDescription, title, body } = post
-    if (post.addToStoryline && !post.storylineId) {
-      dispatch(createStoryAndPost(
-        { title: post.storyTitle, description: post.storyDescription },
-        { title, body }
-      ))
-      .then(() => {
-        // placeholder
-        ownProps.history.push('/map')
-      })
-    } else {
+    // const { storyTitle, storyDescription, title, body } = post
+    // if (post.addToStoryline && !post.storylineId) {
+    //   dispatch(createStoryAndPost(
+    //     { title: post.storyTitle, description: post.storyDescription },
+    //     { title, body }
+    //   ))
+    //   .then(() => {
+    //     // placeholder
+    //     ownProps.history.push('/map')
+    //   })
+    // } else {
       // private post
-      dispatch(addUserPost(post))
+      dispatch(updateUserPost(post))
       .then(() => {
         // placeholder
         ownProps.history.push('/dashboard')
       })
-    }
+    // }
   }
 })
 export default connect(mapState, mapDispatch)(AddPost)

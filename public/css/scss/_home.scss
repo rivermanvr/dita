@@ -5,8 +5,9 @@
         width:100%;
         top:0;
         left:0;
-        background: linear-gradient(-45deg, #EE7752, #E73C7E);
-
+        //background: radial-gradient(at bottom right, #EE7752 17%, #1d2833 48%);
+        background-image: url('https://images.unsplash.com/photo-1468186402854-9a641fd7a7c4?auto=format&fit=crop&w=3150&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');
+        background-size: cover;
         .heroContent {
             position: relative;
             top: 50%;

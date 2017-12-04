@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { recordMetrics, setActivePost } from '../../actions'
+import { recordMetrics, setActivePost, setModal } from '../../actions'
 import {connect} from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import Replies from './Replies'
 import * as d3 from 'd3'
 
@@ -18,22 +18,22 @@ class PostDetail extends Component{
     this.handlePrev = this.handlePrev.bind(this)
   }
   componentDidMount(){
-    console.log('loading?')
-    this.props.recordMetrics(this.props.post.id, { userId: +this.props.userId, type: 'REPLY' })
-    let storyPosts = this.props.posts.filter((post) => this.props.post.storylineId === post.storylineId);
+    let currentPost = this.props.posts.find(post => post.id == this.props.activePost) 
+    this.props.recordMetrics(currentPost.id, { userId: +this.props.userId, type: 'REPLY' })
+    let storyPosts = this.props.posts.filter((post) => currentPost.storylineId === post.storylineId);
     let currentPostIndex
     if(storyPosts[0].storylineId == null) {
       storyPosts = null
       currentPostIndex = 0
     }
     else {
-      currentPostIndex = storyPosts.indexOf(this.props.post)
+      currentPostIndex = storyPosts.indexOf(currentPost)
     }
     this.setState({
-      post: this.props.posts.find(post => post.id == this.props.post.id),
+      post: this.props.posts.find(post => post.id == currentPost.id),
       posts: storyPosts,
       currentPostIndex: currentPostIndex,
-      currentPost: this.props.post
+      currentPost
     })
   }
   componentWillReceiveProps(newProps){
@@ -48,6 +48,11 @@ class PostDetail extends Component{
   }
   handleUserDashboard = post => {
     this.props.history.push(`/userdashboard/${post.userId}/storylines`)
+    this.props.setModal()
+  }
+  handleEditPost = post => {
+    this.props.history.push(`/editpost/${post.id}`)
+    this.props.setModal()
   }
   handleNext = () => {
     if(this.state.currentPostIndex === this.state.posts.length -1){
@@ -78,8 +83,9 @@ class PostDetail extends Component{
     }
   }
   render(){
-    const { post } = this.props;
+    const { userId } = this.props
     const {posts, currentPost, currentPostIndex} = this.state
+
     return (
       <div className="postDetail">
         {/*<span className={ `trending-status hl-${Math.ceil(currentPost && currentPost.halflife)}` }></span>*/}
@@ -93,6 +99,14 @@ class PostDetail extends Component{
             <h4 className="postTitle">{currentPost && currentPost.title} <small>on {d3.timeFormat('%m/%d')(new Date(currentPost && currentPost.createdAt))}</small></h4>
             <p className="postBody">{currentPost && currentPost.body}</p>
           </div>
+          {
+            currentPost.userId == userId ?
+            <div className='edit-button'>
+            {/* MURRAY THIS NEEDS TO BE STYLIZED */}
+              <i className='ion-ios-compose-outline' onClick={ () => this.handleEditPost(currentPost) }></i>
+            </div> : null
+          }
+          
         </div>
         <div className="divider">
           <i className="ion-ios-more-outline"></i>
@@ -119,4 +133,4 @@ const mapStateToProps = ({ currentUser, posts, activePost }) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, { recordMetrics, setActivePost })(PostDetail))
+export default withRouter(connect(mapStateToProps, { recordMetrics, setActivePost, setModal })(PostDetail))

@@ -1,60 +1,93 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as d3 from 'd3'
-import { Llink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Map, Marker, Popup, TileLayer, CircleMarker } from 'react-leaflet';
 
-const Analytics = ({ posts }) => {
-  const data = d3.nest().key(d => d.createdAt).entries(posts)
-  const format = d3.timeFormat('%Y-%m-%d') // 2017-12-03T14:46:10.036Z
-  data.forEach(d => {
-    d.date = format(new Date(d.key)) // 2017-12-03T09:46:10Z
-    d.count = +d.values.length
+const Analytics = ({ userPosts, currentView, posts, users, allLocations}) => {
+  const visitorIds = []
+  userPosts.forEach(post => {
+    post.visitedBy.forEach(id => {
+      visitorIds.push(id)
+    })
+  })
+  
+  const visitorLocations = allLocations.filter(location => {
+    return visitorIds.indexOf(location.userId) >= 0
   })
 
-  console.log(data)
+  const position = [currentView.lat, currentView.lng]; 
+  const zoomLevel = 2;
+  const lightTiles = 'https://api.mapbox.com/styles/v1/zakscloset/cjashujysj8qv2rl84giqd1tb/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiemFrc2Nsb3NldCIsImEiOiI0Y2Q2ZDNmNjZhYzZkMzE5Y2FjNTEwY2YxZmVjMWZiYyJ9.TN1BPlB18BT4k5-GJnWrfw';
+  const tileAttr = '&copy; <a href="https://www.mapbox.com/">Mapbox</a>';
+  visitorLocations.forEach(d => {
+    d.latLng = new L.LatLng(d.lat, d.lng);
+  })
 
-  // data.unshift({ date: date-1, count: random(1, 10) })
-  // data.unshift({ date: date-2, count: random(1, 10) })
-  // data.unshift({ date: date-3, count: random(1, 10) })
-  // data.unshift({ date: date-4, count: random(1, 10) })
-
-
-
-  // 1. convert d.date into date object
-  // 2. prepend an array of object with { date: date1, count: randome(1, 10) } before 
-  // [{ date: date1, count: random(1, 10) }, { date: date2, count: random(1, 10) }, {date: date3, count: random(1, 10)} ]
-
-
-
-  const margin = { top: 50, right: 10, bottom: 100, left: 60 }
-  const width = 600 - margin.left - margin.right, height = 400 - margin.top - margin.bottom;
-
-  let x = d3.scaleBand().range([0, width])
-  let y = d3.scaleLinear().range([height, 0])
-  let xAxis = d3.axisBottom().scale(x)
-  let yAxis = d3.axisLeft().scale(y).ticks(6)
-
-  let tooltip = d3.select('chart').append('div')
-    .attr('class', 'tooltip').style('opacity', 0)
-
-  const svg = d3.select('.chart').append('div')
-    .attr('width', width + margin.left + margin.right)
-    .attr('height', height + margin.top + margin.bottom)
-    .append('g')
+  const fillColor = 'yellow', fillOpacity = 1, strokeColor = '#fff', strokeWeight = 0;
+  const spanStyle = { fontSize: '1.5em' }
+  const radius = 10
 
   return (
-    <div>
-      <h1>Coming Soon!</h1>
+    <div className='dashboard-item'>
+      <h3>Your visitors</h3>
+      <p>Your post visitors are from these locations</p>
+      <div>
+        <Map
+          center={ position }
+          zoom={ zoomLevel }
+          style={{ height: "calc(100vh/2)", width: "100%" }}          
+          worldCopyJump="true" zoomControl={ false }>
+            
+            <TileLayer
+              attribution={ tileAttr }
+              url={ lightTiles }
+            />
+            
+            <Marker position={ position }>
+              <Popup>
+                <div>
+                  <span style={ spanStyle }>Your Location</span><br/>
+                  <span>{ currentView.address }</span>
+                </div>
+              </Popup>
+            </Marker>
+
+            {
+              visitorLocations && visitorLocations.map(visitor => {
+                return(
+                  <CircleMarker key={ visitor.id } center={ [visitor.latLng.lat, visitor.latLng.lng] }
+                    radius={ radius } fillColor={ fillColor }>
+                    <Popup>
+                      <div>
+                        <span>{ visitor.address }</span>
+                      </div>
+                    </Popup>
+                  </CircleMarker>
+                )
+              })
+            }
+        </Map>
+
+
+      </div>
+
 
     </div>
-  )
+    )
+
 
 }
 
-const mapStateToProps = ({ userPosts }) => {
+const mapStateToProps = ({ userPosts, currentView, posts, users, allLocations }) => {
   return {
-    posts: userPosts
+    userPosts, 
+    currentView,
+    posts, 
+    users,
+    allLocations
   } 
 }
+
 
 export default connect(mapStateToProps)(Analytics)

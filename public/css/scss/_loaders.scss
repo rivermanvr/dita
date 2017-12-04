@@ -1,0 +1,58 @@
+.loading-horiz {
+  $loaderheight: 3px;
+  height: $loaderheight;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  // background-color: $white;
+
+  position: absolute;
+  bottom: 0;
+
+  &:before{
+    display: block;
+    content: '';
+    position: absolute;
+    left: -200px;
+    width: 200px;
+    height: $loaderheight;
+    background-color: $white;
+    animation: flying 2s linear infinite;
+  }
+}
+
+.loading-arrows {
+  font-size: 1.3rem;
+  animation: spin 2s infinite;
+  color: #BFEDEF;
+}
+
+.done-check {
+  font-size: 1.3rem;
+  color: #98E2C6;
+  animation: bounce 2s infinite;
+}
+
+
+
+
+@keyframes bounce {
+  // from: https://codepen.io/velopert/pen/PzoWpE
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-15px);}
+  60% {transform: translateY(-5px);}
+} 
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes flying {
+  from {left: -200px; width: 30%;}
+  50% {width: 30%;}
+  70% {width: 70%;}
+  80% { left: 50%;}
+  95% {left: 120%;}
+  to {left: 100%;}
+}

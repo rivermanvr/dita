@@ -119,10 +119,10 @@ with open('stories.json', 'w') as stories_fp:
 #################################
 sentences = json.load(open('./some_random_json_i_found/sentences.json'))
 posts = [
-   { 'title': 'Dinner with Katy Perry', 'body': 'We ate Foo at Bar with Moe and Larry. Their Acme bread was great!', 'zip': '10004', 'latitude': 40.705076, 'longitude': -74.009160, 'halflife': 100 },
-   { 'title': 'My JWT video on sale', 'body': 'And I have 2000 other videos on youtube. Also I write 500 tech blogs per day. And I do pull request at least 100 times a day. And no, I don\'t sleep.', 'zip': '11040', 'latitude': 40.7326609, 'longitude': -73.6948277, 'halflife': 100 },
-   { 'title': 'I have advice for you', 'body': 'One - During an interview, don\'t freak out. Two - Keep your resume in one page. Three - Ask questions. Four - dress appropriately. [ ... post truncated because too long ... ] OK that\'s it. I\'m done. I\'ll stop talking.', 'zip': '07424', 'latitude': 40.9151955, 'longitude': -74.2028202, 'halflife': 100 },
-   { 'title': 'Free Pizza \(^o^)/', 'body': 'I just got a job that pays $400k! I\'m buying everyone pizza!', 'zip': '07052', 'latitude': 40.7920341, 'longitude': -74.2980747, 'halflife': 100 },
+   { 'title': 'Dinner with Katy Perry', 'body': 'We ate Foo at Bar with Moe and Larry. Their Acme bread was great!', 'zip': '10004', 'latitude': 40.705076, 'longitude': -74.009160, 'halflife': 100, 'visitedBy': [2, 3, 5, 9, 100, 60] },
+   { 'title': 'My JWT video on sale', 'body': 'And I have 2000 other videos on youtube. Also I write 500 tech blogs per day. And I do pull request at least 100 times a day. And no, I don\'t sleep.', 'zip': '11040', 'latitude': 40.7326609, 'longitude': -73.6948277, 'halflife': 100, 'visitedBy': [1, 9, 21, 30, 38, 90] },
+   { 'title': 'I have advice for you', 'body': 'One - During an interview, don\'t freak out. Two - Keep your resume in one page. Three - Ask questions. Four - dress appropriately. [ ... post truncated because too long ... ] OK that\'s it. I\'m done. I\'ll stop talking.', 'zip': '07424', 'latitude': 40.9151955, 'longitude': -74.2028202, 'halflife': 100, 'visitedBy': [7, 8, 89, 47, 99, 24, 70] },
+   { 'title': 'Free Pizza \(^o^)/', 'body': 'I just got a job that pays $400k! I\'m buying everyone pizza!', 'zip': '07052', 'latitude': 40.7920341, 'longitude': -74.2980747, 'halflife': 100, 'visitedBy': [47, 8, 9, 6, 47, 199, 24, 70] },
 ]
 latitudes = [ loc['lat'] for loc in locations ]
 longitudes = [ loc['lng'] for loc in locations ]

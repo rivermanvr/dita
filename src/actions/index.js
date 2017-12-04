@@ -11,3 +11,4 @@ export * from './grid';
 export * from './modal';
 export * from './users';
 export * from './activePost';
+export * from './allLocations';

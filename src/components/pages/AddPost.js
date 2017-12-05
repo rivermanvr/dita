@@ -54,21 +54,18 @@ class AddPost extends Component {
   }
 
   handlePost = () => {
+    this.props.addPost(this.state) // fakin it ;)
     this.setState({
       messageDisplayed: 'Creating your post',
       loading: true
-    }, () => {
-      this.props.setModal()
-      setTimeout(() => {
-        this.props.addPost(this.state) // fakin it ;)
-        .then(() => {
-          this.setState({
-            messageDisplayed: 'Post created!',
-            loading: false
-          })
-        })
-      }, 1500)
     })
+    this.props.setModal()
+    setTimeout(() => {
+      this.setState({
+        messageDisplayed: 'Post created!',
+        loading: false
+      })
+    }, 1500)
   }
   handleOkClick = () => {
     this.props.setModal()
@@ -178,9 +175,10 @@ class AddPost extends Component {
 
           <div className={ `add-post-button-container ${ addToStoryline ? 'visible' : '' }` }>
             <Button
+              disabled={ !body.length }
               label={ addToStoryline ? 'Post and Share' : 'Add Private Post' }
               onClick={ handlePost }
-              className='btn default' />
+              className={ `btn ${body.length ? 'default' : 'disabled'}` } />
           </div>
         </div>
         { this.props.modal &&

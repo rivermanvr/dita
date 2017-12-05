@@ -56,18 +56,16 @@ class EditPost extends Component {
   }
 
   handleUpdate = () => {
+    this.props.updatePost(this.state) // fakin it ;)
     this.setState({
       messageDisplayed: 'Updating your post',
       loading: true
     }, () => {
       this.props.setModal()
       setTimeout(() => {
-        this.props.updatePost(this.state) // fakin it ;)
-        .then(() => {
-          this.setState({
-            messageDisplayed: 'Post updated!',
-            loading: false
-          })
+        this.setState({
+          messageDisplayed: 'Post updated!',
+          loading: false
         })
       }, 1500)
     })
@@ -92,10 +90,10 @@ class EditPost extends Component {
         console.log(('query complete! set address'))
 
         this.setState({
-        address: response.json.results[0].formatted_address,
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      })
+          address: response.json.results[0].formatted_address,
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        })
       })
       .catch(err => {
         this.setState({ address, latitude, longitude })
@@ -187,9 +185,10 @@ class EditPost extends Component {
           </div>*/}
           <div className={ `add-post-button-container ${ addToStoryline ? 'visible' : '' }` }>
             <Button
+              disabled={ !body.length }
               label={ 'Update' }
               onClick={ handleUpdate }
-              className='btn default' />
+              className={ `btn ${body.length ? 'default' : 'disabled'}` } />
           </div>
         </div>
         { this.props.modal &&

@@ -9,6 +9,13 @@ import Modal from '../reusables/Modal'
 import PostDetail from './PostDetail'
 import { isEmpty } from 'lodash'
 
+export const modalWithClass = className => props =>
+  <Modal className={ className } { ...props } isActive={ props.modal } />
+
+const mapModalState = ({ modal }) => ({ modal })
+export const createPostDetailModal = () => connect(mapModalState)(modalWithClass('post-detail'))
+const PostDetailModal = createPostDetailModal()
+
 const findMaxGrid = (grid, zoom) => {
   let gridKey = Object.keys(grid).reduce((f, k) => {
     return k <= zoom && k > f ? k : f
@@ -145,7 +152,7 @@ class AllPostsMap extends Component {
         </div>
 
         {
-          modal ? <Modal isActive={modal}><PostDetail /></Modal> : <div></div>
+          modal ? <Modal isActive={modal} className='post-detail'><PostDetail /></Modal> : <div></div>
         }
 
       </div>

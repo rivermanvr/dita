@@ -87,10 +87,10 @@ class AddPost extends Component {
         console.log(('query complete! set address'))
 
         this.setState({
-        address: response.json.results[0].formatted_address,
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      })
+          address: response.json.results[0].formatted_address,
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        })
       })
       .catch(err => {
         this.setState({ address, latitude, longitude })
@@ -111,6 +111,8 @@ class AddPost extends Component {
   render = () => {
     const { title, body, address, addToStoryline, storyTitle, storyDescription, storylineId, messageDisplayed, loading } = this.state
     const { handleChange, handlePost, toggleStoryline, setCurrentLocation, handleOkClick } = this
+
+    console.log(this.state)
 
     return (
       <div className='add-post-container'>
@@ -209,7 +211,7 @@ const mapDispatch = (dispatch, ownProps) => ({
     if (post.addToStoryline && !post.storylineId) {
       return dispatch(createStoryAndPost(
         { title: post.storyTitle, description: post.storyDescription },
-        { title, body }
+        { ...post }
       ))
     } else {
       // private post

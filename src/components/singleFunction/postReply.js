@@ -67,7 +67,7 @@ class PostReply extends Component{
            <div>
            {showReplies && <form className="replyForm" onSubmit={this.onSubmit}>
                 <input value={body} placeholder={post && `Reply to ${post.user.name}` } className='replyInput' type="text" onChange={this.onChange}/>
-                <i className='ion-android-send'></i>         
+                <i onClick={this.onSubmit} className='ion-android-send'></i>         
             </form>
             }
             </div>

@@ -59,7 +59,7 @@ export class MyPosts extends Component {
           <h3>My Posts</h3>
           <div className='switch-container'>
           { viewStates.map(vs => (
-            <div className={ `switch ${toggleState == vs ? 'active' : ''}` } onClick={ () => this.handleToggle(vs) }>{ vs }</div>
+            <div key={ vs } className={ `switch ${toggleState == vs ? 'active' : ''}` } onClick={ () => this.handleToggle(vs) }>{ vs }</div>
           ))}
           </div>
         </div>

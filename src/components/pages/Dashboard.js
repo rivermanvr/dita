@@ -16,8 +16,8 @@ const sidebarItems = [
   { label: 'My Storylines', path: '/dashboard/mystorylines' },
   { label: 'My Posts', path: '/dashboard/myposts' },
   { label: 'My Locations', path: '/dashboard/mylocations' },
-  { label: 'Profile', path: '/dashboard/profile' },
-  { label: 'Analytics', path: '/dashboard/analytics' }
+  { label: 'Analytics', path: '/dashboard/analytics' },
+  { label: 'Profile', path: '/dashboard/profile' }
 ].map(item => ({ ...item, root: item.path }))
 
 const getUserSidebarItems = userId =>

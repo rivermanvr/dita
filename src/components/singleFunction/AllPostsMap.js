@@ -49,6 +49,8 @@ class AllPostsMap extends Component {
 
     const fillColor = 'red', fillOpacity = 0.7, strokeColor = '#fff', strokeWeight = 1;
     const spanStyle = { fontSize: '1.5em' }
+
+    // console.log(this.state)
   
     return (
       <div className='map-container'>

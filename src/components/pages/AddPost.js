@@ -54,21 +54,18 @@ class AddPost extends Component {
   }
 
   handlePost = () => {
+    this.props.addPost(this.state) // fakin it ;)
     this.setState({
       messageDisplayed: 'Creating your post',
       loading: true
-    }, () => {
-      this.props.setModal()
-      setTimeout(() => {
-        this.props.addPost(this.state) // fakin it ;)
-        .then(() => {
-          this.setState({
-            messageDisplayed: 'Post created!',
-            loading: false
-          })
-        })
-      }, 1500)
     })
+    this.props.setModal()
+    setTimeout(() => {
+      this.setState({
+        messageDisplayed: 'Post created!',
+        loading: false
+      })
+    }, 2000)
   }
   handleOkClick = () => {
     this.props.setModal()
@@ -90,10 +87,10 @@ class AddPost extends Component {
         console.log(('query complete! set address'))
 
         this.setState({
-        address: response.json.results[0].formatted_address,
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      })
+          address: response.json.results[0].formatted_address,
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        })
       })
       .catch(err => {
         this.setState({ address, latitude, longitude })
@@ -178,9 +175,10 @@ class AddPost extends Component {
 
           <div className={ `add-post-button-container ${ addToStoryline ? 'visible' : '' }` }>
             <Button
+              disabled={ !body.length }
               label={ addToStoryline ? 'Post and Share' : 'Add Private Post' }
               onClick={ handlePost }
-              className='btn default' />
+              className={ `btn ${body.length ? 'default' : 'disabled'}` } />
           </div>
         </div>
         { this.props.modal &&
@@ -211,7 +209,7 @@ const mapDispatch = (dispatch, ownProps) => ({
     if (post.addToStoryline && !post.storylineId) {
       return dispatch(createStoryAndPost(
         { title: post.storyTitle, description: post.storyDescription },
-        { title, body }
+        { ...post }
       ))
     } else {
       // private post

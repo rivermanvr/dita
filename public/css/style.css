@@ -152,39 +152,44 @@ i {
 
 .replyContainer {
   max-width: 500px;
-  padding: 0 12px;
-  box-sizing: border-box;
   text-align: left; }
   .replyContainer .replyGroup {
     overflow: scroll;
-    max-height: 300px;
-    margin-bottom: 1.15em; }
+    max-height: 275px;
+    margin-bottom: 1.75em;
+    border-left: 1px solid #1d2833;
+    border-right: 1px solid #1d2833;
+    border-radius: 4px;
+    padding: 0 10px;
+    box-sizing: border-box; }
   .replyContainer .singleReply {
     display: grid;
-    padding: 4px 0;
-    grid-gap: 20px;
+    padding: 12px 0;
+    grid-gap: 5px;
     grid-template-columns: .5fr 4fr;
+    position: relative;
     grid-template-rows: auto; }
+  .replyContainer .userName {
+    font-weight: bolder;
+    font-size: 16px;
+    text-align: center;
+    margin: 0 0 7px;
+    display: inline-block;
+    color: #1d2833; }
+    .replyContainer .userName.signedIn {
+      color: green; }
+    .replyContainer .userName.myPost {
+      color: #CEABB1; }
+    .replyContainer .userName:hover {
+      cursor: pointer; }
   .replyContainer .userInfo {
     justify-self: center; }
-    .replyContainer .userInfo .userName {
-      font-weight: bold;
-      font-size: 16px;
-      text-align: center;
-      margin: 0;
-      color: pink; }
-      .replyContainer .userInfo .userName.signedIn {
-        color: green; }
-      .replyContainer .userInfo .userName.myPost {
-        color: rebeccapurple; }
-      .replyContainer .userInfo .userName:hover {
-        cursor: pointer; }
     .replyContainer .userInfo .userProfilePic {
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border-radius: 6px;
       display: block;
       margin: 0 auto; }
@@ -192,41 +197,28 @@ i {
         cursor: pointer; }
   .replyContainer .replyBody {
     position: relative;
-    padding: 12px 8px;
-    border: 1px solid pink;
-    background-color: pink;
+    padding: 0 8px;
     border-radius: 4px;
     align-self: flex-start; }
     .replyContainer .replyBody .timePosted {
       font-size: 9px;
-      color: white;
-      position: absolute;
-      bottom: 7%;
-      right: 4%; }
+      color: #1d2833;
+      margin-left: 4px; }
     .replyContainer .replyBody p {
-      margin: 4px 0;
-      color: white; }
-    .replyContainer .replyBody.signedIn {
-      border-color: green;
-      background-color: green; }
-      .replyContainer .replyBody.signedIn:after {
-        border-color: green green transparent transparent; }
-    .replyContainer .replyBody.myPost {
-      border-color: rebeccapurple;
-      background-color: rebeccapurple; }
-      .replyContainer .replyBody.myPost:after {
-        border-color: rebeccapurple rebeccapurple transparent transparent; }
+      margin: 0 0 4px 0;
+      color: #1d2833; }
+    .replyContainer .replyBody.myPost h4 {
+      color: #CEABB1; }
     .replyContainer .replyBody:after {
-      content: ' ';
+      content: '';
+      /* height: 1px; */
+      width: 95%;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
       position: absolute;
-      width: 0;
-      height: 0;
-      left: -15px;
-      right: auto;
-      top: 20px;
-      bottom: auto;
-      border: 7px solid;
-      border-color: pink pink transparent transparent; }
+      /* margin: 0 auto; */ }
   .replyContainer .replyBorder {
     width: 40%;
     margin: 12px auto;
@@ -235,7 +227,7 @@ i {
     grid-column: 1/-1; }
 
 .replyForm {
-  display: grid;
+  display: flex;
   grid-template-columns: 5fr .45fr;
   border: 1px solid grey;
   border-radius: 4px; }
@@ -243,7 +235,9 @@ i {
     transition: all .075s linear;
     align-self: center;
     justify-self: center;
-    width: 100%;
+    width: 10%;
+    opacity: .35;
+    flex-basis: auto;
     height: 100%;
     position: relative;
     border-left: 1px solid grey; }
@@ -254,13 +248,15 @@ i {
       font-size: 18px;
       transform: translate(-50%, -50%); }
     .replyForm i:hover {
-      color: green;
+      color: #1d2833;
       cursor: pointer;
+      opacity: 1;
       transition: all .075s linear; }
   .replyForm .replyInput {
     padding: 12px 8px;
-    min-width: 100%;
-    border: none; }
+    border: none;
+    flex-basis: auto;
+    width: 90%; }
 
 .postDetail {
   text-align: center;
@@ -275,7 +271,7 @@ i {
     animation: status-pulse 4s infinite; }
   .postDetail .storyLineTitle {
     text-align: center;
-    color: aliceblue;
+    color: #1d2833;
     display: inline-block;
     position: relative;
     font-size: 1rem;
@@ -284,58 +280,74 @@ i {
     .postDetail .storyLineTitle:before {
       content: '';
       height: 1px;
-      width: 5%;
+      width: 9%;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      left: -7%;
-      background-color: aliceblue; }
+      left: -12%;
+      background-color: #1d2833; }
     .postDetail .storyLineTitle:after {
       content: '';
       height: 1px;
-      width: 5%;
+      width: 9%;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      right: -7%;
-      background-color: aliceblue; }
+      right: -12%;
+      background-color: #1d2833; }
+  .postDetail .edit-button {
+    position: absolute;
+    right: 3%;
+    top: 0%; }
+    .postDetail .edit-button:hover {
+      cursor: pointer;
+      color: black; }
   .postDetail .fullPost {
     display: grid;
-    grid-template-columns: 17% 83%;
-    grid-column-gap: 15px;
-    text-align: left;
-    background-color: aliceblue;
+    text-align: center;
     border-radius: 4px;
-    padding: 12px; }
-    .postDetail .fullPost .userInfo .profilePic {
+    padding: 0 12px;
+    position: relative; }
+    .postDetail .fullPost .profilePic {
       border-radius: 50%;
-      height: 75px;
-      width: 75px;
+      height: 60px;
+      width: 60px;
+      margin: 0 auto;
       display: block;
       background-size: cover;
       background-position: center; }
-      .postDetail .fullPost .userInfo .profilePic:hover {
+      .postDetail .fullPost .profilePic:hover {
         cursor: pointer; }
-    .postDetail .fullPost .userInfo .userName {
-      text-align: center; }
-      .postDetail .fullPost .userInfo .userName:hover {
+    .postDetail .fullPost .userName {
+      text-align: center;
+      color: #CEABB1; }
+      .postDetail .fullPost .userName:hover {
         cursor: pointer; }
-    .postDetail .fullPost .postInfo .postTitle {
-      color: #1d2833;
-      text-transform: capitalize;
-      margin-bottom: .5em; }
-      .postDetail .fullPost .postInfo .postTitle small {
-        font-size: 9px; }
+    .postDetail .fullPost .postInfo {
+      margin-top: .75em; }
+      .postDetail .fullPost .postInfo .postTitle {
+        color: #1d2833;
+        text-transform: capitalize;
+        font-size: 16px; }
+      .postDetail .fullPost .postInfo small {
+        font-size: 9px;
+        margin: 6px 0;
+        display: block; }
+      .postDetail .fullPost .postInfo .postBody {
+        text-align: left;
+        font-size: 14px;
+        max-height: 80px;
+        overflow: scroll;
+        background-color: rgba(200, 200, 200, 0.5);
+        padding: 12px;
+        border-radius: 4px; }
   .postDetail .divider {
     padding: 10px 0; }
     .postDetail .divider i {
-      margin: 0 1px;
-      color: white; }
+      margin: 0 1.25px;
+      color: #1d2833; }
   .postDetail .postReplies {
-    text-align: left;
-    background-color: aliceblue;
-    border-radius: 4px;
-    padding: 10px; }
+    text-align: left; }
   .postDetail .detailFooter {
     position: absolute;
     bottom: 0;
@@ -345,13 +357,13 @@ i {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
     .postDetail .detailFooter i {
       vertical-align: middle;
-      color: white; }
+      color: #1d2833; }
       .postDetail .detailFooter i:hover {
         cursor: pointer;
         opacity: .75;
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
     .postDetail .detailFooter p {
-      color: white;
+      color: #1d2833;
       display: inline-block;
       margin: 0 15px; }
 
@@ -635,7 +647,7 @@ select::-ms-expand {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.45);
   z-index: 9999;
   transition: all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1); }
   .modalWrapper.modalHidden {
@@ -653,11 +665,10 @@ select::-ms-expand {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #1d2833;
-    min-width: 35%;
+    background-color: white;
     max-width: 35%;
-    width: 35%;
-    height: 675px;
+    width: 500px;
+    height: 700px;
     border-radius: 4px;
     display: grid;
     grid-auto-columns: 1fr;

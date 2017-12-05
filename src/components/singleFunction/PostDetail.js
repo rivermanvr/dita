@@ -88,25 +88,22 @@ class PostDetail extends Component{
 
     return (
       <div className="postDetail">
+      {
+        currentPost.userId == userId ?
+        <div className='edit-button'>
+        {/* MURRAY THIS NEEDS TO BE STYLIZED */}
+          <i className='ion-ios-compose-outline' onClick={ () => this.handleEditPost(currentPost) }></i>
+        </div> : null
+      }
         {/*<span className={ `trending-status hl-${Math.ceil(currentPost && currentPost.halflife)}` }></span>*/}
         <h4 className="storyLineTitle">{currentPost.storyline && currentPost.storyline.title}</h4>
         <div className="fullPost">
-          <div className="userInfo">
-            <span className='profilePic' onClick={() => this.handleUserDashboard(currentPost)} style={{backgroundImage:`url(${currentPost.user && currentPost.user.profilePic})`}}></span>
-            <h4 className="userName" onClick={() => this.handleUserDashboard(currentPost)}>{currentPost.user && currentPost.user.name}</h4>
-          </div>
+          <span className='profilePic' onClick={() => this.handleUserDashboard(currentPost)} style={{backgroundImage:`url(${currentPost.user && currentPost.user.profilePic})`}}></span>
           <div className="postInfo">
-            <h4 className="postTitle">{currentPost && currentPost.title} <small>on {d3.timeFormat('%m/%d')(new Date(currentPost && currentPost.createdAt))}</small></h4>
+            <h4 className="postTitle">{currentPost && currentPost.title}</h4>
+            <small>by <span style={{textTransform:'capitalize'}} onClick={() => this.handleUserDashboard(currentPost)}>{currentPost.user && currentPost.user.name}</span> | on {d3.timeFormat('%m/%d')(new Date(currentPost && currentPost.createdAt))}</small>
             <p className="postBody">{currentPost && currentPost.body}</p>
           </div>
-          {
-            currentPost.userId == userId ?
-            <div className='edit-button'>
-            {/* MURRAY THIS NEEDS TO BE STYLIZED */}
-              <i className='ion-ios-compose-outline' onClick={ () => this.handleEditPost(currentPost) }></i>
-            </div> : null
-          }
-          
         </div>
         <div className="divider">
           <i className="ion-ios-more-outline"></i>

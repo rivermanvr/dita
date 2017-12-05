@@ -1,3 +1,11 @@
+.modalWrapper.post-detail .modalContents {
+  max-width: inherit;
+  width: 500px;
+  height: auto;
+  max-height: 750px;
+  padding: 30px 30px 25px 30px; 
+}
+
 .postDetail {
     text-align: center;
     position: relative;
@@ -52,7 +60,7 @@
         display: grid;
         text-align: center;
         border-radius: 4px;
-        padding: 0 12px;
+        // padding: 0 12px;
         position: relative;
         .profilePic {
             border-radius: 50%;
@@ -76,25 +84,35 @@
 
         .postInfo {
             margin-top:.75em;
+            display: grid;
+            grid-gap: 11px;
             .postTitle {
                 color: #1d2833;
                 text-transform: capitalize;
-                font-size: 16px;
+                font-size: 1.2rem;
             }
             small {
                 font-size:9px;
-                margin: 6px 0;
                 display: block;
             }
             .postBody {
                 text-align: left;
-                font-size: 14px;
-                max-height: 80px;
-                overflow: scroll;
-                background-color: rgba(200,200,200,.5);
+                // font-size: 14px;
+                font-size: 1rem;
+                max-height: 400px;
+                overflow-y: scroll;
+                background-color: rgba(200,200,200,.3);
                 padding: 12px;
                 border-radius: 4px;
+                &::-webkit-scrollbar {
+                    width: 8px;
+                }
+
+                &::-webkit-scrollbar {
+                    width: 2px;
+                }
             }
+                        
         }
     }
     .divider {
@@ -106,10 +124,12 @@
     }
     .postReplies {
         text-align: left;
+        // max-height: 250px;
     }
     .detailFooter {
-        position: absolute;
-        bottom:0;
+        // position: absolute;
+        // bottom:0;
+        margin-top: 20px;
         height:25px;
         width:100%;
         text-align: center;

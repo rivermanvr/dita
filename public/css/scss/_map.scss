@@ -227,8 +227,18 @@
   }
 }
 
-.cluster-popup-inner {
+.leaflet-popup-content > div:first-child.cluster-popup-inner {
+  display: grid;
+  grid-gap: 5px;
   & a { color: $darkgunmetal; }
+  & p {
+    margin: 0;
+  }
+  text-align: center;
+}
+
+.popup-current-location {
+  text-align: center;
 }
 
 .leaflet-popup-content-wrapper {
@@ -243,7 +253,6 @@
     font-size: 1rem;
     display: grid;
     grid-gap: 10px;
-    cursor: pointer;
     padding: 20px;
     & .leaflet-popup-footer {
       display: flex;
@@ -273,6 +282,7 @@
       line-height: 1.2;
       transition: all 300ms cubic-bezier(.51,.19,.27,.81);
       text-decoration: none;
+      cursor: pointer;
       &:hover {
         text-decoration: underline;
       }

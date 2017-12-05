@@ -45,7 +45,7 @@ export const _Storylines = ({ storylines, storyPath, modal, toggleModal }) => {
         </div>
       </div>
     })}
-    { modal && <Modal isActive={ modal }><PostDetail /></Modal> }
+    { modal && <Modal isActive={ modal } className='post-detail'><PostDetail /></Modal> }
     </div>
   )
 }

@@ -9,6 +9,13 @@ import Modal from '../reusables/Modal'
 import PostDetail from './PostDetail'
 import { isEmpty } from 'lodash'
 
+export const modalWithClass = className => props =>
+  <Modal className={ className } { ...props } isActive={ props.modal } />
+
+const mapModalState = ({ modal }) => ({ modal })
+export const createPostDetailModal = () => connect(mapModalState)(modalWithClass('post-detail'))
+const PostDetailModal = createPostDetailModal()
+
 const findMaxGrid = (grid, zoom) => {
   let gridKey = Object.keys(grid).reduce((f, k) => {
     return k <= zoom && k > f ? k : f
@@ -72,7 +79,7 @@ class AllPostsMap extends Component {
             
             <Marker position={ position }>
               <Popup>
-                <div>
+                <div className='popup-current-location'>
                   <span style={ spanStyle }>You are at</span>
                   <span>{ currentView.address }</span>
                 </div>
@@ -116,6 +123,8 @@ class AllPostsMap extends Component {
                       post.verticeData ?
                       <div className='cluster-popup-inner'>
                         <a style={ spanStyle }>{ post.verticeData.count + 1 } posts</a>
+                        <p><i className='ion-ios-search'></i></p>
+                        <p>Zoom to see more!</p>
                       </div> :
                       <div>
                         <h4 style={ spanStyle } onClick={ () => this.handleModal(post) }>{ post.title }</h4>
@@ -145,7 +154,7 @@ class AllPostsMap extends Component {
         </div>
 
         {
-          modal ? <Modal isActive={modal}><PostDetail /></Modal> : <div></div>
+          modal ? <Modal isActive={modal} className='post-detail'><PostDetail /></Modal> : <div></div>
         }
 
       </div>

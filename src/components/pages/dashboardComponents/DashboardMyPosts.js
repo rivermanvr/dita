@@ -34,7 +34,7 @@ export const _Posts = ({ posts, modal, toggleModal }) => {
         </div>
       </div>
     })}
-    { modal && <Modal isActive={ modal }><PostDetail /></Modal> }
+    { modal && <Modal isActive={ modal } className='post-detail'><PostDetail /></Modal> }
     </div>
   )
 }

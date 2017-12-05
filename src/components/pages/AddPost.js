@@ -65,7 +65,7 @@ class AddPost extends Component {
         messageDisplayed: 'Post created!',
         loading: false
       })
-    }, 1500)
+    }, 2000)
   }
   handleOkClick = () => {
     this.props.setModal()
@@ -111,8 +111,6 @@ class AddPost extends Component {
   render = () => {
     const { title, body, address, addToStoryline, storyTitle, storyDescription, storylineId, messageDisplayed, loading } = this.state
     const { handleChange, handlePost, toggleStoryline, setCurrentLocation, handleOkClick } = this
-
-    console.log(this.state)
 
     return (
       <div className='add-post-container'>

@@ -1829,7 +1829,8 @@ select::-ms-expand {
 
 .leaflet-popup-content {
   margin: 0;
-  border: 0; }
+  border: 0;
+  min-width: 240px; }
   .leaflet-popup-content > div:first-child {
     font-size: 1rem;
     display: grid;

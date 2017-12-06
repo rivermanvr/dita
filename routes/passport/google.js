@@ -1,16 +1,16 @@
 const router = require( 'express' ).Router(),
   passport = require('passport'),
   GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
-  { User } = require('../../db').models,
+  { User, Location } = require('../../db').models,
   { generateToken } = require('../authMiddleware'),
   faker = require('faker')
 
-  let env;
-  if (process.env.NODE_ENV !== 'production') {
-    env = require('../../env');
-  } else {
-    env = process.env;
-  }
+let env;
+if (process.env.NODE_ENV !== 'production') {
+  env = require('../../env');
+} else {
+  env = process.env;
+}
 
 passport.use(
   new GoogleStrategy({
@@ -32,7 +32,8 @@ passport.use(
 
     User.passportAuth(query, data)
       .then(user => {
-        done(null, user)
+        return Location.create({ address: '', lat: 0, lng: 0, isHome: true, userId: user.id })
+          .then(() => done(null, user))
       })
       .catch(err => {
         done(null, false)

@@ -16,7 +16,7 @@ passport.use(
   new GoogleStrategy({
     clientID: env.GOOGLE_CLIENT_ID,
     clientSecret: env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'http://localhost:2020/api/auth/google/verify'
+    callbackURL: env.GOOGLE_CALLBACK
   },
   (accessToken, refreshToken, profile, done) => {
     const query = {
